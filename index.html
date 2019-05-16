@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>EasyTransfer</title>
+    <!--
+    Electron 中引入jQuery的正确方式：
+    记得要安装依赖
+    ' npm install jquery --save '
+    -->
+    <script>
+        window.$ = window.jQuery = require('jquery');
+    </script>
+</head>
+<style>
+    body {
+        
+        margin: 0;
+    }
+
+    /* 拖拽的区域样式 */
+    #holder {
+        min-height: 200px;
+        background: #eee;
+        margin: 2em;
+        padding: 1em;
+        border: 0px dotted #eee;
+        border-radius: 10px;
+        transition: .3s all ease-in-out;
+    }
+
+    /* 拖拽时用jQuery为其添加边框样式的class */
+    .holder-ondrag {
+        border: 20px dotted #d45700;
+    }
+</style>
+<style media="screen">
+    .progress {
+        width: 100%;
+        height: 5px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        margin-top: 10px;
+        position: relative;
+    }
+
+    .progress>span {
+        display: inline-block;
+        position: absolute;
+        border-radius: 4px;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 0;
+        background-color: rgb(98, 230, 74);
+        transition: width 0.3s ease-out;
+    }
+</style>
+
+<body>
+    本机IP:<span id="localIP"></span>
+    <input type="text" id="ip" placeholder="IP" />
+    <input type="text" id="kb" placeholder="发送大小（默认724KB）" />
+
+    <button onclick="testConnect()">连接测试</button>
+    <span id="connectSuccess"></span>
+    <div style="text-align: center">
+        <h1>拖拽文件来发送</h1>
+        <div id="holder" class="holder">
+            请拖拽文件到这里...
+        </div>
+
+        <div> <span style="font-weight: bold">文件名:</span><span id="transferFile"></span></div>
+        <div> <span style="font-weight: bold">文件大小:</span><span id="fileSize"></span>(kb)</div>
+        <div> <span style="font-weight: bold">已发送:</span><span id="transferKb"></span>(kb)</div>
+        <div class="progress">
+            <span></span>
+
+        </div>
+    </div>
+</body>
+
+<script>
+    var port = 6000;
+    var os=require('os');
+    var path = require('path')
+    var receiveDirPath = __dirname+path.sep+"receive"+path.sep
+   
+    const {
+        ipcRenderer
+    } = require('electron')
+
+    var fs = require('fs'),
+        holder = document.getElementById("holder");
+    fs.exists(receiveDirPath, function (exists) {
+        if (!exists) {
+            //2. fs.mkdir  创建目录  
+            fs.mkdir(receiveDirPath, function (error) {
+                if (error) {
+                    console.log(error);
+                    return false;
+                }
+                console.log('创建目录成功');
+            })
+        }
+    })
+
+
+    holder.ondragenter = holder.ondragover = function (event) {
+        event.preventDefault();
+        ipcRenderer.send('ondragstart', '/path/to/item')
+        holder.className = "holder-ondrag";
+        holder.innerText = "松开鼠标";
+        document.querySelector('.progress span').style.width = '0%';
+    };
+
+    holder.ondragleave = function (event) {
+        event.preventDefault();
+        holder.className = "holder";
+        holder.innerText = "请拖拽文件到这里...";
+    };
+
+    holder.ondrop = function (event) {
+        // 调用 preventDefault() 来避免浏览器对数据的默认处理
+        //（drop 事件的默认行为是以链接形式打开）
+        event.preventDefault();
+        var files = event.dataTransfer.files;
+        for (var i in files) {
+            if (undefined != files[i].path) {
+                sendFile(files[i].path, files[i].name);
+
+            }
+        }
+
+    }
+
+
+    var net = require('net');
+    var server = net.createServer();
+    server.listen(port, "0.0.0.0");
+    server.on('connection', function (sock) {
+
+        console.log('CONNECTED: ' +
+            sock.remoteAddress + ':' + sock.remotePort);
+        // 处理业务
+        // 为这个socket实例添加一个"data"事件处理函数
+        sock.on('data', function (data) {
+
+            //            console.log('DATA ' + sock.remoteAddress + ': ' + data);
+            // 回发该数据，客户端将收到来自服务端的数据
+            receiveFile(sock, data);
+        });
+
+        // 为这个socket实例添加一个"close"事件处理函数
+        sock.on('close', function (data) {
+            console.log('CLOSED: ' +
+                sock.remoteAddress + ' ' + sock.remotePort);
+        });
+    });
+
+
+    function sendFile(path, name) {
+        var net = require('net');
+        var HOST = $("#ip").val();
+        //        var client = new net.Socket();
+        var client = net.createConnection(port, HOST);
+        var fileInfo = fs.statSync(path);
+        var fileSize = fileInfo.size;
+        console.log("filesize:" + fileSize)
+        client.on('connect', function () {
+            console.log('CONNECTED TO: ' + HOST + ':' + port);
+            client.write(JSON.stringify({
+                'id': "client2",
+                'fileInfo': {
+                    'fileSize': fileSize,
+                    fileName: name
+                }
+            }));
+            $("#transferFile").text(name);
+            $("#fileSize").text(fileSize);
+        });
+        var sendSize = 0;
+
+        var packSize = 724;
+        var kb = $("#kb").val();
+        var setPackSize = 724;
+        if ("" != kb) {
+            packSize = parseInt(kb);
+            setPackSize = packSize;
+        }
+        var fd = fs.openSync(path, 'r');
+
+        var buf = new Buffer.alloc(packSize);
+        var percent = 0;
+        var sendNum = 0;
+        client.on('data', function (response) {
+            response = response.toString();
+            var leftSize = fileSize - sendSize;
+            if (leftSize < packSize) {
+                packSize = leftSize;
+                buf = new Buffer.alloc(packSize);
+            }
+
+            percent = (sendSize / fileSize) * 100;
+            if (percent < 10) {
+                document.querySelector('.progress span').style.width = '10%';
+            } else if (percent < 20) {
+                document.querySelector('.progress span').style.width = '20%';
+            } else if (percent < 30) {
+                document.querySelector('.progress span').style.width = '30%';
+            } else if (percent < 40) {
+                document.querySelector('.progress span').style.width = '40%';
+            } else if (percent < 50) {
+
+                document.querySelector('.progress span').style.width = '50%';
+            } else if (percent < 60) {
+
+                document.querySelector('.progress span').style.width = '60%';
+            } else if (percent < 70) {
+
+                document.querySelector('.progress span').style.width = '70%';
+            } else if (percent < 80) {
+
+                document.querySelector('.progress span').style.width = '80%';
+            } else if (percent < 90) {
+
+                document.querySelector('.progress span').style.width = '90%';
+            } else if (percent < 100) {
+                document.querySelector('.progress span').style.width = '90%';
+            }
+            $("#transferKb").text(sendSize);
+            if (response.toString() == "set file info") {
+                holder.innerText = "文件发送中...";
+                //readSync参数:文件ID,buffer对象,写入buffer的起始位置,写入buffer的结束位置,读取文件的起始位置
+                fs.readSync(fd, buf, 0, buf.length, sendSize);
+                var data = buf.toString('hex'); //以十六进制传输
+                sendNum++;
+                client.write(data);
+                console.log('Transfering...num:' + sendNum);
+
+                sendSize += packSize;
+
+            }  else if (response.toString() == "file transfer completed") {
+                console.log('Transfer Completed!');
+                document.querySelector('.progress span').style.width = '100%';
+                holder.innerText = "发送完毕";
+                client.end()
+            }else{//有拆包
+               
+               //readSync参数:文件ID,buffer对象,写入buffer的起始位置,写入buffer的结束位置,读取文件的起始位置
+               fs.readSync(fd, buf, 0, buf.length, sendSize);
+               var data = buf.toString('hex'); //以十六进制传输
+               client.write(data);
+               sendNum++;
+
+               console.log('response:' + response.toString());
+
+               sendSize += packSize;
+
+           }
+           if(sendSize == fileSize &&  holder.innerText == "文件发送中..."){
+            holder.innerText = "发送完毕";
+             document.querySelector('.progress span').style.width = '100%';
+           }
+           
+
+
+
+
+
+
+        });
+
+
+
+    }
+
+
+    var receiveFileSize = 0;
+
+    function receiveFile(socket, data) {
+        console.log(data.length)
+        if (!socket.file_info) { //将文件信息绑定到当前socket，便于后续访问
+            socket.file_info = JSON.parse(data).fileInfo;
+            socket.hasSend = 0; //已经发送进来的大小
+            socket.hasWrite = 0; //已经写入的大小
+            socket.buf = ''; //buffer存储对象
+            receiveFileSize = socket.file_info.fileSize;
+            socket.fd = fs.openSync(receiveDirPath+ socket.file_info.fileName, 'w+'); //文件标识ID
+            socket.write('set file info'); //反馈
+        } else {
+            socket.buf += data;
+            socket.hasSend = socket.hasSend + data.length;
+            ipcRenderer.send('asynchronous-message', socket.hasSend / receiveFileSize);
+            while (socket.buf.length >= 2048) { //开始重新拼接分块写入，十六进制下字符的大小为之前的二倍
+                var pack = socket.buf.slice(0, 2048);
+                socket.buf = socket.buf.slice(2048);
+                pack = Buffer.from(pack, 'hex');
+                fs.appendFileSync(socket.fd, pack);
+            }
+
+            // console.log(socket.hasSend,
+            //     parseInt(socket.hasSend / 2 / socket.file_info.fileSize * 100) + '%');
+            if (socket.hasSend >= socket.file_info.fileSize * 2) { //传输即将完毕，重置
+                var buf = Buffer.from(socket.buf, 'hex');
+                fs.appendFileSync(socket.fd, buf);
+                fs.closeSync(socket.fd);
+                socket.write('file transfer completed');
+                socket.file_info = null;
+                var myNotification = new Notification('EasyTransfer', {
+                    body: '收到新文件,点击打开目录'
+                })
+                myNotification.onclick = () => {
+                    openDir()
+                }
+
+            } else {
+                socket.write(data.length+"");
+            }
+        }
+
+
+    }
+    function openDir(){
+       
+        var exec = require('child_process').exec;
+        if(os.type == 'Darwin'){
+            exec("open "+receiveDirPath);
+
+        }else if(os.type == 'Windows_NT'){
+            exec("explorer.exe "+receiveDirPath);
+
+        }
+        // ipcRenderer.send('asynchronous-message-openDir', receiveDirPath);
+    }
+
+    function testConnect() {
+        $("#connectSuccess").html(" ");
+        var net = require('net');
+        var HOST = $("#ip").val();
+        var PORT = port;
+
+        var client = new net.Socket();
+        client.connect(PORT, HOST, function () {
+
+            $("#connectSuccess").html("<span style='color: green'>连接成功</span>");
+
+        });
+        client.on('error', function () {
+            $("#connectSuccess").html("<span style='color: red'>连接失败</span>");
+            client.destroy();
+        });
+
+    }
+
+
+    function getLocalIP() {
+        var interfaces = require('os').networkInterfaces();
+        for (var devName in interfaces) {
+            var iface = interfaces[devName];
+            for (var i = 0; i < iface.length; i++) {
+                var alias = iface[i];
+                if (alias.family === 'IPv4' && alias.address !== '127.0.0.1' && !alias.internal) {
+                    $("#localIP").html(alias.address);
+                }
+            }
+        }
+
+    }
+    getLocalIP();
+</script>
+
+</html>

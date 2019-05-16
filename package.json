@@ -1,0 +1,30 @@
+{
+  "name": "FileTransferEasy",
+  "version": "1.0.0",
+  "description": "A minimal Electron application",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "package": "electron-packager . FileTransferEasyWin --win --out ../FileTransferEasyWin --arch=x64 --overwrite",
+    "packageMac":  "electron-packager . FileTransferEasyMac --platform=darwin --arch=x64 --out ../FileTransferEasyMac  --overwrite --asar --app-version=2.0.1",
+    "packageLinux":  "electron-packager . FileTransferEasyLinux --platform=linux --arch=x64 --out ../FileTransferEasyLinux  --overwrite"
+
+  },
+  "repository": "https://github.com/electron/electron-quick-start",
+  "keywords": [
+    "Electron",
+    "quick",
+    "start",
+    "tutorial",
+    "demo"
+  ],
+  "author": "sunqingchao",
+  "license": "CC0-1.0",
+  "devDependencies": {
+    "electron": "^5.0.1"
+  },
+  "dependencies": {
+    "electron-packager": "^13.1.1",
+    "jquery": "^3.4.1"
+  }
+}
