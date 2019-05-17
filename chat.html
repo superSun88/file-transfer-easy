@@ -202,6 +202,15 @@
 
     }
 
+    function writeMsg(sock, data) {
+        var span =
+            '<div class="panel-block"><div class="control"><div class="field is-grouped is-grouped-left"><span class="ip_name">' +
+            sock.remoteAddress + ':&nbsp</span> <span class="hesay">' +
+            data + '</span></div></div></div>';
+        $("#chatHistory").append(span);
+
+    }
+
 
     function openChatWindow() {
         window.open("chat.html");
@@ -374,7 +383,7 @@
 
     var msg = GetQueryString("msg");
     if(undefined != msg && "" != msg){
-        var fromip = GetQueryString("fromip");
+        var fromip = GetQueryString("ip");
         var span =
             '<div class="panel-block"><div class="control"><div class="field is-grouped is-grouped-left"><span class="ip_name">' +
             fromip + ':&nbsp</span> <span class="hesay">' +
