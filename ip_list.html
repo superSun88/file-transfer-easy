@@ -73,7 +73,19 @@
     const {
         ipcRenderer
     } = require('electron')
-
+    var fs = require('fs')
+    fs.exists(receiveDirPath, function (exists) {
+        if (!exists) {
+            //2. fs.mkdir  创建目录
+            fs.mkdir(receiveDirPath, function (error) {
+                if (error) {
+                    console.log(error);
+                    return false;
+                }
+                console.log('创建目录成功');
+            })
+        }
+    })
     var net = require('net');
     var server = net.createServer();
     server.listen(port, "0.0.0.0");
@@ -143,7 +155,18 @@
         }
 
     }
+    function openDir(){
 
+        var exec = require('child_process').exec;
+        if(os.type == 'Darwin'){
+            exec("open "+receiveDirPath);
+
+        }else if(os.type == 'Windows_NT'){
+            exec("explorer.exe "+receiveDirPath);
+
+        }
+        // ipcRenderer.send('asynchronous-message-openDir', receiveDirPath);
+    }
     function getLocalIP() {
         var interfaces = require('os').networkInterfaces();
         for (var devName in interfaces) {
