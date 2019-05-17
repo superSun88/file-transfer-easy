@@ -126,7 +126,8 @@
     }
     var myip = getLocalIP();
 
-    var port = 6000;
+    var port = 6001;
+    var fileport = 6000;
     var os = require('os');
     var path = require('path')
     var receiveDirPath = __dirname + path.sep + "receive" + path.sep
@@ -180,7 +181,7 @@
 
             //            console.log('DATA ' + sock.remoteAddress + ': ' + data);
             // 回发该数据，客户端将收到来自服务端的数据
-            receiveFile(sock, data);
+            writeMsg(sock, data);
         });
 
         // 为这个socket实例添加一个"close"事件处理函数
@@ -224,12 +225,12 @@
         var net = require('net');
         var HOST = $("#ip").val();
         //        var client = new net.Socket();
-        var client = net.createConnection(port, HOST);
+        var client = net.createConnection(fileport, HOST);
         var fileInfo = fs.statSync(path);
         var fileSize = fileInfo.size;
         console.log("filesize:" + fileSize)
         client.on('connect', function () {
-            console.log('CONNECTED TO: ' + HOST + ':' + port);
+            console.log('CONNECTED TO: ' + HOST + ':' + fileport);
             client.write(JSON.stringify({
                 'id': "client2",
                 'fileInfo': {
@@ -332,52 +333,6 @@
 
         });
 
-
-
-    }
-
-    var receiveFileSize = 0;
-
-    function receiveFile(socket, data) {
-        console.log(data.length)
-        if (!socket.file_info) { //将文件信息绑定到当前socket，便于后续访问
-            socket.file_info = JSON.parse(data).fileInfo;
-            socket.hasSend = 0; //已经发送进来的大小
-            socket.hasWrite = 0; //已经写入的大小
-            socket.buf = ''; //buffer存储对象
-            receiveFileSize = socket.file_info.fileSize;
-            socket.fd = fs.openSync(receiveDirPath + socket.file_info.fileName, 'w+'); //文件标识ID
-            socket.write('set file info'); //反馈
-        } else {
-            socket.buf += data;
-            socket.hasSend = socket.hasSend + data.length;
-            ipcRenderer.send('asynchronous-message', socket.hasSend / receiveFileSize);
-            while (socket.buf.length >= 2048) { //开始重新拼接分块写入，十六进制下字符的大小为之前的二倍
-                var pack = socket.buf.slice(0, 2048);
-                socket.buf = socket.buf.slice(2048);
-                pack = Buffer.from(pack, 'hex');
-                fs.appendFileSync(socket.fd, pack);
-            }
-
-            // console.log(socket.hasSend,
-            //     parseInt(socket.hasSend / 2 / socket.file_info.fileSize * 100) + '%');
-            if (socket.hasSend >= socket.file_info.fileSize * 2) { //传输即将完毕，重置
-                var buf = Buffer.from(socket.buf, 'hex');
-                fs.appendFileSync(socket.fd, buf);
-                fs.closeSync(socket.fd);
-                socket.write('file transfer completed');
-                socket.file_info = null;
-                var myNotification = new Notification('EasyTransfer', {
-                    body: '收到新文件,点击打开目录'
-                })
-                myNotification.onclick = () => {
-                    openDir()
-                }
-
-            } else {
-                socket.write(data.length + "");
-            }
-        }
 
 
     }
