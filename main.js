@@ -63,7 +63,24 @@ ipcMain.on('asynchronous-message', (event, process) => {
   }
 
 })
+let chatwin;
+ipcMain.on('openChatWindow', (event, args)=>
+{
+  chatwin = new BrowserWindow({
+        width: 600, 
+        height: 400,
+        frame:true,
+        webPreferences: {
+          nodeIntegration: true
+        }
+    })
+    console.log(args)
+    // chatwin.loadFile("chat.html"); //新开窗口的渲染进程
+    chatwin.loadURL(`file://${__dirname}/`+args); //新开窗口的渲染进程
+    chatwin.webContents.openDevTools();
+    chatwin.on('closed',()=>{chatwin = null})
 
+})
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.

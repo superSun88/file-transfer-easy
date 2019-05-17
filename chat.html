@@ -3,12 +3,15 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>ChatWindow</title>
+    <title id="title">ChatWindow</title>
     <!--
     Electron 中引入jQuery的正确方式：
     记得要安装依赖
     ' npm install jquery --save '
     -->
+    <script>
+            window.$ = window.jQuery = require('jquery');
+        </script>
     <style>
         @import 'node_modules/bulma/css/bulma.css';
 
@@ -56,9 +59,7 @@
         }
     </style>
 
-    <script>
-        window.$ = window.jQuery = require('jquery');
-    </script>
+  
 </head>
 
 <body>
@@ -107,7 +108,7 @@
 
         </div>
     </div>
-    <input id="ip" type="hidden" />
+    <input id="ip" type="hidde" />
 </body>
 
 <script>
@@ -209,11 +210,6 @@
             data + '</span></div></div></div>';
         $("#chatHistory").append(span);
 
-    }
-
-
-    function openChatWindow() {
-        window.open("chat.html");
     }
 
     function modal() {
@@ -379,18 +375,23 @@
         return null;
     }
     var ip = GetQueryString("ip");
-    $("#ip").val(ip);
+    if(undefined != ip && "" != ip){
+        $("#ip").val(ip);
+        $("#title").text("ChatWindow("+ip+")");
+       
+    }
 
     var msg = GetQueryString("msg");
     if(undefined != msg && "" != msg){
         var fromip = GetQueryString("ip");
+        $("#title").text("ChatWindow("+ip+")");
+
         var span =
             '<div class="panel-block"><div class="control"><div class="field is-grouped is-grouped-left"><span class="ip_name">' +
             fromip + ':&nbsp</span> <span class="hesay">' +
             msg + '</span></div></div></div>';
         $("#chatHistory").append(span);
     }
-
 </script>
 
 </html>

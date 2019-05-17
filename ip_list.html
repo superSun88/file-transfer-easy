@@ -124,8 +124,9 @@
           sock.end();
           chatServer.close();
           console.log("收到聊天请求");
-          window.open("chat.html?ip="+ip
+        ipcRenderer.send('openChatWindow', "chat.html?ip="+ip
                +"&msg=" + data.toString());
+
 
         });
 
@@ -171,9 +172,10 @@
         } else {
             var client = new net.Socket();
             client.connect(PORT, HOST, function () {
-                window.open("chat.html?ip=" + $("#ip").val());
+                // window.open("chat.html?ip=" + $("#ip").val());
+                ipcRenderer.send('openChatWindow', "chat.html?ip="+HOST);
                 client.end();
-
+                chatServer.close();
             });
             client.on('error', function () {
                 $("#connectSuccess").html("<span style='color: red'>连接失败</span>");
@@ -255,6 +257,8 @@
 
 
     }
+
+
 </script>
 
 </html>
