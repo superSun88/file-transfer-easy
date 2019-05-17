@@ -171,7 +171,7 @@
 
         } else {
             var client = new net.Socket();
-            client.connect(PORT, HOST, function () {
+            client.connect(6002, HOST, function () {
                 client.write("open chat");
                 // window.open("chat.html?ip=" + $("#ip").val());
                 ipcRenderer.send('openChatWindow', "chat.html?ip="+HOST);
@@ -179,8 +179,18 @@
                 chatServer.close();
             });
             client.on('error', function () {
-                $("#connectSuccess").html("<span style='color: red'>连接失败</span>");
-                client.destroy();
+                var client = new net.Socket();
+                client.connect(port, HOST, function () {
+                client.write("open chat");
+                // window.open("chat.html?ip=" + $("#ip").val());
+                ipcRenderer.send('openChatWindow', "chat.html?ip="+HOST);
+                client.end();
+                chatServer.close();
+                });
+                client.on('error', function () {
+                    $("#connectSuccess").html("<span style='color: red'>连接失败</span>");
+                    client.destroy();
+                });
             });
         }
 
