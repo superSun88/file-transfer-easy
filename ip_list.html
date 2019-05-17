@@ -164,7 +164,7 @@
 
     function openChatWindow() {
         var HOST = $("#ip").val();
-        var PORT = fileport;
+        var PORT = port;
 
         if (HOST == $("#localIP").text() || HOST == "") {
             $("#connectSuccess").html("<span style='color: red'>不可连接本机</span>");
@@ -172,6 +172,7 @@
         } else {
             var client = new net.Socket();
             client.connect(PORT, HOST, function () {
+                client.write("open chat");
                 // window.open("chat.html?ip=" + $("#ip").val());
                 ipcRenderer.send('openChatWindow', "chat.html?ip="+HOST);
                 client.end();

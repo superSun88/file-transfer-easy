@@ -236,6 +236,17 @@
             client.end();
             
         });
+        client.on('error', function () {
+            var net = require('net');
+            var HOST = $("#ip").val();
+            var client = net.createConnection(6001, HOST);    
+            client.on('connect', function () {
+            console.log('CONNECTED TO: ' + HOST + ':' + port);
+            client.write(msg);
+            client.end();
+            
+        });
+        });
         
     }
 
