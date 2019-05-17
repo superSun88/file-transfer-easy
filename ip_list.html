@@ -62,7 +62,9 @@
 </body>
 
 <script>
-    var port = 6000;
+
+    var port = 6001;
+    var fileport = 6000;
     var os = require('os');
     var path = require('path')
     var receiveDirPath = __dirname + path.sep + "receive" + path.sep
@@ -88,7 +90,7 @@
     })
     var net = require('net');
     var server = net.createServer();
-    server.listen(port, "0.0.0.0");
+    server.listen(fileport, "0.0.0.0");
     server.on('connection', function (sock) {
 
         console.log('CONNECTED: ' +
@@ -109,11 +111,34 @@
         });
     });
 
+    var chatServer = net.createServer();
+    chatServer.listen(port, "0.0.0.0");
+    chatServer.on('connection', function (sock) {
+
+        console.log('CONNECTED: ' +
+            sock.remoteAddress + ':' + sock.remotePort);
+        // 处理业务
+        // 为这个socket实例添加一个"data"事件处理函数
+        sock.on('data', function (data) {
+           console.log("收到聊天请求");
+           window.open("chat.html?fromip="+sock.remoteAddress
+               +"&msg=" + data.toString());
+           sock.end();
+           chatServer.close();
+        });
+
+        // 为这个socket实例添加一个"close"事件处理函数
+        sock.on('close', function (data) {
+            console.log('CLOSED: ' +
+                sock.remoteAddress + ' ' + sock.remotePort);
+        });
+    });
+
     function testConnect() {
         $("#connectSuccess").html(" ");
         var net = require('net');
         var HOST = $("#ip").val();
-        var PORT = port;
+        var PORT = fileport;
         if (HOST == $("#localIP").text() || HOST == "") {
             $("#connectSuccess").html("<span style='color: red'>不可连接本机</span>");
 
@@ -136,7 +161,7 @@
 
     function openChatWindow() {
         var HOST = $("#ip").val();
-        var PORT = port;
+        var PORT = fileport;
 
         if (HOST == $("#localIP").text() || HOST == "") {
             $("#connectSuccess").html("<span style='color: red'>不可连接本机</span>");
