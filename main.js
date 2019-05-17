@@ -15,20 +15,13 @@ function createWindow () {
   })
 
   // and load the index.html of the app.
-  mainWindow.loadFile('index.html')
+  mainWindow.loadFile('ip_list.html')
 
   // Open the DevTools.
   mainWindow.webContents.openDevTools();
 
 const { dialog } = require('electron');
   
-  // 在主进程中.
-ipcMain.on('asynchronous-message-openDir', (event, args) => {
-  console.log(args)
-  dialog.showOpenDialog({
-    properties: ['openFile', 'openDirectory', 'multiSelections']
-  })
-})
   // Emitted when the window is closed.
   mainWindow.on('closed', function () {
     // Dereference the window object, usually you would store windows

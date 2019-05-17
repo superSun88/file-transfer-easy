@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>UserList</title>
+    <!--
+    Electron 中引入jQuery的正确方式：
+    记得要安装依赖
+    ' npm install jquery --save '
+    -->
+    <style>
+        @import 'node_modules/bulma/css/bulma.css';
+    </style>
+
+    <script>
+        window.$ = window.jQuery = require('jquery');
+    </script>
+</head>
+
+<body>
+    <div class="field">
+        <label class="label"> 本机IP:<span id="localIP"></span></label>
+        <div class="control">
+            <input class="input is-small" type="text" id="ip" placeholder="通讯端ip地址" />
+
+        </div>
+        <div class="control">
+            <span id="connectSuccess"></span>
+
+        </div>
+        <a class="button is-link is-outlined" onclick="testConnect()">连接测试</a>
+        <a class="button is-primary is-outlined" onclick="openChatWindow()">打开通讯窗口</a>
+    </div>
+
+    <div class="field">
+        <label class="label">连接历史：</span></label>
+        <a class="panel-block">
+            <span class="panel-icon">
+                <i class="fas fa-book" aria-hidden="true"></i>
+            </span>
+            marksheet
+        </a>
+        <a class="panel-block">
+            <span class="panel-icon">
+                <i class="fas fa-book" aria-hidden="true"></i>
+            </span>
+            marksheet
+        </a>
+        <a class="panel-block">
+            <span class="panel-icon">
+                <i class="fas fa-book" aria-hidden="true"></i>
+            </span>
+            marksheet
+        </a>
+
+    </div>
+
+
+
+</body>
+
+<script>
+    var port = 6000;
+    var os = require('os');
+    var path = require('path')
+    var receiveDirPath = __dirname + path.sep + "receive" + path.sep
+    if (os.type == 'Darwin') {
+        receiveDirPath = '/tmp/FileTransferEasy_receive/'
+
+    }
+    const {
+        ipcRenderer
+    } = require('electron')
+
+    var net = require('net');
+    // var server = net.createServer();
+    // server.listen(port, "0.0.0.0");
+    // server.on('connection', function (sock) {
+
+    //     console.log('CONNECTED: ' +
+    //         sock.remoteAddress + ':' + sock.remotePort);
+    //     // 处理业务
+    //     // 为这个socket实例添加一个"data"事件处理函数
+    //     sock.on('data', function (data) {
+
+    //         //            console.log('DATA ' + sock.remoteAddress + ': ' + data);
+    //         // 回发该数据，客户端将收到来自服务端的数据
+    //         receiveFile(sock, data);
+    //     });
+
+    //     // 为这个socket实例添加一个"close"事件处理函数
+    //     sock.on('close', function (data) {
+    //         console.log('CLOSED: ' +
+    //             sock.remoteAddress + ' ' + sock.remotePort);
+    //     });
+    // });
+
+    function testConnect() {
+        $("#connectSuccess").html(" ");
+        var net = require('net');
+        var HOST = $("#ip").val();
+        var PORT = port;
+        if (HOST == $("#localIP").text() || HOST == "") {
+            $("#connectSuccess").html("<span style='color: red'>不可连接本机</span>");
+
+        } else {
+            var client = new net.Socket();
+            client.connect(PORT, HOST, function () {
+                $("#connectSuccess").html("<span style='color: green'>连接成功</span>");
+                client.end();
+
+            });
+            client.on('error', function () {
+                $("#connectSuccess").html("<span style='color: red'>连接失败</span>");
+                client.destroy();
+            });
+        }
+
+
+    }
+
+
+    function openChatWindow() {
+        var HOST = $("#ip").val();
+        var PORT = port;
+
+        if (HOST == $("#localIP").text() || HOST == "") {
+            $("#connectSuccess").html("<span style='color: red'>不可连接本机</span>");
+
+        } else {
+            var client = new net.Socket();
+            client.connect(PORT, HOST, function () {
+                window.open("chat.html?ip=" + $("#ip").val());
+                client.end();
+
+            });
+            client.on('error', function () {
+                $("#connectSuccess").html("<span style='color: red'>连接失败</span>");
+                client.destroy();
+            });
+        }
+
+    }
+
+    function getLocalIP() {
+        var interfaces = require('os').networkInterfaces();
+        for (var devName in interfaces) {
+            var iface = interfaces[devName];
+            for (var i = 0; i < iface.length; i++) {
+                var alias = iface[i];
+                if (alias.family === 'IPv4' && alias.address !== '127.0.0.1' && !alias.internal) {
+                    $("#localIP").html(alias.address);
+                }
+            }
+        }
+
+    }
+    getLocalIP();
+</script>
+
+</html>

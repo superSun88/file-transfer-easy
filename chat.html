@@ -3,112 +3,142 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>EasyTransfer</title>
+    <title>ChatWindow</title>
     <!--
     Electron 中引入jQuery的正确方式：
     记得要安装依赖
     ' npm install jquery --save '
     -->
+    <style>
+        @import 'node_modules/bulma/css/bulma.css';
+
+        .isay {}
+
+        .myname {
+            font-weight: bold
+        }
+
+        /* 拖拽的区域样式 */
+        #holder {
+            min-height: 200px;
+            background: #eee;
+            margin: 2em;
+            padding: 1em;
+            border: 0px dotted #eee;
+            border-radius: 10px;
+            transition: .3s all ease-in-out;
+        }
+
+        /* 拖拽时用jQuery为其添加边框样式的class */
+        .holder-ondrag {
+            border: 20px dotted #d45700;
+        }
+
+        .progress {
+            width: 100%;
+            height: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-top: 10px;
+            position: relative;
+        }
+
+        .progress>span {
+            display: inline-block;
+            position: absolute;
+            border-radius: 4px;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 0;
+            background-color: rgb(98, 230, 74);
+            transition: width 0.3s ease-out;
+        }
+    </style>
+
     <script>
         window.$ = window.jQuery = require('jquery');
     </script>
 </head>
-<style>
-    body {
-        
-        margin: 0;
-    }
-
-    /* 拖拽的区域样式 */
-    #holder {
-        min-height: 200px;
-        background: #eee;
-        margin: 2em;
-        padding: 1em;
-        border: 0px dotted #eee;
-        border-radius: 10px;
-        transition: .3s all ease-in-out;
-    }
-
-    /* 拖拽时用jQuery为其添加边框样式的class */
-    .holder-ondrag {
-        border: 20px dotted #d45700;
-    }
-</style>
-<style media="screen">
-    .progress {
-        width: 100%;
-        height: 5px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        margin-top: 10px;
-        position: relative;
-    }
-
-    .progress>span {
-        display: inline-block;
-        position: absolute;
-        border-radius: 4px;
-        top: 0;
-        left: 0;
-        height: 100%;
-        width: 0;
-        background-color: rgb(98, 230, 74);
-        transition: width 0.3s ease-out;
-    }
-</style>
 
 <body>
-    本机IP:<span id="localIP"></span>
-    <input type="text" id="ip" placeholder="IP" />
-    <input type="text" id="kb" placeholder="发送大小（默认724KB）" />
 
-    <button onclick="testConnect()">连接测试</button>
-    <span id="connectSuccess"></span>
-    <div style="text-align: center">
-        <h1>拖拽文件来发送</h1>
-        <div id="holder" class="holder">
-            请拖拽文件到这里...
+    <div class="field" id="chatHistory">
+
+    </div>
+    <div class="field has-addons">
+        <div class="control">
+            <input class="input" id="msg" type="text" placeholder="请输入文本信息">
         </div>
 
-        <div> <span style="font-weight: bold">文件名:</span><span id="transferFile"></span></div>
-        <div> <span style="font-weight: bold">文件大小:</span><span id="fileSize"></span>(kb)</div>
-        <div> <span style="font-weight: bold">已发送:</span><span id="transferKb"></span>(kb)</div>
-        <div class="progress">
-            <span></span>
+        <div class="control">
+            <a class="button is-focused" onclick="sendMsg()">
+                发送信息
+            </a>
+            <button onclick="modal()" class="button is-info modal-button" data-target="modal"
+                aria-haspopup="true">发送文件</button>
+        </div>
+    </div>
+
+    <div class="modal" id="fileModal">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+            <header class="modal-card-head">
+                <p class="modal-card-title">发送文件</p>
+                <button class="delete" aria-label="close" onclick="closeModal()"></button>
+            </header>
+            <section class="modal-card-body">
+                <input type="text" id="kb" placeholder="发送大小（默认724KB）" />
+                <div style="text-align: center">
+                    <h1>拖拽文件来发送</h1>
+                    <div id="holder" class="holder">
+                        请拖拽文件到这里...
+                    </div>
+
+                    <div> <span style="font-weight: bold">文件名:</span><span id="transferFile"></span></div>
+                    <div> <span style="font-weight: bold">文件大小:</span><span id="fileSize"></span>(kb)</div>
+                    <div> <span style="font-weight: bold">已发送:</span><span id="transferKb"></span>(kb)</div>
+                    <div class="progress">
+                        <span></span>
+
+                    </div>
+                </div>
+            </section>
 
         </div>
     </div>
+    <input id="ip" type="hidden" />
 </body>
 
 <script>
+    function getLocalIP() {
+        var interfaces = require('os').networkInterfaces();
+        for (var devName in interfaces) {
+            var iface = interfaces[devName];
+            for (var i = 0; i < iface.length; i++) {
+                var alias = iface[i];
+                if (alias.family === 'IPv4' && alias.address !== '127.0.0.1' && !alias.internal) {
+                    return alias.address;
+                }
+            }
+        }
+
+    }
+    var myip = getLocalIP();
+
     var port = 6000;
-    var os=require('os');
+    var os = require('os');
     var path = require('path')
-    var receiveDirPath = __dirname+path.sep+"receive"+path.sep
-    if(os.type == 'Darwin'){
+    var receiveDirPath = __dirname + path.sep + "receive" + path.sep
+    if (os.type == 'Darwin') {
         receiveDirPath = '/tmp/FileTransferEasy_receive/'
 
-        }
+    }
     const {
         ipcRenderer
     } = require('electron')
-
     var fs = require('fs'),
         holder = document.getElementById("holder");
-    fs.exists(receiveDirPath, function (exists) {
-        if (!exists) {
-            //2. fs.mkdir  创建目录  
-            fs.mkdir(receiveDirPath, function (error) {
-                if (error) {
-                    console.log(error);
-                    return false;
-                }
-                console.log('创建目录成功');
-            })
-        }
-    })
-
 
     holder.ondragenter = holder.ondragover = function (event) {
         event.preventDefault();
@@ -137,8 +167,6 @@
         }
 
     }
-
-
     var net = require('net');
     var server = net.createServer();
     server.listen(port, "0.0.0.0");
@@ -161,6 +189,35 @@
                 sock.remoteAddress + ' ' + sock.remotePort);
         });
     });
+
+    function sendMsg() {
+        var msg = $("#msg").val();
+        var span =
+            '<div class="panel-block"><div class="control"><div class="field is-grouped is-grouped-right"><span class="myname">' +
+            myip + ':&nbsp</span> <span class="isay">' +
+            msg + '</span></div></div></div>';
+        $("#chatHistory").append(span);
+
+    }
+
+
+    function openChatWindow() {
+        window.open("chat.html");
+    }
+
+    function modal() {
+        //Get element with Id= "modal"
+        var modal = document.getElementById("fileModal");
+        //Change style to display = "block"
+        modal.style.display = "block";
+    }
+
+    function closeModal() {
+        //Get element with Id= "modal"
+        var modal = document.getElementById("fileModal");
+        //Change style to display = "block"
+        modal.style.display = "none";
+    }
 
 
     function sendFile(path, name) {
@@ -244,29 +301,29 @@
 
                 sendSize += packSize;
 
-            }  else if (response.toString() == "file transfer completed") {
+            } else if (response.toString() == "file transfer completed") {
                 console.log('Transfer Completed!');
                 document.querySelector('.progress span').style.width = '100%';
                 holder.innerText = "发送完毕";
                 client.end()
-            }else{//有拆包
-               
-               //readSync参数:文件ID,buffer对象,写入buffer的起始位置,写入buffer的结束位置,读取文件的起始位置
-               fs.readSync(fd, buf, 0, buf.length, sendSize);
-               var data = buf.toString('hex'); //以十六进制传输
-               client.write(data);
-               sendNum++;
+            } else { //有拆包
 
-               console.log('response:' + response.toString());
+                //readSync参数:文件ID,buffer对象,写入buffer的起始位置,写入buffer的结束位置,读取文件的起始位置
+                fs.readSync(fd, buf, 0, buf.length, sendSize);
+                var data = buf.toString('hex'); //以十六进制传输
+                client.write(data);
+                sendNum++;
 
-               sendSize += packSize;
+                console.log('response:' + response.toString());
 
-           }
-           if(sendSize == fileSize &&  holder.innerText == "文件发送中..."){
-            holder.innerText = "发送完毕";
-             document.querySelector('.progress span').style.width = '100%';
-           }
-           
+                sendSize += packSize;
+
+            }
+            if (sendSize == fileSize && holder.innerText == "文件发送中...") {
+                holder.innerText = "发送完毕";
+                document.querySelector('.progress span').style.width = '100%';
+            }
+
 
 
 
@@ -279,7 +336,6 @@
 
     }
 
-
     var receiveFileSize = 0;
 
     function receiveFile(socket, data) {
@@ -290,7 +346,7 @@
             socket.hasWrite = 0; //已经写入的大小
             socket.buf = ''; //buffer存储对象
             receiveFileSize = socket.file_info.fileSize;
-            socket.fd = fs.openSync(receiveDirPath+ socket.file_info.fileName, 'w+'); //文件标识ID
+            socket.fd = fs.openSync(receiveDirPath + socket.file_info.fileName, 'w+'); //文件标识ID
             socket.write('set file info'); //反馈
         } else {
             socket.buf += data;
@@ -319,59 +375,34 @@
                 }
 
             } else {
-                socket.write(data.length+"");
+                socket.write(data.length + "");
             }
         }
 
 
     }
-    function openDir(){
-       
-        var exec = require('child_process').exec;
-        if(os.type == 'Darwin'){
-            exec("open "+receiveDirPath);
 
-        }else if(os.type == 'Windows_NT'){
-            exec("explorer.exe "+receiveDirPath);
+    function openDir() {
+
+        var exec = require('child_process').exec;
+        if (os.type == 'Darwin') {
+            exec("open " + receiveDirPath);
+
+        } else if (os.type == 'Windows_NT') {
+            exec("explorer.exe " + receiveDirPath);
 
         }
         // ipcRenderer.send('asynchronous-message-openDir', receiveDirPath);
     }
 
-    function testConnect() {
-        $("#connectSuccess").html(" ");
-        var net = require('net');
-        var HOST = $("#ip").val();
-        var PORT = port;
-
-        var client = new net.Socket();
-        client.connect(PORT, HOST, function () {
-
-            $("#connectSuccess").html("<span style='color: green'>连接成功</span>");
-
-        });
-        client.on('error', function () {
-            $("#connectSuccess").html("<span style='color: red'>连接失败</span>");
-            client.destroy();
-        });
-
+    function GetQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg); //search,查询？后面的参数，并匹配正则
+        if (r != null) return unescape(r[2]);
+        return null;
     }
-
-
-    function getLocalIP() {
-        var interfaces = require('os').networkInterfaces();
-        for (var devName in interfaces) {
-            var iface = interfaces[devName];
-            for (var i = 0; i < iface.length; i++) {
-                var alias = iface[i];
-                if (alias.family === 'IPv4' && alias.address !== '127.0.0.1' && !alias.internal) {
-                    $("#localIP").html(alias.address);
-                }
-            }
-        }
-
-    }
-    getLocalIP();
+    var ip = GetQueryString("ip");
+    $("#ip").val(ip);
 </script>
 
 </html>
