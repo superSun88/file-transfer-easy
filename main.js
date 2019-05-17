@@ -64,8 +64,26 @@ ipcMain.on('asynchronous-message', (event, process) => {
 
 })
 let chatwin;
+let chat_ip=["1"]
 ipcMain.on('openChatWindow', (event, args)=>
 {
+  var num=args.indexOf("?")
+  var str=args.substr(num+1);
+
+  var arr=str.split("&"); //各个参数放到数组里
+   for(var i=0;i < arr.length;i++){
+        num=arr[i].indexOf("=");
+        if(num>0){
+
+             if(arr[i].substring(0,num) == "ip"){
+               let val = arr[i].substr(num+1);
+               if(chat_ip.indexOf(val) <= 0){
+                chat_ip.push(val);
+               }
+             }
+        }
+   }
+console.log(chat_ip);
   chatwin = new BrowserWindow({
         width: 600, 
         height: 400,
@@ -78,7 +96,9 @@ ipcMain.on('openChatWindow', (event, args)=>
     // chatwin.loadFile("chat.html"); //新开窗口的渲染进程
     chatwin.loadURL(`file://${__dirname}/`+args); //新开窗口的渲染进程
     chatwin.webContents.openDevTools();
-    chatwin.on('closed',()=>{chatwin = null})
+    chatwin.on('closed',()=>{
+      console.log("close")
+      chatwin = null})
 
 })
 

@@ -121,8 +121,8 @@
         // 处理业务
         // 为这个socket实例添加一个"data"事件处理函数
         sock.on('data', function (data) {
-          sock.end();
-          chatServer.close();
+        //   sock.end();
+        //   chatServer.close();
           console.log("收到聊天请求");
         ipcRenderer.send('openChatWindow', "chat.html?ip="+ip
                +"&msg=" + data.toString());
