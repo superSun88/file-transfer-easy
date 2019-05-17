@@ -193,6 +193,7 @@
 
     function sendMsg() {
         var msg = $("#msg").val();
+        sendSocketMsg(msg);
         var span =
             '<div class="panel-block"><div class="control"><div class="field is-grouped is-grouped-right"><span class="myname">' +
             myip + ':&nbsp</span> <span class="isay">' +
@@ -220,6 +221,18 @@
         modal.style.display = "none";
     }
 
+    function sendSocketMsg(msg){
+        var net = require('net');
+        var HOST = $("#ip").val();
+        var client = net.createConnection(port, HOST);    
+        client.on('connect', function () {
+            console.log('CONNECTED TO: ' + HOST + ':' + port);
+            client.write(msg);
+            client.end();
+            
+        });
+        
+    }
 
     function sendFile(path, name) {
         var net = require('net');
