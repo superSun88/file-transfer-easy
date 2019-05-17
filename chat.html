@@ -201,6 +201,7 @@
             msg + '</span></div></div></div>';
         $("#chatHistory").append(span);
         $("#msg").val("");
+        $("#msg").focus();
     }
 
     function writeMsg(sock, data) {

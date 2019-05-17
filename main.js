@@ -83,7 +83,7 @@ ipcMain.on('openChatWindow', (event, args)=>
              }
         }
    }
-console.log(chat_ip);
+// console.log(chat_ip);
   chatwin = new BrowserWindow({
         width: 600, 
         height: 400,
@@ -92,7 +92,7 @@ console.log(chat_ip);
           nodeIntegration: true
         }
     })
-    console.log(args)
+    // console.log(args)
     // chatwin.loadFile("chat.html"); //新开窗口的渲染进程
     chatwin.loadURL(`file://${__dirname}/`+args); //新开窗口的渲染进程
     chatwin.webContents.openDevTools();
