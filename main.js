@@ -72,6 +72,7 @@ ipcMain.on('asynchronous-message', (event, process) => {
 })
 let chat_ip = []
 ipcMain.on('openChatWindow', (event, args) => {
+    console.log("openChatWindow message args:"+args)
   var num = args.indexOf("?")
   var str = args.substr(num + 1);
 
@@ -92,6 +93,7 @@ ipcMain.on('openChatWindow', (event, args) => {
           }
         }
         if (nofind) {
+            console.log("create window "+val)
           let chat_ip_win = new Object();
           chat_ip_win.ip = val;
           chat_ip_win.win = createNewChatWin(args,val);
@@ -122,15 +124,16 @@ function createNewChatWin(args, ip) {
   chatwin.loadURL(`file://${__dirname}/` + args); //新开窗口的渲染进程
   chatwin.webContents.openDevTools();
   chatwin.on('closed', () => {
-    console.log("close")
+    console.log("close");
+    chatwin = null;
     for(var i in chat_ip){
       if(chat_ip[i].ip == ip){
         chat_ip.splice(i,1);
-        console.log("关闭窗口 销毁ip_win")
+        console.log("close window destroy "+ip);
         break;
       }
     }
-    chatwin = null
+
   })
   return chatwin;
 }

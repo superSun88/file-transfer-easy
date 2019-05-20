@@ -181,7 +181,7 @@
         sock.on('data', function (data) {
             //            console.log('DATA ' + sock.remoteAddress + ': ' + data);
             // 回发该数据，客户端将收到来自服务端的数据
-            if("open chat" != data){
+            if("open chat" != data.toString()){
 
                 writeMsg(sock, data);
             }
