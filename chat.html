@@ -214,6 +214,15 @@
             data + '</span></div></div></div>';
         $("#chatHistory").append(span);
 
+        var myNotification = new Notification('EasyTransfer', {
+                    body: '收到新消息'
+                })
+        myNotification.onclick = () => {
+                    openWin(sock.remoteAddress)
+                }
+    }
+    function openWin(ip) {
+        ipcRenderer.send('openWin', ip)
     }
 
     function modal() {

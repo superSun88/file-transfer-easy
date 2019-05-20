@@ -70,6 +70,7 @@ ipcMain.on('asynchronous-message', (event, process) => {
   }
 
 })
+
 let chat_ip = []
 ipcMain.on('openChatWindow', (event, args) => {
     console.log("openChatWindow message args:"+args)
@@ -137,5 +138,17 @@ function createNewChatWin(args, ip) {
   })
   return chatwin;
 }
+
+// 在主进程中.
+ipcMain.on('openWin', (event, ip) => {
+  for(var i in chat_ip){
+    if(chat_ip[i].ip == ip){
+      win = chat_ip[i].win;
+      win.moveTop();
+      break;
+    }
+  }
+
+})
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
