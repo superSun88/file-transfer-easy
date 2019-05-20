@@ -17061,7 +17061,7 @@
     function copyData(obj) {
 
         alert("已粘贴到剪贴板");
-        clipboard.writeText($(obj).attr("data"));
+        clipboard.writeText($($($(obj).parent()).find(".hesay")[0]).text());
 
     }
 
