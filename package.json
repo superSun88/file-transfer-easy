@@ -6,9 +6,8 @@
   "scripts": {
     "start": "electron .",
     "package": "electron-packager . FileTransferEasyWin --win --out ../FileTransferEasyWin --arch=x64 --overwrite",
-    "packageMac":  "electron-packager . FileTransferEasyMac --platform=darwin --arch=x64 --out ../FileTransferEasyMac  --overwrite --asar --app-version=2.0.1",
-    "packageLinux":  "electron-packager . FileTransferEasyLinux --platform=linux --arch=x64 --out ../FileTransferEasyLinux  --overwrite"
-
+    "packageMac": "electron-packager . FileTransferEasyMac --platform=darwin --arch=x64 --out ../FileTransferEasyMac  --overwrite --asar --app-version=2.0.1",
+    "packageLinux": "electron-packager . FileTransferEasyLinux --platform=linux --arch=x64 --out ../FileTransferEasyLinux  --overwrite"
   },
   "repository": "https://github.com/electron/electron-quick-start",
   "keywords": [
@@ -24,6 +23,7 @@
     "electron": "^5.0.1"
   },
   "dependencies": {
+    "bulma": "^0.7.5",
     "electron-packager": "^13.1.1",
     "jquery": "^3.4.1"
   }
