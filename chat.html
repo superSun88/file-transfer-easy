@@ -213,16 +213,19 @@
             sock.remoteAddress + ':&nbsp</span> <span class="hesay">' +
             data + '</span></div></div></div>';
         $("#chatHistory").append(span);
+        if (os.type == 'Darwin') {
+            var myNotification = new Notification('EasyTransfer', {
+                body: '收到新消息'
+            });
+            myNotification.onclick = () => {
+                ipcRenderer.send('openWin', sock.remoteAddress);
+            }
 
-        var myNotification = new Notification('EasyTransfer', {
-                    body: '收到新消息'
-                })
-        myNotification.onclick = () => {
-                    openWin(sock.remoteAddress)
-                }
-    }
-    function openWin(ip) {
-        ipcRenderer.send('openWin', ip)
+        }else{
+            ipcRenderer.send('flashWin', sock.remoteAddress);
+        }
+
+
     }
 
     function modal() {

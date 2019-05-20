@@ -138,13 +138,26 @@ function createNewChatWin(args, ip) {
   })
   return chatwin;
 }
+// 在主进程中.
+ipcMain.on('flashWin', (event, ip) => {
+    for(var i in chat_ip){
+    if(chat_ip[i].ip == ip){
+        win = chat_ip[i].win;
+        win.once('focus', () => win.flashFrame(false))
+        win.flashFrame(true)
+        break;
+    }
+}
 
+})
 // 在主进程中.
 ipcMain.on('openWin', (event, ip) => {
   for(var i in chat_ip){
     if(chat_ip[i].ip == ip){
+
       win = chat_ip[i].win;
       win.moveTop();
+
       break;
     }
   }
