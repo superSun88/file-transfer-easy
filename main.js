@@ -73,7 +73,7 @@ ipcMain.on('asynchronous-message', (event, process) => {
 
 let chat_ip = []
 ipcMain.on('openChatWindow', (event, args) => {
-    console.log("openChatWindow message args:"+args)
+  console.log("openChatWindow message args:" + args)
   var num = args.indexOf("?")
   var str = args.substr(num + 1);
 
@@ -86,18 +86,18 @@ ipcMain.on('openChatWindow', (event, args) => {
         let val = arr[i].substr(num + 1);
         var nofind = true;
         var win = null;
-        for(var i in chat_ip){
-          if(chat_ip[i].ip == val){
+        for (var i in chat_ip) {
+          if (chat_ip[i].ip == val) {
             win = chat_ip[i].win;
             nofind = false;
             break;
           }
         }
         if (nofind) {
-            console.log("create window "+val)
+          console.log("create window " + val)
           let chat_ip_win = new Object();
           chat_ip_win.ip = val;
-          chat_ip_win.win = createNewChatWin(args,val);
+          chat_ip_win.win = createNewChatWin(args, val);
           chat_ip.push(chat_ip_win);
         } else {
           win.moveTop();
@@ -127,10 +127,10 @@ function createNewChatWin(args, ip) {
   chatwin.on('closed', () => {
     console.log("close");
     chatwin = null;
-    for(var i in chat_ip){
-      if(chat_ip[i].ip == ip){
-        chat_ip.splice(i,1);
-        console.log("close window destroy "+ip);
+    for (var i in chat_ip) {
+      if (chat_ip[i].ip == ip) {
+        chat_ip.splice(i, 1);
+        console.log("close window destroy " + ip);
         break;
       }
     }
@@ -140,20 +140,20 @@ function createNewChatWin(args, ip) {
 }
 // 在主进程中.
 ipcMain.on('flashWin', (event, ip) => {
-    for(var i in chat_ip){
-    if(chat_ip[i].ip == ip){
-        win = chat_ip[i].win;
-        win.once('focus', () => win.flashFrame(false))
-        win.flashFrame(true)
-        break;
+  for (var i in chat_ip) {
+    if (chat_ip[i].ip == ip) {
+      win = chat_ip[i].win;
+      win.once('focus', () => win.flashFrame(false))
+      win.flashFrame(true)
+      break;
     }
-}
+  }
 
 })
 // 在主进程中.
 ipcMain.on('openWin', (event, ip) => {
-  for(var i in chat_ip){
-    if(chat_ip[i].ip == ip){
+  for (var i in chat_ip) {
+    if (chat_ip[i].ip == ip) {
 
       win = chat_ip[i].win;
       win.moveTop();
@@ -161,6 +161,37 @@ ipcMain.on('openWin', (event, ip) => {
       break;
     }
   }
+
+})
+
+// 在主进程中.
+ipcMain.on('receiveMessage', (event, data) => {
+  var ip = data.ip;
+  var nofind = true;
+
+  for (var i in chat_ip) {
+
+    if (chat_ip[i].ip == ip) {
+      nofind = false;
+      win = chat_ip[i].win;
+      win.moveTop();
+      data.remoteAddress = ip;
+      win.webContents.send("receiveMessage", data);
+      break;
+    }
+  }
+  if (nofind) {
+    console.log("create window " + ip)
+    let chat_ip_win = new Object();
+    chat_ip_win.ip = ip;
+    var args = encodeURI("chat.html?ip=" + ip +
+                    "&msg=" + data.data);
+    chat_ip_win.win = createNewChatWin(args, ip);
+    chat_ip.push(chat_ip_win);
+  }
+  // console.log(data.ip)
+  // console.log(data.data)
+
 
 })
 // In this file you can include the rest of your app's specific main process

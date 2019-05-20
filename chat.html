@@ -16769,7 +16769,7 @@
     }
     var myip = getLocalIP();
 
-    var port = 6002;
+    var port = 6001;
     var fileport = 6000;
     var os = require('os');
     var path = require('path')
@@ -16811,30 +16811,33 @@
         }
 
     }
-    var net = require('net');
-    var server = net.createServer();
-    server.listen(port, "0.0.0.0");
-    server.on('connection', function (sock) {
+    // var net = require('net');
+    // var server = net.createServer();
+    // server.listen(port, "0.0.0.0");
+    // server.on('connection', function (sock) {
 
-        console.log('CONNECTED: ' +
-            sock.remoteAddress + ':' + sock.remotePort);
-        // 处理业务
-        // 为这个socket实例添加一个"data"事件处理函数
-        sock.on('data', function (data) {
-            //            console.log('DATA ' + sock.remoteAddress + ': ' + data);
-            // 回发该数据，客户端将收到来自服务端的数据
-            if ("open chat" != data.toString()) {
+    //     console.log('CONNECTED: ' +
+    //         sock.remoteAddress + ':' + sock.remotePort);
+    //     // 处理业务
+    //     // 为这个socket实例添加一个"data"事件处理函数
+    //     sock.on('data', function (data) {
+    //         //            console.log('DATA ' + sock.remoteAddress + ': ' + data);
+    //         // 回发该数据，客户端将收到来自服务端的数据
+    //         if ("open chat" != data.toString()) {
 
-                writeMsg(sock, data);
-            }
+    //             writeMsg(sock, data);
+    //         }
 
-        });
+    //     });
 
-        // 为这个socket实例添加一个"close"事件处理函数
-        sock.on('close', function (data) {
-            console.log('CLOSED: ' +
-                sock.remoteAddress + ' ' + sock.remotePort);
-        });
+    //     // 为这个socket实例添加一个"close"事件处理函数
+    //     sock.on('close', function (data) {
+    //         console.log('CLOSED: ' +
+    //             sock.remoteAddress + ' ' + sock.remotePort);
+    //     });
+    // });
+    ipcRenderer.on('receiveMessage', (event, data) => {
+        writeMsg(data, data.data);
     });
 
     function sendMsg() {
@@ -16904,15 +16907,7 @@
 
         });
         client.on('error', function () {
-            var net = require('net');
-            var HOST = $("#ip").val();
-            var client = net.createConnection(6001, HOST);
-            client.on('connect', function () {
-                console.log('CONNECTED TO: ' + HOST + ':' + port);
-                client.write(msg);
-                client.end();
-
-            });
+           
         });
 
     }

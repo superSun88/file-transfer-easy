@@ -62,7 +62,6 @@
 </body>
 
 <script>
-
     var listenChatPort = 6001;
     var fileport = 6000;
     var os = require('os');
@@ -121,13 +120,20 @@
         // 处理业务
         // 为这个socket实例添加一个"data"事件处理函数
         sock.on('data', function (data) {
-        //   sock.end();
-        //   chatServer.close();
-          console.log("收到聊天请求");
-        ipcRenderer.send('openChatWindow', encodeURI("chat.html?ip="+ip
-               +"&msg=" + data.toString()));
-        });
+            if (data.toString() == "open chat") {
+                console.log("收到聊天请求");
+                ipcRenderer.send('openChatWindow', encodeURI("chat.html?ip=" + ip +
+                    "&msg=" + data.toString()));
+                    
 
+            } else {
+                var transferData = new Object();
+                transferData.ip=ip;
+                transferData.data=data.toString()
+                ipcRenderer.send('receiveMessage', transferData);
+            }
+
+        });
         // 为这个socket实例添加一个"close"事件处理函数
         sock.on('close', function (data) {
             console.log('CLOSED: ' +
@@ -172,38 +178,29 @@
             client.connect(PORT, HOST, function () {
                 client.write("open chat");
                 // window.open("chat.html?ip=" + $("#ip").val());
-                ipcRenderer.send('openChatWindow', "chat.html?ip="+HOST);
-                 client.end();
+                ipcRenderer.send('openChatWindow', "chat.html?ip=" + HOST);
+                client.end();
             });
             client.on('error', function () {
-//                var client = new net.Socket();
-//                client.connect(PORT, HOST, function () {
-//                client.write("open chat");
-//                // window.open("chat.html?ip=" + $("#ip").val());
-//                ipcRenderer.send('openChatWindow', "chat.html?ip="+HOST);
-//                // client.end();
-//                chatServer.close();
-//                });
-//                client.on('error', function () {
-//                    $("#connectSuccess").html("<span style='color: red'>连接失败</span>");
-//                    client.destroy();
-//                });
+               
             });
         }
 
     }
-    function openDir(){
+
+    function openDir() {
 
         var exec = require('child_process').exec;
-        if(os.type == 'Darwin'){
-            exec("open "+receiveDirPath);
+        if (os.type == 'Darwin') {
+            exec("open " + receiveDirPath);
 
-        }else if(os.type == 'Windows_NT'){
-            exec("explorer.exe "+receiveDirPath);
+        } else if (os.type == 'Windows_NT') {
+            exec("explorer.exe " + receiveDirPath);
 
         }
         // ipcRenderer.send('asynchronous-message-openDir', receiveDirPath);
     }
+
     function getLocalIP() {
         var interfaces = require('os').networkInterfaces();
         for (var devName in interfaces) {
@@ -265,8 +262,6 @@
 
 
     }
-
-
 </script>
 
 </html>
