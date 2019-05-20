@@ -16841,9 +16841,9 @@
         var msg = $("#msg").val();
         sendSocketMsg(msg);
         var span =
-            '<div class="notification is-info"><figure class="highlight field is-grouped is-grouped-right"><pre><code class="language-html"><span class="ip_name" style="color: #209cee">' +
+            '<div class="panel-block"><div class="container"><figure class="highlight field is-grouped is-grouped-right"><pre><code class="language-html"><span class="ip_name" style="color: #209cee">' +
             myip + ':&nbsp</span> <span class="isay">' +
-                    escapeHtml(msg) + '</span></code></pre></figure></div>';
+                    escapeHtml(msg) + '</span></code></pre></figure></div></div>';
 
         //        var span =
         //            '<div class="panel-block"><div class="container"><div class="field is-grouped is-grouped-right notification"><span class="ip_name">' +
@@ -16856,10 +16856,10 @@
 
     function writeMsg(sock, data) {
         var span =
-            '<div class="notification is-primary"><figure class="highlight"><pre><code class="language-html"><span class="ip_name" style="color: cadetblue">' +
+            '<div class="panel-block"><div class="container"><figure class="highlight"><pre><code class="language-html"><span class="ip_name" style="color: cadetblue">' +
             sock.remoteAddress + ':&nbsp</span> <span class="hesay">' +
                     escapeHtml(data) + '</span></code></pre><button class="button is-small bd-copy" data="' + data +
-            '" onclick="copyData(this)" >Copy</button></figure></div>';
+            '" onclick="copyData(this)" >Copy</button></figure></div></div>';
 
 
 
@@ -17048,10 +17048,10 @@
         //            fromip + ':&nbsp</span> <span class="hesay">' +
         //            msg+'    </span></div>';
         var span =
-            '<div class="notification is-primary"><figure class="highlight"><pre><code class="language-html"><span class="ip_name" style="color: cadetblue">' +
+            '<div class="panel-block"><div class="container"><figure class="highlight"><pre><code class="language-html"><span class="ip_name" style="color: cadetblue">' +
             fromip + ':&nbsp</span> <span class="hesay">' +
             escapeHtml(msg) + '</span></code></pre><button class="button is-small bd-copy" data="' + msg +
-            '" onclick="copyData(this)" >Copy</button></figure></div>';
+            '" onclick="copyData(this)" >Copy</button></figure></div></div>';
         $("#chatHistory").append(span);
     }
     const {
