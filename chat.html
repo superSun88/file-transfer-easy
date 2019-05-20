@@ -16709,18 +16709,17 @@
     <div class="field" id="chatHistory">
 
     </div>
-    <div class="field has-addons">
-        <div class="control">
-            <textarea class="textarea is-primary" id="msg" type="text" placeholder="请输入文本信息"></textarea>
-        </div>
+    <div class="field">
+        <textarea class="textarea is-primary" id="msg" type="text" placeholder="请输入文本信息"></textarea>
 
-        <div class="control">
-            <a class="button is-focused" onclick="sendMsg()">
-                发送信息
-            </a>
-            <button onclick="modal()" class="button is-info modal-button" data-target="modal"
+
+    </div>
+    <div class="field" style="text-align: right">
+        <a class="button is-focused" onclick="sendMsg()">
+            发送信息
+        </a>
+        <button onclick="modal()" class="button is-info modal-button" data-target="modal"
                 aria-haspopup="true">发送文件</button>
-        </div>
     </div>
 
     <div class="modal" id="fileModal">
