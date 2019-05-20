@@ -63,7 +63,7 @@
 
 <script>
 
-    var port = 6001;
+    var listenChatPort = 6001;
     var fileport = 6000;
     var os = require('os');
     var path = require('path')
@@ -112,7 +112,7 @@
     });
 
     var chatServer = net.createServer();
-    chatServer.listen(port, "0.0.0.0");
+    chatServer.listen(listenChatPort, "0.0.0.0");
     chatServer.on('connection', function (sock) {
 
         var ip = sock.remoteAddress;
@@ -124,10 +124,8 @@
         //   sock.end();
         //   chatServer.close();
           console.log("收到聊天请求");
-        ipcRenderer.send('openChatWindow', "chat.html?ip="+ip
-               +"&msg=" + data.toString());
-
-
+        ipcRenderer.send('openChatWindow', encodeURI("chat.html?ip="+ip
+               +"&msg=" + data.toString()));
         });
 
         // 为这个socket实例添加一个"close"事件处理函数
@@ -164,7 +162,7 @@
 
     function openChatWindow() {
         var HOST = $("#ip").val();
-        var PORT = port;
+        var PORT = listenChatPort;
 
         if (HOST == $("#localIP").text() || HOST == "") {
             $("#connectSuccess").html("<span style='color: red'>不可连接本机</span>");
@@ -176,11 +174,10 @@
                 // window.open("chat.html?ip=" + $("#ip").val());
                 ipcRenderer.send('openChatWindow', "chat.html?ip="+HOST);
                 client.end();
-                chatServer.close();
             });
             client.on('error', function () {
                 var client = new net.Socket();
-                client.connect(port, HOST, function () {
+                client.connect(PORT, HOST, function () {
                 client.write("open chat");
                 // window.open("chat.html?ip=" + $("#ip").val());
                 ipcRenderer.send('openChatWindow', "chat.html?ip="+HOST);

@@ -354,36 +354,16 @@
                 holder.innerText = "发送完毕";
                 document.querySelector('.progress span').style.width = '100%';
             }
-
-
-
-
-
-
-
         });
 
 
 
     }
 
-    function openDir() {
-
-        var exec = require('child_process').exec;
-        if (os.type == 'Darwin') {
-            exec("open " + receiveDirPath);
-
-        } else if (os.type == 'Windows_NT') {
-            exec("explorer.exe " + receiveDirPath);
-
-        }
-        // ipcRenderer.send('asynchronous-message-openDir', receiveDirPath);
-    }
-
     function GetQueryString(name) {
         var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
         var r = window.location.search.substr(1).match(reg); //search,查询？后面的参数，并匹配正则
-        if (r != null) return unescape(r[2]);
+        if (r != null) return decodeURIComponent(r[2]);
         return null;
     }
     var ip = GetQueryString("ip");
