@@ -173,7 +173,7 @@
                 client.write("open chat");
                 // window.open("chat.html?ip=" + $("#ip").val());
                 ipcRenderer.send('openChatWindow', "chat.html?ip="+HOST);
-                client.end();
+                // client.end();
             });
             client.on('error', function () {
                 var client = new net.Socket();
@@ -181,7 +181,7 @@
                 client.write("open chat");
                 // window.open("chat.html?ip=" + $("#ip").val());
                 ipcRenderer.send('openChatWindow', "chat.html?ip="+HOST);
-                client.end();
+                // client.end();
                 chatServer.close();
                 });
                 client.on('error', function () {
