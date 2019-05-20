@@ -16858,8 +16858,8 @@
         var span =
             '<div class="panel-block"><div class="container"><figure class="highlight"><pre><code class="language-html"><span class="ip_name" style="color: cadetblue">' +
             sock.remoteAddress + ':&nbsp</span> <span class="hesay">' +
-                    escapeHtml(data) + '</span></code></pre><button class="button is-small bd-copy" data="' + data +
-            '" onclick="copyData(this)" >Copy</button></figure></div></div>';
+                    escapeHtml(data) + '</span></code></pre><button class="button is-small bd-copy"' +
+            ' onclick="copyData(this)" >Copy</button></figure></div></div>';
 
 
 
@@ -17050,8 +17050,8 @@
         var span =
             '<div class="panel-block"><div class="container"><figure class="highlight"><pre><code class="language-html"><span class="ip_name" style="color: cadetblue">' +
             fromip + ':&nbsp</span> <span class="hesay">' +
-            escapeHtml(msg) + '</span></code></pre><button class="button is-small bd-copy" data="' + msg +
-            '" onclick="copyData(this)" >Copy</button></figure></div></div>';
+            escapeHtml(msg) + '</span></code></pre><button class="button is-small bd-copy" ' +
+            'onclick="copyData(this)" >Copy</button></figure></div></div>';
         $("#chatHistory").append(span);
     }
     const {
@@ -17060,7 +17060,7 @@
 
     function copyData(obj) {
 
-        alert("已粘贴到剪切板");
+        alert("已粘贴到剪贴板");
         clipboard.writeText($(obj).attr("data"));
 
     }
