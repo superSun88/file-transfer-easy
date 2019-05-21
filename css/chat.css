@@ -605,7 +605,7 @@ table th {
     font-size: .75rem !important
 }
 
-@media screen and (max-width:768px) {
+@media screen and (max-width: 768px) {
     .is-size-1-mobile {
         font-size: 3rem !important
     }
@@ -635,8 +635,7 @@ table th {
     }
 }
 
-@media screen and (min-width:769px),
-print {
+@media screen and (min-width: 769px), print {
     .is-size-1-tablet {
         font-size: 3rem !important
     }
@@ -666,7 +665,7 @@ print {
     }
 }
 
-@media screen and (max-width:1023px) {
+@media screen and (max-width: 1023px) {
     .is-size-1-touch {
         font-size: 3rem !important
     }
@@ -696,7 +695,7 @@ print {
     }
 }
 
-@media screen and (min-width:1024px) {
+@media screen and (min-width: 1024px) {
     .is-size-1-desktop {
         font-size: 3rem !important
     }
@@ -726,7 +725,7 @@ print {
     }
 }
 
-@media screen and (min-width:1216px) {
+@media screen and (min-width: 1216px) {
     .is-size-1-widescreen {
         font-size: 3rem !important
     }
@@ -756,7 +755,7 @@ print {
     }
 }
 
-@media screen and (min-width:1408px) {
+@media screen and (min-width: 1408px) {
     .is-size-1-fullhd {
         font-size: 3rem !important
     }
@@ -802,221 +801,217 @@ print {
     text-align: right !important
 }
 
-@media screen and (max-width:768px) {
+@media screen and (max-width: 768px) {
     .has-text-centered-mobile {
         text-align: center !important
     }
 }
 
-@media screen and (min-width:769px),
-print {
+@media screen and (min-width: 769px), print {
     .has-text-centered-tablet {
         text-align: center !important
     }
 }
 
-@media screen and (min-width:769px) and (max-width:1023px) {
+@media screen and (min-width: 769px) and (max-width: 1023px) {
     .has-text-centered-tablet-only {
         text-align: center !important
     }
 }
 
-@media screen and (max-width:1023px) {
+@media screen and (max-width: 1023px) {
     .has-text-centered-touch {
         text-align: center !important
     }
 }
 
-@media screen and (min-width:1024px) {
+@media screen and (min-width: 1024px) {
     .has-text-centered-desktop {
         text-align: center !important
     }
 }
 
-@media screen and (min-width:1024px) and (max-width:1215px) {
+@media screen and (min-width: 1024px) and (max-width: 1215px) {
     .has-text-centered-desktop-only {
         text-align: center !important
     }
 }
 
-@media screen and (min-width:1216px) {
+@media screen and (min-width: 1216px) {
     .has-text-centered-widescreen {
         text-align: center !important
     }
 }
 
-@media screen and (min-width:1216px) and (max-width:1407px) {
+@media screen and (min-width: 1216px) and (max-width: 1407px) {
     .has-text-centered-widescreen-only {
         text-align: center !important
     }
 }
 
-@media screen and (min-width:1408px) {
+@media screen and (min-width: 1408px) {
     .has-text-centered-fullhd {
         text-align: center !important
     }
 }
 
-@media screen and (max-width:768px) {
+@media screen and (max-width: 768px) {
     .has-text-justified-mobile {
         text-align: justify !important
     }
 }
 
-@media screen and (min-width:769px),
-print {
+@media screen and (min-width: 769px), print {
     .has-text-justified-tablet {
         text-align: justify !important
     }
 }
 
-@media screen and (min-width:769px) and (max-width:1023px) {
+@media screen and (min-width: 769px) and (max-width: 1023px) {
     .has-text-justified-tablet-only {
         text-align: justify !important
     }
 }
 
-@media screen and (max-width:1023px) {
+@media screen and (max-width: 1023px) {
     .has-text-justified-touch {
         text-align: justify !important
     }
 }
 
-@media screen and (min-width:1024px) {
+@media screen and (min-width: 1024px) {
     .has-text-justified-desktop {
         text-align: justify !important
     }
 }
 
-@media screen and (min-width:1024px) and (max-width:1215px) {
+@media screen and (min-width: 1024px) and (max-width: 1215px) {
     .has-text-justified-desktop-only {
         text-align: justify !important
     }
 }
 
-@media screen and (min-width:1216px) {
+@media screen and (min-width: 1216px) {
     .has-text-justified-widescreen {
         text-align: justify !important
     }
 }
 
-@media screen and (min-width:1216px) and (max-width:1407px) {
+@media screen and (min-width: 1216px) and (max-width: 1407px) {
     .has-text-justified-widescreen-only {
         text-align: justify !important
     }
 }
 
-@media screen and (min-width:1408px) {
+@media screen and (min-width: 1408px) {
     .has-text-justified-fullhd {
         text-align: justify !important
     }
 }
 
-@media screen and (max-width:768px) {
+@media screen and (max-width: 768px) {
     .has-text-left-mobile {
         text-align: left !important
     }
 }
 
-@media screen and (min-width:769px),
-print {
+@media screen and (min-width: 769px), print {
     .has-text-left-tablet {
         text-align: left !important
     }
 }
 
-@media screen and (min-width:769px) and (max-width:1023px) {
+@media screen and (min-width: 769px) and (max-width: 1023px) {
     .has-text-left-tablet-only {
         text-align: left !important
     }
 }
 
-@media screen and (max-width:1023px) {
+@media screen and (max-width: 1023px) {
     .has-text-left-touch {
         text-align: left !important
     }
 }
 
-@media screen and (min-width:1024px) {
+@media screen and (min-width: 1024px) {
     .has-text-left-desktop {
         text-align: left !important
     }
 }
 
-@media screen and (min-width:1024px) and (max-width:1215px) {
+@media screen and (min-width: 1024px) and (max-width: 1215px) {
     .has-text-left-desktop-only {
         text-align: left !important
     }
 }
 
-@media screen and (min-width:1216px) {
+@media screen and (min-width: 1216px) {
     .has-text-left-widescreen {
         text-align: left !important
     }
 }
 
-@media screen and (min-width:1216px) and (max-width:1407px) {
+@media screen and (min-width: 1216px) and (max-width: 1407px) {
     .has-text-left-widescreen-only {
         text-align: left !important
     }
 }
 
-@media screen and (min-width:1408px) {
+@media screen and (min-width: 1408px) {
     .has-text-left-fullhd {
         text-align: left !important
     }
 }
 
-@media screen and (max-width:768px) {
+@media screen and (max-width: 768px) {
     .has-text-right-mobile {
         text-align: right !important
     }
 }
 
-@media screen and (min-width:769px),
-print {
+@media screen and (min-width: 769px), print {
     .has-text-right-tablet {
         text-align: right !important
     }
 }
 
-@media screen and (min-width:769px) and (max-width:1023px) {
+@media screen and (min-width: 769px) and (max-width: 1023px) {
     .has-text-right-tablet-only {
         text-align: right !important
     }
 }
 
-@media screen and (max-width:1023px) {
+@media screen and (max-width: 1023px) {
     .has-text-right-touch {
         text-align: right !important
     }
 }
 
-@media screen and (min-width:1024px) {
+@media screen and (min-width: 1024px) {
     .has-text-right-desktop {
         text-align: right !important
     }
 }
 
-@media screen and (min-width:1024px) and (max-width:1215px) {
+@media screen and (min-width: 1024px) and (max-width: 1215px) {
     .has-text-right-desktop-only {
         text-align: right !important
     }
 }
 
-@media screen and (min-width:1216px) {
+@media screen and (min-width: 1216px) {
     .has-text-right-widescreen {
         text-align: right !important
     }
 }
 
-@media screen and (min-width:1216px) and (max-width:1407px) {
+@media screen and (min-width: 1216px) and (max-width: 1407px) {
     .has-text-right-widescreen-only {
         text-align: right !important
     }
 }
 
-@media screen and (min-width:1408px) {
+@media screen and (min-width: 1408px) {
     .has-text-right-fullhd {
         text-align: right !important
     }
@@ -1284,56 +1279,55 @@ a.has-text-danger:hover {
     display: block !important
 }
 
-@media screen and (max-width:768px) {
+@media screen and (max-width: 768px) {
     .is-block-mobile {
         display: block !important
     }
 }
 
-@media screen and (min-width:769px),
-print {
+@media screen and (min-width: 769px), print {
     .is-block-tablet {
         display: block !important
     }
 }
 
-@media screen and (min-width:769px) and (max-width:1023px) {
+@media screen and (min-width: 769px) and (max-width: 1023px) {
     .is-block-tablet-only {
         display: block !important
     }
 }
 
-@media screen and (max-width:1023px) {
+@media screen and (max-width: 1023px) {
     .is-block-touch {
         display: block !important
     }
 }
 
-@media screen and (min-width:1024px) {
+@media screen and (min-width: 1024px) {
     .is-block-desktop {
         display: block !important
     }
 }
 
-@media screen and (min-width:1024px) and (max-width:1215px) {
+@media screen and (min-width: 1024px) and (max-width: 1215px) {
     .is-block-desktop-only {
         display: block !important
     }
 }
 
-@media screen and (min-width:1216px) {
+@media screen and (min-width: 1216px) {
     .is-block-widescreen {
         display: block !important
     }
 }
 
-@media screen and (min-width:1216px) and (max-width:1407px) {
+@media screen and (min-width: 1216px) and (max-width: 1407px) {
     .is-block-widescreen-only {
         display: block !important
     }
 }
 
-@media screen and (min-width:1408px) {
+@media screen and (min-width: 1408px) {
     .is-block-fullhd {
         display: block !important
     }
@@ -1343,56 +1337,55 @@ print {
     display: flex !important
 }
 
-@media screen and (max-width:768px) {
+@media screen and (max-width: 768px) {
     .is-flex-mobile {
         display: flex !important
     }
 }
 
-@media screen and (min-width:769px),
-print {
+@media screen and (min-width: 769px), print {
     .is-flex-tablet {
         display: flex !important
     }
 }
 
-@media screen and (min-width:769px) and (max-width:1023px) {
+@media screen and (min-width: 769px) and (max-width: 1023px) {
     .is-flex-tablet-only {
         display: flex !important
     }
 }
 
-@media screen and (max-width:1023px) {
+@media screen and (max-width: 1023px) {
     .is-flex-touch {
         display: flex !important
     }
 }
 
-@media screen and (min-width:1024px) {
+@media screen and (min-width: 1024px) {
     .is-flex-desktop {
         display: flex !important
     }
 }
 
-@media screen and (min-width:1024px) and (max-width:1215px) {
+@media screen and (min-width: 1024px) and (max-width: 1215px) {
     .is-flex-desktop-only {
         display: flex !important
     }
 }
 
-@media screen and (min-width:1216px) {
+@media screen and (min-width: 1216px) {
     .is-flex-widescreen {
         display: flex !important
     }
 }
 
-@media screen and (min-width:1216px) and (max-width:1407px) {
+@media screen and (min-width: 1216px) and (max-width: 1407px) {
     .is-flex-widescreen-only {
         display: flex !important
     }
 }
 
-@media screen and (min-width:1408px) {
+@media screen and (min-width: 1408px) {
     .is-flex-fullhd {
         display: flex !important
     }
@@ -1402,56 +1395,55 @@ print {
     display: inline !important
 }
 
-@media screen and (max-width:768px) {
+@media screen and (max-width: 768px) {
     .is-inline-mobile {
         display: inline !important
     }
 }
 
-@media screen and (min-width:769px),
-print {
+@media screen and (min-width: 769px), print {
     .is-inline-tablet {
         display: inline !important
     }
 }
 
-@media screen and (min-width:769px) and (max-width:1023px) {
+@media screen and (min-width: 769px) and (max-width: 1023px) {
     .is-inline-tablet-only {
         display: inline !important
     }
 }
 
-@media screen and (max-width:1023px) {
+@media screen and (max-width: 1023px) {
     .is-inline-touch {
         display: inline !important
     }
 }
 
-@media screen and (min-width:1024px) {
+@media screen and (min-width: 1024px) {
     .is-inline-desktop {
         display: inline !important
     }
 }
 
-@media screen and (min-width:1024px) and (max-width:1215px) {
+@media screen and (min-width: 1024px) and (max-width: 1215px) {
     .is-inline-desktop-only {
         display: inline !important
     }
 }
 
-@media screen and (min-width:1216px) {
+@media screen and (min-width: 1216px) {
     .is-inline-widescreen {
         display: inline !important
     }
 }
 
-@media screen and (min-width:1216px) and (max-width:1407px) {
+@media screen and (min-width: 1216px) and (max-width: 1407px) {
     .is-inline-widescreen-only {
         display: inline !important
     }
 }
 
-@media screen and (min-width:1408px) {
+@media screen and (min-width: 1408px) {
     .is-inline-fullhd {
         display: inline !important
     }
@@ -1461,56 +1453,55 @@ print {
     display: inline-block !important
 }
 
-@media screen and (max-width:768px) {
+@media screen and (max-width: 768px) {
     .is-inline-block-mobile {
         display: inline-block !important
     }
 }
 
-@media screen and (min-width:769px),
-print {
+@media screen and (min-width: 769px), print {
     .is-inline-block-tablet {
         display: inline-block !important
     }
 }
 
-@media screen and (min-width:769px) and (max-width:1023px) {
+@media screen and (min-width: 769px) and (max-width: 1023px) {
     .is-inline-block-tablet-only {
         display: inline-block !important
     }
 }
 
-@media screen and (max-width:1023px) {
+@media screen and (max-width: 1023px) {
     .is-inline-block-touch {
         display: inline-block !important
     }
 }
 
-@media screen and (min-width:1024px) {
+@media screen and (min-width: 1024px) {
     .is-inline-block-desktop {
         display: inline-block !important
     }
 }
 
-@media screen and (min-width:1024px) and (max-width:1215px) {
+@media screen and (min-width: 1024px) and (max-width: 1215px) {
     .is-inline-block-desktop-only {
         display: inline-block !important
     }
 }
 
-@media screen and (min-width:1216px) {
+@media screen and (min-width: 1216px) {
     .is-inline-block-widescreen {
         display: inline-block !important
     }
 }
 
-@media screen and (min-width:1216px) and (max-width:1407px) {
+@media screen and (min-width: 1216px) and (max-width: 1407px) {
     .is-inline-block-widescreen-only {
         display: inline-block !important
     }
 }
 
-@media screen and (min-width:1408px) {
+@media screen and (min-width: 1408px) {
     .is-inline-block-fullhd {
         display: inline-block !important
     }
@@ -1520,56 +1511,55 @@ print {
     display: inline-flex !important
 }
 
-@media screen and (max-width:768px) {
+@media screen and (max-width: 768px) {
     .is-inline-flex-mobile {
         display: inline-flex !important
     }
 }
 
-@media screen and (min-width:769px),
-print {
+@media screen and (min-width: 769px), print {
     .is-inline-flex-tablet {
         display: inline-flex !important
     }
 }
 
-@media screen and (min-width:769px) and (max-width:1023px) {
+@media screen and (min-width: 769px) and (max-width: 1023px) {
     .is-inline-flex-tablet-only {
         display: inline-flex !important
     }
 }
 
-@media screen and (max-width:1023px) {
+@media screen and (max-width: 1023px) {
     .is-inline-flex-touch {
         display: inline-flex !important
     }
 }
 
-@media screen and (min-width:1024px) {
+@media screen and (min-width: 1024px) {
     .is-inline-flex-desktop {
         display: inline-flex !important
     }
 }
 
-@media screen and (min-width:1024px) and (max-width:1215px) {
+@media screen and (min-width: 1024px) and (max-width: 1215px) {
     .is-inline-flex-desktop-only {
         display: inline-flex !important
     }
 }
 
-@media screen and (min-width:1216px) {
+@media screen and (min-width: 1216px) {
     .is-inline-flex-widescreen {
         display: inline-flex !important
     }
 }
 
-@media screen and (min-width:1216px) and (max-width:1407px) {
+@media screen and (min-width: 1216px) and (max-width: 1407px) {
     .is-inline-flex-widescreen-only {
         display: inline-flex !important
     }
 }
 
-@media screen and (min-width:1408px) {
+@media screen and (min-width: 1408px) {
     .is-inline-flex-fullhd {
         display: inline-flex !important
     }
@@ -1590,56 +1580,55 @@ print {
     width: .01em !important
 }
 
-@media screen and (max-width:768px) {
+@media screen and (max-width: 768px) {
     .is-hidden-mobile {
         display: none !important
     }
 }
 
-@media screen and (min-width:769px),
-print {
+@media screen and (min-width: 769px), print {
     .is-hidden-tablet {
         display: none !important
     }
 }
 
-@media screen and (min-width:769px) and (max-width:1023px) {
+@media screen and (min-width: 769px) and (max-width: 1023px) {
     .is-hidden-tablet-only {
         display: none !important
     }
 }
 
-@media screen and (max-width:1023px) {
+@media screen and (max-width: 1023px) {
     .is-hidden-touch {
         display: none !important
     }
 }
 
-@media screen and (min-width:1024px) {
+@media screen and (min-width: 1024px) {
     .is-hidden-desktop {
         display: none !important
     }
 }
 
-@media screen and (min-width:1024px) and (max-width:1215px) {
+@media screen and (min-width: 1024px) and (max-width: 1215px) {
     .is-hidden-desktop-only {
         display: none !important
     }
 }
 
-@media screen and (min-width:1216px) {
+@media screen and (min-width: 1216px) {
     .is-hidden-widescreen {
         display: none !important
     }
 }
 
-@media screen and (min-width:1216px) and (max-width:1407px) {
+@media screen and (min-width: 1216px) and (max-width: 1407px) {
     .is-hidden-widescreen-only {
         display: none !important
     }
 }
 
-@media screen and (min-width:1408px) {
+@media screen and (min-width: 1408px) {
     .is-hidden-fullhd {
         display: none !important
     }
@@ -1649,56 +1638,55 @@ print {
     visibility: hidden !important
 }
 
-@media screen and (max-width:768px) {
+@media screen and (max-width: 768px) {
     .is-invisible-mobile {
         visibility: hidden !important
     }
 }
 
-@media screen and (min-width:769px),
-print {
+@media screen and (min-width: 769px), print {
     .is-invisible-tablet {
         visibility: hidden !important
     }
 }
 
-@media screen and (min-width:769px) and (max-width:1023px) {
+@media screen and (min-width: 769px) and (max-width: 1023px) {
     .is-invisible-tablet-only {
         visibility: hidden !important
     }
 }
 
-@media screen and (max-width:1023px) {
+@media screen and (max-width: 1023px) {
     .is-invisible-touch {
         visibility: hidden !important
     }
 }
 
-@media screen and (min-width:1024px) {
+@media screen and (min-width: 1024px) {
     .is-invisible-desktop {
         visibility: hidden !important
     }
 }
 
-@media screen and (min-width:1024px) and (max-width:1215px) {
+@media screen and (min-width: 1024px) and (max-width: 1215px) {
     .is-invisible-desktop-only {
         visibility: hidden !important
     }
 }
 
-@media screen and (min-width:1216px) {
+@media screen and (min-width: 1216px) {
     .is-invisible-widescreen {
         visibility: hidden !important
     }
 }
 
-@media screen and (min-width:1216px) and (max-width:1407px) {
+@media screen and (min-width: 1216px) and (max-width: 1407px) {
     .is-invisible-widescreen-only {
         visibility: hidden !important
     }
 }
 
-@media screen and (min-width:1408px) {
+@media screen and (min-width: 1408px) {
     .is-invisible-fullhd {
         visibility: hidden !important
     }
@@ -3223,7 +3211,7 @@ fieldset[disabled] .button {
     width: auto
 }
 
-@media screen and (min-width:1024px) {
+@media screen and (min-width: 1024px) {
     .container {
         max-width: 960px
     }
@@ -3235,31 +3223,31 @@ fieldset[disabled] .button {
     }
 }
 
-@media screen and (max-width:1215px) {
+@media screen and (max-width: 1215px) {
     .container.is-widescreen {
         max-width: 1152px
     }
 }
 
-@media screen and (max-width:1407px) {
+@media screen and (max-width: 1407px) {
     .container.is-fullhd {
         max-width: 1344px
     }
 }
 
-@media screen and (min-width:1216px) {
+@media screen and (min-width: 1216px) {
     .container {
         max-width: 1152px
     }
 }
 
-@media screen and (min-width:1408px) {
+@media screen and (min-width: 1408px) {
     .container {
         max-width: 1344px
     }
 }
 
-.content li+li {
+.content li + li {
     margin-top: .25em
 }
 
@@ -3449,7 +3437,7 @@ fieldset[disabled] .button {
     border-bottom-width: 0
 }
 
-.content .tabs li+li {
+.content .tabs li + li {
     margin-top: 0
 }
 
@@ -3660,7 +3648,7 @@ fieldset[disabled] .button {
     background: 0 0
 }
 
-.notification>.delete {
+.notification > .delete {
     position: absolute;
     right: .5rem;
     top: .5rem
@@ -4415,11 +4403,11 @@ a.tag:hover {
     font-weight: inherit
 }
 
-.title+.highlight {
+.title + .highlight {
     margin-top: -.75rem
 }
 
-.title:not(.is-spaced)+.subtitle {
+.title:not(.is-spaced) + .subtitle {
     margin-top: -1.25rem
 }
 
@@ -4463,7 +4451,7 @@ a.tag:hover {
     font-weight: 600
 }
 
-.subtitle:not(.is-spaced)+.title {
+.subtitle:not(.is-spaced) + .title {
     margin-top: -1.25rem
 }
 
@@ -4902,7 +4890,7 @@ fieldset[disabled] .radio {
     cursor: not-allowed
 }
 
-.radio+.radio {
+.radio + .radio {
     margin-left: .5em
 }
 
@@ -5834,16 +5822,16 @@ fieldset[disabled] .select select:hover {
     justify-content: flex-start
 }
 
-.field.is-grouped>.control {
+.field.is-grouped > .control {
     flex-shrink: 0
 }
 
-.field.is-grouped>.control:not(:last-child) {
+.field.is-grouped > .control:not(:last-child) {
     margin-bottom: 0;
     margin-right: .75rem
 }
 
-.field.is-grouped>.control.is-expanded {
+.field.is-grouped > .control.is-expanded {
     flex-grow: 1;
     flex-shrink: 1
 }
@@ -5860,8 +5848,8 @@ fieldset[disabled] .select select:hover {
     flex-wrap: wrap
 }
 
-.field.is-grouped.is-grouped-multiline>.control:last-child,
-.field.is-grouped.is-grouped-multiline>.control:not(:last-child) {
+.field.is-grouped.is-grouped-multiline > .control:last-child,
+.field.is-grouped.is-grouped-multiline > .control:not(:last-child) {
     margin-bottom: .75rem
 }
 
@@ -5873,8 +5861,7 @@ fieldset[disabled] .select select:hover {
     margin-bottom: 0
 }
 
-@media screen and (min-width:769px),
-print {
+@media screen and (min-width: 769px), print {
     .field.is-horizontal {
         display: flex
     }
@@ -5884,14 +5871,13 @@ print {
     font-size: inherit
 }
 
-@media screen and (max-width:768px) {
+@media screen and (max-width: 768px) {
     .field-label {
         margin-bottom: .5rem
     }
 }
 
-@media screen and (min-width:769px),
-print {
+@media screen and (min-width: 769px), print {
     .field-label {
         flex-basis: 0;
         flex-grow: 1;
@@ -5924,8 +5910,7 @@ print {
     margin-bottom: 0
 }
 
-@media screen and (min-width:769px),
-print {
+@media screen and (min-width: 769px), print {
     .field-body {
         display: flex;
         flex-basis: 0;
@@ -5937,15 +5922,15 @@ print {
         margin-bottom: 0
     }
 
-    .field-body>.field {
+    .field-body > .field {
         flex-shrink: 1
     }
 
-    .field-body>.field:not(.is-narrow) {
+    .field-body > .field:not(.is-narrow) {
         flex-grow: 1
     }
 
-    .field-body>.field:not(:last-child) {
+    .field-body > .field:not(:last-child) {
         margin-right: .75rem
     }
 }
@@ -5958,31 +5943,31 @@ print {
     text-align: left
 }
 
-.control.has-icons-left .input:focus~.icon,
-.control.has-icons-left .select:focus~.icon,
-.control.has-icons-right .input:focus~.icon,
-.control.has-icons-right .select:focus~.icon {
+.control.has-icons-left .input:focus ~ .icon,
+.control.has-icons-left .select:focus ~ .icon,
+.control.has-icons-right .input:focus ~ .icon,
+.control.has-icons-right .select:focus ~ .icon {
     color: #7a7a7a
 }
 
-.control.has-icons-left .input.is-small~.icon,
-.control.has-icons-left .select.is-small~.icon,
-.control.has-icons-right .input.is-small~.icon,
-.control.has-icons-right .select.is-small~.icon {
+.control.has-icons-left .input.is-small ~ .icon,
+.control.has-icons-left .select.is-small ~ .icon,
+.control.has-icons-right .input.is-small ~ .icon,
+.control.has-icons-right .select.is-small ~ .icon {
     font-size: .75rem
 }
 
-.control.has-icons-left .input.is-medium~.icon,
-.control.has-icons-left .select.is-medium~.icon,
-.control.has-icons-right .input.is-medium~.icon,
-.control.has-icons-right .select.is-medium~.icon {
+.control.has-icons-left .input.is-medium ~ .icon,
+.control.has-icons-left .select.is-medium ~ .icon,
+.control.has-icons-right .input.is-medium ~ .icon,
+.control.has-icons-right .select.is-medium ~ .icon {
     font-size: 1.25rem
 }
 
-.control.has-icons-left .input.is-large~.icon,
-.control.has-icons-left .select.is-large~.icon,
-.control.has-icons-right .input.is-large~.icon,
-.control.has-icons-right .select.is-large~.icon {
+.control.has-icons-left .input.is-large ~ .icon,
+.control.has-icons-left .select.is-large ~ .icon,
+.control.has-icons-right .input.is-large ~ .icon,
+.control.has-icons-right .select.is-large ~ .icon {
     font-size: 1.5rem
 }
 
@@ -6066,7 +6051,7 @@ print {
     pointer-events: none
 }
 
-.breadcrumb li+li::before {
+.breadcrumb li + li::before {
     color: #b5b5b5;
     content: "\0002f"
 }
@@ -6109,19 +6094,19 @@ print {
     font-size: 1.5rem
 }
 
-.breadcrumb.has-arrow-separator li+li::before {
+.breadcrumb.has-arrow-separator li + li::before {
     content: "\02192"
 }
 
-.breadcrumb.has-bullet-separator li+li::before {
+.breadcrumb.has-bullet-separator li + li::before {
     content: "\02022"
 }
 
-.breadcrumb.has-dot-separator li+li::before {
+.breadcrumb.has-dot-separator li + li::before {
     content: "\000b7"
 }
 
-.breadcrumb.has-succeeds-separator li+li::before {
+.breadcrumb.has-succeeds-separator li + li::before {
     content: "\0227B"
 }
 
@@ -6297,7 +6282,7 @@ button.dropdown-item.is-active {
     display: flex
 }
 
-.level.is-mobile .level-left+.level-right {
+.level.is-mobile .level-left + .level-right {
     margin-top: 0
 }
 
@@ -6310,13 +6295,12 @@ button.dropdown-item.is-active {
     flex-grow: 1
 }
 
-@media screen and (min-width:769px),
-print {
+@media screen and (min-width: 769px), print {
     .level {
         display: flex
     }
 
-    .level>.level-item:not(.is-narrow) {
+    .level > .level-item:not(.is-narrow) {
         flex-grow: 1
     }
 }
@@ -6335,7 +6319,7 @@ print {
     margin-bottom: 0
 }
 
-@media screen and (max-width:768px) {
+@media screen and (max-width: 768px) {
     .level-item:not(:last-child) {
         margin-bottom: .75rem
     }
@@ -6353,8 +6337,7 @@ print {
     flex-grow: 1
 }
 
-@media screen and (min-width:769px),
-print {
+@media screen and (min-width: 769px), print {
 
     .level-left .level-item:not(:last-child),
     .level-right .level-item:not(:last-child) {
@@ -6367,14 +6350,13 @@ print {
     justify-content: flex-start
 }
 
-@media screen and (max-width:768px) {
-    .level-left+.level-right {
+@media screen and (max-width: 768px) {
+    .level-left + .level-right {
         margin-top: 1.5rem
     }
 }
 
-@media screen and (min-width:769px),
-print {
+@media screen and (min-width: 769px), print {
     .level-left {
         display: flex
     }
@@ -6385,8 +6367,7 @@ print {
     justify-content: flex-end
 }
 
-@media screen and (min-width:769px),
-print {
+@media screen and (min-width: 769px), print {
     .level-right {
         display: flex
     }
@@ -6456,17 +6437,17 @@ a.list-item {
     padding-top: .5rem
 }
 
-.media .media .media+.media {
+.media .media .media + .media {
     margin-top: .5rem
 }
 
-.media+.media {
+.media + .media {
     border-top: 1px solid rgba(219, 219, 219, .5);
     margin-top: 1rem;
     padding-top: 1rem
 }
 
-.media.is-large+.media {
+.media.is-large + .media {
     margin-top: 1.5rem;
     padding-top: 1.5rem
 }
@@ -6493,7 +6474,7 @@ a.list-item {
     text-align: left
 }
 
-@media screen and (max-width:768px) {
+@media screen and (max-width: 768px) {
     .media-content {
         overflow-x: auto
     }
@@ -6743,7 +6724,7 @@ a.list-item {
     margin-left: .75em
 }
 
-.message-header+.message-body {
+.message-header + .message-body {
     border-width: 0;
     border-top-left-radius: 0;
     border-top-right-radius: 0
@@ -6794,8 +6775,7 @@ a.list-item {
     width: 100%
 }
 
-@media screen and (min-width:769px),
-print {
+@media screen and (min-width: 769px), print {
 
     .modal-card,
     .modal-content {
@@ -6879,16 +6859,16 @@ print {
 }
 
 .navbar.is-white .navbar-brand .navbar-link,
-.navbar.is-white .navbar-brand>.navbar-item {
+.navbar.is-white .navbar-brand > .navbar-item {
     color: #0a0a0a
 }
 
 .navbar.is-white .navbar-brand .navbar-link.is-active,
 .navbar.is-white .navbar-brand .navbar-link:focus,
 .navbar.is-white .navbar-brand .navbar-link:hover,
-.navbar.is-white .navbar-brand>a.navbar-item.is-active,
-.navbar.is-white .navbar-brand>a.navbar-item:focus,
-.navbar.is-white .navbar-brand>a.navbar-item:hover {
+.navbar.is-white .navbar-brand > a.navbar-item.is-active,
+.navbar.is-white .navbar-brand > a.navbar-item:focus,
+.navbar.is-white .navbar-brand > a.navbar-item:hover {
     background-color: #f2f2f2;
     color: #0a0a0a
 }
@@ -6901,27 +6881,27 @@ print {
     color: #0a0a0a
 }
 
-@media screen and (min-width:1024px) {
+@media screen and (min-width: 1024px) {
 
     .navbar.is-white .navbar-end .navbar-link,
-    .navbar.is-white .navbar-end>.navbar-item,
+    .navbar.is-white .navbar-end > .navbar-item,
     .navbar.is-white .navbar-start .navbar-link,
-    .navbar.is-white .navbar-start>.navbar-item {
+    .navbar.is-white .navbar-start > .navbar-item {
         color: #0a0a0a
     }
 
     .navbar.is-white .navbar-end .navbar-link.is-active,
     .navbar.is-white .navbar-end .navbar-link:focus,
     .navbar.is-white .navbar-end .navbar-link:hover,
-    .navbar.is-white .navbar-end>a.navbar-item.is-active,
-    .navbar.is-white .navbar-end>a.navbar-item:focus,
-    .navbar.is-white .navbar-end>a.navbar-item:hover,
+    .navbar.is-white .navbar-end > a.navbar-item.is-active,
+    .navbar.is-white .navbar-end > a.navbar-item:focus,
+    .navbar.is-white .navbar-end > a.navbar-item:hover,
     .navbar.is-white .navbar-start .navbar-link.is-active,
     .navbar.is-white .navbar-start .navbar-link:focus,
     .navbar.is-white .navbar-start .navbar-link:hover,
-    .navbar.is-white .navbar-start>a.navbar-item.is-active,
-    .navbar.is-white .navbar-start>a.navbar-item:focus,
-    .navbar.is-white .navbar-start>a.navbar-item:hover {
+    .navbar.is-white .navbar-start > a.navbar-item.is-active,
+    .navbar.is-white .navbar-start > a.navbar-item:focus,
+    .navbar.is-white .navbar-start > a.navbar-item:hover {
         background-color: #f2f2f2;
         color: #0a0a0a
     }
@@ -6950,16 +6930,16 @@ print {
 }
 
 .navbar.is-black .navbar-brand .navbar-link,
-.navbar.is-black .navbar-brand>.navbar-item {
+.navbar.is-black .navbar-brand > .navbar-item {
     color: #fff
 }
 
 .navbar.is-black .navbar-brand .navbar-link.is-active,
 .navbar.is-black .navbar-brand .navbar-link:focus,
 .navbar.is-black .navbar-brand .navbar-link:hover,
-.navbar.is-black .navbar-brand>a.navbar-item.is-active,
-.navbar.is-black .navbar-brand>a.navbar-item:focus,
-.navbar.is-black .navbar-brand>a.navbar-item:hover {
+.navbar.is-black .navbar-brand > a.navbar-item.is-active,
+.navbar.is-black .navbar-brand > a.navbar-item:focus,
+.navbar.is-black .navbar-brand > a.navbar-item:hover {
     background-color: #000;
     color: #fff
 }
@@ -6972,27 +6952,27 @@ print {
     color: #fff
 }
 
-@media screen and (min-width:1024px) {
+@media screen and (min-width: 1024px) {
 
     .navbar.is-black .navbar-end .navbar-link,
-    .navbar.is-black .navbar-end>.navbar-item,
+    .navbar.is-black .navbar-end > .navbar-item,
     .navbar.is-black .navbar-start .navbar-link,
-    .navbar.is-black .navbar-start>.navbar-item {
+    .navbar.is-black .navbar-start > .navbar-item {
         color: #fff
     }
 
     .navbar.is-black .navbar-end .navbar-link.is-active,
     .navbar.is-black .navbar-end .navbar-link:focus,
     .navbar.is-black .navbar-end .navbar-link:hover,
-    .navbar.is-black .navbar-end>a.navbar-item.is-active,
-    .navbar.is-black .navbar-end>a.navbar-item:focus,
-    .navbar.is-black .navbar-end>a.navbar-item:hover,
+    .navbar.is-black .navbar-end > a.navbar-item.is-active,
+    .navbar.is-black .navbar-end > a.navbar-item:focus,
+    .navbar.is-black .navbar-end > a.navbar-item:hover,
     .navbar.is-black .navbar-start .navbar-link.is-active,
     .navbar.is-black .navbar-start .navbar-link:focus,
     .navbar.is-black .navbar-start .navbar-link:hover,
-    .navbar.is-black .navbar-start>a.navbar-item.is-active,
-    .navbar.is-black .navbar-start>a.navbar-item:focus,
-    .navbar.is-black .navbar-start>a.navbar-item:hover {
+    .navbar.is-black .navbar-start > a.navbar-item.is-active,
+    .navbar.is-black .navbar-start > a.navbar-item:focus,
+    .navbar.is-black .navbar-start > a.navbar-item:hover {
         background-color: #000;
         color: #fff
     }
@@ -7021,16 +7001,16 @@ print {
 }
 
 .navbar.is-light .navbar-brand .navbar-link,
-.navbar.is-light .navbar-brand>.navbar-item {
+.navbar.is-light .navbar-brand > .navbar-item {
     color: #363636
 }
 
 .navbar.is-light .navbar-brand .navbar-link.is-active,
 .navbar.is-light .navbar-brand .navbar-link:focus,
 .navbar.is-light .navbar-brand .navbar-link:hover,
-.navbar.is-light .navbar-brand>a.navbar-item.is-active,
-.navbar.is-light .navbar-brand>a.navbar-item:focus,
-.navbar.is-light .navbar-brand>a.navbar-item:hover {
+.navbar.is-light .navbar-brand > a.navbar-item.is-active,
+.navbar.is-light .navbar-brand > a.navbar-item:focus,
+.navbar.is-light .navbar-brand > a.navbar-item:hover {
     background-color: #e8e8e8;
     color: #363636
 }
@@ -7043,27 +7023,27 @@ print {
     color: #363636
 }
 
-@media screen and (min-width:1024px) {
+@media screen and (min-width: 1024px) {
 
     .navbar.is-light .navbar-end .navbar-link,
-    .navbar.is-light .navbar-end>.navbar-item,
+    .navbar.is-light .navbar-end > .navbar-item,
     .navbar.is-light .navbar-start .navbar-link,
-    .navbar.is-light .navbar-start>.navbar-item {
+    .navbar.is-light .navbar-start > .navbar-item {
         color: #363636
     }
 
     .navbar.is-light .navbar-end .navbar-link.is-active,
     .navbar.is-light .navbar-end .navbar-link:focus,
     .navbar.is-light .navbar-end .navbar-link:hover,
-    .navbar.is-light .navbar-end>a.navbar-item.is-active,
-    .navbar.is-light .navbar-end>a.navbar-item:focus,
-    .navbar.is-light .navbar-end>a.navbar-item:hover,
+    .navbar.is-light .navbar-end > a.navbar-item.is-active,
+    .navbar.is-light .navbar-end > a.navbar-item:focus,
+    .navbar.is-light .navbar-end > a.navbar-item:hover,
     .navbar.is-light .navbar-start .navbar-link.is-active,
     .navbar.is-light .navbar-start .navbar-link:focus,
     .navbar.is-light .navbar-start .navbar-link:hover,
-    .navbar.is-light .navbar-start>a.navbar-item.is-active,
-    .navbar.is-light .navbar-start>a.navbar-item:focus,
-    .navbar.is-light .navbar-start>a.navbar-item:hover {
+    .navbar.is-light .navbar-start > a.navbar-item.is-active,
+    .navbar.is-light .navbar-start > a.navbar-item:focus,
+    .navbar.is-light .navbar-start > a.navbar-item:hover {
         background-color: #e8e8e8;
         color: #363636
     }
@@ -7092,16 +7072,16 @@ print {
 }
 
 .navbar.is-dark .navbar-brand .navbar-link,
-.navbar.is-dark .navbar-brand>.navbar-item {
+.navbar.is-dark .navbar-brand > .navbar-item {
     color: #f5f5f5
 }
 
 .navbar.is-dark .navbar-brand .navbar-link.is-active,
 .navbar.is-dark .navbar-brand .navbar-link:focus,
 .navbar.is-dark .navbar-brand .navbar-link:hover,
-.navbar.is-dark .navbar-brand>a.navbar-item.is-active,
-.navbar.is-dark .navbar-brand>a.navbar-item:focus,
-.navbar.is-dark .navbar-brand>a.navbar-item:hover {
+.navbar.is-dark .navbar-brand > a.navbar-item.is-active,
+.navbar.is-dark .navbar-brand > a.navbar-item:focus,
+.navbar.is-dark .navbar-brand > a.navbar-item:hover {
     background-color: #292929;
     color: #f5f5f5
 }
@@ -7114,27 +7094,27 @@ print {
     color: #f5f5f5
 }
 
-@media screen and (min-width:1024px) {
+@media screen and (min-width: 1024px) {
 
     .navbar.is-dark .navbar-end .navbar-link,
-    .navbar.is-dark .navbar-end>.navbar-item,
+    .navbar.is-dark .navbar-end > .navbar-item,
     .navbar.is-dark .navbar-start .navbar-link,
-    .navbar.is-dark .navbar-start>.navbar-item {
+    .navbar.is-dark .navbar-start > .navbar-item {
         color: #f5f5f5
     }
 
     .navbar.is-dark .navbar-end .navbar-link.is-active,
     .navbar.is-dark .navbar-end .navbar-link:focus,
     .navbar.is-dark .navbar-end .navbar-link:hover,
-    .navbar.is-dark .navbar-end>a.navbar-item.is-active,
-    .navbar.is-dark .navbar-end>a.navbar-item:focus,
-    .navbar.is-dark .navbar-end>a.navbar-item:hover,
+    .navbar.is-dark .navbar-end > a.navbar-item.is-active,
+    .navbar.is-dark .navbar-end > a.navbar-item:focus,
+    .navbar.is-dark .navbar-end > a.navbar-item:hover,
     .navbar.is-dark .navbar-start .navbar-link.is-active,
     .navbar.is-dark .navbar-start .navbar-link:focus,
     .navbar.is-dark .navbar-start .navbar-link:hover,
-    .navbar.is-dark .navbar-start>a.navbar-item.is-active,
-    .navbar.is-dark .navbar-start>a.navbar-item:focus,
-    .navbar.is-dark .navbar-start>a.navbar-item:hover {
+    .navbar.is-dark .navbar-start > a.navbar-item.is-active,
+    .navbar.is-dark .navbar-start > a.navbar-item:focus,
+    .navbar.is-dark .navbar-start > a.navbar-item:hover {
         background-color: #292929;
         color: #f5f5f5
     }
@@ -7163,16 +7143,16 @@ print {
 }
 
 .navbar.is-primary .navbar-brand .navbar-link,
-.navbar.is-primary .navbar-brand>.navbar-item {
+.navbar.is-primary .navbar-brand > .navbar-item {
     color: #fff
 }
 
 .navbar.is-primary .navbar-brand .navbar-link.is-active,
 .navbar.is-primary .navbar-brand .navbar-link:focus,
 .navbar.is-primary .navbar-brand .navbar-link:hover,
-.navbar.is-primary .navbar-brand>a.navbar-item.is-active,
-.navbar.is-primary .navbar-brand>a.navbar-item:focus,
-.navbar.is-primary .navbar-brand>a.navbar-item:hover {
+.navbar.is-primary .navbar-brand > a.navbar-item.is-active,
+.navbar.is-primary .navbar-brand > a.navbar-item:focus,
+.navbar.is-primary .navbar-brand > a.navbar-item:hover {
     background-color: #00b89c;
     color: #fff
 }
@@ -7185,27 +7165,27 @@ print {
     color: #fff
 }
 
-@media screen and (min-width:1024px) {
+@media screen and (min-width: 1024px) {
 
     .navbar.is-primary .navbar-end .navbar-link,
-    .navbar.is-primary .navbar-end>.navbar-item,
+    .navbar.is-primary .navbar-end > .navbar-item,
     .navbar.is-primary .navbar-start .navbar-link,
-    .navbar.is-primary .navbar-start>.navbar-item {
+    .navbar.is-primary .navbar-start > .navbar-item {
         color: #fff
     }
 
     .navbar.is-primary .navbar-end .navbar-link.is-active,
     .navbar.is-primary .navbar-end .navbar-link:focus,
     .navbar.is-primary .navbar-end .navbar-link:hover,
-    .navbar.is-primary .navbar-end>a.navbar-item.is-active,
-    .navbar.is-primary .navbar-end>a.navbar-item:focus,
-    .navbar.is-primary .navbar-end>a.navbar-item:hover,
+    .navbar.is-primary .navbar-end > a.navbar-item.is-active,
+    .navbar.is-primary .navbar-end > a.navbar-item:focus,
+    .navbar.is-primary .navbar-end > a.navbar-item:hover,
     .navbar.is-primary .navbar-start .navbar-link.is-active,
     .navbar.is-primary .navbar-start .navbar-link:focus,
     .navbar.is-primary .navbar-start .navbar-link:hover,
-    .navbar.is-primary .navbar-start>a.navbar-item.is-active,
-    .navbar.is-primary .navbar-start>a.navbar-item:focus,
-    .navbar.is-primary .navbar-start>a.navbar-item:hover {
+    .navbar.is-primary .navbar-start > a.navbar-item.is-active,
+    .navbar.is-primary .navbar-start > a.navbar-item:focus,
+    .navbar.is-primary .navbar-start > a.navbar-item:hover {
         background-color: #00b89c;
         color: #fff
     }
@@ -7234,16 +7214,16 @@ print {
 }
 
 .navbar.is-link .navbar-brand .navbar-link,
-.navbar.is-link .navbar-brand>.navbar-item {
+.navbar.is-link .navbar-brand > .navbar-item {
     color: #fff
 }
 
 .navbar.is-link .navbar-brand .navbar-link.is-active,
 .navbar.is-link .navbar-brand .navbar-link:focus,
 .navbar.is-link .navbar-brand .navbar-link:hover,
-.navbar.is-link .navbar-brand>a.navbar-item.is-active,
-.navbar.is-link .navbar-brand>a.navbar-item:focus,
-.navbar.is-link .navbar-brand>a.navbar-item:hover {
+.navbar.is-link .navbar-brand > a.navbar-item.is-active,
+.navbar.is-link .navbar-brand > a.navbar-item:focus,
+.navbar.is-link .navbar-brand > a.navbar-item:hover {
     background-color: #2366d1;
     color: #fff
 }
@@ -7256,27 +7236,27 @@ print {
     color: #fff
 }
 
-@media screen and (min-width:1024px) {
+@media screen and (min-width: 1024px) {
 
     .navbar.is-link .navbar-end .navbar-link,
-    .navbar.is-link .navbar-end>.navbar-item,
+    .navbar.is-link .navbar-end > .navbar-item,
     .navbar.is-link .navbar-start .navbar-link,
-    .navbar.is-link .navbar-start>.navbar-item {
+    .navbar.is-link .navbar-start > .navbar-item {
         color: #fff
     }
 
     .navbar.is-link .navbar-end .navbar-link.is-active,
     .navbar.is-link .navbar-end .navbar-link:focus,
     .navbar.is-link .navbar-end .navbar-link:hover,
-    .navbar.is-link .navbar-end>a.navbar-item.is-active,
-    .navbar.is-link .navbar-end>a.navbar-item:focus,
-    .navbar.is-link .navbar-end>a.navbar-item:hover,
+    .navbar.is-link .navbar-end > a.navbar-item.is-active,
+    .navbar.is-link .navbar-end > a.navbar-item:focus,
+    .navbar.is-link .navbar-end > a.navbar-item:hover,
     .navbar.is-link .navbar-start .navbar-link.is-active,
     .navbar.is-link .navbar-start .navbar-link:focus,
     .navbar.is-link .navbar-start .navbar-link:hover,
-    .navbar.is-link .navbar-start>a.navbar-item.is-active,
-    .navbar.is-link .navbar-start>a.navbar-item:focus,
-    .navbar.is-link .navbar-start>a.navbar-item:hover {
+    .navbar.is-link .navbar-start > a.navbar-item.is-active,
+    .navbar.is-link .navbar-start > a.navbar-item:focus,
+    .navbar.is-link .navbar-start > a.navbar-item:hover {
         background-color: #2366d1;
         color: #fff
     }
@@ -7305,16 +7285,16 @@ print {
 }
 
 .navbar.is-info .navbar-brand .navbar-link,
-.navbar.is-info .navbar-brand>.navbar-item {
+.navbar.is-info .navbar-brand > .navbar-item {
     color: #fff
 }
 
 .navbar.is-info .navbar-brand .navbar-link.is-active,
 .navbar.is-info .navbar-brand .navbar-link:focus,
 .navbar.is-info .navbar-brand .navbar-link:hover,
-.navbar.is-info .navbar-brand>a.navbar-item.is-active,
-.navbar.is-info .navbar-brand>a.navbar-item:focus,
-.navbar.is-info .navbar-brand>a.navbar-item:hover {
+.navbar.is-info .navbar-brand > a.navbar-item.is-active,
+.navbar.is-info .navbar-brand > a.navbar-item:focus,
+.navbar.is-info .navbar-brand > a.navbar-item:hover {
     background-color: #118fe4;
     color: #fff
 }
@@ -7327,27 +7307,27 @@ print {
     color: #fff
 }
 
-@media screen and (min-width:1024px) {
+@media screen and (min-width: 1024px) {
 
     .navbar.is-info .navbar-end .navbar-link,
-    .navbar.is-info .navbar-end>.navbar-item,
+    .navbar.is-info .navbar-end > .navbar-item,
     .navbar.is-info .navbar-start .navbar-link,
-    .navbar.is-info .navbar-start>.navbar-item {
+    .navbar.is-info .navbar-start > .navbar-item {
         color: #fff
     }
 
     .navbar.is-info .navbar-end .navbar-link.is-active,
     .navbar.is-info .navbar-end .navbar-link:focus,
     .navbar.is-info .navbar-end .navbar-link:hover,
-    .navbar.is-info .navbar-end>a.navbar-item.is-active,
-    .navbar.is-info .navbar-end>a.navbar-item:focus,
-    .navbar.is-info .navbar-end>a.navbar-item:hover,
+    .navbar.is-info .navbar-end > a.navbar-item.is-active,
+    .navbar.is-info .navbar-end > a.navbar-item:focus,
+    .navbar.is-info .navbar-end > a.navbar-item:hover,
     .navbar.is-info .navbar-start .navbar-link.is-active,
     .navbar.is-info .navbar-start .navbar-link:focus,
     .navbar.is-info .navbar-start .navbar-link:hover,
-    .navbar.is-info .navbar-start>a.navbar-item.is-active,
-    .navbar.is-info .navbar-start>a.navbar-item:focus,
-    .navbar.is-info .navbar-start>a.navbar-item:hover {
+    .navbar.is-info .navbar-start > a.navbar-item.is-active,
+    .navbar.is-info .navbar-start > a.navbar-item:focus,
+    .navbar.is-info .navbar-start > a.navbar-item:hover {
         background-color: #118fe4;
         color: #fff
     }
@@ -7376,16 +7356,16 @@ print {
 }
 
 .navbar.is-success .navbar-brand .navbar-link,
-.navbar.is-success .navbar-brand>.navbar-item {
+.navbar.is-success .navbar-brand > .navbar-item {
     color: #fff
 }
 
 .navbar.is-success .navbar-brand .navbar-link.is-active,
 .navbar.is-success .navbar-brand .navbar-link:focus,
 .navbar.is-success .navbar-brand .navbar-link:hover,
-.navbar.is-success .navbar-brand>a.navbar-item.is-active,
-.navbar.is-success .navbar-brand>a.navbar-item:focus,
-.navbar.is-success .navbar-brand>a.navbar-item:hover {
+.navbar.is-success .navbar-brand > a.navbar-item.is-active,
+.navbar.is-success .navbar-brand > a.navbar-item:focus,
+.navbar.is-success .navbar-brand > a.navbar-item:hover {
     background-color: #20bc56;
     color: #fff
 }
@@ -7398,27 +7378,27 @@ print {
     color: #fff
 }
 
-@media screen and (min-width:1024px) {
+@media screen and (min-width: 1024px) {
 
     .navbar.is-success .navbar-end .navbar-link,
-    .navbar.is-success .navbar-end>.navbar-item,
+    .navbar.is-success .navbar-end > .navbar-item,
     .navbar.is-success .navbar-start .navbar-link,
-    .navbar.is-success .navbar-start>.navbar-item {
+    .navbar.is-success .navbar-start > .navbar-item {
         color: #fff
     }
 
     .navbar.is-success .navbar-end .navbar-link.is-active,
     .navbar.is-success .navbar-end .navbar-link:focus,
     .navbar.is-success .navbar-end .navbar-link:hover,
-    .navbar.is-success .navbar-end>a.navbar-item.is-active,
-    .navbar.is-success .navbar-end>a.navbar-item:focus,
-    .navbar.is-success .navbar-end>a.navbar-item:hover,
+    .navbar.is-success .navbar-end > a.navbar-item.is-active,
+    .navbar.is-success .navbar-end > a.navbar-item:focus,
+    .navbar.is-success .navbar-end > a.navbar-item:hover,
     .navbar.is-success .navbar-start .navbar-link.is-active,
     .navbar.is-success .navbar-start .navbar-link:focus,
     .navbar.is-success .navbar-start .navbar-link:hover,
-    .navbar.is-success .navbar-start>a.navbar-item.is-active,
-    .navbar.is-success .navbar-start>a.navbar-item:focus,
-    .navbar.is-success .navbar-start>a.navbar-item:hover {
+    .navbar.is-success .navbar-start > a.navbar-item.is-active,
+    .navbar.is-success .navbar-start > a.navbar-item:focus,
+    .navbar.is-success .navbar-start > a.navbar-item:hover {
         background-color: #20bc56;
         color: #fff
     }
@@ -7447,16 +7427,16 @@ print {
 }
 
 .navbar.is-warning .navbar-brand .navbar-link,
-.navbar.is-warning .navbar-brand>.navbar-item {
+.navbar.is-warning .navbar-brand > .navbar-item {
     color: rgba(0, 0, 0, .7)
 }
 
 .navbar.is-warning .navbar-brand .navbar-link.is-active,
 .navbar.is-warning .navbar-brand .navbar-link:focus,
 .navbar.is-warning .navbar-brand .navbar-link:hover,
-.navbar.is-warning .navbar-brand>a.navbar-item.is-active,
-.navbar.is-warning .navbar-brand>a.navbar-item:focus,
-.navbar.is-warning .navbar-brand>a.navbar-item:hover {
+.navbar.is-warning .navbar-brand > a.navbar-item.is-active,
+.navbar.is-warning .navbar-brand > a.navbar-item:focus,
+.navbar.is-warning .navbar-brand > a.navbar-item:hover {
     background-color: #ffd83d;
     color: rgba(0, 0, 0, .7)
 }
@@ -7469,27 +7449,27 @@ print {
     color: rgba(0, 0, 0, .7)
 }
 
-@media screen and (min-width:1024px) {
+@media screen and (min-width: 1024px) {
 
     .navbar.is-warning .navbar-end .navbar-link,
-    .navbar.is-warning .navbar-end>.navbar-item,
+    .navbar.is-warning .navbar-end > .navbar-item,
     .navbar.is-warning .navbar-start .navbar-link,
-    .navbar.is-warning .navbar-start>.navbar-item {
+    .navbar.is-warning .navbar-start > .navbar-item {
         color: rgba(0, 0, 0, .7)
     }
 
     .navbar.is-warning .navbar-end .navbar-link.is-active,
     .navbar.is-warning .navbar-end .navbar-link:focus,
     .navbar.is-warning .navbar-end .navbar-link:hover,
-    .navbar.is-warning .navbar-end>a.navbar-item.is-active,
-    .navbar.is-warning .navbar-end>a.navbar-item:focus,
-    .navbar.is-warning .navbar-end>a.navbar-item:hover,
+    .navbar.is-warning .navbar-end > a.navbar-item.is-active,
+    .navbar.is-warning .navbar-end > a.navbar-item:focus,
+    .navbar.is-warning .navbar-end > a.navbar-item:hover,
     .navbar.is-warning .navbar-start .navbar-link.is-active,
     .navbar.is-warning .navbar-start .navbar-link:focus,
     .navbar.is-warning .navbar-start .navbar-link:hover,
-    .navbar.is-warning .navbar-start>a.navbar-item.is-active,
-    .navbar.is-warning .navbar-start>a.navbar-item:focus,
-    .navbar.is-warning .navbar-start>a.navbar-item:hover {
+    .navbar.is-warning .navbar-start > a.navbar-item.is-active,
+    .navbar.is-warning .navbar-start > a.navbar-item:focus,
+    .navbar.is-warning .navbar-start > a.navbar-item:hover {
         background-color: #ffd83d;
         color: rgba(0, 0, 0, .7)
     }
@@ -7518,16 +7498,16 @@ print {
 }
 
 .navbar.is-danger .navbar-brand .navbar-link,
-.navbar.is-danger .navbar-brand>.navbar-item {
+.navbar.is-danger .navbar-brand > .navbar-item {
     color: #fff
 }
 
 .navbar.is-danger .navbar-brand .navbar-link.is-active,
 .navbar.is-danger .navbar-brand .navbar-link:focus,
 .navbar.is-danger .navbar-brand .navbar-link:hover,
-.navbar.is-danger .navbar-brand>a.navbar-item.is-active,
-.navbar.is-danger .navbar-brand>a.navbar-item:focus,
-.navbar.is-danger .navbar-brand>a.navbar-item:hover {
+.navbar.is-danger .navbar-brand > a.navbar-item.is-active,
+.navbar.is-danger .navbar-brand > a.navbar-item:focus,
+.navbar.is-danger .navbar-brand > a.navbar-item:hover {
     background-color: #ff1f4b;
     color: #fff
 }
@@ -7540,27 +7520,27 @@ print {
     color: #fff
 }
 
-@media screen and (min-width:1024px) {
+@media screen and (min-width: 1024px) {
 
     .navbar.is-danger .navbar-end .navbar-link,
-    .navbar.is-danger .navbar-end>.navbar-item,
+    .navbar.is-danger .navbar-end > .navbar-item,
     .navbar.is-danger .navbar-start .navbar-link,
-    .navbar.is-danger .navbar-start>.navbar-item {
+    .navbar.is-danger .navbar-start > .navbar-item {
         color: #fff
     }
 
     .navbar.is-danger .navbar-end .navbar-link.is-active,
     .navbar.is-danger .navbar-end .navbar-link:focus,
     .navbar.is-danger .navbar-end .navbar-link:hover,
-    .navbar.is-danger .navbar-end>a.navbar-item.is-active,
-    .navbar.is-danger .navbar-end>a.navbar-item:focus,
-    .navbar.is-danger .navbar-end>a.navbar-item:hover,
+    .navbar.is-danger .navbar-end > a.navbar-item.is-active,
+    .navbar.is-danger .navbar-end > a.navbar-item:focus,
+    .navbar.is-danger .navbar-end > a.navbar-item:hover,
     .navbar.is-danger .navbar-start .navbar-link.is-active,
     .navbar.is-danger .navbar-start .navbar-link:focus,
     .navbar.is-danger .navbar-start .navbar-link:hover,
-    .navbar.is-danger .navbar-start>a.navbar-item.is-active,
-    .navbar.is-danger .navbar-start>a.navbar-item:focus,
-    .navbar.is-danger .navbar-start>a.navbar-item:hover {
+    .navbar.is-danger .navbar-start > a.navbar-item.is-active,
+    .navbar.is-danger .navbar-start > a.navbar-item:focus,
+    .navbar.is-danger .navbar-start > a.navbar-item:hover {
         background-color: #ff1f4b;
         color: #fff
     }
@@ -7583,7 +7563,7 @@ print {
     }
 }
 
-.navbar>.container {
+.navbar > .container {
     align-items: stretch;
     display: flex;
     min-height: 3.25rem;
@@ -7810,8 +7790,8 @@ a.navbar-item:hover {
     margin: .5rem 0
 }
 
-@media screen and (max-width:1023px) {
-    .navbar>.container {
+@media screen and (max-width: 1023px) {
+    .navbar > .container {
         display: block
     }
 
@@ -7873,7 +7853,7 @@ a.navbar-item:hover {
     }
 }
 
-@media screen and (min-width:1024px) {
+@media screen and (min-width: 1024px) {
 
     .navbar,
     .navbar-end,
@@ -8057,13 +8037,13 @@ a.navbar-item:hover {
         display: block
     }
 
-    .container>.navbar .navbar-brand,
-    .navbar>.container .navbar-brand {
+    .container > .navbar .navbar-brand,
+    .navbar > .container .navbar-brand {
         margin-left: -.75rem
     }
 
-    .container>.navbar .navbar-menu,
-    .navbar>.container .navbar-menu {
+    .container > .navbar .navbar-menu,
+    .navbar > .container .navbar-menu {
         margin-right: -.75rem
     }
 
@@ -8235,7 +8215,7 @@ a.navbar-item:hover {
     flex-wrap: wrap
 }
 
-@media screen and (max-width:768px) {
+@media screen and (max-width: 768px) {
     .pagination {
         flex-wrap: wrap
     }
@@ -8252,8 +8232,7 @@ a.navbar-item:hover {
     }
 }
 
-@media screen and (min-width:769px),
-print {
+@media screen and (min-width: 769px), print {
     .pagination-list {
         flex-grow: 1;
         flex-shrink: 1;
@@ -8370,7 +8349,7 @@ print {
     margin-right: .75em
 }
 
-.panel-block>.control {
+.panel-block > .control {
     flex-grow: 1;
     flex-shrink: 1;
     width: 100%
@@ -8532,7 +8511,7 @@ label.panel-block:hover {
     z-index: 2
 }
 
-.tabs.is-toggle li+li {
+.tabs.is-toggle li + li {
     margin-left: -1px
 }
 
@@ -8587,214 +8566,214 @@ label.panel-block:hover {
     padding: .75rem
 }
 
-.columns.is-mobile>.column.is-narrow {
+.columns.is-mobile > .column.is-narrow {
     flex: none
 }
 
-.columns.is-mobile>.column.is-full {
+.columns.is-mobile > .column.is-full {
     flex: none;
     width: 100%
 }
 
-.columns.is-mobile>.column.is-three-quarters {
+.columns.is-mobile > .column.is-three-quarters {
     flex: none;
     width: 75%
 }
 
-.columns.is-mobile>.column.is-two-thirds {
+.columns.is-mobile > .column.is-two-thirds {
     flex: none;
     width: 66.6666%
 }
 
-.columns.is-mobile>.column.is-half {
+.columns.is-mobile > .column.is-half {
     flex: none;
     width: 50%
 }
 
-.columns.is-mobile>.column.is-one-third {
+.columns.is-mobile > .column.is-one-third {
     flex: none;
     width: 33.3333%
 }
 
-.columns.is-mobile>.column.is-one-quarter {
+.columns.is-mobile > .column.is-one-quarter {
     flex: none;
     width: 25%
 }
 
-.columns.is-mobile>.column.is-one-fifth {
+.columns.is-mobile > .column.is-one-fifth {
     flex: none;
     width: 20%
 }
 
-.columns.is-mobile>.column.is-two-fifths {
+.columns.is-mobile > .column.is-two-fifths {
     flex: none;
     width: 40%
 }
 
-.columns.is-mobile>.column.is-three-fifths {
+.columns.is-mobile > .column.is-three-fifths {
     flex: none;
     width: 60%
 }
 
-.columns.is-mobile>.column.is-four-fifths {
+.columns.is-mobile > .column.is-four-fifths {
     flex: none;
     width: 80%
 }
 
-.columns.is-mobile>.column.is-offset-three-quarters {
+.columns.is-mobile > .column.is-offset-three-quarters {
     margin-left: 75%
 }
 
-.columns.is-mobile>.column.is-offset-two-thirds {
+.columns.is-mobile > .column.is-offset-two-thirds {
     margin-left: 66.6666%
 }
 
-.columns.is-mobile>.column.is-offset-half {
+.columns.is-mobile > .column.is-offset-half {
     margin-left: 50%
 }
 
-.columns.is-mobile>.column.is-offset-one-third {
+.columns.is-mobile > .column.is-offset-one-third {
     margin-left: 33.3333%
 }
 
-.columns.is-mobile>.column.is-offset-one-quarter {
+.columns.is-mobile > .column.is-offset-one-quarter {
     margin-left: 25%
 }
 
-.columns.is-mobile>.column.is-offset-one-fifth {
+.columns.is-mobile > .column.is-offset-one-fifth {
     margin-left: 20%
 }
 
-.columns.is-mobile>.column.is-offset-two-fifths {
+.columns.is-mobile > .column.is-offset-two-fifths {
     margin-left: 40%
 }
 
-.columns.is-mobile>.column.is-offset-three-fifths {
+.columns.is-mobile > .column.is-offset-three-fifths {
     margin-left: 60%
 }
 
-.columns.is-mobile>.column.is-offset-four-fifths {
+.columns.is-mobile > .column.is-offset-four-fifths {
     margin-left: 80%
 }
 
-.columns.is-mobile>.column.is-0 {
+.columns.is-mobile > .column.is-0 {
     flex: none;
     width: 0%
 }
 
-.columns.is-mobile>.column.is-offset-0 {
+.columns.is-mobile > .column.is-offset-0 {
     margin-left: 0
 }
 
-.columns.is-mobile>.column.is-1 {
+.columns.is-mobile > .column.is-1 {
     flex: none;
     width: 8.33333%
 }
 
-.columns.is-mobile>.column.is-offset-1 {
+.columns.is-mobile > .column.is-offset-1 {
     margin-left: 8.33333%
 }
 
-.columns.is-mobile>.column.is-2 {
+.columns.is-mobile > .column.is-2 {
     flex: none;
     width: 16.66667%
 }
 
-.columns.is-mobile>.column.is-offset-2 {
+.columns.is-mobile > .column.is-offset-2 {
     margin-left: 16.66667%
 }
 
-.columns.is-mobile>.column.is-3 {
+.columns.is-mobile > .column.is-3 {
     flex: none;
     width: 25%
 }
 
-.columns.is-mobile>.column.is-offset-3 {
+.columns.is-mobile > .column.is-offset-3 {
     margin-left: 25%
 }
 
-.columns.is-mobile>.column.is-4 {
+.columns.is-mobile > .column.is-4 {
     flex: none;
     width: 33.33333%
 }
 
-.columns.is-mobile>.column.is-offset-4 {
+.columns.is-mobile > .column.is-offset-4 {
     margin-left: 33.33333%
 }
 
-.columns.is-mobile>.column.is-5 {
+.columns.is-mobile > .column.is-5 {
     flex: none;
     width: 41.66667%
 }
 
-.columns.is-mobile>.column.is-offset-5 {
+.columns.is-mobile > .column.is-offset-5 {
     margin-left: 41.66667%
 }
 
-.columns.is-mobile>.column.is-6 {
+.columns.is-mobile > .column.is-6 {
     flex: none;
     width: 50%
 }
 
-.columns.is-mobile>.column.is-offset-6 {
+.columns.is-mobile > .column.is-offset-6 {
     margin-left: 50%
 }
 
-.columns.is-mobile>.column.is-7 {
+.columns.is-mobile > .column.is-7 {
     flex: none;
     width: 58.33333%
 }
 
-.columns.is-mobile>.column.is-offset-7 {
+.columns.is-mobile > .column.is-offset-7 {
     margin-left: 58.33333%
 }
 
-.columns.is-mobile>.column.is-8 {
+.columns.is-mobile > .column.is-8 {
     flex: none;
     width: 66.66667%
 }
 
-.columns.is-mobile>.column.is-offset-8 {
+.columns.is-mobile > .column.is-offset-8 {
     margin-left: 66.66667%
 }
 
-.columns.is-mobile>.column.is-9 {
+.columns.is-mobile > .column.is-9 {
     flex: none;
     width: 75%
 }
 
-.columns.is-mobile>.column.is-offset-9 {
+.columns.is-mobile > .column.is-offset-9 {
     margin-left: 75%
 }
 
-.columns.is-mobile>.column.is-10 {
+.columns.is-mobile > .column.is-10 {
     flex: none;
     width: 83.33333%
 }
 
-.columns.is-mobile>.column.is-offset-10 {
+.columns.is-mobile > .column.is-offset-10 {
     margin-left: 83.33333%
 }
 
-.columns.is-mobile>.column.is-11 {
+.columns.is-mobile > .column.is-11 {
     flex: none;
     width: 91.66667%
 }
 
-.columns.is-mobile>.column.is-offset-11 {
+.columns.is-mobile > .column.is-offset-11 {
     margin-left: 91.66667%
 }
 
-.columns.is-mobile>.column.is-12 {
+.columns.is-mobile > .column.is-12 {
     flex: none;
     width: 100%
 }
 
-.columns.is-mobile>.column.is-offset-12 {
+.columns.is-mobile > .column.is-offset-12 {
     margin-left: 100%
 }
 
-@media screen and (max-width:768px) {
+@media screen and (max-width: 768px) {
     .column.is-narrow-mobile {
         flex: none
     }
@@ -9003,8 +8982,7 @@ label.panel-block:hover {
     }
 }
 
-@media screen and (min-width:769px),
-print {
+@media screen and (min-width: 769px), print {
 
     .column.is-narrow,
     .column.is-narrow-tablet {
@@ -9260,7 +9238,7 @@ print {
     }
 }
 
-@media screen and (max-width:1023px) {
+@media screen and (max-width: 1023px) {
     .column.is-narrow-touch {
         flex: none
     }
@@ -9469,7 +9447,7 @@ print {
     }
 }
 
-@media screen and (min-width:1024px) {
+@media screen and (min-width: 1024px) {
     .column.is-narrow-desktop {
         flex: none
     }
@@ -9678,7 +9656,7 @@ print {
     }
 }
 
-@media screen and (min-width:1216px) {
+@media screen and (min-width: 1216px) {
     .column.is-narrow-widescreen {
         flex: none
     }
@@ -9887,7 +9865,7 @@ print {
     }
 }
 
-@media screen and (min-width:1408px) {
+@media screen and (min-width: 1408px) {
     .column.is-narrow-fullhd {
         flex: none
     }
@@ -10120,7 +10098,7 @@ print {
     margin-top: 0
 }
 
-.columns.is-gapless>.column {
+.columns.is-gapless > .column {
     margin: 0;
     padding: 0 !important
 }
@@ -10145,14 +10123,13 @@ print {
     align-items: center
 }
 
-@media screen and (min-width:769px),
-print {
+@media screen and (min-width: 769px), print {
     .columns:not(.is-desktop) {
         display: flex
     }
 }
 
-@media screen and (min-width:1024px) {
+@media screen and (min-width: 1024px) {
     .columns.is-desktop {
         display: flex
     }
@@ -10173,56 +10150,55 @@ print {
     --columnGap: 0rem
 }
 
-@media screen and (max-width:768px) {
+@media screen and (max-width: 768px) {
     .columns.is-variable.is-0-mobile {
         --columnGap: 0rem
     }
 }
 
-@media screen and (min-width:769px),
-print {
+@media screen and (min-width: 769px), print {
     .columns.is-variable.is-0-tablet {
         --columnGap: 0rem
     }
 }
 
-@media screen and (min-width:769px) and (max-width:1023px) {
+@media screen and (min-width: 769px) and (max-width: 1023px) {
     .columns.is-variable.is-0-tablet-only {
         --columnGap: 0rem
     }
 }
 
-@media screen and (max-width:1023px) {
+@media screen and (max-width: 1023px) {
     .columns.is-variable.is-0-touch {
         --columnGap: 0rem
     }
 }
 
-@media screen and (min-width:1024px) {
+@media screen and (min-width: 1024px) {
     .columns.is-variable.is-0-desktop {
         --columnGap: 0rem
     }
 }
 
-@media screen and (min-width:1024px) and (max-width:1215px) {
+@media screen and (min-width: 1024px) and (max-width: 1215px) {
     .columns.is-variable.is-0-desktop-only {
         --columnGap: 0rem
     }
 }
 
-@media screen and (min-width:1216px) {
+@media screen and (min-width: 1216px) {
     .columns.is-variable.is-0-widescreen {
         --columnGap: 0rem
     }
 }
 
-@media screen and (min-width:1216px) and (max-width:1407px) {
+@media screen and (min-width: 1216px) and (max-width: 1407px) {
     .columns.is-variable.is-0-widescreen-only {
         --columnGap: 0rem
     }
 }
 
-@media screen and (min-width:1408px) {
+@media screen and (min-width: 1408px) {
     .columns.is-variable.is-0-fullhd {
         --columnGap: 0rem
     }
@@ -10232,56 +10208,55 @@ print {
     --columnGap: 0.25rem
 }
 
-@media screen and (max-width:768px) {
+@media screen and (max-width: 768px) {
     .columns.is-variable.is-1-mobile {
         --columnGap: 0.25rem
     }
 }
 
-@media screen and (min-width:769px),
-print {
+@media screen and (min-width: 769px), print {
     .columns.is-variable.is-1-tablet {
         --columnGap: 0.25rem
     }
 }
 
-@media screen and (min-width:769px) and (max-width:1023px) {
+@media screen and (min-width: 769px) and (max-width: 1023px) {
     .columns.is-variable.is-1-tablet-only {
         --columnGap: 0.25rem
     }
 }
 
-@media screen and (max-width:1023px) {
+@media screen and (max-width: 1023px) {
     .columns.is-variable.is-1-touch {
         --columnGap: 0.25rem
     }
 }
 
-@media screen and (min-width:1024px) {
+@media screen and (min-width: 1024px) {
     .columns.is-variable.is-1-desktop {
         --columnGap: 0.25rem
     }
 }
 
-@media screen and (min-width:1024px) and (max-width:1215px) {
+@media screen and (min-width: 1024px) and (max-width: 1215px) {
     .columns.is-variable.is-1-desktop-only {
         --columnGap: 0.25rem
     }
 }
 
-@media screen and (min-width:1216px) {
+@media screen and (min-width: 1216px) {
     .columns.is-variable.is-1-widescreen {
         --columnGap: 0.25rem
     }
 }
 
-@media screen and (min-width:1216px) and (max-width:1407px) {
+@media screen and (min-width: 1216px) and (max-width: 1407px) {
     .columns.is-variable.is-1-widescreen-only {
         --columnGap: 0.25rem
     }
 }
 
-@media screen and (min-width:1408px) {
+@media screen and (min-width: 1408px) {
     .columns.is-variable.is-1-fullhd {
         --columnGap: 0.25rem
     }
@@ -10291,56 +10266,55 @@ print {
     --columnGap: 0.5rem
 }
 
-@media screen and (max-width:768px) {
+@media screen and (max-width: 768px) {
     .columns.is-variable.is-2-mobile {
         --columnGap: 0.5rem
     }
 }
 
-@media screen and (min-width:769px),
-print {
+@media screen and (min-width: 769px), print {
     .columns.is-variable.is-2-tablet {
         --columnGap: 0.5rem
     }
 }
 
-@media screen and (min-width:769px) and (max-width:1023px) {
+@media screen and (min-width: 769px) and (max-width: 1023px) {
     .columns.is-variable.is-2-tablet-only {
         --columnGap: 0.5rem
     }
 }
 
-@media screen and (max-width:1023px) {
+@media screen and (max-width: 1023px) {
     .columns.is-variable.is-2-touch {
         --columnGap: 0.5rem
     }
 }
 
-@media screen and (min-width:1024px) {
+@media screen and (min-width: 1024px) {
     .columns.is-variable.is-2-desktop {
         --columnGap: 0.5rem
     }
 }
 
-@media screen and (min-width:1024px) and (max-width:1215px) {
+@media screen and (min-width: 1024px) and (max-width: 1215px) {
     .columns.is-variable.is-2-desktop-only {
         --columnGap: 0.5rem
     }
 }
 
-@media screen and (min-width:1216px) {
+@media screen and (min-width: 1216px) {
     .columns.is-variable.is-2-widescreen {
         --columnGap: 0.5rem
     }
 }
 
-@media screen and (min-width:1216px) and (max-width:1407px) {
+@media screen and (min-width: 1216px) and (max-width: 1407px) {
     .columns.is-variable.is-2-widescreen-only {
         --columnGap: 0.5rem
     }
 }
 
-@media screen and (min-width:1408px) {
+@media screen and (min-width: 1408px) {
     .columns.is-variable.is-2-fullhd {
         --columnGap: 0.5rem
     }
@@ -10350,56 +10324,55 @@ print {
     --columnGap: 0.75rem
 }
 
-@media screen and (max-width:768px) {
+@media screen and (max-width: 768px) {
     .columns.is-variable.is-3-mobile {
         --columnGap: 0.75rem
     }
 }
 
-@media screen and (min-width:769px),
-print {
+@media screen and (min-width: 769px), print {
     .columns.is-variable.is-3-tablet {
         --columnGap: 0.75rem
     }
 }
 
-@media screen and (min-width:769px) and (max-width:1023px) {
+@media screen and (min-width: 769px) and (max-width: 1023px) {
     .columns.is-variable.is-3-tablet-only {
         --columnGap: 0.75rem
     }
 }
 
-@media screen and (max-width:1023px) {
+@media screen and (max-width: 1023px) {
     .columns.is-variable.is-3-touch {
         --columnGap: 0.75rem
     }
 }
 
-@media screen and (min-width:1024px) {
+@media screen and (min-width: 1024px) {
     .columns.is-variable.is-3-desktop {
         --columnGap: 0.75rem
     }
 }
 
-@media screen and (min-width:1024px) and (max-width:1215px) {
+@media screen and (min-width: 1024px) and (max-width: 1215px) {
     .columns.is-variable.is-3-desktop-only {
         --columnGap: 0.75rem
     }
 }
 
-@media screen and (min-width:1216px) {
+@media screen and (min-width: 1216px) {
     .columns.is-variable.is-3-widescreen {
         --columnGap: 0.75rem
     }
 }
 
-@media screen and (min-width:1216px) and (max-width:1407px) {
+@media screen and (min-width: 1216px) and (max-width: 1407px) {
     .columns.is-variable.is-3-widescreen-only {
         --columnGap: 0.75rem
     }
 }
 
-@media screen and (min-width:1408px) {
+@media screen and (min-width: 1408px) {
     .columns.is-variable.is-3-fullhd {
         --columnGap: 0.75rem
     }
@@ -10409,56 +10382,55 @@ print {
     --columnGap: 1rem
 }
 
-@media screen and (max-width:768px) {
+@media screen and (max-width: 768px) {
     .columns.is-variable.is-4-mobile {
         --columnGap: 1rem
     }
 }
 
-@media screen and (min-width:769px),
-print {
+@media screen and (min-width: 769px), print {
     .columns.is-variable.is-4-tablet {
         --columnGap: 1rem
     }
 }
 
-@media screen and (min-width:769px) and (max-width:1023px) {
+@media screen and (min-width: 769px) and (max-width: 1023px) {
     .columns.is-variable.is-4-tablet-only {
         --columnGap: 1rem
     }
 }
 
-@media screen and (max-width:1023px) {
+@media screen and (max-width: 1023px) {
     .columns.is-variable.is-4-touch {
         --columnGap: 1rem
     }
 }
 
-@media screen and (min-width:1024px) {
+@media screen and (min-width: 1024px) {
     .columns.is-variable.is-4-desktop {
         --columnGap: 1rem
     }
 }
 
-@media screen and (min-width:1024px) and (max-width:1215px) {
+@media screen and (min-width: 1024px) and (max-width: 1215px) {
     .columns.is-variable.is-4-desktop-only {
         --columnGap: 1rem
     }
 }
 
-@media screen and (min-width:1216px) {
+@media screen and (min-width: 1216px) {
     .columns.is-variable.is-4-widescreen {
         --columnGap: 1rem
     }
 }
 
-@media screen and (min-width:1216px) and (max-width:1407px) {
+@media screen and (min-width: 1216px) and (max-width: 1407px) {
     .columns.is-variable.is-4-widescreen-only {
         --columnGap: 1rem
     }
 }
 
-@media screen and (min-width:1408px) {
+@media screen and (min-width: 1408px) {
     .columns.is-variable.is-4-fullhd {
         --columnGap: 1rem
     }
@@ -10468,56 +10440,55 @@ print {
     --columnGap: 1.25rem
 }
 
-@media screen and (max-width:768px) {
+@media screen and (max-width: 768px) {
     .columns.is-variable.is-5-mobile {
         --columnGap: 1.25rem
     }
 }
 
-@media screen and (min-width:769px),
-print {
+@media screen and (min-width: 769px), print {
     .columns.is-variable.is-5-tablet {
         --columnGap: 1.25rem
     }
 }
 
-@media screen and (min-width:769px) and (max-width:1023px) {
+@media screen and (min-width: 769px) and (max-width: 1023px) {
     .columns.is-variable.is-5-tablet-only {
         --columnGap: 1.25rem
     }
 }
 
-@media screen and (max-width:1023px) {
+@media screen and (max-width: 1023px) {
     .columns.is-variable.is-5-touch {
         --columnGap: 1.25rem
     }
 }
 
-@media screen and (min-width:1024px) {
+@media screen and (min-width: 1024px) {
     .columns.is-variable.is-5-desktop {
         --columnGap: 1.25rem
     }
 }
 
-@media screen and (min-width:1024px) and (max-width:1215px) {
+@media screen and (min-width: 1024px) and (max-width: 1215px) {
     .columns.is-variable.is-5-desktop-only {
         --columnGap: 1.25rem
     }
 }
 
-@media screen and (min-width:1216px) {
+@media screen and (min-width: 1216px) {
     .columns.is-variable.is-5-widescreen {
         --columnGap: 1.25rem
     }
 }
 
-@media screen and (min-width:1216px) and (max-width:1407px) {
+@media screen and (min-width: 1216px) and (max-width: 1407px) {
     .columns.is-variable.is-5-widescreen-only {
         --columnGap: 1.25rem
     }
 }
 
-@media screen and (min-width:1408px) {
+@media screen and (min-width: 1408px) {
     .columns.is-variable.is-5-fullhd {
         --columnGap: 1.25rem
     }
@@ -10527,56 +10498,55 @@ print {
     --columnGap: 1.5rem
 }
 
-@media screen and (max-width:768px) {
+@media screen and (max-width: 768px) {
     .columns.is-variable.is-6-mobile {
         --columnGap: 1.5rem
     }
 }
 
-@media screen and (min-width:769px),
-print {
+@media screen and (min-width: 769px), print {
     .columns.is-variable.is-6-tablet {
         --columnGap: 1.5rem
     }
 }
 
-@media screen and (min-width:769px) and (max-width:1023px) {
+@media screen and (min-width: 769px) and (max-width: 1023px) {
     .columns.is-variable.is-6-tablet-only {
         --columnGap: 1.5rem
     }
 }
 
-@media screen and (max-width:1023px) {
+@media screen and (max-width: 1023px) {
     .columns.is-variable.is-6-touch {
         --columnGap: 1.5rem
     }
 }
 
-@media screen and (min-width:1024px) {
+@media screen and (min-width: 1024px) {
     .columns.is-variable.is-6-desktop {
         --columnGap: 1.5rem
     }
 }
 
-@media screen and (min-width:1024px) and (max-width:1215px) {
+@media screen and (min-width: 1024px) and (max-width: 1215px) {
     .columns.is-variable.is-6-desktop-only {
         --columnGap: 1.5rem
     }
 }
 
-@media screen and (min-width:1216px) {
+@media screen and (min-width: 1216px) {
     .columns.is-variable.is-6-widescreen {
         --columnGap: 1.5rem
     }
 }
 
-@media screen and (min-width:1216px) and (max-width:1407px) {
+@media screen and (min-width: 1216px) and (max-width: 1407px) {
     .columns.is-variable.is-6-widescreen-only {
         --columnGap: 1.5rem
     }
 }
 
-@media screen and (min-width:1408px) {
+@media screen and (min-width: 1408px) {
     .columns.is-variable.is-6-fullhd {
         --columnGap: 1.5rem
     }
@@ -10586,56 +10556,55 @@ print {
     --columnGap: 1.75rem
 }
 
-@media screen and (max-width:768px) {
+@media screen and (max-width: 768px) {
     .columns.is-variable.is-7-mobile {
         --columnGap: 1.75rem
     }
 }
 
-@media screen and (min-width:769px),
-print {
+@media screen and (min-width: 769px), print {
     .columns.is-variable.is-7-tablet {
         --columnGap: 1.75rem
     }
 }
 
-@media screen and (min-width:769px) and (max-width:1023px) {
+@media screen and (min-width: 769px) and (max-width: 1023px) {
     .columns.is-variable.is-7-tablet-only {
         --columnGap: 1.75rem
     }
 }
 
-@media screen and (max-width:1023px) {
+@media screen and (max-width: 1023px) {
     .columns.is-variable.is-7-touch {
         --columnGap: 1.75rem
     }
 }
 
-@media screen and (min-width:1024px) {
+@media screen and (min-width: 1024px) {
     .columns.is-variable.is-7-desktop {
         --columnGap: 1.75rem
     }
 }
 
-@media screen and (min-width:1024px) and (max-width:1215px) {
+@media screen and (min-width: 1024px) and (max-width: 1215px) {
     .columns.is-variable.is-7-desktop-only {
         --columnGap: 1.75rem
     }
 }
 
-@media screen and (min-width:1216px) {
+@media screen and (min-width: 1216px) {
     .columns.is-variable.is-7-widescreen {
         --columnGap: 1.75rem
     }
 }
 
-@media screen and (min-width:1216px) and (max-width:1407px) {
+@media screen and (min-width: 1216px) and (max-width: 1407px) {
     .columns.is-variable.is-7-widescreen-only {
         --columnGap: 1.75rem
     }
 }
 
-@media screen and (min-width:1408px) {
+@media screen and (min-width: 1408px) {
     .columns.is-variable.is-7-fullhd {
         --columnGap: 1.75rem
     }
@@ -10645,56 +10614,55 @@ print {
     --columnGap: 2rem
 }
 
-@media screen and (max-width:768px) {
+@media screen and (max-width: 768px) {
     .columns.is-variable.is-8-mobile {
         --columnGap: 2rem
     }
 }
 
-@media screen and (min-width:769px),
-print {
+@media screen and (min-width: 769px), print {
     .columns.is-variable.is-8-tablet {
         --columnGap: 2rem
     }
 }
 
-@media screen and (min-width:769px) and (max-width:1023px) {
+@media screen and (min-width: 769px) and (max-width: 1023px) {
     .columns.is-variable.is-8-tablet-only {
         --columnGap: 2rem
     }
 }
 
-@media screen and (max-width:1023px) {
+@media screen and (max-width: 1023px) {
     .columns.is-variable.is-8-touch {
         --columnGap: 2rem
     }
 }
 
-@media screen and (min-width:1024px) {
+@media screen and (min-width: 1024px) {
     .columns.is-variable.is-8-desktop {
         --columnGap: 2rem
     }
 }
 
-@media screen and (min-width:1024px) and (max-width:1215px) {
+@media screen and (min-width: 1024px) and (max-width: 1215px) {
     .columns.is-variable.is-8-desktop-only {
         --columnGap: 2rem
     }
 }
 
-@media screen and (min-width:1216px) {
+@media screen and (min-width: 1216px) {
     .columns.is-variable.is-8-widescreen {
         --columnGap: 2rem
     }
 }
 
-@media screen and (min-width:1216px) and (max-width:1407px) {
+@media screen and (min-width: 1216px) and (max-width: 1407px) {
     .columns.is-variable.is-8-widescreen-only {
         --columnGap: 2rem
     }
 }
 
-@media screen and (min-width:1408px) {
+@media screen and (min-width: 1408px) {
     .columns.is-variable.is-8-fullhd {
         --columnGap: 2rem
     }
@@ -10737,12 +10705,11 @@ print {
     flex-direction: column
 }
 
-.tile.is-vertical>.tile.is-child:not(:last-child) {
+.tile.is-vertical > .tile.is-child:not(:last-child) {
     margin-bottom: 1.5rem !important
 }
 
-@media screen and (min-width:769px),
-print {
+@media screen and (min-width: 769px), print {
     .tile:not(.is-child) {
         display: flex
     }
@@ -10846,7 +10813,7 @@ print {
     color: #0a0a0a
 }
 
-@media screen and (max-width:1023px) {
+@media screen and (max-width: 1023px) {
     .hero.is-white .navbar-menu {
         background-color: #fff
     }
@@ -10901,7 +10868,7 @@ print {
     background-image: linear-gradient(141deg, #e6e6e6 0, #fff 71%, #fff 100%)
 }
 
-@media screen and (max-width:768px) {
+@media screen and (max-width: 768px) {
     .hero.is-white.is-bold .navbar-menu {
         background-image: linear-gradient(141deg, #e6e6e6 0, #fff 71%, #fff 100%)
     }
@@ -10930,7 +10897,7 @@ print {
     color: #fff
 }
 
-@media screen and (max-width:1023px) {
+@media screen and (max-width: 1023px) {
     .hero.is-black .navbar-menu {
         background-color: #0a0a0a
     }
@@ -10985,7 +10952,7 @@ print {
     background-image: linear-gradient(141deg, #000 0, #0a0a0a 71%, #181616 100%)
 }
 
-@media screen and (max-width:768px) {
+@media screen and (max-width: 768px) {
     .hero.is-black.is-bold .navbar-menu {
         background-image: linear-gradient(141deg, #000 0, #0a0a0a 71%, #181616 100%)
     }
@@ -11014,7 +10981,7 @@ print {
     color: #363636
 }
 
-@media screen and (max-width:1023px) {
+@media screen and (max-width: 1023px) {
     .hero.is-light .navbar-menu {
         background-color: #f5f5f5
     }
@@ -11069,7 +11036,7 @@ print {
     background-image: linear-gradient(141deg, #dfd8d9 0, #f5f5f5 71%, #fff 100%)
 }
 
-@media screen and (max-width:768px) {
+@media screen and (max-width: 768px) {
     .hero.is-light.is-bold .navbar-menu {
         background-image: linear-gradient(141deg, #dfd8d9 0, #f5f5f5 71%, #fff 100%)
     }
@@ -11098,7 +11065,7 @@ print {
     color: #f5f5f5
 }
 
-@media screen and (max-width:1023px) {
+@media screen and (max-width: 1023px) {
     .hero.is-dark .navbar-menu {
         background-color: #363636
     }
@@ -11153,7 +11120,7 @@ print {
     background-image: linear-gradient(141deg, #1f191a 0, #363636 71%, #46403f 100%)
 }
 
-@media screen and (max-width:768px) {
+@media screen and (max-width: 768px) {
     .hero.is-dark.is-bold .navbar-menu {
         background-image: linear-gradient(141deg, #1f191a 0, #363636 71%, #46403f 100%)
     }
@@ -11182,7 +11149,7 @@ print {
     color: #fff
 }
 
-@media screen and (max-width:1023px) {
+@media screen and (max-width: 1023px) {
     .hero.is-primary .navbar-menu {
         background-color: #00d1b2
     }
@@ -11237,7 +11204,7 @@ print {
     background-image: linear-gradient(141deg, #009e6c 0, #00d1b2 71%, #00e7eb 100%)
 }
 
-@media screen and (max-width:768px) {
+@media screen and (max-width: 768px) {
     .hero.is-primary.is-bold .navbar-menu {
         background-image: linear-gradient(141deg, #009e6c 0, #00d1b2 71%, #00e7eb 100%)
     }
@@ -11266,7 +11233,7 @@ print {
     color: #fff
 }
 
-@media screen and (max-width:1023px) {
+@media screen and (max-width: 1023px) {
     .hero.is-link .navbar-menu {
         background-color: #3273dc
     }
@@ -11321,7 +11288,7 @@ print {
     background-image: linear-gradient(141deg, #1577c6 0, #3273dc 71%, #4366e5 100%)
 }
 
-@media screen and (max-width:768px) {
+@media screen and (max-width: 768px) {
     .hero.is-link.is-bold .navbar-menu {
         background-image: linear-gradient(141deg, #1577c6 0, #3273dc 71%, #4366e5 100%)
     }
@@ -11350,7 +11317,7 @@ print {
     color: #fff
 }
 
-@media screen and (max-width:1023px) {
+@media screen and (max-width: 1023px) {
     .hero.is-info .navbar-menu {
         background-color: #209cee
     }
@@ -11405,7 +11372,7 @@ print {
     background-image: linear-gradient(141deg, #04a6d7 0, #209cee 71%, #3287f5 100%)
 }
 
-@media screen and (max-width:768px) {
+@media screen and (max-width: 768px) {
     .hero.is-info.is-bold .navbar-menu {
         background-image: linear-gradient(141deg, #04a6d7 0, #209cee 71%, #3287f5 100%)
     }
@@ -11434,7 +11401,7 @@ print {
     color: #fff
 }
 
-@media screen and (max-width:1023px) {
+@media screen and (max-width: 1023px) {
     .hero.is-success .navbar-menu {
         background-color: #23d160
     }
@@ -11489,7 +11456,7 @@ print {
     background-image: linear-gradient(141deg, #12af2f 0, #23d160 71%, #2ce28a 100%)
 }
 
-@media screen and (max-width:768px) {
+@media screen and (max-width: 768px) {
     .hero.is-success.is-bold .navbar-menu {
         background-image: linear-gradient(141deg, #12af2f 0, #23d160 71%, #2ce28a 100%)
     }
@@ -11518,7 +11485,7 @@ print {
     color: rgba(0, 0, 0, .7)
 }
 
-@media screen and (max-width:1023px) {
+@media screen and (max-width: 1023px) {
     .hero.is-warning .navbar-menu {
         background-color: #ffdd57
     }
@@ -11573,7 +11540,7 @@ print {
     background-image: linear-gradient(141deg, #ffaf24 0, #ffdd57 71%, #fffa70 100%)
 }
 
-@media screen and (max-width:768px) {
+@media screen and (max-width: 768px) {
     .hero.is-warning.is-bold .navbar-menu {
         background-image: linear-gradient(141deg, #ffaf24 0, #ffdd57 71%, #fffa70 100%)
     }
@@ -11602,7 +11569,7 @@ print {
     color: #fff
 }
 
-@media screen and (max-width:1023px) {
+@media screen and (max-width: 1023px) {
     .hero.is-danger .navbar-menu {
         background-color: #ff3860
     }
@@ -11657,7 +11624,7 @@ print {
     background-image: linear-gradient(141deg, #ff0561 0, #ff3860 71%, #ff5257 100%)
 }
 
-@media screen and (max-width:768px) {
+@media screen and (max-width: 768px) {
     .hero.is-danger.is-bold .navbar-menu {
         background-image: linear-gradient(141deg, #ff0561 0, #ff3860 71%, #ff5257 100%)
     }
@@ -11668,16 +11635,14 @@ print {
     padding-top: 1.5rem
 }
 
-@media screen and (min-width:769px),
-print {
+@media screen and (min-width: 769px), print {
     .hero.is-medium .hero-body {
         padding-bottom: 9rem;
         padding-top: 9rem
     }
 }
 
-@media screen and (min-width:769px),
-print {
+@media screen and (min-width: 769px), print {
     .hero.is-large .hero-body {
         padding-bottom: 18rem;
         padding-top: 18rem
@@ -11691,9 +11656,9 @@ print {
     display: flex
 }
 
-.hero.is-fullheight .hero-body>.container,
-.hero.is-fullheight-with-navbar .hero-body>.container,
-.hero.is-halfheight .hero-body>.container {
+.hero.is-fullheight .hero-body > .container,
+.hero.is-fullheight-with-navbar .hero-body > .container,
+.hero.is-halfheight .hero-body > .container {
     flex-grow: 1;
     flex-shrink: 1
 }
@@ -11724,7 +11689,7 @@ print {
     opacity: .3
 }
 
-@media screen and (max-width:768px) {
+@media screen and (max-width: 768px) {
     .hero-video {
         display: none
     }
@@ -11734,7 +11699,7 @@ print {
     margin-top: 1.5rem
 }
 
-@media screen and (max-width:768px) {
+@media screen and (max-width: 768px) {
     .hero-buttons .button {
         display: flex
     }
@@ -11744,8 +11709,7 @@ print {
     }
 }
 
-@media screen and (min-width:769px),
-print {
+@media screen and (min-width: 769px), print {
     .hero-buttons {
         display: flex;
         justify-content: center
@@ -11772,7 +11736,7 @@ print {
     padding: 3rem 1.5rem
 }
 
-@media screen and (min-width:1024px) {
+@media screen and (min-width: 1024px) {
     .section.is-medium {
         padding: 9rem 1.5rem
     }
@@ -11911,7 +11875,7 @@ print {
     margin-bottom: 3rem
 }
 
-@media screen and (max-width:768px) {
+@media screen and (max-width: 768px) {
     .bd-tabs {
         margin-left: -1.5rem;
         margin-right: -1.5rem
@@ -11922,8 +11886,7 @@ print {
     }
 }
 
-@media screen and (min-width:769px),
-print {
+@media screen and (min-width: 769px), print {
     .bd-tabs .tabs {
         overflow: visible
     }
@@ -11952,11 +11915,11 @@ print {
     display: none
 }
 
-.bd-content hr:first-child+.bd-anchor-title {
+.bd-content hr:first-child + .bd-anchor-title {
     padding-top: 0
 }
 
-.bd-content hr:first-child+.bd-anchor-title .bd-anchor-link {
+.bd-content hr:first-child + .bd-anchor-title .bd-anchor-link {
     top: 0
 }
 
@@ -12084,8 +12047,7 @@ print {
     padding-top: calc(1.5rem - 1px)
 }
 
-@media screen and (min-width:769px),
-print {
+@media screen and (min-width: 769px), print {
     .bd-anchors.is-active {
         display: block
     }
@@ -12111,7 +12073,7 @@ print {
     color: #363636
 }
 
-@media screen and (max-width:1023px) {
+@media screen and (max-width: 1023px) {
 
     .bd-lead,
     .bd-side {
@@ -12123,13 +12085,13 @@ print {
     }
 }
 
-@media screen and (max-width:1023px) {
+@media screen and (max-width: 1023px) {
     .bd-side-background {
         display: none
     }
 }
 
-@media screen and (min-width:1024px) {
+@media screen and (min-width: 1024px) {
     .bd-duo {
         display: flex
     }
@@ -12150,7 +12112,7 @@ print {
     }
 }
 
-@media screen and (min-width:1024px) {
+@media screen and (min-width: 1024px) {
     .bd-main {
         padding: 0 3rem
     }
@@ -12187,13 +12149,13 @@ print {
     }
 }
 
-@media screen and (min-width:1216px) {
+@media screen and (min-width: 1216px) {
     .bd-header-carbon {
         margin-left: 9rem
     }
 }
 
-@media screen and (min-width:1408px) {
+@media screen and (min-width: 1408px) {
     .bd-header-carbon {
         margin-left: 12rem
     }
@@ -12449,7 +12411,7 @@ print {
     margin-top: .5em
 }
 
-.content .bd-spaced li+li {
+.content .bd-spaced li + li {
     margin-top: 1em
 }
 
@@ -12457,20 +12419,19 @@ print {
     margin-bottom: 1.5rem
 }
 
-body.page-grid .column>.notification {
+body.page-grid .column > .notification {
     padding-left: 0;
     padding-right: 0;
     text-align: center
 }
 
-a.navbar-item>.icon:not(:last-child) {
+a.navbar-item > .icon:not(:last-child) {
     margin-left: -.25em;
     margin-right: .25em
 }
 
-@media screen and (min-width:769px),
-print {
-    .header-item .button+.button {
+@media screen and (min-width: 769px), print {
+    .header-item .button + .button {
         margin-left: .75rem
     }
 }
@@ -12527,8 +12488,7 @@ svg {
     box-shadow: 0 0 0 .75rem #fff
 }
 
-@media screen and (min-width:769px),
-print {
+@media screen and (min-width: 769px), print {
     #carbon {
         width: 300px
     }
@@ -12577,7 +12537,7 @@ print {
     width: 130px
 }
 
-#carbonads .carbon-img:hover+.carbon-text {
+#carbonads .carbon-img:hover + .carbon-text {
     color: #3273dc
 }
 
@@ -12791,14 +12751,13 @@ print {
     margin-top: 3rem
 }
 
-@media screen and (max-width:768px) {
+@media screen and (max-width: 768px) {
     .bd-columns-tool.bd-is-markup {
         margin-top: 3rem
     }
 }
 
-@media screen and (min-width:769px),
-print {
+@media screen and (min-width: 769px), print {
     .bd-columns-tools {
         align-items: flex-start;
         display: flex
@@ -13218,7 +13177,7 @@ print {
     opacity: 1
 }
 
-@media screen and (max-width:768px) {
+@media screen and (max-width: 768px) {
     .intro-buttons .button {
         display: flex;
         width: 100%
@@ -13229,8 +13188,7 @@ print {
     }
 }
 
-@media screen and (min-width:769px),
-print {
+@media screen and (min-width: 769px), print {
     .intro-title {
         font-size: 2.25rem
     }
@@ -13242,13 +13200,13 @@ print {
     }
 }
 
-@media screen and (max-width:1023px) {
+@media screen and (max-width: 1023px) {
     .intro-column.is-video {
         margin-top: 3rem
     }
 }
 
-@media screen and (min-width:1024px) {
+@media screen and (min-width: 1024px) {
     .intro-columns {
         display: flex;
         justify-content: center
@@ -13328,7 +13286,7 @@ print {
     color: #f96854
 }
 
-@media screen and (min-width:1024px) {
+@media screen and (min-width: 1024px) {
     #blogDropdown {
         width: 17rem
     }
@@ -13428,8 +13386,7 @@ print {
     height: 70px
 }
 
-@media screen and (min-width:769px),
-print {
+@media screen and (min-width: 769px), print {
     .bd-footer-donation {
         width: 240px
     }
@@ -13460,8 +13417,7 @@ print {
     margin-top: 2.5rem
 }
 
-@media screen and (min-width:769px),
-print {
+@media screen and (min-width: 769px), print {
     .bd-footer-stars {
         align-items: stretch;
         display: flex;
@@ -13477,14 +13433,13 @@ print {
     will-change: box-shadow, transform
 }
 
-@media screen and (max-width:768px) {
+@media screen and (max-width: 768px) {
     .bd-footer-star:not(:last-child) {
         margin-bottom: 1.5rem
     }
 }
 
-@media screen and (min-width:769px),
-print {
+@media screen and (min-width: 769px), print {
     .bd-footer-star {
         width: calc(33.3333% - 2rem)
     }
@@ -13598,7 +13553,7 @@ print {
     color: #b5b5b5
 }
 
-@media screen and (max-width:768px) {
+@media screen and (max-width: 768px) {
     .bd-footer-link.bd-has-subtitle a {
         flex-wrap: wrap;
         margin-top: 1rem
@@ -13609,8 +13564,7 @@ print {
     }
 }
 
-@media screen and (min-width:769px),
-print {
+@media screen and (min-width: 769px), print {
     .bd-footer-link.bd-has-subtitle a em {
         margin-left: 1rem;
         text-align: right
@@ -13688,8 +13642,7 @@ print {
     right: 90%
 }
 
-@media screen and (min-width:769px),
-print {
+@media screen and (min-width: 769px), print {
     .bd-drawing {
         display: inline
     }
@@ -13763,7 +13716,7 @@ print {
     opacity: .5
 }
 
-@media screen and (max-width:768px) {
+@media screen and (max-width: 768px) {
     .bd-links {
         margin-left: -1.5rem;
         margin-right: -1.5rem
@@ -13775,7 +13728,7 @@ print {
     }
 }
 
-@media screen and (min-width:1024px) {
+@media screen and (min-width: 1024px) {
     .bd-links {
         display: flex;
         flex-wrap: wrap
@@ -13801,14 +13754,13 @@ print {
     margin: 0 3rem 1.5rem 0
 }
 
-@media screen and (max-width:768px) {
+@media screen and (max-width: 768px) {
     .bd-doc {
         min-width: calc(50% - 3rem)
     }
 }
 
-@media screen and (min-width:769px),
-print {
+@media screen and (min-width: 769px), print {
     .bd-doc {
         min-width: calc(33.3333% - 3rem)
     }
@@ -13875,7 +13827,7 @@ print {
     transform-origin: center top
 }
 
-@media screen and (max-width:1023px) {
+@media screen and (max-width: 1023px) {
     .bd-is-clipped-touch {
         overflow: hidden !important
     }
@@ -13935,7 +13887,7 @@ print {
     position: relative
 }
 
-@media screen and (max-width:1215px) {
+@media screen and (max-width: 1215px) {
     .bd-anchor-title {
         padding-left: 2rem
     }
@@ -13947,7 +13899,7 @@ print {
     top: 1.5rem
 }
 
-@media screen and (max-width:1215px) {
+@media screen and (max-width: 1215px) {
     .bd-anchor-link {
         left: 0;
         right: auto
@@ -14097,8 +14049,7 @@ print {
     vertical-align: top
 }
 
-@media screen and (min-width:769px),
-print {
+@media screen and (min-width: 769px), print {
 
     .bd-example.is-fullwidth,
     .bd-snippet.is-fullwidth,
@@ -14128,14 +14079,14 @@ print {
     border-top-right-radius: 6px
 }
 
-.bd-example+.highlight {
+.bd-example + .highlight {
     border: 1px solid #ffdd57;
     border-radius: 0 0 4px 4px;
     border-top: none;
     margin-top: -1.5rem
 }
 
-.bd-example+.highlight:not(:last-child) {
+.bd-example + .highlight:not(:last-child) {
     margin-bottom: 1.5rem
 }
 
@@ -14194,7 +14145,7 @@ print {
     border-width: 1px 0
 }
 
-@media screen and (min-width:1024px) {
+@media screen and (min-width: 1024px) {
     .bd-snippet.bd-is-vertical {
         align-items: stretch;
         border-radius: 6px;
@@ -14397,21 +14348,19 @@ print {
     color: rgba(0, 0, 0, .7)
 }
 
-@media screen and (min-width:769px),
-print {
+@media screen and (min-width: 769px), print {
     .highlight pre {
         white-space: pre-wrap
     }
 }
 
-@media screen and (min-width:769px),
-print {
-    .section:not(.is-fullwidth)>.bd-example:not(.is-fullwidth) {
+@media screen and (min-width: 769px), print {
+    .section:not(.is-fullwidth) > .bd-example:not(.is-fullwidth) {
         margin-left: 1.5rem;
         margin-right: 1.5rem
     }
 
-    .section:not(.is-fullwidth)>.bd-example:not(.is-fullwidth)+.highlight {
+    .section:not(.is-fullwidth) > .bd-example:not(.is-fullwidth) + .highlight {
         margin-left: 1.5rem;
         margin-right: 1.5rem
     }
@@ -14434,7 +14383,7 @@ print {
     padding: 0
 }
 
-.section.is-fullwidth .bd-example+.highlight {
+.section.is-fullwidth .bd-example + .highlight {
     border-left: none;
     border-radius: 0;
     border-right: none
@@ -14521,7 +14470,7 @@ print {
     vertical-align: top
 }
 
-#_default_>a {
+#_default_ > a {
     background-color: #fff;
     border-radius: 6px;
     box-shadow: 0 2px 3px rgba(10, 10, 10, .1), 0 0 0 1px rgba(10, 10, 10, .1);
@@ -14535,20 +14484,20 @@ print {
     position: relative
 }
 
-#_default_>a:focus,
-#_default_>a:hover {
+#_default_ > a:focus,
+#_default_ > a:hover {
     box-shadow: 0 2px 3px rgba(10, 10, 10, .1), 0 0 0 1px #3273dc
 }
 
-#_default_>a:active {
+#_default_ > a:active {
     box-shadow: inset 0 1px 2px rgba(10, 10, 10, .2), 0 0 0 1px #3273dc
 }
 
-#_default_>a span {
+#_default_ > a span {
     display: block
 }
 
-#_default_>a .default-image {
+#_default_ > a .default-image {
     display: block;
     left: 15px;
     height: 40px;
@@ -14557,28 +14506,27 @@ print {
     width: 40px
 }
 
-#_default_>a .default-image img {
+#_default_ > a .default-image img {
     display: block;
     height: 40px;
     width: 40px
 }
 
-#_default_>a .default-title {
+#_default_ > a .default-title {
     color: #363636;
     display: inline;
     font-weight: 700
 }
 
-#_default_>a .default-title::after {
+#_default_ > a .default-title::after {
     content: " — "
 }
 
-#_default_>a .default-description {
+#_default_ > a .default-description {
     display: inline
 }
 
-@media screen and (min-width:769px),
-print {
+@media screen and (min-width: 769px), print {
     .bsa .columns {
         min-height: 120px
     }
@@ -14596,12 +14544,12 @@ print {
         top: 0
     }
 
-    #_default_>a {
+    #_default_ > a {
         margin: 0;
         width: calc(50% - 1rem)
     }
 
-    #_default_>a:not(:nth-child(2)) {
+    #_default_ > a:not(:nth-child(2)) {
         margin-left: 2rem
     }
 }
@@ -14764,7 +14712,7 @@ print {
     background-image: url(data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20fill%3D%22%23657786%22%20d%3D%22M12%2021.638h-.014C9.403%2021.59%201.95%2014.856%201.95%208.478c0-3.064%202.525-5.754%205.403-5.754%202.29%200%203.83%201.58%204.646%202.73.813-1.148%202.353-2.73%204.644-2.73%202.88%200%205.404%202.69%205.404%205.755%200%206.375-7.454%2013.11-10.037%2013.156H12zM7.354%204.225c-2.08%200-3.903%201.988-3.903%204.255%200%205.74%207.035%2011.596%208.55%2011.658%201.52-.062%208.55-5.917%208.55-11.658%200-2.267-1.822-4.255-3.902-4.255-2.528%200-3.94%202.936-3.952%202.965-.23.562-1.156.562-1.387%200-.015-.03-1.426-2.965-3.955-2.965z%22%2F%3E%3C%2Fsvg%3E)
 }
 
-@media screen and (max-width:768px) {
+@media screen and (max-width: 768px) {
     .bd-tws-home {
         padding: 1.5rem
     }
@@ -14774,24 +14722,23 @@ print {
     }
 }
 
-@media screen and (min-width:769px),
-print {
+@media screen and (min-width: 769px), print {
     .bd-tws-home {
         padding: 3rem
     }
 
-    .bd-tws-home .bd-tw+.bd-tw {
+    .bd-tws-home .bd-tw + .bd-tw {
         margin-top: 1.5rem
     }
 }
 
-@media screen and (max-width:1023px) {
+@media screen and (max-width: 1023px) {
     .bd-tws-love .bd-tw:not(:last-child) {
         margin-bottom: 1.5rem
     }
 }
 
-@media screen and (min-width:1024px) {
+@media screen and (min-width: 1024px) {
     .bd-tws-home {
         min-height: 595px
     }
@@ -14808,13 +14755,13 @@ print {
     }
 }
 
-@media screen and (min-width:1216px) {
+@media screen and (min-width: 1216px) {
     .bd-tws-home {
         min-height: 653px
     }
 }
 
-@media screen and (min-width:1408px) {
+@media screen and (min-width: 1408px) {
     .bd-tws-home {
         min-height: 632px
     }
@@ -14905,14 +14852,13 @@ print {
     transition: opacity .2s ease-out
 }
 
-@media screen and (max-width:768px) {
+@media screen and (max-width: 768px) {
     .bd-website:not(:last-child) {
         margin-bottom: 1.5rem
     }
 }
 
-@media screen and (min-width:769px),
-print {
+@media screen and (min-width: 769px), print {
     .bd-expo {
         padding-bottom: 3rem;
         padding-top: 3rem
@@ -14978,7 +14924,7 @@ print {
     transform: scale(1.04)
 }
 
-@media screen and (max-width:768px) {
+@media screen and (max-width: 768px) {
     .bd-testimonials {
         padding: 1.5rem
     }
@@ -14988,30 +14934,29 @@ print {
     }
 }
 
-@media screen and (min-width:769px),
-print {
+@media screen and (min-width: 769px), print {
     .bd-testimonials {
         padding: 3rem
     }
 
-    .bd-testimonial+.bd-testimonial {
+    .bd-testimonial + .bd-testimonial {
         margin-top: 1.5rem
     }
 }
 
-@media screen and (min-width:1024px) {
+@media screen and (min-width: 1024px) {
     .bd-testimonials {
         min-height: 595px
     }
 }
 
-@media screen and (min-width:1216px) {
+@media screen and (min-width: 1216px) {
     .bd-testimonials {
         min-height: 653px
     }
 }
 
-@media screen and (min-width:1408px) {
+@media screen and (min-width: 1408px) {
     .bd-testimonials {
         min-height: 632px
     }
@@ -15063,7 +15008,7 @@ print {
     justify-content: center
 }
 
-@media screen and (max-width:768px) {
+@media screen and (max-width: 768px) {
     .bd-hug {
         margin: 1.5rem
     }
@@ -15085,8 +15030,7 @@ print {
     }
 }
 
-@media screen and (min-width:769px),
-print {
+@media screen and (min-width: 769px), print {
     .bd-embrace {
         align-items: center;
         display: flex;
@@ -15183,7 +15127,7 @@ print {
     margin-bottom: .5rem
 }
 
-.bd-pro+.pro {
+.bd-pro + .pro {
     margin-top: 2rem;
     padding-top: 2rem
 }
@@ -15503,14 +15447,13 @@ print {
     display: block
 }
 
-@media screen and (max-width:768px) {
+@media screen and (max-width: 768px) {
     .bd-minis-list {
         flex-direction: column
     }
 }
 
-@media screen and (min-width:769px),
-print {
+@media screen and (min-width: 769px), print {
     .bd-partnrs-list {
         align-items: flex-start;
         display: flex;
@@ -15531,7 +15474,7 @@ print {
     }
 }
 
-@media screen and (min-width:1216px) {
+@media screen and (min-width: 1216px) {
     .bd-partner.bd-is-carbon {
         margin-left: 3rem
     }
@@ -15656,11 +15599,11 @@ print {
     padding-top: calc(.5em - 1px)
 }
 
-.bd-book-buttons .button>span {
+.bd-book-buttons .button > span {
     font-size: .875em
 }
 
-.bd-book-buttons .button>span>em {
+.bd-book-buttons .button > span > em {
     display: block;
     font-size: .5em;
     font-style: normal;
@@ -15746,7 +15689,7 @@ print {
     justify-content: center
 }
 
-@media screen and (max-width:768px) {
+@media screen and (max-width: 768px) {
     .bd-book-columns {
         flex-direction: column
     }
@@ -15769,8 +15712,7 @@ print {
     }
 }
 
-@media screen and (min-width:769px),
-print {
+@media screen and (min-width: 769px), print {
     .bd-book-columns {
         justify-content: space-around
     }
@@ -15903,7 +15845,7 @@ print {
     will-change: box-shadow, transform
 }
 
-@media screen and (max-width:599px) {
+@media screen and (max-width: 599px) {
     .native-flex {
         display: block;
         text-align: center
@@ -15918,7 +15860,7 @@ print {
     }
 }
 
-@media screen and (min-width:600px) {
+@media screen and (min-width: 600px) {
     .native-flex {
         display: flex;
         padding: 4em;
@@ -15935,7 +15877,7 @@ print {
     }
 }
 
-@media screen and (min-width:1216px) {
+@media screen and (min-width: 1216px) {
     .native-js {
         font-size: 1.25rem
     }
@@ -16639,4 +16581,143 @@ print {
         -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
         transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
     }
+}
+
+
+/* 微信气泡 */
+div.speech {
+    float: left;
+    margin: 10px 0;
+    padding: 8px;
+    table-layout: fixed;
+    word-break: break-all;
+    position: relative;
+    background: -webkit-gradient( linear, 50% 0%, 50% 100%, from(#ffffff), color-stop(0.1, #ececec), color-stop(0.5, #dbdbdb), color-stop(0.9, #dcdcdc), to(#8c8c8c) );
+    border: 1px solid #989898;
+    border-radius: 8px;
+}
+div.speech:before {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    left: 15px;
+    top: -20px;
+    border: 10px solid;
+    border-color: transparent transparent #989898 transparent;
+}
+div.speech:after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    left: 17px;
+    top: -16px;
+    border: 8px solid;
+    border-color: transparent transparent #ffffff transparent;
+}
+div.speech.right {
+    display: inline-block;
+    box-shadow: -2px 2px 5px #CCC;
+    float: right;
+    background: -webkit-gradient( linear, 50% 0%, 50% 100%, from(#e4ffa7), color-stop(0.1, #bced50), color-stop(0.4, #aed943), color-stop(0.8, #a7d143), to(#99BF40) );
+}
+div.speech.right:before {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    top: 9px;
+    bottom: auto;
+    left: auto;
+    right: -10px;
+    border-width: 9px 0 9px 10px;
+    border-color: transparent #989898;
+}
+div.speech.right:after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    top: 10px;
+    bottom: auto;
+    left: auto;
+    right: -8px;
+    border-width: 8px 0 8px 9px;
+    border-color: transparent #bced50;
+}
+div .left {
+    display: inline-block;
+    box-shadow: 2px 2px 2px #CCCCCC;
+    position: relative;
+    background: -webkit-gradient( linear, 50% 0%, 50% 100%, from(#ffffff), color-stop(0.1, #eae8e8), color-stop(0.4, #E3E3E3), color-stop(0.8, #DFDFDF), to(#D9D9D9) );
+
+}
+
+div .left:before {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    top: 9px;
+    bottom: auto;
+    left: -10px;
+    border-width: 9px 10px 9px 0;
+    border-color: transparent #989898;
+}
+div .left:after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    top: 10px;
+    bottom: auto;
+    left: -8px;
+    border-width: 8px 9px 8px 0;
+    border-color: transparent #eae8e8;
+}
+.leftimg {
+    float: left;
+    margin-top: 10px;
+}
+.rightimg {
+    float: right;
+    margin-top: 10px;
+}
+.leftd {
+    clear: both;
+    float: left;
+}
+.rightd {
+    clear: both;
+    float: right;
+}
+
+.leftd_h{
+    width: 39px;
+    height: 39px;
+    border-radius: 100%;
+    display: block;
+    float: left;
+    overflow: hidden;
+}
+
+.leftd_h img{
+    display: block;
+    width: 100%;
+    height: auto;
+}
+.rightd_h{
+    width: 39px;
+    height: 39px;
+    border-radius: 100%;
+    display: block;
+    float: right;
+    overflow: hidden;
+}
+
+.rightd_h img{
+    display: block;
+    width: 100%;
+    height: auto;
 }
