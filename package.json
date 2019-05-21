@@ -25,6 +25,7 @@
   "dependencies": {
     "bulma": "^0.7.5",
     "electron-packager": "^13.1.1",
+    "font-awesome": "^4.7.0",
     "jquery": "^3.4.1"
   }
 }

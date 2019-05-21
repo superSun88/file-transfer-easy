@@ -12,6 +12,8 @@
     -->
     <style>
         @import 'node_modules/bulma/css/bulma.css';
+        @import 'node_modules/font-awesome/css/font-awesome.min.css';
+
     </style>
 
     <script>
@@ -20,41 +22,31 @@
 </head>
 
 <body>
-    <div class="field">
-        <label class="label"> 本机IP:<span id="localIP"></span></label>
-        <div class="control">
-            <input class="input is-small" type="text" id="ip" placeholder="通讯端ip地址" />
+    <div class="content">
+        <div class="field">
+            <label class="label"> 本机IP: <span id="localIP"></span></label>
+            <div class="field is-grouped">
+                <p class="control is-expanded">
+                    <input class="input" type="text" id="ip" placeholder="通讯端ip地址" />
+
+                </p>
+                <p class="control">
+                    <a class="button is-link is-outlined fa fa-tty" onclick="testConnect()"> 连接测试</a>
+                    <a class="button is-primary is-outlined  fa fa-whatsapp" onclick="openChatWindow()"> 开始通讯</a>
+                </p>
+            </div>
+
+            <div class="control">
+                <span id="connectSuccess"></span>
+            </div>
 
         </div>
-        <div class="control">
-            <span id="connectSuccess"></span>
+        <div class="field">
+            <label class="label"><i class="fa fa-address-book-o"></i> 连接历史：</label>
+            <div id="chatIpHistory">
 
+            </div>
         </div>
-        <a class="button is-link is-outlined" onclick="testConnect()">连接测试</a>
-        <a class="button is-primary is-outlined" onclick="openChatWindow()">打开通讯窗口</a>
-    </div>
-
-    <div class="field">
-        <label class="label">连接历史：</span></label>
-        <a class="panel-block">
-            <span class="panel-icon">
-                <i class="fas fa-book" aria-hidden="true"></i>
-            </span>
-            marksheet
-        </a>
-        <a class="panel-block">
-            <span class="panel-icon">
-                <i class="fas fa-book" aria-hidden="true"></i>
-            </span>
-            marksheet
-        </a>
-        <a class="panel-block">
-            <span class="panel-icon">
-                <i class="fas fa-book" aria-hidden="true"></i>
-            </span>
-            marksheet
-        </a>
-
     </div>
 
 
@@ -62,6 +54,27 @@
 </body>
 
 <script>
+    function addChatIpHistory(ip){
+        var had = false;
+        $("#chatIpHistory").find("a").each(function(){
+            if($(this).attr("data") == ip){
+                had = true;
+                return false;
+            }
+        });
+        if(!had){
+            var a = '<a class="panel-block" title="双击" ondblclick="mixInput(this)" data="'+ip
+                +'"><span class="panel-icon">' +
+                '<i class="fa fa-desktop"></i></span>' +
+                ip+'</a>';
+            $("#chatIpHistory").append(a);
+        }
+
+    }
+    function mixInput(obj){
+        $("#ip").val($(obj).attr("data"));
+    }
+    var timeout = 10000;
     var listenChatPort = 6001;
     var fileport = 6000;
     var os = require('os');
@@ -151,6 +164,9 @@
 
         } else {
             var client = new net.Socket();
+//            client.setTimeout(timeout,function(){
+//                $("#connectSuccess").html("<span style='color: red'>连接失败</span>");
+//            });
             client.connect(PORT, HOST, function () {
                 $("#connectSuccess").html("<span style='color: green'>连接成功</span>");
                 client.end();
@@ -175,10 +191,16 @@
 
         } else {
             var client = new net.Socket();
+//            client.setTimeout(timeout,function(){
+//                $("#connectSuccess").html("<span style='color: red'>无法创建连接</span>");
+//                addChatIpHistory(HOST)
+//            });
+
             client.connect(PORT, HOST, function () {
                 client.write("open chat");
                 // window.open("chat.html?ip=" + $("#ip").val());
                 ipcRenderer.send('openChatWindow', "chat.html?ip=" + HOST);
+                addChatIpHistory(HOST);
                 client.end();
             });
             client.on('error', function () {
