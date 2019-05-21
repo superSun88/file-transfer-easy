@@ -16587,7 +16587,7 @@ svg {
 /* 微信气泡 */
 div.speech {
     float: left;
-    margin: 10px 0;
+    /*margin: 10px 0;*/
     padding: 8px;
     table-layout: fixed;
     word-break: break-all;
@@ -16620,6 +16620,7 @@ div.speech.right {
     display: inline-block;
     box-shadow: -2px 2px 5px #CCC;
     float: right;
+    right: -10px;
     background: -webkit-gradient( linear, 50% 0%, 50% 100%, from(#e4ffa7), color-stop(0.1, #bced50), color-stop(0.4, #aed943), color-stop(0.8, #a7d143), to(#99BF40) );
 }
 div.speech.right:before {
@@ -16650,6 +16651,7 @@ div .left {
     display: inline-block;
     box-shadow: 2px 2px 2px #CCCCCC;
     position: relative;
+    left: -10px;
     background: -webkit-gradient( linear, 50% 0%, 50% 100%, from(#ffffff), color-stop(0.1, #eae8e8), color-stop(0.4, #E3E3E3), color-stop(0.8, #DFDFDF), to(#D9D9D9) );
 
 }
@@ -16661,7 +16663,7 @@ div .left:before {
     height: 0;
     top: 9px;
     bottom: auto;
-    left: -10px;
+    left: -11px;
     border-width: 9px 10px 9px 0;
     border-color: transparent #989898;
 }
@@ -16672,7 +16674,7 @@ div .left:after {
     height: 0;
     top: 10px;
     bottom: auto;
-    left: -8px;
+    left: -9px;
     border-width: 8px 9px 8px 0;
     border-color: transparent #eae8e8;
 }
