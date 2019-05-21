@@ -312,8 +312,7 @@
                     fileName: name
                 }
             }));
-            $("#transferFile").text(name);
-            $("#fileSize").text(fileSize);
+
         });
         var sendSize = 0;
 
@@ -330,6 +329,8 @@
         var percent = 0;
         var sendNum = 0;
         client.on('data', function (response) {
+            $("#transferFile").text(name);
+            $("#fileSize").text(fileSize);
             response = response.toString();
             var leftSize = fileSize - sendSize;
             if (leftSize < packSize) {
@@ -381,7 +382,12 @@
                 document.querySelector('.progress span').style.width = '100%';
                 holder.innerText = "发送完毕";
                 $("#holder").attr("class","holder");
-
+                var span =
+                    '<div class="panel-block"><div class="container"><figure class="highlight field is-grouped is-grouped-right"><pre><code class="language-html"><span class="ip_name" style="color: #209cee">' +
+                    myip + ':&nbsp</span> <a class="isay">' +
+                    '<i class="fa fa-file-archive-o"> 发送新文件：' +name
+                    + '</i></a></code></pre></figure></div></div>';
+                $("#chatHistory").append(span);
                 client.end()
             } else { //有拆包
 
