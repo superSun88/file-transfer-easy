@@ -194,5 +194,36 @@ ipcMain.on('receiveMessage', (event, data) => {
 
 
 })
+// 在主进程中.
+ipcMain.on('receive_new_file', (event, data) => {
+    var ip = data.remoteAddress;
+var nofind = true;
+
+for (var i in chat_ip) {
+
+    if (chat_ip[i].ip == ip) {
+        nofind = false;
+        win = chat_ip[i].win;
+        win.moveTop();
+        data.remoteAddress = ip;
+        win.webContents.send("receiveNewFile", data);
+        break;
+    }
+}
+if (nofind) {
+    console.log("create window " + ip)
+    let chat_ip_win = new Object();
+    chat_ip_win.ip = ip;
+    var args = encodeURI("chat.html?ip=" + ip +
+        "&file=" + data.data);
+    chat_ip_win.win = createNewChatWin(args, ip);
+    chat_ip.push(chat_ip_win);
+}
+// console.log(data.ip)
+// console.log(data.data)
+
+
+})
+
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.

@@ -191,38 +191,43 @@
         }
 
     }
-    // var net = require('net');
-    // var server = net.createServer();
-    // server.listen(port, "0.0.0.0");
-    // server.on('connection', function (sock) {
-
-    //     console.log('CONNECTED: ' +
-    //         sock.remoteAddress + ':' + sock.remotePort);
-    //     // 处理业务
-    //     // 为这个socket实例添加一个"data"事件处理函数
-    //     sock.on('data', function (data) {
-    //         //            console.log('DATA ' + sock.remoteAddress + ': ' + data);
-    //         // 回发该数据，客户端将收到来自服务端的数据
-    //         if ("open chat" != data.toString()) {
-
-    //             writeMsg(sock, data);
-    //         }
-
-    //     });
-
-    //     // 为这个socket实例添加一个"close"事件处理函数
-    //     sock.on('close', function (data) {
-    //         console.log('CLOSED: ' +
-    //             sock.remoteAddress + ' ' + sock.remotePort);
-    //     });
-    // });
     ipcRenderer.on('receiveMessage', (event, data) => {
         writeMsg(data, data.data);
     });
-
+    ipcRenderer.on('receiveNewFile', (event, data) => {
+        writeFileMsg(data, data.data);
+    });
     function sendMsg() {
         var msg = $("#msg").val();
         sendSocketMsg(msg);
+
+    }
+
+    function writeFileMsg(sock, data) {
+        var span =
+            '<div class="panel-block"><div class="container"><figure class="highlight"><pre><code class="language-html"><span class="ip_name" style="color: cadetblue">' +
+            sock.remoteAddress + ':&nbsp</span><a class="hesay"><i class="fa fa-file-archive-o"> ' +
+            escapeHtml(data) + '</i></a></code></pre><button class="button is-small bd-copy"' +
+            ' onclick="openFile()" >Open</button></figure></div></div>';
+
+
+
+        $("#chatHistory").append(span);
+
+
+
+    }
+    function openFile() {
+        var exec = require('child_process').exec;
+        if (os.type == 'Darwin') {
+            exec("open " + receiveDirPath);
+
+        } else if (os.type == 'Windows_NT') {
+            exec("explorer.exe " + receiveDirPath);
+
+        }
+
+
 
     }
 
@@ -425,6 +430,18 @@
             fromip + ':&nbsp</span> <span class="hesay">' +
             escapeHtml(msg) + '</span></code></pre><button class="button is-small bd-copy" ' +
             'onclick="copyData(this)" >Copy</button></figure></div></div>';
+        $("#chatHistory").append(span);
+    }
+
+    var file = GetQueryString("file");
+    if (undefined != file && "" != file) {
+        var fromip = GetQueryString("ip");
+        $("#title").text("ChatWindow(" + ip + ")");
+        var span =
+            '<div class="panel-block"><div class="container"><figure class="highlight"><pre><code class="language-html"><span class="ip_name" style="color: cadetblue">' +
+            fromip + ':&nbsp</span> <a class="hesay"><i class="fa fa-file-archive-o"> ' +
+            escapeHtml(file) + '</i></a></code></pre><button class="button is-small bd-copy"' +
+            ' onclick="openFile()" >Open</button></figure></div></div>';
         $("#chatHistory").append(span);
     }
     const {

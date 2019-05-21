@@ -220,7 +220,6 @@
             exec("explorer.exe " + receiveDirPath);
 
         }
-        // ipcRenderer.send('asynchronous-message-openDir', receiveDirPath);
     }
 
     function getLocalIP() {
@@ -265,11 +264,18 @@
             // console.log(socket.hasSend,
             //     parseInt(socket.hasSend / 2 / socket.file_info.fileSize * 100) + '%');
             if (socket.hasSend >= socket.file_info.fileSize * 2) { //传输即将完毕，重置
+                var obj = new Object();
+                obj.data = "发来新文件："+ socket.file_info.fileName;
+                obj.remoteAddress = socket.remoteAddress;
+
                 var buf = Buffer.from(socket.buf, 'hex');
                 fs.appendFileSync(socket.fd, buf);
                 fs.closeSync(socket.fd);
                 socket.write('file transfer completed');
                 socket.file_info = null;
+
+
+                ipcRenderer.send('receive_new_file', obj);
                 var myNotification = new Notification('EasyTransfer', {
                     body: '收到新文件,点击打开目录'
                 })
