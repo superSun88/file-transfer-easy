@@ -83,6 +83,9 @@
         <a class="button is-focused" onclick="sendMsg()">
              <i class="fa fa-paper-plane"> 发送信息</i>
         </a>
+        <!--<a class="button is-success" onclick="sendMsg()" id="sendImageBtn">-->
+            <!--<i class="fa fa-file-image-o"> 发送图片</i>-->
+        <!--</a>-->
         <button onclick="modal()" class="button is-info modal-button" data-target="modal"
                 aria-haspopup="true">
             <i class="fa fa-file-archive-o"> 发送文件</i></button>
@@ -166,7 +169,6 @@
 
     holder.ondragenter = holder.ondragover = function (event) {
         event.preventDefault();
-        ipcRenderer.send('ondragstart', '/path/to/item')
         $("#holder").attr("class","holder-ondrag");
         holder.innerText = "松开鼠标";
         document.querySelector('.progress span').style.width = '0%';
@@ -185,12 +187,32 @@
         var files = event.dataTransfer.files;
         for (var i in files) {
             if (undefined != files[i].path) {
-                sendFile(files[i].path, files[i].name);
+                sendFile(files[i].path, files[i].name,0);
 
             }
         }
 
     }
+    var msg = document.getElementById("msg");
+    msg.ondrop = function (event) {
+        // 调用 preventDefault() 来避免浏览器对数据的默认处理
+        //（drop 事件的默认行为是以链接形式打开）
+        event.preventDefault();
+        var files = event.dataTransfer.files;
+
+        var name = files[0].name;
+        var type = files[0].type;
+        if(type == "image/jpg" ||
+            type == "image/png" ||
+            type == "image/gif"){//发送图片 直接发送
+
+            sendFile(files[0].path, files[0].name,1);
+        }
+
+
+    }
+
+
     ipcRenderer.on('receiveMessage', (event, data) => {
         writeMsg(data, data.data);
     });
@@ -236,14 +258,27 @@
 
     function writeMsg(sock, data) {
 
-        var span =
-            '<div class="panel-block">' +
-            '<span class="ip_name"  style="color: cadetblue">'+sock.remoteAddress+':&nbsp</span> <div class="container"><figure ' +
-            'style="background-color: white!important;" class="highlight"><pre><code class="language-html">' +
-            '<div class="leftd">' +
-            '<div class="speech left" ng-class="speech left">' +
-            escapeHtml(data) + '</div></div></code></pre><button class="button is-small bd-copy" ' +
-            'onclick="copyData(this)" >Copy</button></figure></div></div>';
+        var span = "";
+        if(sock.type == 0){
+            span =
+                '<div class="panel-block">' +
+                '<span class="ip_name"  style="color: cadetblue">'+sock.remoteAddress+':&nbsp</span> <div class="container"><figure ' +
+                'style="background-color: white!important;" class="highlight"><pre><code class="language-html">' +
+                '<div class="leftd">' +
+                '<div class="speech left" ng-class="speech left">' +
+                escapeHtml(data) + '</div></div></code></pre><button class="button is-small bd-copy" ' +
+                'onclick="copyData(this)" >Copy</button></figure></div></div>';
+
+        }else if(sock.type == 1){
+            span =
+                '<div class="panel-block">' +
+                '<span class="ip_name"  style="color: cadetblue">'+sock.remoteAddress+':&nbsp</span> <div class="container"><figure ' +
+                'style="background-color: white!important;" class="highlight"><pre><code class="language-html">' +
+                '<div class="leftd">' +
+                '<img class="speech left" ng-class="speech left"><img src="'+data+'"></img></div></div></code></pre><button class="button is-small bd-copy" ' +
+                'onclick="openFile()" >Open</button></figure></div></div>';
+
+        }
 
 
         $("#chatHistory").append(span);
@@ -307,7 +342,7 @@
 
     }
 
-    function sendFile(path, name) {
+    function sendFile(path, name, type) {
         var net = require('net');
         var HOST = $("#ip").val();
         //        var client = new net.Socket();
@@ -319,7 +354,9 @@
             console.log('CONNECTED TO: ' + HOST + ':' + fileport);
             client.write(JSON.stringify({
                 'id': "client2",
+
                 'fileInfo': {
+                    'type': type,
                     'fileSize': fileSize,
                     fileName: name
                 }
@@ -394,14 +431,27 @@
                 document.querySelector('.progress span').style.width = '100%';
                 holder.innerText = "发送完毕";
                 $("#holder").attr("class","holder");
-                var span =
-                    '<div class="panel-block">' +
-                    '<div class="container"><figure ' +
-                    'style="background-color: white!important;" class="highlight"><pre><code class="language-html">' +
-                    '<div class="rightd">' +
-                    '<div class="speech right" ng-class="speech right"><a class="isay"><i class="fa fa-file-archive-o"> 发送新文件：' +name + '</i></a></div></div></code></pre></figure></div>' +
-                    '<span class="ip_name"  ' +
-                    'style="color: #209cee">&nbsp:'+myip+'</span></div>';
+                var span = "";
+                if(type == 0){
+                    span =
+                        '<div class="panel-block">' +
+                        '<div class="container"><figure ' +
+                        'style="background-color: white!important;" class="highlight"><pre><code class="language-html">' +
+                        '<div class="rightd">' +
+                        '<div class="speech right" ng-class="speech right"><a class="isay"><i class="fa fa-file-archive-o"> 发送新文件：' +name + '</i></a></div></div></code></pre></figure></div>' +
+                        '<span class="ip_name"  ' +
+                        'style="color: #209cee">&nbsp:'+myip+'</span></div>';
+                }else if(type == 1){
+                    span =
+                        '<div class="panel-block">' +
+                        '<div class="container"><figure ' +
+                        'style="background-color: white!important;" class="highlight"><pre><code class="language-html">' +
+                        '<div class="rightd">' +
+                        '<div class="speech right" ng-class="speech right"><img class="isay" src="'+path+'"></img></div></div></code></pre></figure></div>' +
+                        '<span class="ip_name"  ' +
+                        'style="color: #209cee">&nbsp:'+myip+'</span></div>';
+                }
+
 
 
                 $("#chatHistory").append(span);
@@ -449,16 +499,29 @@
         var fromip = GetQueryString("ip");
         $("#title").text("ChatWindow(" + ip + ")");
 
+        var type = GetQueryString("type");
+        var span = "";
+        if(type == "0"){
+            span =
+                '<div class="panel-block">' +
+                '<span class="ip_name"  style="color: cadetblue">'+sock.remoteAddress+':&nbsp</span> <div class="container"><figure ' +
+                'style="background-color: white!important;" class="highlight"><pre><code class="language-html">' +
+                '<div class="leftd">' +
+                '<div class="speech left" ng-class="speech left">' +
+                escapeHtml(data) + '</div></div></code></pre><button class="button is-small bd-copy" ' +
+                'onclick="copyData(this)" >Copy</button></figure></div></div>';
 
+        }else if(sock.type == "1"){
+            span =
+                '<div class="panel-block">' +
+                '<span class="ip_name"  style="color: cadetblue">'+sock.remoteAddress+':&nbsp</span> <div class="container"><figure ' +
+                'style="background-color: white!important;" class="highlight"><pre><code class="language-html">' +
+                '<div class="leftd">' +
+                '<img class="speech left" ng-class="speech left"><img src="'+data+'"></img></div></div></code></pre><button class="button is-small bd-copy" ' +
+                'onclick="openFile()" >Open</button></figure></div></div>';
 
-        var span =
-           '<div class="panel-block">' +
-            '<span class="ip_name"  style="color: cadetblue">'+fromip+':&nbsp</span> <div class="container"><figure ' +
-            'style="background-color: white!important;" class="highlight"><pre><code class="language-html">' +
-            '<div class="leftd">' +
-            '<div class="speech left" ng-class="speech left">' +
-            escapeHtml(msg) + '</div></div></code></pre><button class="button is-small bd-copy" ' +
-            'onclick="copyData(this)" >Copy</button></figure></div></div>';
+        }
+
         $("#chatHistory").append(span);
     }
 

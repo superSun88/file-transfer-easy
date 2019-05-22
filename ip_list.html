@@ -142,6 +142,7 @@
             } else {
                 var transferData = new Object();
                 transferData.ip=ip;
+                transferData.type=0;
                 transferData.data=data.toString()
                 ipcRenderer.send('receiveMessage', transferData);
             }
@@ -267,21 +268,31 @@
                 var obj = new Object();
                 obj.data = "发来新文件："+ socket.file_info.fileName;
                 obj.remoteAddress = socket.remoteAddress;
-
+                obj.type =  socket.file_info.type;
+                obj.path =  receiveDirPath+socket.file_info.fileName;
                 var buf = Buffer.from(socket.buf, 'hex');
                 fs.appendFileSync(socket.fd, buf);
                 fs.closeSync(socket.fd);
                 socket.write('file transfer completed');
                 socket.file_info = null;
 
-
-                ipcRenderer.send('receive_new_file', obj);
-                var myNotification = new Notification('EasyTransfer', {
-                    body: '收到新文件,点击打开目录'
-                })
-                myNotification.onclick = () => {
-                    openDir()
+                if(obj.type == 0){
+                    ipcRenderer.send('receive_new_file', obj);
+                    var myNotification = new Notification('EasyTransfer', {
+                        body: '收到新文件,点击打开目录'
+                    })
+                    myNotification.onclick = () => {
+                        openDir()
+                    }
+                }else if(obj.type == 1){
+                    var transferData = new Object();
+                    transferData.ip=ip;
+                    transferData.data=obj.path;
+                    transferData.type=obj.type;
+                    ipcRenderer.send('receiveMessage', transferData);
                 }
+
+
 
             } else {
                 socket.write(data.length + "");

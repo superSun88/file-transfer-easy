@@ -185,7 +185,7 @@ ipcMain.on('receiveMessage', (event, data) => {
     let chat_ip_win = new Object();
     chat_ip_win.ip = ip;
     var args = encodeURI("chat.html?ip=" + ip +
-                    "&msg=" + data.data);
+                    "&msg=" + data.data+"&type="+data.type);
     chat_ip_win.win = createNewChatWin(args, ip);
     chat_ip.push(chat_ip_win);
   }
