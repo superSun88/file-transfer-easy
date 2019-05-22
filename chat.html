@@ -504,20 +504,20 @@
         if(type == "0"){
             span =
                 '<div class="panel-block">' +
-                '<span class="ip_name"  style="color: cadetblue">'+sock.remoteAddress+':&nbsp</span> <div class="container"><figure ' +
+                '<span class="ip_name"  style="color: cadetblue">'+ip+':&nbsp</span> <div class="container"><figure ' +
                 'style="background-color: white!important;" class="highlight"><pre><code class="language-html">' +
                 '<div class="leftd">' +
                 '<div class="speech left" ng-class="speech left">' +
                 escapeHtml(data) + '</div></div></code></pre><button class="button is-small bd-copy" ' +
                 'onclick="copyData(this)" >Copy</button></figure></div></div>';
 
-        }else if(sock.type == "1"){
+        }else if(type == "1"){
             span =
                 '<div class="panel-block">' +
-                '<span class="ip_name"  style="color: cadetblue">'+sock.remoteAddress+':&nbsp</span> <div class="container"><figure ' +
+                '<span class="ip_name"  style="color: cadetblue">'+ip+':&nbsp</span> <div class="container"><figure ' +
                 'style="background-color: white!important;" class="highlight"><pre><code class="language-html">' +
                 '<div class="leftd">' +
-                '<img class="speech left" ng-class="speech left"><img src="'+data+'"></img></div></div></code></pre><button class="button is-small bd-copy" ' +
+                '<img class="speech left" ng-class="speech left"><img src="'+msg+'"></img></div></div></code></pre><button class="button is-small bd-copy" ' +
                 'onclick="openFile()" >Open</button></figure></div></div>';
 
         }
