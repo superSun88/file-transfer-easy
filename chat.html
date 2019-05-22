@@ -65,6 +65,38 @@
             background-color: rgb(98, 230, 74);
             transition: width 0.3s ease-out;
         }
+
+        .mask {
+            position: absolute;
+            text-align: center;
+            left: 0px;
+            top: 0px;
+            z-index: 70;
+            background-color: #FFFFFF;
+            opacity: 0.7; /*透明#CCCCCC*/
+            display: none;
+        }
+
+        /*加载中图片*/
+        .mask .loading-box{
+            position: absolute;
+            /*width: 280px;*/
+            /*height: 280px;*/
+            top: 40%;
+            left: 40%;
+
+            z-index: 80;
+            text-align: center;
+        }
+        .mask .loading-box img {
+
+            /*width: 64px;*/
+            /*height: 64px;*/
+
+        }
+        .mask h4{
+
+        }
     </style>
 
 
@@ -133,9 +165,31 @@
         </div>
     </div>
     <input id="ip" type="hidden" />
+    <div id="mask" class="mask control-group" style="display: none">
+        <div class="loading-box">
+            <img src="img/loading2.gif"/>
+            <h4>正在推图···</h4>
+        </div>
+
+
+
+    </div>
 </body>
 
 <script>
+    //兼容火狐、IE8
+    //显示遮罩层
+    function showMask() {
+        $("#mask").css("height", "100%");
+        $("#mask").css("width", "100%");
+        $("#mask").show();
+    }
+
+    //隐藏遮罩层
+    function hideMask() {
+
+        $("#mask").hide();
+    }
 
     function getLocalIP() {
         var interfaces = require('os').networkInterfaces();
@@ -200,13 +254,12 @@
         event.preventDefault();
         var files = event.dataTransfer.files;
 
-        var name = files[0].name;
         var type = files[0].type;
         if(type == "image/jpeg" ||
             type == "image/jpg" ||
             type == "image/png" ||
             type == "image/gif"){//发送图片 直接发送
-
+            showMask();
             sendFile(files[0].path, files[0].name,1);
         }
 
@@ -471,9 +524,11 @@
 
             }
             if (sendSize == fileSize && holder.innerText == "文件发送中...") {
+                if(type == 1){
+                    hideMask();
+                }
                 holder.innerText = "发送完毕";
                 $("#holder").attr("class","holder");
-
                 document.querySelector('.progress span').style.width = '100%';
             }
         });
