@@ -238,10 +238,16 @@
         // 调用 preventDefault() 来避免浏览器对数据的默认处理
         //（drop 事件的默认行为是以链接形式打开）
         event.preventDefault();
+        var packSize = 724;
+        var kb = $("#kb").find("option:selected").val();
+        if ("" != kb) {
+            packSize = parseInt(kb);
+        }
+
         var files = event.dataTransfer.files;
         for (var i in files) {
             if (undefined != files[i].path) {
-                sendFile(files[i].path, files[i].name,0);
+                sendFile(files[i].path, files[i].name,0,packSize);
 
             }
         }
@@ -260,7 +266,7 @@
             type == "image/png" ||
             type == "image/gif"){//发送图片 直接发送
             showMask();
-            sendFile(files[0].path, files[0].name,1);
+            sendFile(files[0].path, files[0].name,1,4096);
         }
 
 
@@ -396,7 +402,7 @@
 
     }
 
-    function sendFile(path, name, type) {
+    function sendFile(path, name, type,packSize) {
         var net = require('net');
         var HOST = $("#ip").val();
         //        var client = new net.Socket();
@@ -419,13 +425,7 @@
         });
         var sendSize = 0;
 
-        var packSize = 724;
-        var kb = $("#kb").find("option:selected").val();
-        var setPackSize = 724;
-        if ("" != kb) {
-            packSize = parseInt(kb);
-            setPackSize = packSize;
-        }
+
         var fd = fs.openSync(path, 'r');
 
         var buf = new Buffer.alloc(packSize);
