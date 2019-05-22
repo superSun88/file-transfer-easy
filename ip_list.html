@@ -286,7 +286,7 @@
                     }
                 }else if(obj.type == 1){
                     var transferData = new Object();
-                    transferData.ip=ip;
+                    transferData.ip=socket.remoteAddress;
                     transferData.data=obj.path;
                     transferData.type=obj.type;
                     ipcRenderer.send('receiveMessage', transferData);
