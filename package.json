@@ -9,7 +9,6 @@
     "packageMac": "electron-packager . FileTransferEasyMac --platform=darwin --arch=x64 --out ../FileTransferEasyMac  --overwrite --asar --app-version=2.0.1",
     "packageLinux": "electron-packager . FileTransferEasyLinux --platform=linux --arch=x64 --out ../FileTransferEasyLinux  --overwrite"
   },
-  "repository": "https://github.com/electron/electron-quick-start",
   "keywords": [
     "Electron",
     "quick",
@@ -18,7 +17,7 @@
     "demo"
   ],
   "author": "sunqingchao",
-  "license": "CC0-1.0",
+  "license": "SUN-1.0.0",
   "devDependencies": {
     "electron": "^5.0.1"
   },
