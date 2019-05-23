@@ -16628,7 +16628,7 @@ div.speech.right:before {
     position: absolute;
     width: 0;
     height: 0;
-    top: 9px;
+    top: 49%;
     bottom: auto;
     left: auto;
     right: -10px;
@@ -16640,7 +16640,7 @@ div.speech.right:after {
     position: absolute;
     width: 0;
     height: 0;
-    top: 10px;
+    top: 49%;
     bottom: auto;
     left: auto;
     right: -8px;
@@ -16661,7 +16661,7 @@ div .left:before {
     position: absolute;
     width: 0;
     height: 0;
-    top: 9px;
+    top: 49%;
     bottom: auto;
     left: -11px;
     border-width: 9px 10px 9px 0;
@@ -16672,7 +16672,7 @@ div .left:after {
     position: absolute;
     width: 0;
     height: 0;
-    top: 10px;
+    top: 49%;
     bottom: auto;
     left: -9px;
     border-width: 8px 9px 8px 0;

@@ -239,6 +239,14 @@ var template = [ {
         label: '强制重新加载',
         // accelerator: 'CmdOrCtrl+C',
         role: 'forcereload'
+    }, {
+        label: '复制',
+        accelerator: 'CmdOrCtrl+C',
+        role: 'copy'
+    }, {
+        label: '粘贴',
+        accelerator: 'CmdOrCtrl+V',
+        role: 'paste'
     }]
 }, {
     label: '帮助',
