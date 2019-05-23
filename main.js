@@ -187,9 +187,12 @@ ipcMain.on('receiveMessage', (event, data) => {
     console.log("create window " + ip)
     let chat_ip_win = new Object();
     chat_ip_win.ip = ip;
-    var args = encodeURI("chat.html?ip=" + ip +
-                    "&msg=" + data.data+"&type="+data.type);
+    var args = encodeURI("chat.html?ip=" + ip);
     chat_ip_win.win = createNewChatWin(args, ip);
+    setTimeout(function(){
+        data.remoteAddress = ip;
+        chat_ip_win.win.webContents.send("receiveMessage", data)
+    },1000);
     chat_ip.push(chat_ip_win);
   }
   // console.log(data.ip)
