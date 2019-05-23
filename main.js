@@ -8,8 +8,11 @@ const {
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow
-
+const electron = require('electron');
+const Menu = electron.Menu;
 function createWindow() {
+    const menu = Menu.buildFromTemplate(template)
+    Menu.setApplicationMenu(menu)
   // Create the browser window.
   mainWindow = new BrowserWindow({
     width: 800,
@@ -225,5 +228,27 @@ if (nofind) {
 
 })
 
+
+var template = [ {
+    label: '编辑',
+    submenu: [{
+        label: '重新加载',
+        // accelerator: 'CmdOrCtrl+C',
+        role: 'reload'
+    },{
+        label: '强制重新加载',
+        // accelerator: 'CmdOrCtrl+C',
+        role: 'forcereload'
+    }]
+}, {
+    label: '帮助',
+    role: 'help',
+    submenu: [{
+        label: '关注该项目',
+        click: function () {
+            electron.shell.openExternal('https://github.com/superSun88/file-transfer-easy/')
+        }
+    }]
+}];
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
