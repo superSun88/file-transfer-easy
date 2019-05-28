@@ -30,6 +30,7 @@
             /*border-radius: 10px;*/
             transition: .3s all ease-in-out;
         }
+
         .holder {
             min-height: 200px;
             background: #eee;
@@ -73,12 +74,13 @@
             top: 0px;
             z-index: 70;
             background-color: #FFFFFF;
-            opacity: 0.7; /*透明#CCCCCC*/
+            opacity: 0.7;
+            /*透明#CCCCCC*/
             display: none;
         }
 
         /*加载中图片*/
-        .mask .loading-box{
+        .mask .loading-box {
             position: absolute;
             /*width: 280px;*/
             /*height: 280px;*/
@@ -88,17 +90,18 @@
             z-index: 80;
             text-align: center;
         }
+
         .mask .loading-box img {
 
             /*width: 64px;*/
             /*height: 64px;*/
 
         }
-        .mask h4{
 
-        }
-        pre{
-            max-height: none!important;
+        .mask h4 {}
+
+        pre {
+            max-height: none !important;
         }
     </style>
 
@@ -110,19 +113,20 @@
     <div class="field" id="chatHistory">
 
     </div>
+    <div class="control">
+        <span id="connectSuccess"></span>
+    </div>
     <div class="field" style="">
-        <textarea class="textarea is-primary" id="msg" type="text"
-                  placeholder="请输入文本信息"></textarea>
+        <textarea class="textarea is-primary" id="msg" type="text" placeholder="请输入文本信息"></textarea>
     </div>
     <div class="field" style="text-align: right">
         <a class="button is-focused" onclick="sendMsg()">
-             <i class="fa fa-paper-plane"> 发送信息</i>
+            <i class="fa fa-paper-plane"> 发送信息</i>
         </a>
         <!--<a class="button is-success" onclick="sendMsg()" id="sendImageBtn">-->
-            <!--<i class="fa fa-file-image-o"> 发送图片</i>-->
+        <!--<i class="fa fa-file-image-o"> 发送图片</i>-->
         <!--</a>-->
-        <button onclick="modal()" class="button is-info modal-button" data-target="modal"
-                aria-haspopup="true">
+        <button onclick="modal()" class="button is-info modal-button" data-target="modal" aria-haspopup="true">
             <i class="fa fa-file-archive-o"> 发送文件</i></button>
     </div>
 
@@ -144,9 +148,9 @@
                         </select>
                     </div>
                     <!--<div class="control">-->
-                        <!--<input type="text" id="kb"-->
-                               <!--class="input is-small"-->
-                               <!--placeholder="发送大小（默认724KB）" />-->
+                    <!--<input type="text" id="kb"-->
+                    <!--class="input is-small"-->
+                    <!--placeholder="发送大小（默认724KB）" />-->
                     <!--</div>-->
                 </div>
 
@@ -170,7 +174,7 @@
     <input id="ip" type="hidden" />
     <div id="mask" class="mask control-group" style="display: none">
         <div class="loading-box">
-            <img src="img/loading2.gif"/>
+            <img src="img/loading2.gif" />
             <h4>正在推图···</h4>
         </div>
 
@@ -189,8 +193,15 @@
     }
 
     //隐藏遮罩层
-    function hideMask() {
+    function hideMask(success) {
 
+        if(success){
+            $("#connectSuccess").html("");
+
+        }else{
+            $("#connectSuccess").html("<span style='color: red'>推送失败，请确认客户端连接状态</span>");
+
+        }
         $("#mask").hide();
     }
 
@@ -226,14 +237,14 @@
 
     holder.ondragenter = holder.ondragover = function (event) {
         event.preventDefault();
-        $("#holder").attr("class","holder-ondrag");
+        $("#holder").attr("class", "holder-ondrag");
         holder.innerText = "松开鼠标";
         document.querySelector('.progress span').style.width = '0%';
     };
 
     holder.ondragleave = function (event) {
         event.preventDefault();
-        $("#holder").attr("class","holder");
+        $("#holder").attr("class", "holder");
         holder.innerText = "请拖拽文件到这里...";
     };
 
@@ -250,7 +261,7 @@
         var files = event.dataTransfer.files;
         for (var i in files) {
             if (undefined != files[i].path) {
-                sendFile(files[i].path, files[i].name,0,packSize);
+                sendFile(files[i].path, files[i].name, 0, packSize);
 
             }
         }
@@ -264,12 +275,12 @@
         var files = event.dataTransfer.files;
 
         var type = files[0].type;
-        if(type == "image/jpeg" ||
+        if (type == "image/jpeg" ||
             type == "image/jpg" ||
             type == "image/png" ||
-            type == "image/gif"){//发送图片 直接发送
+            type == "image/gif") { //发送图片 直接发送
             showMask();
-            sendFile(files[0].path, files[0].name,1,4096);
+            sendFile(files[0].path, files[0].name, 1, 4096);
         }
 
 
@@ -282,6 +293,7 @@
     ipcRenderer.on('receiveNewFile', (event, data) => {
         writeFileMsg(data, data.data);
     });
+
     function sendMsg() {
         var msg = $("#msg").val();
         sendSocketMsg(msg);
@@ -292,7 +304,8 @@
 
         var span =
             '<div class="panel-block">' +
-            '<span class="ip_name"  style="color: cadetblue">'+sock.remoteAddress+':&nbsp</span> <div class="container"><figure ' +
+            '<span class="ip_name"  style="color: cadetblue">' + sock.remoteAddress +
+            ':&nbsp</span> <div class="container"><figure ' +
             'style="background-color: white!important;" class="highlight"><pre><code class="language-html">' +
             '<div class="leftd">' +
             '<div class="speech left" ng-class="speech left"><a class="fa fa-file-archive-o"> ' +
@@ -305,6 +318,7 @@
 
 
     }
+
     function openFile() {
         var exec = require('child_process').exec;
         if (os.type == 'Darwin') {
@@ -322,23 +336,26 @@
     function writeMsg(sock, data) {
 
         var span = "";
-        if(sock.type == 0){
+        if (sock.type == 0) {
             span =
                 '<div class="panel-block">' +
-                '<span class="ip_name"  style="color: cadetblue">'+sock.remoteAddress+':&nbsp</span> <div class="container"><figure ' +
+                '<span class="ip_name"  style="color: cadetblue">' + sock.remoteAddress +
+                ':&nbsp</span> <div class="container"><figure ' +
                 'style="background-color: white!important;" class="highlight"><pre><code class="language-html">' +
                 '<div class="leftd">' +
                 '<div class="speech left" ng-class="speech left">' +
                 escapeHtml(data) + '</div></div></code></pre><button class="button is-small bd-copy" ' +
                 'onclick="copyData(this)" >Copy</button></figure></div></div>';
 
-        }else if(sock.type == 1){
+        } else if (sock.type == 1) {
             span =
                 '<div class="panel-block">' +
-                '<span class="ip_name"  style="color: cadetblue">'+sock.remoteAddress+':&nbsp</span> <div class="container"><figure ' +
+                '<span class="ip_name"  style="color: cadetblue">' + sock.remoteAddress +
+                ':&nbsp</span> <div class="container"><figure ' +
                 'style="background-color: white!important;" class="highlight"><pre><code class="language-html">' +
                 '<div class="leftd">' +
-                '<div class="speech left" ng-class="speech left"><img src="'+data+'" alt=""></img></div></div></code></pre><button class="button is-small bd-copy" ' +
+                '<div class="speech left" ng-class="speech left"><img src="' + data +
+                '" alt=""></img></div></div></code></pre><button class="button is-small bd-copy" ' +
                 'onclick="openFile()" >Open</button></figure></div></div>';
 
         }
@@ -390,7 +407,9 @@
                 'style="background-color: white!important;" class="highlight"><pre><code class="language-html">' +
                 '<div class="rightd">' +
                 '<div class="speech right" ng-class="speech right">' +
-                escapeHtml(msg) + '</div></div></code></pre></figure></div><span class="ip_name"  style="color: #209cee">&nbsp:'+myip+'</span></div>';
+                escapeHtml(msg) +
+                '</div></div></code></pre></figure></div><span class="ip_name"  style="color: #209cee">&nbsp:' +
+                myip + '</span></div>';
 
 
             $("#chatHistory").append(span);
@@ -405,7 +424,7 @@
 
     }
 
-    function sendFile(path, name, type,packSize) {
+    function sendFile(path, name, type, packSize) {
         var net = require('net');
         var HOST = $("#ip").val();
         //        var client = new net.Socket();
@@ -428,7 +447,11 @@
         });
         var sendSize = 0;
 
-
+        client.on('error', function () {
+            if (type == 1) {
+                hideMask(false);
+            }
+        });
         var fd = fs.openSync(path, 'r');
 
         var buf = new Buffer.alloc(packSize);
@@ -487,26 +510,28 @@
                 console.log('Transfer Completed!');
                 document.querySelector('.progress span').style.width = '100%';
                 holder.innerText = "发送完毕";
-                $("#holder").attr("class","holder");
+                $("#holder").attr("class", "holder");
                 var span = "";
-                if(type == 0){
+                if (type == 0) {
                     span =
                         '<div class="panel-block">' +
                         '<div class="container"><figure ' +
                         'style="background-color: white!important;" class="highlight"><pre><code class="language-html">' +
                         '<div class="rightd">' +
-                        '<div class="speech right" ng-class="speech right"><a class="isay"><i class="fa fa-file-archive-o"> 发送新文件：' +name + '</i></a></div></div></code></pre></figure></div>' +
+                        '<div class="speech right" ng-class="speech right"><a class="isay"><i class="fa fa-file-archive-o"> 发送新文件：' +
+                        name + '</i></a></div></div></code></pre></figure></div>' +
                         '<span class="ip_name"  ' +
-                        'style="color: #209cee">&nbsp:'+myip+'</span></div>';
-                }else if(type == 1){
+                        'style="color: #209cee">&nbsp:' + myip + '</span></div>';
+                } else if (type == 1) {
                     span =
                         '<div class="panel-block">' +
                         '<div class="container"><figure ' +
                         'style="background-color: white!important;" class="highlight"><pre><code class="language-html">' +
                         '<div class="rightd">' +
-                        '<div class="speech right" ng-class="speech right"><img class="isay" src="'+path+'"></img></div></div></code></pre></figure></div>' +
+                        '<div class="speech right" ng-class="speech right"><img class="isay" src="' + path +
+                        '"></img></div></div></code></pre></figure></div>' +
                         '<span class="ip_name"  ' +
-                        'style="color: #209cee">&nbsp:'+myip+'</span></div>';
+                        'style="color: #209cee">&nbsp:' + myip + '</span></div>';
                 }
 
 
@@ -527,11 +552,11 @@
 
             }
             if (sendSize == fileSize && holder.innerText == "文件发送中...") {
-                if(type == 1){
-                    hideMask();
+                if (type == 1) {
+                    hideMask(true);
                 }
                 holder.innerText = "发送完毕";
-                $("#holder").attr("class","holder");
+                $("#holder").attr("class", "holder");
                 document.querySelector('.progress span').style.width = '100%';
             }
         });
@@ -560,23 +585,26 @@
 
         var type = GetQueryString("type");
         var span = "";
-        if(type == "0"){
+        if (type == "0") {
             span =
                 '<div class="panel-block">' +
-                '<span class="ip_name"  style="color: cadetblue">'+fromip+':&nbsp</span> <div class="container"><figure ' +
+                '<span class="ip_name"  style="color: cadetblue">' + fromip +
+                ':&nbsp</span> <div class="container"><figure ' +
                 'style="background-color: white!important;" class="highlight"><pre><code class="language-html">' +
                 '<div class="leftd">' +
                 '<div class="speech left" ng-class="speech left">' +
                 escapeHtml(msg) + '</div></div></code></pre><button class="button is-small bd-copy" ' +
                 'onclick="copyData(this)" >Copy</button></figure></div></div>';
 
-        }else if(type == "1"){
+        } else if (type == "1") {
             span =
                 '<div class="panel-block">' +
-                '<span class="ip_name"  style="color: cadetblue">'+fromip+':&nbsp</span> <div class="container"><figure ' +
+                '<span class="ip_name"  style="color: cadetblue">' + fromip +
+                ':&nbsp</span> <div class="container"><figure ' +
                 'style="background-color: white!important;" class="highlight"><pre><code class="language-html">' +
                 '<div class="leftd">' +
-                '<div class="speech left" ng-class="speech left"><img src="'+msg+'" alt=""></img></div></div></code></pre><button class="button is-small bd-copy" ' +
+                '<div class="speech left" ng-class="speech left"><img src="' + msg +
+                '" alt=""></img></div></div></code></pre><button class="button is-small bd-copy" ' +
                 'onclick="openFile()" >Open</button></figure></div></div>';
 
         }
@@ -590,7 +618,8 @@
         $("#title").text("ChatWindow(" + ip + ")");
         var span =
             '<div class="panel-block">' +
-            '<span class="ip_name"  style="color: cadetblue">'+fromip+':&nbsp</span> <div class="container"><figure ' +
+            '<span class="ip_name"  style="color: cadetblue">' + fromip +
+            ':&nbsp</span> <div class="container"><figure ' +
             'style="background-color: white!important;" class="highlight"><pre><code class="language-html">' +
             '<div class="leftd">' +
             '<div class="speech left" ng-class="speech left"><a class="fa fa-file-archive-o"> ' +
@@ -623,7 +652,7 @@
                     return "&amp;";
                 case "\"":
                     return "&quot;";
-                    
+
             }
         });
     }
