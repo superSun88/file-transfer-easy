@@ -11,10 +11,11 @@
     -->
     <script>
         window.$ = window.jQuery = require('jquery');
-        
+        window.toastr = require('./node_modules/toastr/toastr.js');
     </script>
-      <script src="./node_modules/toastr/toastr.js"></script>
+
     <style>
+        @import 'node_modules/toastr/build/toastr.css';
         
         @import 'node_modules/bulma/css/bulma.css';
         @import 'node_modules/font-awesome/css/font-awesome.min.css';
@@ -553,7 +554,8 @@
        
 
     }
-    toastr.info("sfdf")
+    // toastr.success("已粘贴到剪贴板");
+    // bulmabox.alert("sfdf")
     
     function escapeHtml(text) {
 
