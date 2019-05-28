@@ -336,6 +336,7 @@
 
         });
         client.on('error', function () {
+            toastr.error("发送失败，请确认客户端连接状态");
             client.end();
         });
 
