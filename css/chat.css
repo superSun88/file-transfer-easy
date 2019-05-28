@@ -635,7 +635,8 @@ table th {
     }
 }
 
-@media screen and (min-width: 769px), print {
+@media screen and (min-width: 769px),
+print {
     .is-size-1-tablet {
         font-size: 3rem !important
     }
@@ -807,7 +808,8 @@ table th {
     }
 }
 
-@media screen and (min-width: 769px), print {
+@media screen and (min-width: 769px),
+print {
     .has-text-centered-tablet {
         text-align: center !important
     }
@@ -861,7 +863,8 @@ table th {
     }
 }
 
-@media screen and (min-width: 769px), print {
+@media screen and (min-width: 769px),
+print {
     .has-text-justified-tablet {
         text-align: justify !important
     }
@@ -915,7 +918,8 @@ table th {
     }
 }
 
-@media screen and (min-width: 769px), print {
+@media screen and (min-width: 769px),
+print {
     .has-text-left-tablet {
         text-align: left !important
     }
@@ -969,7 +973,8 @@ table th {
     }
 }
 
-@media screen and (min-width: 769px), print {
+@media screen and (min-width: 769px),
+print {
     .has-text-right-tablet {
         text-align: right !important
     }
@@ -1285,7 +1290,8 @@ a.has-text-danger:hover {
     }
 }
 
-@media screen and (min-width: 769px), print {
+@media screen and (min-width: 769px),
+print {
     .is-block-tablet {
         display: block !important
     }
@@ -1343,7 +1349,8 @@ a.has-text-danger:hover {
     }
 }
 
-@media screen and (min-width: 769px), print {
+@media screen and (min-width: 769px),
+print {
     .is-flex-tablet {
         display: flex !important
     }
@@ -1401,7 +1408,8 @@ a.has-text-danger:hover {
     }
 }
 
-@media screen and (min-width: 769px), print {
+@media screen and (min-width: 769px),
+print {
     .is-inline-tablet {
         display: inline !important
     }
@@ -1459,7 +1467,8 @@ a.has-text-danger:hover {
     }
 }
 
-@media screen and (min-width: 769px), print {
+@media screen and (min-width: 769px),
+print {
     .is-inline-block-tablet {
         display: inline-block !important
     }
@@ -1517,7 +1526,8 @@ a.has-text-danger:hover {
     }
 }
 
-@media screen and (min-width: 769px), print {
+@media screen and (min-width: 769px),
+print {
     .is-inline-flex-tablet {
         display: inline-flex !important
     }
@@ -1586,7 +1596,8 @@ a.has-text-danger:hover {
     }
 }
 
-@media screen and (min-width: 769px), print {
+@media screen and (min-width: 769px),
+print {
     .is-hidden-tablet {
         display: none !important
     }
@@ -1644,7 +1655,8 @@ a.has-text-danger:hover {
     }
 }
 
-@media screen and (min-width: 769px), print {
+@media screen and (min-width: 769px),
+print {
     .is-invisible-tablet {
         visibility: hidden !important
     }
@@ -3247,7 +3259,7 @@ fieldset[disabled] .button {
     }
 }
 
-.content li + li {
+.content li+li {
     margin-top: .25em
 }
 
@@ -3437,7 +3449,7 @@ fieldset[disabled] .button {
     border-bottom-width: 0
 }
 
-.content .tabs li + li {
+.content .tabs li+li {
     margin-top: 0
 }
 
@@ -3648,7 +3660,7 @@ fieldset[disabled] .button {
     background: 0 0
 }
 
-.notification > .delete {
+.notification>.delete {
     position: absolute;
     right: .5rem;
     top: .5rem
@@ -4403,11 +4415,11 @@ a.tag:hover {
     font-weight: inherit
 }
 
-.title + .highlight {
+.title+.highlight {
     margin-top: -.75rem
 }
 
-.title:not(.is-spaced) + .subtitle {
+.title:not(.is-spaced)+.subtitle {
     margin-top: -1.25rem
 }
 
@@ -4451,7 +4463,7 @@ a.tag:hover {
     font-weight: 600
 }
 
-.subtitle:not(.is-spaced) + .title {
+.subtitle:not(.is-spaced)+.title {
     margin-top: -1.25rem
 }
 
@@ -4890,7 +4902,7 @@ fieldset[disabled] .radio {
     cursor: not-allowed
 }
 
-.radio + .radio {
+.radio+.radio {
     margin-left: .5em
 }
 
@@ -5822,16 +5834,16 @@ fieldset[disabled] .select select:hover {
     justify-content: flex-start
 }
 
-.field.is-grouped > .control {
+.field.is-grouped>.control {
     flex-shrink: 0
 }
 
-.field.is-grouped > .control:not(:last-child) {
+.field.is-grouped>.control:not(:last-child) {
     margin-bottom: 0;
     margin-right: .75rem
 }
 
-.field.is-grouped > .control.is-expanded {
+.field.is-grouped>.control.is-expanded {
     flex-grow: 1;
     flex-shrink: 1
 }
@@ -5848,8 +5860,8 @@ fieldset[disabled] .select select:hover {
     flex-wrap: wrap
 }
 
-.field.is-grouped.is-grouped-multiline > .control:last-child,
-.field.is-grouped.is-grouped-multiline > .control:not(:last-child) {
+.field.is-grouped.is-grouped-multiline>.control:last-child,
+.field.is-grouped.is-grouped-multiline>.control:not(:last-child) {
     margin-bottom: .75rem
 }
 
@@ -5861,7 +5873,8 @@ fieldset[disabled] .select select:hover {
     margin-bottom: 0
 }
 
-@media screen and (min-width: 769px), print {
+@media screen and (min-width: 769px),
+print {
     .field.is-horizontal {
         display: flex
     }
@@ -5877,7 +5890,8 @@ fieldset[disabled] .select select:hover {
     }
 }
 
-@media screen and (min-width: 769px), print {
+@media screen and (min-width: 769px),
+print {
     .field-label {
         flex-basis: 0;
         flex-grow: 1;
@@ -5910,7 +5924,8 @@ fieldset[disabled] .select select:hover {
     margin-bottom: 0
 }
 
-@media screen and (min-width: 769px), print {
+@media screen and (min-width: 769px),
+print {
     .field-body {
         display: flex;
         flex-basis: 0;
@@ -5922,15 +5937,15 @@ fieldset[disabled] .select select:hover {
         margin-bottom: 0
     }
 
-    .field-body > .field {
+    .field-body>.field {
         flex-shrink: 1
     }
 
-    .field-body > .field:not(.is-narrow) {
+    .field-body>.field:not(.is-narrow) {
         flex-grow: 1
     }
 
-    .field-body > .field:not(:last-child) {
+    .field-body>.field:not(:last-child) {
         margin-right: .75rem
     }
 }
@@ -5943,31 +5958,31 @@ fieldset[disabled] .select select:hover {
     text-align: left
 }
 
-.control.has-icons-left .input:focus ~ .icon,
-.control.has-icons-left .select:focus ~ .icon,
-.control.has-icons-right .input:focus ~ .icon,
-.control.has-icons-right .select:focus ~ .icon {
+.control.has-icons-left .input:focus~.icon,
+.control.has-icons-left .select:focus~.icon,
+.control.has-icons-right .input:focus~.icon,
+.control.has-icons-right .select:focus~.icon {
     color: #7a7a7a
 }
 
-.control.has-icons-left .input.is-small ~ .icon,
-.control.has-icons-left .select.is-small ~ .icon,
-.control.has-icons-right .input.is-small ~ .icon,
-.control.has-icons-right .select.is-small ~ .icon {
+.control.has-icons-left .input.is-small~.icon,
+.control.has-icons-left .select.is-small~.icon,
+.control.has-icons-right .input.is-small~.icon,
+.control.has-icons-right .select.is-small~.icon {
     font-size: .75rem
 }
 
-.control.has-icons-left .input.is-medium ~ .icon,
-.control.has-icons-left .select.is-medium ~ .icon,
-.control.has-icons-right .input.is-medium ~ .icon,
-.control.has-icons-right .select.is-medium ~ .icon {
+.control.has-icons-left .input.is-medium~.icon,
+.control.has-icons-left .select.is-medium~.icon,
+.control.has-icons-right .input.is-medium~.icon,
+.control.has-icons-right .select.is-medium~.icon {
     font-size: 1.25rem
 }
 
-.control.has-icons-left .input.is-large ~ .icon,
-.control.has-icons-left .select.is-large ~ .icon,
-.control.has-icons-right .input.is-large ~ .icon,
-.control.has-icons-right .select.is-large ~ .icon {
+.control.has-icons-left .input.is-large~.icon,
+.control.has-icons-left .select.is-large~.icon,
+.control.has-icons-right .input.is-large~.icon,
+.control.has-icons-right .select.is-large~.icon {
     font-size: 1.5rem
 }
 
@@ -6051,7 +6066,7 @@ fieldset[disabled] .select select:hover {
     pointer-events: none
 }
 
-.breadcrumb li + li::before {
+.breadcrumb li+li::before {
     color: #b5b5b5;
     content: "\0002f"
 }
@@ -6094,19 +6109,19 @@ fieldset[disabled] .select select:hover {
     font-size: 1.5rem
 }
 
-.breadcrumb.has-arrow-separator li + li::before {
+.breadcrumb.has-arrow-separator li+li::before {
     content: "\02192"
 }
 
-.breadcrumb.has-bullet-separator li + li::before {
+.breadcrumb.has-bullet-separator li+li::before {
     content: "\02022"
 }
 
-.breadcrumb.has-dot-separator li + li::before {
+.breadcrumb.has-dot-separator li+li::before {
     content: "\000b7"
 }
 
-.breadcrumb.has-succeeds-separator li + li::before {
+.breadcrumb.has-succeeds-separator li+li::before {
     content: "\0227B"
 }
 
@@ -6282,7 +6297,7 @@ button.dropdown-item.is-active {
     display: flex
 }
 
-.level.is-mobile .level-left + .level-right {
+.level.is-mobile .level-left+.level-right {
     margin-top: 0
 }
 
@@ -6295,12 +6310,13 @@ button.dropdown-item.is-active {
     flex-grow: 1
 }
 
-@media screen and (min-width: 769px), print {
+@media screen and (min-width: 769px),
+print {
     .level {
         display: flex
     }
 
-    .level > .level-item:not(.is-narrow) {
+    .level>.level-item:not(.is-narrow) {
         flex-grow: 1
     }
 }
@@ -6337,7 +6353,8 @@ button.dropdown-item.is-active {
     flex-grow: 1
 }
 
-@media screen and (min-width: 769px), print {
+@media screen and (min-width: 769px),
+print {
 
     .level-left .level-item:not(:last-child),
     .level-right .level-item:not(:last-child) {
@@ -6351,12 +6368,13 @@ button.dropdown-item.is-active {
 }
 
 @media screen and (max-width: 768px) {
-    .level-left + .level-right {
+    .level-left+.level-right {
         margin-top: 1.5rem
     }
 }
 
-@media screen and (min-width: 769px), print {
+@media screen and (min-width: 769px),
+print {
     .level-left {
         display: flex
     }
@@ -6367,7 +6385,8 @@ button.dropdown-item.is-active {
     justify-content: flex-end
 }
 
-@media screen and (min-width: 769px), print {
+@media screen and (min-width: 769px),
+print {
     .level-right {
         display: flex
     }
@@ -6437,17 +6456,17 @@ a.list-item {
     padding-top: .5rem
 }
 
-.media .media .media + .media {
+.media .media .media+.media {
     margin-top: .5rem
 }
 
-.media + .media {
+.media+.media {
     border-top: 1px solid rgba(219, 219, 219, .5);
     margin-top: 1rem;
     padding-top: 1rem
 }
 
-.media.is-large + .media {
+.media.is-large+.media {
     margin-top: 1.5rem;
     padding-top: 1.5rem
 }
@@ -6724,7 +6743,7 @@ a.list-item {
     margin-left: .75em
 }
 
-.message-header + .message-body {
+.message-header+.message-body {
     border-width: 0;
     border-top-left-radius: 0;
     border-top-right-radius: 0
@@ -6775,7 +6794,8 @@ a.list-item {
     width: 100%
 }
 
-@media screen and (min-width: 769px), print {
+@media screen and (min-width: 769px),
+print {
 
     .modal-card,
     .modal-content {
@@ -6859,16 +6879,16 @@ a.list-item {
 }
 
 .navbar.is-white .navbar-brand .navbar-link,
-.navbar.is-white .navbar-brand > .navbar-item {
+.navbar.is-white .navbar-brand>.navbar-item {
     color: #0a0a0a
 }
 
 .navbar.is-white .navbar-brand .navbar-link.is-active,
 .navbar.is-white .navbar-brand .navbar-link:focus,
 .navbar.is-white .navbar-brand .navbar-link:hover,
-.navbar.is-white .navbar-brand > a.navbar-item.is-active,
-.navbar.is-white .navbar-brand > a.navbar-item:focus,
-.navbar.is-white .navbar-brand > a.navbar-item:hover {
+.navbar.is-white .navbar-brand>a.navbar-item.is-active,
+.navbar.is-white .navbar-brand>a.navbar-item:focus,
+.navbar.is-white .navbar-brand>a.navbar-item:hover {
     background-color: #f2f2f2;
     color: #0a0a0a
 }
@@ -6884,24 +6904,24 @@ a.list-item {
 @media screen and (min-width: 1024px) {
 
     .navbar.is-white .navbar-end .navbar-link,
-    .navbar.is-white .navbar-end > .navbar-item,
+    .navbar.is-white .navbar-end>.navbar-item,
     .navbar.is-white .navbar-start .navbar-link,
-    .navbar.is-white .navbar-start > .navbar-item {
+    .navbar.is-white .navbar-start>.navbar-item {
         color: #0a0a0a
     }
 
     .navbar.is-white .navbar-end .navbar-link.is-active,
     .navbar.is-white .navbar-end .navbar-link:focus,
     .navbar.is-white .navbar-end .navbar-link:hover,
-    .navbar.is-white .navbar-end > a.navbar-item.is-active,
-    .navbar.is-white .navbar-end > a.navbar-item:focus,
-    .navbar.is-white .navbar-end > a.navbar-item:hover,
+    .navbar.is-white .navbar-end>a.navbar-item.is-active,
+    .navbar.is-white .navbar-end>a.navbar-item:focus,
+    .navbar.is-white .navbar-end>a.navbar-item:hover,
     .navbar.is-white .navbar-start .navbar-link.is-active,
     .navbar.is-white .navbar-start .navbar-link:focus,
     .navbar.is-white .navbar-start .navbar-link:hover,
-    .navbar.is-white .navbar-start > a.navbar-item.is-active,
-    .navbar.is-white .navbar-start > a.navbar-item:focus,
-    .navbar.is-white .navbar-start > a.navbar-item:hover {
+    .navbar.is-white .navbar-start>a.navbar-item.is-active,
+    .navbar.is-white .navbar-start>a.navbar-item:focus,
+    .navbar.is-white .navbar-start>a.navbar-item:hover {
         background-color: #f2f2f2;
         color: #0a0a0a
     }
@@ -6930,16 +6950,16 @@ a.list-item {
 }
 
 .navbar.is-black .navbar-brand .navbar-link,
-.navbar.is-black .navbar-brand > .navbar-item {
+.navbar.is-black .navbar-brand>.navbar-item {
     color: #fff
 }
 
 .navbar.is-black .navbar-brand .navbar-link.is-active,
 .navbar.is-black .navbar-brand .navbar-link:focus,
 .navbar.is-black .navbar-brand .navbar-link:hover,
-.navbar.is-black .navbar-brand > a.navbar-item.is-active,
-.navbar.is-black .navbar-brand > a.navbar-item:focus,
-.navbar.is-black .navbar-brand > a.navbar-item:hover {
+.navbar.is-black .navbar-brand>a.navbar-item.is-active,
+.navbar.is-black .navbar-brand>a.navbar-item:focus,
+.navbar.is-black .navbar-brand>a.navbar-item:hover {
     background-color: #000;
     color: #fff
 }
@@ -6955,24 +6975,24 @@ a.list-item {
 @media screen and (min-width: 1024px) {
 
     .navbar.is-black .navbar-end .navbar-link,
-    .navbar.is-black .navbar-end > .navbar-item,
+    .navbar.is-black .navbar-end>.navbar-item,
     .navbar.is-black .navbar-start .navbar-link,
-    .navbar.is-black .navbar-start > .navbar-item {
+    .navbar.is-black .navbar-start>.navbar-item {
         color: #fff
     }
 
     .navbar.is-black .navbar-end .navbar-link.is-active,
     .navbar.is-black .navbar-end .navbar-link:focus,
     .navbar.is-black .navbar-end .navbar-link:hover,
-    .navbar.is-black .navbar-end > a.navbar-item.is-active,
-    .navbar.is-black .navbar-end > a.navbar-item:focus,
-    .navbar.is-black .navbar-end > a.navbar-item:hover,
+    .navbar.is-black .navbar-end>a.navbar-item.is-active,
+    .navbar.is-black .navbar-end>a.navbar-item:focus,
+    .navbar.is-black .navbar-end>a.navbar-item:hover,
     .navbar.is-black .navbar-start .navbar-link.is-active,
     .navbar.is-black .navbar-start .navbar-link:focus,
     .navbar.is-black .navbar-start .navbar-link:hover,
-    .navbar.is-black .navbar-start > a.navbar-item.is-active,
-    .navbar.is-black .navbar-start > a.navbar-item:focus,
-    .navbar.is-black .navbar-start > a.navbar-item:hover {
+    .navbar.is-black .navbar-start>a.navbar-item.is-active,
+    .navbar.is-black .navbar-start>a.navbar-item:focus,
+    .navbar.is-black .navbar-start>a.navbar-item:hover {
         background-color: #000;
         color: #fff
     }
@@ -7001,16 +7021,16 @@ a.list-item {
 }
 
 .navbar.is-light .navbar-brand .navbar-link,
-.navbar.is-light .navbar-brand > .navbar-item {
+.navbar.is-light .navbar-brand>.navbar-item {
     color: #363636
 }
 
 .navbar.is-light .navbar-brand .navbar-link.is-active,
 .navbar.is-light .navbar-brand .navbar-link:focus,
 .navbar.is-light .navbar-brand .navbar-link:hover,
-.navbar.is-light .navbar-brand > a.navbar-item.is-active,
-.navbar.is-light .navbar-brand > a.navbar-item:focus,
-.navbar.is-light .navbar-brand > a.navbar-item:hover {
+.navbar.is-light .navbar-brand>a.navbar-item.is-active,
+.navbar.is-light .navbar-brand>a.navbar-item:focus,
+.navbar.is-light .navbar-brand>a.navbar-item:hover {
     background-color: #e8e8e8;
     color: #363636
 }
@@ -7026,24 +7046,24 @@ a.list-item {
 @media screen and (min-width: 1024px) {
 
     .navbar.is-light .navbar-end .navbar-link,
-    .navbar.is-light .navbar-end > .navbar-item,
+    .navbar.is-light .navbar-end>.navbar-item,
     .navbar.is-light .navbar-start .navbar-link,
-    .navbar.is-light .navbar-start > .navbar-item {
+    .navbar.is-light .navbar-start>.navbar-item {
         color: #363636
     }
 
     .navbar.is-light .navbar-end .navbar-link.is-active,
     .navbar.is-light .navbar-end .navbar-link:focus,
     .navbar.is-light .navbar-end .navbar-link:hover,
-    .navbar.is-light .navbar-end > a.navbar-item.is-active,
-    .navbar.is-light .navbar-end > a.navbar-item:focus,
-    .navbar.is-light .navbar-end > a.navbar-item:hover,
+    .navbar.is-light .navbar-end>a.navbar-item.is-active,
+    .navbar.is-light .navbar-end>a.navbar-item:focus,
+    .navbar.is-light .navbar-end>a.navbar-item:hover,
     .navbar.is-light .navbar-start .navbar-link.is-active,
     .navbar.is-light .navbar-start .navbar-link:focus,
     .navbar.is-light .navbar-start .navbar-link:hover,
-    .navbar.is-light .navbar-start > a.navbar-item.is-active,
-    .navbar.is-light .navbar-start > a.navbar-item:focus,
-    .navbar.is-light .navbar-start > a.navbar-item:hover {
+    .navbar.is-light .navbar-start>a.navbar-item.is-active,
+    .navbar.is-light .navbar-start>a.navbar-item:focus,
+    .navbar.is-light .navbar-start>a.navbar-item:hover {
         background-color: #e8e8e8;
         color: #363636
     }
@@ -7072,16 +7092,16 @@ a.list-item {
 }
 
 .navbar.is-dark .navbar-brand .navbar-link,
-.navbar.is-dark .navbar-brand > .navbar-item {
+.navbar.is-dark .navbar-brand>.navbar-item {
     color: #f5f5f5
 }
 
 .navbar.is-dark .navbar-brand .navbar-link.is-active,
 .navbar.is-dark .navbar-brand .navbar-link:focus,
 .navbar.is-dark .navbar-brand .navbar-link:hover,
-.navbar.is-dark .navbar-brand > a.navbar-item.is-active,
-.navbar.is-dark .navbar-brand > a.navbar-item:focus,
-.navbar.is-dark .navbar-brand > a.navbar-item:hover {
+.navbar.is-dark .navbar-brand>a.navbar-item.is-active,
+.navbar.is-dark .navbar-brand>a.navbar-item:focus,
+.navbar.is-dark .navbar-brand>a.navbar-item:hover {
     background-color: #292929;
     color: #f5f5f5
 }
@@ -7097,24 +7117,24 @@ a.list-item {
 @media screen and (min-width: 1024px) {
 
     .navbar.is-dark .navbar-end .navbar-link,
-    .navbar.is-dark .navbar-end > .navbar-item,
+    .navbar.is-dark .navbar-end>.navbar-item,
     .navbar.is-dark .navbar-start .navbar-link,
-    .navbar.is-dark .navbar-start > .navbar-item {
+    .navbar.is-dark .navbar-start>.navbar-item {
         color: #f5f5f5
     }
 
     .navbar.is-dark .navbar-end .navbar-link.is-active,
     .navbar.is-dark .navbar-end .navbar-link:focus,
     .navbar.is-dark .navbar-end .navbar-link:hover,
-    .navbar.is-dark .navbar-end > a.navbar-item.is-active,
-    .navbar.is-dark .navbar-end > a.navbar-item:focus,
-    .navbar.is-dark .navbar-end > a.navbar-item:hover,
+    .navbar.is-dark .navbar-end>a.navbar-item.is-active,
+    .navbar.is-dark .navbar-end>a.navbar-item:focus,
+    .navbar.is-dark .navbar-end>a.navbar-item:hover,
     .navbar.is-dark .navbar-start .navbar-link.is-active,
     .navbar.is-dark .navbar-start .navbar-link:focus,
     .navbar.is-dark .navbar-start .navbar-link:hover,
-    .navbar.is-dark .navbar-start > a.navbar-item.is-active,
-    .navbar.is-dark .navbar-start > a.navbar-item:focus,
-    .navbar.is-dark .navbar-start > a.navbar-item:hover {
+    .navbar.is-dark .navbar-start>a.navbar-item.is-active,
+    .navbar.is-dark .navbar-start>a.navbar-item:focus,
+    .navbar.is-dark .navbar-start>a.navbar-item:hover {
         background-color: #292929;
         color: #f5f5f5
     }
@@ -7143,16 +7163,16 @@ a.list-item {
 }
 
 .navbar.is-primary .navbar-brand .navbar-link,
-.navbar.is-primary .navbar-brand > .navbar-item {
+.navbar.is-primary .navbar-brand>.navbar-item {
     color: #fff
 }
 
 .navbar.is-primary .navbar-brand .navbar-link.is-active,
 .navbar.is-primary .navbar-brand .navbar-link:focus,
 .navbar.is-primary .navbar-brand .navbar-link:hover,
-.navbar.is-primary .navbar-brand > a.navbar-item.is-active,
-.navbar.is-primary .navbar-brand > a.navbar-item:focus,
-.navbar.is-primary .navbar-brand > a.navbar-item:hover {
+.navbar.is-primary .navbar-brand>a.navbar-item.is-active,
+.navbar.is-primary .navbar-brand>a.navbar-item:focus,
+.navbar.is-primary .navbar-brand>a.navbar-item:hover {
     background-color: #00b89c;
     color: #fff
 }
@@ -7168,24 +7188,24 @@ a.list-item {
 @media screen and (min-width: 1024px) {
 
     .navbar.is-primary .navbar-end .navbar-link,
-    .navbar.is-primary .navbar-end > .navbar-item,
+    .navbar.is-primary .navbar-end>.navbar-item,
     .navbar.is-primary .navbar-start .navbar-link,
-    .navbar.is-primary .navbar-start > .navbar-item {
+    .navbar.is-primary .navbar-start>.navbar-item {
         color: #fff
     }
 
     .navbar.is-primary .navbar-end .navbar-link.is-active,
     .navbar.is-primary .navbar-end .navbar-link:focus,
     .navbar.is-primary .navbar-end .navbar-link:hover,
-    .navbar.is-primary .navbar-end > a.navbar-item.is-active,
-    .navbar.is-primary .navbar-end > a.navbar-item:focus,
-    .navbar.is-primary .navbar-end > a.navbar-item:hover,
+    .navbar.is-primary .navbar-end>a.navbar-item.is-active,
+    .navbar.is-primary .navbar-end>a.navbar-item:focus,
+    .navbar.is-primary .navbar-end>a.navbar-item:hover,
     .navbar.is-primary .navbar-start .navbar-link.is-active,
     .navbar.is-primary .navbar-start .navbar-link:focus,
     .navbar.is-primary .navbar-start .navbar-link:hover,
-    .navbar.is-primary .navbar-start > a.navbar-item.is-active,
-    .navbar.is-primary .navbar-start > a.navbar-item:focus,
-    .navbar.is-primary .navbar-start > a.navbar-item:hover {
+    .navbar.is-primary .navbar-start>a.navbar-item.is-active,
+    .navbar.is-primary .navbar-start>a.navbar-item:focus,
+    .navbar.is-primary .navbar-start>a.navbar-item:hover {
         background-color: #00b89c;
         color: #fff
     }
@@ -7214,16 +7234,16 @@ a.list-item {
 }
 
 .navbar.is-link .navbar-brand .navbar-link,
-.navbar.is-link .navbar-brand > .navbar-item {
+.navbar.is-link .navbar-brand>.navbar-item {
     color: #fff
 }
 
 .navbar.is-link .navbar-brand .navbar-link.is-active,
 .navbar.is-link .navbar-brand .navbar-link:focus,
 .navbar.is-link .navbar-brand .navbar-link:hover,
-.navbar.is-link .navbar-brand > a.navbar-item.is-active,
-.navbar.is-link .navbar-brand > a.navbar-item:focus,
-.navbar.is-link .navbar-brand > a.navbar-item:hover {
+.navbar.is-link .navbar-brand>a.navbar-item.is-active,
+.navbar.is-link .navbar-brand>a.navbar-item:focus,
+.navbar.is-link .navbar-brand>a.navbar-item:hover {
     background-color: #2366d1;
     color: #fff
 }
@@ -7239,24 +7259,24 @@ a.list-item {
 @media screen and (min-width: 1024px) {
 
     .navbar.is-link .navbar-end .navbar-link,
-    .navbar.is-link .navbar-end > .navbar-item,
+    .navbar.is-link .navbar-end>.navbar-item,
     .navbar.is-link .navbar-start .navbar-link,
-    .navbar.is-link .navbar-start > .navbar-item {
+    .navbar.is-link .navbar-start>.navbar-item {
         color: #fff
     }
 
     .navbar.is-link .navbar-end .navbar-link.is-active,
     .navbar.is-link .navbar-end .navbar-link:focus,
     .navbar.is-link .navbar-end .navbar-link:hover,
-    .navbar.is-link .navbar-end > a.navbar-item.is-active,
-    .navbar.is-link .navbar-end > a.navbar-item:focus,
-    .navbar.is-link .navbar-end > a.navbar-item:hover,
+    .navbar.is-link .navbar-end>a.navbar-item.is-active,
+    .navbar.is-link .navbar-end>a.navbar-item:focus,
+    .navbar.is-link .navbar-end>a.navbar-item:hover,
     .navbar.is-link .navbar-start .navbar-link.is-active,
     .navbar.is-link .navbar-start .navbar-link:focus,
     .navbar.is-link .navbar-start .navbar-link:hover,
-    .navbar.is-link .navbar-start > a.navbar-item.is-active,
-    .navbar.is-link .navbar-start > a.navbar-item:focus,
-    .navbar.is-link .navbar-start > a.navbar-item:hover {
+    .navbar.is-link .navbar-start>a.navbar-item.is-active,
+    .navbar.is-link .navbar-start>a.navbar-item:focus,
+    .navbar.is-link .navbar-start>a.navbar-item:hover {
         background-color: #2366d1;
         color: #fff
     }
@@ -7285,16 +7305,16 @@ a.list-item {
 }
 
 .navbar.is-info .navbar-brand .navbar-link,
-.navbar.is-info .navbar-brand > .navbar-item {
+.navbar.is-info .navbar-brand>.navbar-item {
     color: #fff
 }
 
 .navbar.is-info .navbar-brand .navbar-link.is-active,
 .navbar.is-info .navbar-brand .navbar-link:focus,
 .navbar.is-info .navbar-brand .navbar-link:hover,
-.navbar.is-info .navbar-brand > a.navbar-item.is-active,
-.navbar.is-info .navbar-brand > a.navbar-item:focus,
-.navbar.is-info .navbar-brand > a.navbar-item:hover {
+.navbar.is-info .navbar-brand>a.navbar-item.is-active,
+.navbar.is-info .navbar-brand>a.navbar-item:focus,
+.navbar.is-info .navbar-brand>a.navbar-item:hover {
     background-color: #118fe4;
     color: #fff
 }
@@ -7310,24 +7330,24 @@ a.list-item {
 @media screen and (min-width: 1024px) {
 
     .navbar.is-info .navbar-end .navbar-link,
-    .navbar.is-info .navbar-end > .navbar-item,
+    .navbar.is-info .navbar-end>.navbar-item,
     .navbar.is-info .navbar-start .navbar-link,
-    .navbar.is-info .navbar-start > .navbar-item {
+    .navbar.is-info .navbar-start>.navbar-item {
         color: #fff
     }
 
     .navbar.is-info .navbar-end .navbar-link.is-active,
     .navbar.is-info .navbar-end .navbar-link:focus,
     .navbar.is-info .navbar-end .navbar-link:hover,
-    .navbar.is-info .navbar-end > a.navbar-item.is-active,
-    .navbar.is-info .navbar-end > a.navbar-item:focus,
-    .navbar.is-info .navbar-end > a.navbar-item:hover,
+    .navbar.is-info .navbar-end>a.navbar-item.is-active,
+    .navbar.is-info .navbar-end>a.navbar-item:focus,
+    .navbar.is-info .navbar-end>a.navbar-item:hover,
     .navbar.is-info .navbar-start .navbar-link.is-active,
     .navbar.is-info .navbar-start .navbar-link:focus,
     .navbar.is-info .navbar-start .navbar-link:hover,
-    .navbar.is-info .navbar-start > a.navbar-item.is-active,
-    .navbar.is-info .navbar-start > a.navbar-item:focus,
-    .navbar.is-info .navbar-start > a.navbar-item:hover {
+    .navbar.is-info .navbar-start>a.navbar-item.is-active,
+    .navbar.is-info .navbar-start>a.navbar-item:focus,
+    .navbar.is-info .navbar-start>a.navbar-item:hover {
         background-color: #118fe4;
         color: #fff
     }
@@ -7356,16 +7376,16 @@ a.list-item {
 }
 
 .navbar.is-success .navbar-brand .navbar-link,
-.navbar.is-success .navbar-brand > .navbar-item {
+.navbar.is-success .navbar-brand>.navbar-item {
     color: #fff
 }
 
 .navbar.is-success .navbar-brand .navbar-link.is-active,
 .navbar.is-success .navbar-brand .navbar-link:focus,
 .navbar.is-success .navbar-brand .navbar-link:hover,
-.navbar.is-success .navbar-brand > a.navbar-item.is-active,
-.navbar.is-success .navbar-brand > a.navbar-item:focus,
-.navbar.is-success .navbar-brand > a.navbar-item:hover {
+.navbar.is-success .navbar-brand>a.navbar-item.is-active,
+.navbar.is-success .navbar-brand>a.navbar-item:focus,
+.navbar.is-success .navbar-brand>a.navbar-item:hover {
     background-color: #20bc56;
     color: #fff
 }
@@ -7381,24 +7401,24 @@ a.list-item {
 @media screen and (min-width: 1024px) {
 
     .navbar.is-success .navbar-end .navbar-link,
-    .navbar.is-success .navbar-end > .navbar-item,
+    .navbar.is-success .navbar-end>.navbar-item,
     .navbar.is-success .navbar-start .navbar-link,
-    .navbar.is-success .navbar-start > .navbar-item {
+    .navbar.is-success .navbar-start>.navbar-item {
         color: #fff
     }
 
     .navbar.is-success .navbar-end .navbar-link.is-active,
     .navbar.is-success .navbar-end .navbar-link:focus,
     .navbar.is-success .navbar-end .navbar-link:hover,
-    .navbar.is-success .navbar-end > a.navbar-item.is-active,
-    .navbar.is-success .navbar-end > a.navbar-item:focus,
-    .navbar.is-success .navbar-end > a.navbar-item:hover,
+    .navbar.is-success .navbar-end>a.navbar-item.is-active,
+    .navbar.is-success .navbar-end>a.navbar-item:focus,
+    .navbar.is-success .navbar-end>a.navbar-item:hover,
     .navbar.is-success .navbar-start .navbar-link.is-active,
     .navbar.is-success .navbar-start .navbar-link:focus,
     .navbar.is-success .navbar-start .navbar-link:hover,
-    .navbar.is-success .navbar-start > a.navbar-item.is-active,
-    .navbar.is-success .navbar-start > a.navbar-item:focus,
-    .navbar.is-success .navbar-start > a.navbar-item:hover {
+    .navbar.is-success .navbar-start>a.navbar-item.is-active,
+    .navbar.is-success .navbar-start>a.navbar-item:focus,
+    .navbar.is-success .navbar-start>a.navbar-item:hover {
         background-color: #20bc56;
         color: #fff
     }
@@ -7427,16 +7447,16 @@ a.list-item {
 }
 
 .navbar.is-warning .navbar-brand .navbar-link,
-.navbar.is-warning .navbar-brand > .navbar-item {
+.navbar.is-warning .navbar-brand>.navbar-item {
     color: rgba(0, 0, 0, .7)
 }
 
 .navbar.is-warning .navbar-brand .navbar-link.is-active,
 .navbar.is-warning .navbar-brand .navbar-link:focus,
 .navbar.is-warning .navbar-brand .navbar-link:hover,
-.navbar.is-warning .navbar-brand > a.navbar-item.is-active,
-.navbar.is-warning .navbar-brand > a.navbar-item:focus,
-.navbar.is-warning .navbar-brand > a.navbar-item:hover {
+.navbar.is-warning .navbar-brand>a.navbar-item.is-active,
+.navbar.is-warning .navbar-brand>a.navbar-item:focus,
+.navbar.is-warning .navbar-brand>a.navbar-item:hover {
     background-color: #ffd83d;
     color: rgba(0, 0, 0, .7)
 }
@@ -7452,24 +7472,24 @@ a.list-item {
 @media screen and (min-width: 1024px) {
 
     .navbar.is-warning .navbar-end .navbar-link,
-    .navbar.is-warning .navbar-end > .navbar-item,
+    .navbar.is-warning .navbar-end>.navbar-item,
     .navbar.is-warning .navbar-start .navbar-link,
-    .navbar.is-warning .navbar-start > .navbar-item {
+    .navbar.is-warning .navbar-start>.navbar-item {
         color: rgba(0, 0, 0, .7)
     }
 
     .navbar.is-warning .navbar-end .navbar-link.is-active,
     .navbar.is-warning .navbar-end .navbar-link:focus,
     .navbar.is-warning .navbar-end .navbar-link:hover,
-    .navbar.is-warning .navbar-end > a.navbar-item.is-active,
-    .navbar.is-warning .navbar-end > a.navbar-item:focus,
-    .navbar.is-warning .navbar-end > a.navbar-item:hover,
+    .navbar.is-warning .navbar-end>a.navbar-item.is-active,
+    .navbar.is-warning .navbar-end>a.navbar-item:focus,
+    .navbar.is-warning .navbar-end>a.navbar-item:hover,
     .navbar.is-warning .navbar-start .navbar-link.is-active,
     .navbar.is-warning .navbar-start .navbar-link:focus,
     .navbar.is-warning .navbar-start .navbar-link:hover,
-    .navbar.is-warning .navbar-start > a.navbar-item.is-active,
-    .navbar.is-warning .navbar-start > a.navbar-item:focus,
-    .navbar.is-warning .navbar-start > a.navbar-item:hover {
+    .navbar.is-warning .navbar-start>a.navbar-item.is-active,
+    .navbar.is-warning .navbar-start>a.navbar-item:focus,
+    .navbar.is-warning .navbar-start>a.navbar-item:hover {
         background-color: #ffd83d;
         color: rgba(0, 0, 0, .7)
     }
@@ -7498,16 +7518,16 @@ a.list-item {
 }
 
 .navbar.is-danger .navbar-brand .navbar-link,
-.navbar.is-danger .navbar-brand > .navbar-item {
+.navbar.is-danger .navbar-brand>.navbar-item {
     color: #fff
 }
 
 .navbar.is-danger .navbar-brand .navbar-link.is-active,
 .navbar.is-danger .navbar-brand .navbar-link:focus,
 .navbar.is-danger .navbar-brand .navbar-link:hover,
-.navbar.is-danger .navbar-brand > a.navbar-item.is-active,
-.navbar.is-danger .navbar-brand > a.navbar-item:focus,
-.navbar.is-danger .navbar-brand > a.navbar-item:hover {
+.navbar.is-danger .navbar-brand>a.navbar-item.is-active,
+.navbar.is-danger .navbar-brand>a.navbar-item:focus,
+.navbar.is-danger .navbar-brand>a.navbar-item:hover {
     background-color: #ff1f4b;
     color: #fff
 }
@@ -7523,24 +7543,24 @@ a.list-item {
 @media screen and (min-width: 1024px) {
 
     .navbar.is-danger .navbar-end .navbar-link,
-    .navbar.is-danger .navbar-end > .navbar-item,
+    .navbar.is-danger .navbar-end>.navbar-item,
     .navbar.is-danger .navbar-start .navbar-link,
-    .navbar.is-danger .navbar-start > .navbar-item {
+    .navbar.is-danger .navbar-start>.navbar-item {
         color: #fff
     }
 
     .navbar.is-danger .navbar-end .navbar-link.is-active,
     .navbar.is-danger .navbar-end .navbar-link:focus,
     .navbar.is-danger .navbar-end .navbar-link:hover,
-    .navbar.is-danger .navbar-end > a.navbar-item.is-active,
-    .navbar.is-danger .navbar-end > a.navbar-item:focus,
-    .navbar.is-danger .navbar-end > a.navbar-item:hover,
+    .navbar.is-danger .navbar-end>a.navbar-item.is-active,
+    .navbar.is-danger .navbar-end>a.navbar-item:focus,
+    .navbar.is-danger .navbar-end>a.navbar-item:hover,
     .navbar.is-danger .navbar-start .navbar-link.is-active,
     .navbar.is-danger .navbar-start .navbar-link:focus,
     .navbar.is-danger .navbar-start .navbar-link:hover,
-    .navbar.is-danger .navbar-start > a.navbar-item.is-active,
-    .navbar.is-danger .navbar-start > a.navbar-item:focus,
-    .navbar.is-danger .navbar-start > a.navbar-item:hover {
+    .navbar.is-danger .navbar-start>a.navbar-item.is-active,
+    .navbar.is-danger .navbar-start>a.navbar-item:focus,
+    .navbar.is-danger .navbar-start>a.navbar-item:hover {
         background-color: #ff1f4b;
         color: #fff
     }
@@ -7563,7 +7583,7 @@ a.list-item {
     }
 }
 
-.navbar > .container {
+.navbar>.container {
     align-items: stretch;
     display: flex;
     min-height: 3.25rem;
@@ -7791,7 +7811,7 @@ a.navbar-item:hover {
 }
 
 @media screen and (max-width: 1023px) {
-    .navbar > .container {
+    .navbar>.container {
         display: block
     }
 
@@ -8037,13 +8057,13 @@ a.navbar-item:hover {
         display: block
     }
 
-    .container > .navbar .navbar-brand,
-    .navbar > .container .navbar-brand {
+    .container>.navbar .navbar-brand,
+    .navbar>.container .navbar-brand {
         margin-left: -.75rem
     }
 
-    .container > .navbar .navbar-menu,
-    .navbar > .container .navbar-menu {
+    .container>.navbar .navbar-menu,
+    .navbar>.container .navbar-menu {
         margin-right: -.75rem
     }
 
@@ -8232,7 +8252,8 @@ a.navbar-item:hover {
     }
 }
 
-@media screen and (min-width: 769px), print {
+@media screen and (min-width: 769px),
+print {
     .pagination-list {
         flex-grow: 1;
         flex-shrink: 1;
@@ -8349,7 +8370,7 @@ a.navbar-item:hover {
     margin-right: .75em
 }
 
-.panel-block > .control {
+.panel-block>.control {
     flex-grow: 1;
     flex-shrink: 1;
     width: 100%
@@ -8511,7 +8532,7 @@ label.panel-block:hover {
     z-index: 2
 }
 
-.tabs.is-toggle li + li {
+.tabs.is-toggle li+li {
     margin-left: -1px
 }
 
@@ -8566,210 +8587,210 @@ label.panel-block:hover {
     padding: .75rem
 }
 
-.columns.is-mobile > .column.is-narrow {
+.columns.is-mobile>.column.is-narrow {
     flex: none
 }
 
-.columns.is-mobile > .column.is-full {
+.columns.is-mobile>.column.is-full {
     flex: none;
     width: 100%
 }
 
-.columns.is-mobile > .column.is-three-quarters {
+.columns.is-mobile>.column.is-three-quarters {
     flex: none;
     width: 75%
 }
 
-.columns.is-mobile > .column.is-two-thirds {
+.columns.is-mobile>.column.is-two-thirds {
     flex: none;
     width: 66.6666%
 }
 
-.columns.is-mobile > .column.is-half {
+.columns.is-mobile>.column.is-half {
     flex: none;
     width: 50%
 }
 
-.columns.is-mobile > .column.is-one-third {
+.columns.is-mobile>.column.is-one-third {
     flex: none;
     width: 33.3333%
 }
 
-.columns.is-mobile > .column.is-one-quarter {
+.columns.is-mobile>.column.is-one-quarter {
     flex: none;
     width: 25%
 }
 
-.columns.is-mobile > .column.is-one-fifth {
+.columns.is-mobile>.column.is-one-fifth {
     flex: none;
     width: 20%
 }
 
-.columns.is-mobile > .column.is-two-fifths {
+.columns.is-mobile>.column.is-two-fifths {
     flex: none;
     width: 40%
 }
 
-.columns.is-mobile > .column.is-three-fifths {
+.columns.is-mobile>.column.is-three-fifths {
     flex: none;
     width: 60%
 }
 
-.columns.is-mobile > .column.is-four-fifths {
+.columns.is-mobile>.column.is-four-fifths {
     flex: none;
     width: 80%
 }
 
-.columns.is-mobile > .column.is-offset-three-quarters {
+.columns.is-mobile>.column.is-offset-three-quarters {
     margin-left: 75%
 }
 
-.columns.is-mobile > .column.is-offset-two-thirds {
+.columns.is-mobile>.column.is-offset-two-thirds {
     margin-left: 66.6666%
 }
 
-.columns.is-mobile > .column.is-offset-half {
+.columns.is-mobile>.column.is-offset-half {
     margin-left: 50%
 }
 
-.columns.is-mobile > .column.is-offset-one-third {
+.columns.is-mobile>.column.is-offset-one-third {
     margin-left: 33.3333%
 }
 
-.columns.is-mobile > .column.is-offset-one-quarter {
+.columns.is-mobile>.column.is-offset-one-quarter {
     margin-left: 25%
 }
 
-.columns.is-mobile > .column.is-offset-one-fifth {
+.columns.is-mobile>.column.is-offset-one-fifth {
     margin-left: 20%
 }
 
-.columns.is-mobile > .column.is-offset-two-fifths {
+.columns.is-mobile>.column.is-offset-two-fifths {
     margin-left: 40%
 }
 
-.columns.is-mobile > .column.is-offset-three-fifths {
+.columns.is-mobile>.column.is-offset-three-fifths {
     margin-left: 60%
 }
 
-.columns.is-mobile > .column.is-offset-four-fifths {
+.columns.is-mobile>.column.is-offset-four-fifths {
     margin-left: 80%
 }
 
-.columns.is-mobile > .column.is-0 {
+.columns.is-mobile>.column.is-0 {
     flex: none;
     width: 0%
 }
 
-.columns.is-mobile > .column.is-offset-0 {
+.columns.is-mobile>.column.is-offset-0 {
     margin-left: 0
 }
 
-.columns.is-mobile > .column.is-1 {
+.columns.is-mobile>.column.is-1 {
     flex: none;
     width: 8.33333%
 }
 
-.columns.is-mobile > .column.is-offset-1 {
+.columns.is-mobile>.column.is-offset-1 {
     margin-left: 8.33333%
 }
 
-.columns.is-mobile > .column.is-2 {
+.columns.is-mobile>.column.is-2 {
     flex: none;
     width: 16.66667%
 }
 
-.columns.is-mobile > .column.is-offset-2 {
+.columns.is-mobile>.column.is-offset-2 {
     margin-left: 16.66667%
 }
 
-.columns.is-mobile > .column.is-3 {
+.columns.is-mobile>.column.is-3 {
     flex: none;
     width: 25%
 }
 
-.columns.is-mobile > .column.is-offset-3 {
+.columns.is-mobile>.column.is-offset-3 {
     margin-left: 25%
 }
 
-.columns.is-mobile > .column.is-4 {
+.columns.is-mobile>.column.is-4 {
     flex: none;
     width: 33.33333%
 }
 
-.columns.is-mobile > .column.is-offset-4 {
+.columns.is-mobile>.column.is-offset-4 {
     margin-left: 33.33333%
 }
 
-.columns.is-mobile > .column.is-5 {
+.columns.is-mobile>.column.is-5 {
     flex: none;
     width: 41.66667%
 }
 
-.columns.is-mobile > .column.is-offset-5 {
+.columns.is-mobile>.column.is-offset-5 {
     margin-left: 41.66667%
 }
 
-.columns.is-mobile > .column.is-6 {
+.columns.is-mobile>.column.is-6 {
     flex: none;
     width: 50%
 }
 
-.columns.is-mobile > .column.is-offset-6 {
+.columns.is-mobile>.column.is-offset-6 {
     margin-left: 50%
 }
 
-.columns.is-mobile > .column.is-7 {
+.columns.is-mobile>.column.is-7 {
     flex: none;
     width: 58.33333%
 }
 
-.columns.is-mobile > .column.is-offset-7 {
+.columns.is-mobile>.column.is-offset-7 {
     margin-left: 58.33333%
 }
 
-.columns.is-mobile > .column.is-8 {
+.columns.is-mobile>.column.is-8 {
     flex: none;
     width: 66.66667%
 }
 
-.columns.is-mobile > .column.is-offset-8 {
+.columns.is-mobile>.column.is-offset-8 {
     margin-left: 66.66667%
 }
 
-.columns.is-mobile > .column.is-9 {
+.columns.is-mobile>.column.is-9 {
     flex: none;
     width: 75%
 }
 
-.columns.is-mobile > .column.is-offset-9 {
+.columns.is-mobile>.column.is-offset-9 {
     margin-left: 75%
 }
 
-.columns.is-mobile > .column.is-10 {
+.columns.is-mobile>.column.is-10 {
     flex: none;
     width: 83.33333%
 }
 
-.columns.is-mobile > .column.is-offset-10 {
+.columns.is-mobile>.column.is-offset-10 {
     margin-left: 83.33333%
 }
 
-.columns.is-mobile > .column.is-11 {
+.columns.is-mobile>.column.is-11 {
     flex: none;
     width: 91.66667%
 }
 
-.columns.is-mobile > .column.is-offset-11 {
+.columns.is-mobile>.column.is-offset-11 {
     margin-left: 91.66667%
 }
 
-.columns.is-mobile > .column.is-12 {
+.columns.is-mobile>.column.is-12 {
     flex: none;
     width: 100%
 }
 
-.columns.is-mobile > .column.is-offset-12 {
+.columns.is-mobile>.column.is-offset-12 {
     margin-left: 100%
 }
 
@@ -8982,7 +9003,8 @@ label.panel-block:hover {
     }
 }
 
-@media screen and (min-width: 769px), print {
+@media screen and (min-width: 769px),
+print {
 
     .column.is-narrow,
     .column.is-narrow-tablet {
@@ -10098,7 +10120,7 @@ label.panel-block:hover {
     margin-top: 0
 }
 
-.columns.is-gapless > .column {
+.columns.is-gapless>.column {
     margin: 0;
     padding: 0 !important
 }
@@ -10123,7 +10145,8 @@ label.panel-block:hover {
     align-items: center
 }
 
-@media screen and (min-width: 769px), print {
+@media screen and (min-width: 769px),
+print {
     .columns:not(.is-desktop) {
         display: flex
     }
@@ -10156,7 +10179,8 @@ label.panel-block:hover {
     }
 }
 
-@media screen and (min-width: 769px), print {
+@media screen and (min-width: 769px),
+print {
     .columns.is-variable.is-0-tablet {
         --columnGap: 0rem
     }
@@ -10214,7 +10238,8 @@ label.panel-block:hover {
     }
 }
 
-@media screen and (min-width: 769px), print {
+@media screen and (min-width: 769px),
+print {
     .columns.is-variable.is-1-tablet {
         --columnGap: 0.25rem
     }
@@ -10272,7 +10297,8 @@ label.panel-block:hover {
     }
 }
 
-@media screen and (min-width: 769px), print {
+@media screen and (min-width: 769px),
+print {
     .columns.is-variable.is-2-tablet {
         --columnGap: 0.5rem
     }
@@ -10330,7 +10356,8 @@ label.panel-block:hover {
     }
 }
 
-@media screen and (min-width: 769px), print {
+@media screen and (min-width: 769px),
+print {
     .columns.is-variable.is-3-tablet {
         --columnGap: 0.75rem
     }
@@ -10388,7 +10415,8 @@ label.panel-block:hover {
     }
 }
 
-@media screen and (min-width: 769px), print {
+@media screen and (min-width: 769px),
+print {
     .columns.is-variable.is-4-tablet {
         --columnGap: 1rem
     }
@@ -10446,7 +10474,8 @@ label.panel-block:hover {
     }
 }
 
-@media screen and (min-width: 769px), print {
+@media screen and (min-width: 769px),
+print {
     .columns.is-variable.is-5-tablet {
         --columnGap: 1.25rem
     }
@@ -10504,7 +10533,8 @@ label.panel-block:hover {
     }
 }
 
-@media screen and (min-width: 769px), print {
+@media screen and (min-width: 769px),
+print {
     .columns.is-variable.is-6-tablet {
         --columnGap: 1.5rem
     }
@@ -10562,7 +10592,8 @@ label.panel-block:hover {
     }
 }
 
-@media screen and (min-width: 769px), print {
+@media screen and (min-width: 769px),
+print {
     .columns.is-variable.is-7-tablet {
         --columnGap: 1.75rem
     }
@@ -10620,7 +10651,8 @@ label.panel-block:hover {
     }
 }
 
-@media screen and (min-width: 769px), print {
+@media screen and (min-width: 769px),
+print {
     .columns.is-variable.is-8-tablet {
         --columnGap: 2rem
     }
@@ -10705,11 +10737,12 @@ label.panel-block:hover {
     flex-direction: column
 }
 
-.tile.is-vertical > .tile.is-child:not(:last-child) {
+.tile.is-vertical>.tile.is-child:not(:last-child) {
     margin-bottom: 1.5rem !important
 }
 
-@media screen and (min-width: 769px), print {
+@media screen and (min-width: 769px),
+print {
     .tile:not(.is-child) {
         display: flex
     }
@@ -11635,14 +11668,16 @@ label.panel-block:hover {
     padding-top: 1.5rem
 }
 
-@media screen and (min-width: 769px), print {
+@media screen and (min-width: 769px),
+print {
     .hero.is-medium .hero-body {
         padding-bottom: 9rem;
         padding-top: 9rem
     }
 }
 
-@media screen and (min-width: 769px), print {
+@media screen and (min-width: 769px),
+print {
     .hero.is-large .hero-body {
         padding-bottom: 18rem;
         padding-top: 18rem
@@ -11656,9 +11691,9 @@ label.panel-block:hover {
     display: flex
 }
 
-.hero.is-fullheight .hero-body > .container,
-.hero.is-fullheight-with-navbar .hero-body > .container,
-.hero.is-halfheight .hero-body > .container {
+.hero.is-fullheight .hero-body>.container,
+.hero.is-fullheight-with-navbar .hero-body>.container,
+.hero.is-halfheight .hero-body>.container {
     flex-grow: 1;
     flex-shrink: 1
 }
@@ -11709,7 +11744,8 @@ label.panel-block:hover {
     }
 }
 
-@media screen and (min-width: 769px), print {
+@media screen and (min-width: 769px),
+print {
     .hero-buttons {
         display: flex;
         justify-content: center
@@ -11886,7 +11922,8 @@ label.panel-block:hover {
     }
 }
 
-@media screen and (min-width: 769px), print {
+@media screen and (min-width: 769px),
+print {
     .bd-tabs .tabs {
         overflow: visible
     }
@@ -11915,11 +11952,11 @@ label.panel-block:hover {
     display: none
 }
 
-.bd-content hr:first-child + .bd-anchor-title {
+.bd-content hr:first-child+.bd-anchor-title {
     padding-top: 0
 }
 
-.bd-content hr:first-child + .bd-anchor-title .bd-anchor-link {
+.bd-content hr:first-child+.bd-anchor-title .bd-anchor-link {
     top: 0
 }
 
@@ -12047,7 +12084,8 @@ label.panel-block:hover {
     padding-top: calc(1.5rem - 1px)
 }
 
-@media screen and (min-width: 769px), print {
+@media screen and (min-width: 769px),
+print {
     .bd-anchors.is-active {
         display: block
     }
@@ -12411,7 +12449,7 @@ label.panel-block:hover {
     margin-top: .5em
 }
 
-.content .bd-spaced li + li {
+.content .bd-spaced li+li {
     margin-top: 1em
 }
 
@@ -12419,19 +12457,20 @@ label.panel-block:hover {
     margin-bottom: 1.5rem
 }
 
-body.page-grid .column > .notification {
+body.page-grid .column>.notification {
     padding-left: 0;
     padding-right: 0;
     text-align: center
 }
 
-a.navbar-item > .icon:not(:last-child) {
+a.navbar-item>.icon:not(:last-child) {
     margin-left: -.25em;
     margin-right: .25em
 }
 
-@media screen and (min-width: 769px), print {
-    .header-item .button + .button {
+@media screen and (min-width: 769px),
+print {
+    .header-item .button+.button {
         margin-left: .75rem
     }
 }
@@ -12488,7 +12527,8 @@ svg {
     box-shadow: 0 0 0 .75rem #fff
 }
 
-@media screen and (min-width: 769px), print {
+@media screen and (min-width: 769px),
+print {
     #carbon {
         width: 300px
     }
@@ -12537,7 +12577,7 @@ svg {
     width: 130px
 }
 
-#carbonads .carbon-img:hover + .carbon-text {
+#carbonads .carbon-img:hover+.carbon-text {
     color: #3273dc
 }
 
@@ -12757,7 +12797,8 @@ svg {
     }
 }
 
-@media screen and (min-width: 769px), print {
+@media screen and (min-width: 769px),
+print {
     .bd-columns-tools {
         align-items: flex-start;
         display: flex
@@ -13188,7 +13229,8 @@ svg {
     }
 }
 
-@media screen and (min-width: 769px), print {
+@media screen and (min-width: 769px),
+print {
     .intro-title {
         font-size: 2.25rem
     }
@@ -13386,7 +13428,8 @@ svg {
     height: 70px
 }
 
-@media screen and (min-width: 769px), print {
+@media screen and (min-width: 769px),
+print {
     .bd-footer-donation {
         width: 240px
     }
@@ -13417,7 +13460,8 @@ svg {
     margin-top: 2.5rem
 }
 
-@media screen and (min-width: 769px), print {
+@media screen and (min-width: 769px),
+print {
     .bd-footer-stars {
         align-items: stretch;
         display: flex;
@@ -13439,7 +13483,8 @@ svg {
     }
 }
 
-@media screen and (min-width: 769px), print {
+@media screen and (min-width: 769px),
+print {
     .bd-footer-star {
         width: calc(33.3333% - 2rem)
     }
@@ -13564,7 +13609,8 @@ svg {
     }
 }
 
-@media screen and (min-width: 769px), print {
+@media screen and (min-width: 769px),
+print {
     .bd-footer-link.bd-has-subtitle a em {
         margin-left: 1rem;
         text-align: right
@@ -13642,7 +13688,8 @@ svg {
     right: 90%
 }
 
-@media screen and (min-width: 769px), print {
+@media screen and (min-width: 769px),
+print {
     .bd-drawing {
         display: inline
     }
@@ -13760,7 +13807,8 @@ svg {
     }
 }
 
-@media screen and (min-width: 769px), print {
+@media screen and (min-width: 769px),
+print {
     .bd-doc {
         min-width: calc(33.3333% - 3rem)
     }
@@ -14049,7 +14097,8 @@ svg {
     vertical-align: top
 }
 
-@media screen and (min-width: 769px), print {
+@media screen and (min-width: 769px),
+print {
 
     .bd-example.is-fullwidth,
     .bd-snippet.is-fullwidth,
@@ -14079,14 +14128,14 @@ svg {
     border-top-right-radius: 6px
 }
 
-.bd-example + .highlight {
+.bd-example+.highlight {
     border: 1px solid #ffdd57;
     border-radius: 0 0 4px 4px;
     border-top: none;
     margin-top: -1.5rem
 }
 
-.bd-example + .highlight:not(:last-child) {
+.bd-example+.highlight:not(:last-child) {
     margin-bottom: 1.5rem
 }
 
@@ -14348,19 +14397,21 @@ svg {
     color: rgba(0, 0, 0, .7)
 }
 
-@media screen and (min-width: 769px), print {
+@media screen and (min-width: 769px),
+print {
     .highlight pre {
         white-space: pre-wrap
     }
 }
 
-@media screen and (min-width: 769px), print {
-    .section:not(.is-fullwidth) > .bd-example:not(.is-fullwidth) {
+@media screen and (min-width: 769px),
+print {
+    .section:not(.is-fullwidth)>.bd-example:not(.is-fullwidth) {
         margin-left: 1.5rem;
         margin-right: 1.5rem
     }
 
-    .section:not(.is-fullwidth) > .bd-example:not(.is-fullwidth) + .highlight {
+    .section:not(.is-fullwidth)>.bd-example:not(.is-fullwidth)+.highlight {
         margin-left: 1.5rem;
         margin-right: 1.5rem
     }
@@ -14383,7 +14434,7 @@ svg {
     padding: 0
 }
 
-.section.is-fullwidth .bd-example + .highlight {
+.section.is-fullwidth .bd-example+.highlight {
     border-left: none;
     border-radius: 0;
     border-right: none
@@ -14470,7 +14521,7 @@ svg {
     vertical-align: top
 }
 
-#_default_ > a {
+#_default_>a {
     background-color: #fff;
     border-radius: 6px;
     box-shadow: 0 2px 3px rgba(10, 10, 10, .1), 0 0 0 1px rgba(10, 10, 10, .1);
@@ -14484,20 +14535,20 @@ svg {
     position: relative
 }
 
-#_default_ > a:focus,
-#_default_ > a:hover {
+#_default_>a:focus,
+#_default_>a:hover {
     box-shadow: 0 2px 3px rgba(10, 10, 10, .1), 0 0 0 1px #3273dc
 }
 
-#_default_ > a:active {
+#_default_>a:active {
     box-shadow: inset 0 1px 2px rgba(10, 10, 10, .2), 0 0 0 1px #3273dc
 }
 
-#_default_ > a span {
+#_default_>a span {
     display: block
 }
 
-#_default_ > a .default-image {
+#_default_>a .default-image {
     display: block;
     left: 15px;
     height: 40px;
@@ -14506,27 +14557,28 @@ svg {
     width: 40px
 }
 
-#_default_ > a .default-image img {
+#_default_>a .default-image img {
     display: block;
     height: 40px;
     width: 40px
 }
 
-#_default_ > a .default-title {
+#_default_>a .default-title {
     color: #363636;
     display: inline;
     font-weight: 700
 }
 
-#_default_ > a .default-title::after {
+#_default_>a .default-title::after {
     content: " — "
 }
 
-#_default_ > a .default-description {
+#_default_>a .default-description {
     display: inline
 }
 
-@media screen and (min-width: 769px), print {
+@media screen and (min-width: 769px),
+print {
     .bsa .columns {
         min-height: 120px
     }
@@ -14544,12 +14596,12 @@ svg {
         top: 0
     }
 
-    #_default_ > a {
+    #_default_>a {
         margin: 0;
         width: calc(50% - 1rem)
     }
 
-    #_default_ > a:not(:nth-child(2)) {
+    #_default_>a:not(:nth-child(2)) {
         margin-left: 2rem
     }
 }
@@ -14722,12 +14774,13 @@ svg {
     }
 }
 
-@media screen and (min-width: 769px), print {
+@media screen and (min-width: 769px),
+print {
     .bd-tws-home {
         padding: 3rem
     }
 
-    .bd-tws-home .bd-tw + .bd-tw {
+    .bd-tws-home .bd-tw+.bd-tw {
         margin-top: 1.5rem
     }
 }
@@ -14858,7 +14911,8 @@ svg {
     }
 }
 
-@media screen and (min-width: 769px), print {
+@media screen and (min-width: 769px),
+print {
     .bd-expo {
         padding-bottom: 3rem;
         padding-top: 3rem
@@ -14934,12 +14988,13 @@ svg {
     }
 }
 
-@media screen and (min-width: 769px), print {
+@media screen and (min-width: 769px),
+print {
     .bd-testimonials {
         padding: 3rem
     }
 
-    .bd-testimonial + .bd-testimonial {
+    .bd-testimonial+.bd-testimonial {
         margin-top: 1.5rem
     }
 }
@@ -15030,7 +15085,8 @@ svg {
     }
 }
 
-@media screen and (min-width: 769px), print {
+@media screen and (min-width: 769px),
+print {
     .bd-embrace {
         align-items: center;
         display: flex;
@@ -15127,7 +15183,7 @@ svg {
     margin-bottom: .5rem
 }
 
-.bd-pro + .pro {
+.bd-pro+.pro {
     margin-top: 2rem;
     padding-top: 2rem
 }
@@ -15453,7 +15509,8 @@ svg {
     }
 }
 
-@media screen and (min-width: 769px), print {
+@media screen and (min-width: 769px),
+print {
     .bd-partnrs-list {
         align-items: flex-start;
         display: flex;
@@ -15599,11 +15656,11 @@ svg {
     padding-top: calc(.5em - 1px)
 }
 
-.bd-book-buttons .button > span {
+.bd-book-buttons .button>span {
     font-size: .875em
 }
 
-.bd-book-buttons .button > span > em {
+.bd-book-buttons .button>span>em {
     display: block;
     font-size: .5em;
     font-style: normal;
@@ -15712,7 +15769,8 @@ svg {
     }
 }
 
-@media screen and (min-width: 769px), print {
+@media screen and (min-width: 769px),
+print {
     .bd-book-columns {
         justify-content: space-around
     }
@@ -16592,10 +16650,11 @@ div.speech {
     table-layout: fixed;
     word-break: break-all;
     position: relative;
-    background: -webkit-gradient( linear, 50% 0%, 50% 100%, from(#ffffff), color-stop(0.1, #ececec), color-stop(0.5, #dbdbdb), color-stop(0.9, #dcdcdc), to(#8c8c8c) );
+    background: -webkit-gradient(linear, 50% 0%, 50% 100%, from(#ffffff), color-stop(0.1, #ececec), color-stop(0.5, #dbdbdb), color-stop(0.9, #dcdcdc), to(#8c8c8c));
     border: 1px solid #989898;
     border-radius: 8px;
 }
+
 div.speech:before {
     content: '';
     position: absolute;
@@ -16606,6 +16665,7 @@ div.speech:before {
     border: 10px solid;
     border-color: transparent transparent #989898 transparent;
 }
+
 div.speech:after {
     content: '';
     position: absolute;
@@ -16616,13 +16676,15 @@ div.speech:after {
     border: 8px solid;
     border-color: transparent transparent #ffffff transparent;
 }
+
 div.speech.right {
     display: inline-block;
     box-shadow: -2px 2px 5px #CCC;
     float: right;
     right: -10px;
-    background: -webkit-gradient( linear, 50% 0%, 50% 100%, from(#e4ffa7), color-stop(0.1, #bced50), color-stop(0.4, #aed943), color-stop(0.8, #a7d143), to(#99BF40) );
+    background: -webkit-gradient(linear, 50% 0%, 50% 100%, from(#e4ffa7), color-stop(0.1, #bced50), color-stop(0.4, #aed943), color-stop(0.8, #a7d143), to(#99BF40));
 }
+
 div.speech.right:before {
     content: '';
     position: absolute;
@@ -16635,6 +16697,7 @@ div.speech.right:before {
     border-width: 9px 0 9px 10px;
     border-color: transparent #989898;
 }
+
 div.speech.right:after {
     content: '';
     position: absolute;
@@ -16647,12 +16710,13 @@ div.speech.right:after {
     border-width: 8px 0 8px 9px;
     border-color: transparent #bced50;
 }
+
 div .left {
     display: inline-block;
     box-shadow: 2px 2px 2px #CCCCCC;
     position: relative;
     left: -10px;
-    background: -webkit-gradient( linear, 50% 0%, 50% 100%, from(#ffffff), color-stop(0.1, #eae8e8), color-stop(0.4, #E3E3E3), color-stop(0.8, #DFDFDF), to(#D9D9D9) );
+    background: -webkit-gradient(linear, 50% 0%, 50% 100%, from(#ffffff), color-stop(0.1, #eae8e8), color-stop(0.4, #E3E3E3), color-stop(0.8, #DFDFDF), to(#D9D9D9));
 
 }
 
@@ -16667,6 +16731,7 @@ div .left:before {
     border-width: 9px 10px 9px 0;
     border-color: transparent #989898;
 }
+
 div .left:after {
     content: '';
     position: absolute;
@@ -16678,24 +16743,28 @@ div .left:after {
     border-width: 8px 9px 8px 0;
     border-color: transparent #eae8e8;
 }
+
 .leftimg {
     float: left;
     margin-top: 10px;
 }
+
 .rightimg {
     float: right;
     margin-top: 10px;
 }
+
 .leftd {
     clear: both;
     float: left;
 }
+
 .rightd {
     clear: both;
     float: right;
 }
 
-.leftd_h{
+.leftd_h {
     width: 39px;
     height: 39px;
     border-radius: 100%;
@@ -16704,12 +16773,13 @@ div .left:after {
     overflow: hidden;
 }
 
-.leftd_h img{
+.leftd_h img {
     display: block;
     width: 100%;
     height: auto;
 }
-.rightd_h{
+
+.rightd_h {
     width: 39px;
     height: 39px;
     border-radius: 100%;
@@ -16718,8 +16788,94 @@ div .left:after {
     overflow: hidden;
 }
 
-.rightd_h img{
+.rightd_h img {
     display: block;
     width: 100%;
     height: auto;
+}
+
+.isay {}
+
+.ip_name {
+    font-weight: bold
+}
+
+/* 拖拽的区域样式 */
+#holder {
+    min-height: 200px;
+    /*border-radius: 10px;*/
+    transition: .3s all ease-in-out;
+}
+
+.holder {
+    min-height: 200px;
+    background: #eee;
+    margin: 2em;
+    padding: 1em;
+    border: 0px dotted #eee;
+    border-radius: 10px;
+    transition: .3s all ease-in-out;
+}
+
+/* 拖拽时用jQuery为其添加边框样式的class */
+.holder-ondrag {
+    border: 20px dotted #d45700;
+}
+
+.progress {
+    width: 100%;
+    height: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-top: 10px;
+    position: relative;
+}
+
+.progress>span {
+    display: inline-block;
+    position: absolute;
+    border-radius: 4px;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0;
+    background-color: rgb(98, 230, 74);
+    transition: width 0.3s ease-out;
+}
+
+.mask {
+    position: absolute;
+    text-align: center;
+    left: 0px;
+    top: 0px;
+    z-index: 70;
+    background-color: #FFFFFF;
+    opacity: 0.7;
+    /*透明#CCCCCC*/
+    display: none;
+}
+
+/*加载中图片*/
+.mask .loading-box {
+    position: absolute;
+    /*width: 280px;*/
+    /*height: 280px;*/
+    top: 40%;
+    left: 40%;
+
+    z-index: 80;
+    text-align: center;
+}
+
+.mask .loading-box img {
+
+    /*width: 64px;*/
+    /*height: 64px;*/
+
+}
+
+.mask h4 {}
+
+pre {
+    max-height: none !important;
 }

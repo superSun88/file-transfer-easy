@@ -244,12 +244,10 @@ var template = [ {
         role: 'forcereload'
     }, {
         label: '复制',
-        accelerator: 'CmdOrCtrl+C',
         role: 'copy'
     }, {
-        label: '粘贴',
-        accelerator: 'CmdOrCtrl+V',
-        role: 'paste'
+        label: '退出',
+        role: 'quit'
     }]
 }, {
     label: '帮助',
