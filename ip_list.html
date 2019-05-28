@@ -13,11 +13,12 @@
     <style>
         @import 'node_modules/bulma/css/bulma.css';
         @import 'node_modules/font-awesome/css/font-awesome.min.css';
-
+        @import 'node_modules/toastr/build/toastr.css';
     </style>
 
     <script>
         window.$ = window.jQuery = require('jquery');
+        window.toastr = require('./node_modules/toastr/toastr.js');
     </script>
 </head>
 
@@ -36,10 +37,6 @@
                 </p>
             </div>
 
-            <div class="control">
-                <span id="connectSuccess"></span>
-            </div>
-
         </div>
         <div class="field">
             <label class="label"><i class="fa fa-address-book-o"></i> 连接历史：</label>
@@ -54,24 +51,25 @@
 </body>
 
 <script>
-    function addChatIpHistory(ip){
+    function addChatIpHistory(ip) {
         var had = false;
-        $("#chatIpHistory").find("a").each(function(){
-            if($(this).attr("data") == ip){
+        $("#chatIpHistory").find("a").each(function () {
+            if ($(this).attr("data") == ip) {
                 had = true;
                 return false;
             }
         });
-        if(!had){
-            var a = '<a class="panel-block" title="双击" ondblclick="mixInput(this)" data="'+ip
-                +'"><span class="panel-icon">' +
+        if (!had) {
+            var a = '<a class="panel-block" title="双击" ondblclick="mixInput(this)" data="' + ip +
+                '"><span class="panel-icon">' +
                 '<i class="fa fa-desktop"></i></span>' +
-                ip+'</a>';
+                ip + '</a>';
             $("#chatIpHistory").append(a);
         }
 
     }
-    function mixInput(obj){
+
+    function mixInput(obj) {
         $("#ip").val($(obj).attr("data"));
     }
     var timeout = 10000;
@@ -137,13 +135,13 @@
                 console.log("收到聊天请求");
                 ipcRenderer.send('openChatWindow', encodeURI("chat.html?ip=" + ip +
                     "&msg=" + data.toString()));
-                    
+
 
             } else {
                 var transferData = new Object();
-                transferData.ip=ip;
-                transferData.type=0;
-                transferData.data=data.toString()
+                transferData.ip = ip;
+                transferData.type = 0;
+                transferData.data = data.toString()
                 ipcRenderer.send('receiveMessage', transferData);
             }
 
@@ -156,25 +154,21 @@
     });
 
     function testConnect() {
-        $("#connectSuccess").html(" ");
         var net = require('net');
         var HOST = $("#ip").val();
         var PORT = fileport;
         if (HOST == $("#localIP").text() || HOST == "") {
-            $("#connectSuccess").html("<span style='color: red'>不可连接本机</span>");
+            toastr.warning("不可连接本机");
 
         } else {
             var client = new net.Socket();
-//            client.setTimeout(timeout,function(){
-//                $("#connectSuccess").html("<span style='color: red'>连接失败</span>");
-//            });
             client.connect(PORT, HOST, function () {
-                $("#connectSuccess").html("<span style='color: green'>连接成功</span>");
+                toastr.success("连接成功");
                 client.end();
 
             });
             client.on('error', function () {
-                $("#connectSuccess").html("<span style='color: red'>连接失败</span>");
+                toastr.error("连接失败");
                 client.destroy();
             });
         }
@@ -188,14 +182,10 @@
         var PORT = listenChatPort;
 
         if (HOST == $("#localIP").text() || HOST == "") {
-            $("#connectSuccess").html("<span style='color: red'>不可连接本机</span>");
+            toastr.warning("不可连接本机");
 
         } else {
             var client = new net.Socket();
-//            client.setTimeout(timeout,function(){
-//                $("#connectSuccess").html("<span style='color: red'>无法创建连接</span>");
-//                addChatIpHistory(HOST)
-//            });
 
             client.connect(PORT, HOST, function () {
                 client.write("open chat");
@@ -205,7 +195,7 @@
                 client.end();
             });
             client.on('error', function () {
-               
+
             });
         }
 
@@ -266,17 +256,17 @@
             //     parseInt(socket.hasSend / 2 / socket.file_info.fileSize * 100) + '%');
             if (socket.hasSend >= socket.file_info.fileSize * 2) { //传输即将完毕，重置
                 var obj = new Object();
-                obj.data = "发来新文件："+ socket.file_info.fileName;
+                obj.data = "发来新文件：" + socket.file_info.fileName;
                 obj.remoteAddress = socket.remoteAddress;
-                obj.type =  socket.file_info.type;
-                obj.path =  receiveDirPath+socket.file_info.fileName;
+                obj.type = socket.file_info.type;
+                obj.path = receiveDirPath + socket.file_info.fileName;
                 var buf = Buffer.from(socket.buf, 'hex');
                 fs.appendFileSync(socket.fd, buf);
                 fs.closeSync(socket.fd);
                 socket.write('file transfer completed');
                 socket.file_info = null;
 
-                if(obj.type == 0){
+                if (obj.type == 0) {
                     ipcRenderer.send('receive_new_file', obj);
                     var myNotification = new Notification('EasyTransfer', {
                         body: '收到新文件,点击打开目录'
@@ -284,11 +274,11 @@
                     myNotification.onclick = () => {
                         openDir()
                     }
-                }else if(obj.type == 1){
+                } else if (obj.type == 1) {
                     var transferData = new Object();
-                    transferData.ip=socket.remoteAddress;
-                    transferData.data=obj.path;
-                    transferData.type=obj.type;
+                    transferData.ip = socket.remoteAddress;
+                    transferData.data = obj.path;
+                    transferData.type = obj.type;
                     ipcRenderer.send('receiveMessage', transferData);
                 }
 

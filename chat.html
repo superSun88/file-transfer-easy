@@ -32,9 +32,7 @@
     <div class="field" id="chatHistory">
 
     </div>
-    <div class="control">
-        <span id="connectSuccess"></span>
-    </div>
+  
     <div class="field" style="">
         <textarea class="textarea is-primary" id="msg" type="text" placeholder="请输入文本信息"></textarea>
     </div>
@@ -108,11 +106,9 @@
     //隐藏遮罩层
     function hideMask(success) {
 
-        if(success){
-            $("#connectSuccess").html("");
-
-        }else{
-            $("#connectSuccess").html("<span style='color: red'>推送失败，请确认客户端连接状态</span>");
+        if(!success){
+            toastr.error("推送失败，请确认客户端连接状态");
+           
 
         }
         $("#mask").hide();
