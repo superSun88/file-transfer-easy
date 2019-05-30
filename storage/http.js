@@ -22,11 +22,14 @@ $(function () {
         },
 
         dataType: "json",
-
+        contentType: "application/json;charset=UTF-8",
         success: function (data) {
-            data = JSON.parse(data);
+
             console.log(data)
 
+        },
+        error:function (data) {
+            console.log("dfd")
         }
 
     });
@@ -41,7 +44,17 @@ $(function () {
 
         url: config_info.get_online_users_url,
         success: function (data) {
-            data = JSON.parse(data);
+            var ipList = data.data;
+            for(var i in ipList){
+                if(ipList[i].ip !=  config_info.localhost){
+                    var a = '<a class="panel-block" title="双击" ondblclick="mixInput(this)" data="' + ipList[i].ip +
+                        '"><span class="panel-icon">' +
+                        '<i class="fa fa-desktop"></i></span>' +
+                        ipList[i].ip + '</a>';
+                    $("#onlineIpList").append(a);
+                }
+
+            }
             console.log(data)
 
         }
@@ -65,7 +78,7 @@ $.ajax({
     dataType: "json",
 
     success: function (data) {
-        data = JSON.parse(data);
+
         console.log(data)
 
     }
