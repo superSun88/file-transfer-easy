@@ -1,27 +1,15 @@
-const config_info = require('./config.js.js');
+const config_info = require('./config.js');
+const {
+    ipcRenderer
+} = require('electron')
 
-console.log(config_info.online_url);
-function getLocalIP() {
-    var interfaces = require('os').networkInterfaces();
-    for (var devName in interfaces) {
-        var iface = interfaces[devName];
-        for (var i = 0; i < iface.length; i++) {
-            var alias = iface[i];
-            if (alias.family === 'IPv4' && alias.address !== '127.0.0.1' && !alias.internal) {
-                return alias.address;
-            }
-        }
-    }
-
-}
-
+window.$ = window.jQuery = require('jquery');
 $(function () {
-    const ip = getLocalIP();
 
-/**查看该ip是否已经记录到db
+    /**查看该ip是否已经记录到db
      * 如果已经存在则修改online为1
      * 否则进行记录
-     * 
+     *
      */
     $.ajax({
 
@@ -30,7 +18,7 @@ $(function () {
         url: config_info.online_url,
 
         data: {
-            'ip': ip
+            'ip': config_info.localhost
         },
 
         dataType: "json",
@@ -43,4 +31,45 @@ $(function () {
 
     });
 
+
+    /**获取当前在线ip
+     *
+     */
+    $.ajax({
+
+        type: "GET",
+
+        url: config_info.get_online_users_url,
+        success: function (data) {
+            data = JSON.parse(data);
+            console.log(data)
+
+        }
+
+    });
+
 });
+
+ipcRenderer.on('offline', (event, data) => {
+
+$.ajax({
+
+    type: "POST",
+
+    url: config_info.offline_url,
+
+    data: {
+        'ip': config_info.localhost
+    },
+
+    dataType: "json",
+
+    success: function (data) {
+        data = JSON.parse(data);
+        console.log(data)
+
+    }
+
+});
+});
+

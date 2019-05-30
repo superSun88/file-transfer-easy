@@ -16,9 +16,7 @@
         @import '../node_modules/toastr/build/toastr.css';
     </style>
     <script>
-        window.$ = window.jQuery = require('jquery');
         window.toastr = require('../node_modules/toastr/toastr.js');
-        window.config_info = require('./config.js');
     </script>
     <script src="http.js"></script>
 
@@ -85,9 +83,6 @@
         receiveDirPath = '/tmp/FileTransferEasy_receive/'
 
     }
-    const {
-        ipcRenderer
-    } = require('electron')
     var fs = require('fs')
     fs.exists(receiveDirPath, function (exists) {
         if (!exists) {

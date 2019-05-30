@@ -4,7 +4,6 @@ const {
   BrowserWindow,
   ipcMain
 } = require('electron')
-
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow
@@ -23,44 +22,23 @@ function createWindow() {
   })
 
   // and load the index.html of the app.
-  mainWindow.loadFile('storeage/ip_list.html')
+  mainWindow.loadFile('storage/ip_list.html')
 
   // Open the DevTools.
   mainWindow.webContents.openDevTools();
-
-  const {
-    dialog
-  } = require('electron');
+    // mainWindow.http =  require('./storage/http.js');
 
   // Emitted when the window is closed.
-  mainWindow.on('closed', function () {
-    const config_info = require('./storage/config.js');
-    $.ajax({
-  
-      type: "POST",
-  
-      url: config_info.offline_url,
-  
-      data: {
-          'ip': ip
-      },
-  
-      dataType: "json",
-  
-      success: function (data) {
-          data = JSON.parse(data);
-          console.log("offline : "+data)
-  
-      }
-  
-  });
-    // Dereference the window object, usually you would store windows
-    // in an array if your app supports multi windows, this is the time
-    // when you should delete the corresponding element.
-    mainWindow = null
-   
-  })
+  mainWindow.on('close', function () {
+      mainWindow.webContents.send("offline", "");
 
+
+  })
+// Emitted when the window is closed.
+    mainWindow.on('closed', function () {
+        mainWindow = null
+
+    })
 }
 
 // This method will be called when Electron has finished
