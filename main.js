@@ -23,7 +23,7 @@ function createWindow() {
   })
 
   // and load the index.html of the app.
-  mainWindow.loadFile('ip_list.html')
+  mainWindow.loadFile('storeage/ip_list.html')
 
   // Open the DevTools.
   mainWindow.webContents.openDevTools();
@@ -34,10 +34,31 @@ function createWindow() {
 
   // Emitted when the window is closed.
   mainWindow.on('closed', function () {
+    const config_info = require('./storage/config.js');
+    $.ajax({
+  
+      type: "POST",
+  
+      url: config_info.offline_url,
+  
+      data: {
+          'ip': ip
+      },
+  
+      dataType: "json",
+  
+      success: function (data) {
+          data = JSON.parse(data);
+          console.log("offline : "+data)
+  
+      }
+  
+  });
     // Dereference the window object, usually you would store windows
     // in an array if your app supports multi windows, this is the time
     // when you should delete the corresponding element.
     mainWindow = null
+   
   })
 
 }

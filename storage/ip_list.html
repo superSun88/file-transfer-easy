@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>UserList</title>
+    <!--
+    Electron 中引入jQuery的正确方式：
+    记得要安装依赖
+    ' npm install jquery --save '
+    -->
+    <style>
+        @import '../node_modules/bulma/css/bulma.css';
+        @import '../node_modules/font-awesome/css/font-awesome.min.css';
+        @import '../node_modules/toastr/build/toastr.css';
+    </style>
+    <script>
+        window.$ = window.jQuery = require('jquery');
+        window.toastr = require('../node_modules/toastr/toastr.js');
+        window.config_info = require('./config.js');
+    </script>
+    <script src="http.js"></script>
+
+</head>
+
+<body>
+    <div class="content">
+        <div class="field">
+            <label class="label"> 本机IP: <span id="localIP"></span></label>
+            <div class="field is-grouped">
+                <p class="control is-expanded">
+                    <input class="input" type="text" id="ip" placeholder="通讯端ip地址" />
+
+                </p>
+                <p class="control">
+                    <a class="button is-link is-outlined fa fa-tty" onclick="testConnect()"> 连接测试</a>
+                    <a class="button is-primary is-outlined  fa fa-whatsapp" onclick="openChatWindow()"> 开始通讯</a>
+                </p>
+            </div>
+
+        </div>
+        <div class="field">
+            <label class="label"><i class="fa fa-address-book-o"></i> 连接历史：</label>
+            <div id="chatIpHistory">
+
+            </div>
+        </div>
+    </div>
+
+
+
+</body>
+
+<script>
+    // console.log(config_info.url)
+    function addChatIpHistory(ip) {
+        var had = false;
+        $("#chatIpHistory").find("a").each(function () {
+            if ($(this).attr("data") == ip) {
+                had = true;
+                return false;
+            }
+        });
+        if (!had) {
+            var a = '<a class="panel-block" title="双击" ondblclick="mixInput(this)" data="' + ip +
+                '"><span class="panel-icon">' +
+                '<i class="fa fa-desktop"></i></span>' +
+                ip + '</a>';
+            $("#chatIpHistory").append(a);
+        }
+
+    }
+
+    function mixInput(obj) {
+        $("#ip").val($(obj).attr("data"));
+    }
+    var timeout = 10000;
+    var listenChatPort = 6001;
+    var fileport = 6000;
+    var os = require('os');
+    var path = require('path')
+    var receiveDirPath = __dirname + path.sep + "receive" + path.sep
+    if (os.type == 'Darwin') {
+        receiveDirPath = '/tmp/FileTransferEasy_receive/'
+
+    }
+    const {
+        ipcRenderer
+    } = require('electron')
+    var fs = require('fs')
+    fs.exists(receiveDirPath, function (exists) {
+        if (!exists) {
+            //2. fs.mkdir  创建目录
+            fs.mkdir(receiveDirPath, function (error) {
+                if (error) {
+                    console.log(error);
+                    return false;
+                }
+                console.log('创建目录成功');
+            })
+        }
+    })
+    var net = require('net');
+    var server = net.createServer();
+    server.listen(fileport, "0.0.0.0");
+    server.on('connection', function (sock) {
+
+        console.log('CONNECTED: ' +
+            sock.remoteAddress + ':' + sock.remotePort);
+        // 处理业务
+        // 为这个socket实例添加一个"data"事件处理函数
+        sock.on('data', function (data) {
+
+            //            console.log('DATA ' + sock.remoteAddress + ': ' + data);
+            // 回发该数据，客户端将收到来自服务端的数据
+            receiveFile(sock, data);
+        });
+
+        // 为这个socket实例添加一个"close"事件处理函数
+        sock.on('close', function (data) {
+            console.log('CLOSED: ' +
+                sock.remoteAddress + ' ' + sock.remotePort);
+        });
+    });
+
+    var chatServer = net.createServer();
+    chatServer.listen(listenChatPort, "0.0.0.0");
+    chatServer.on('connection', function (sock) {
+
+        var ip = sock.remoteAddress;
+        console.log('CONNECTED: ' +
+            sock.remoteAddress + ':' + sock.remotePort);
+        // 处理业务
+        // 为这个socket实例添加一个"data"事件处理函数
+        sock.on('data', function (data) {
+            if (data.toString() == "open chat") {
+                console.log("收到聊天请求");
+                ipcRenderer.send('openChatWindow', encodeURI("chat.html?ip=" + ip +
+                    "&msg=" + data.toString()));
+
+
+            } else {
+                var transferData = new Object();
+                transferData.ip = ip;
+                transferData.type = 0;
+                transferData.data = data.toString()
+                ipcRenderer.send('receiveMessage', transferData);
+            }
+
+        });
+        // 为这个socket实例添加一个"close"事件处理函数
+        sock.on('close', function (data) {
+            console.log('CLOSED: ' +
+                sock.remoteAddress + ' ' + sock.remotePort);
+        });
+    });
+
+    function testConnect() {
+        var net = require('net');
+        var HOST = $("#ip").val();
+        var PORT = fileport;
+        if (HOST == $("#localIP").text() || HOST == "") {
+            toastr.warning("不可连接本机");
+
+        } else {
+            var client = new net.Socket();
+            client.connect(PORT, HOST, function () {
+                toastr.success("连接成功");
+                client.end();
+
+            });
+            client.on('error', function () {
+                toastr.error("连接失败");
+                client.destroy();
+            });
+        }
+
+
+    }
+
+
+    function openChatWindow() {
+        var HOST = $("#ip").val();
+        var PORT = listenChatPort;
+
+        if (HOST == $("#localIP").text() || HOST == "") {
+            toastr.warning("不可连接本机");
+
+        } else {
+            var client = new net.Socket();
+
+            client.connect(PORT, HOST, function () {
+                client.write("open chat");
+                // window.open("chat.html?ip=" + $("#ip").val());
+                ipcRenderer.send('openChatWindow', "chat.html?ip=" + HOST);
+                addChatIpHistory(HOST);
+                client.end();
+            });
+            client.on('error', function () {
+
+            });
+        }
+
+    }
+
+    function openDir() {
+
+        var exec = require('child_process').exec;
+        if (os.type == 'Darwin') {
+            exec("open " + receiveDirPath);
+
+        } else if (os.type == 'Windows_NT') {
+            exec("explorer.exe " + receiveDirPath);
+
+        }
+    }
+
+    function getLocalIP() {
+        var interfaces = require('os').networkInterfaces();
+        for (var devName in interfaces) {
+            var iface = interfaces[devName];
+            for (var i = 0; i < iface.length; i++) {
+                var alias = iface[i];
+                if (alias.family === 'IPv4' && alias.address !== '127.0.0.1' && !alias.internal) {
+                    return alias.address;
+                }
+            }
+        }
+
+    }
+    const ip = getLocalIP();
+    $("#localIP").html(ip);
+    
+
+
+
+    var receiveFileSize = 0;
+
+    function receiveFile(socket, data) {
+        console.log(data.length)
+        if (!socket.file_info) { //将文件信息绑定到当前socket，便于后续访问
+            socket.file_info = JSON.parse(data).fileInfo;
+            socket.hasSend = 0; //已经发送进来的大小
+            socket.hasWrite = 0; //已经写入的大小
+            socket.buf = ''; //buffer存储对象
+            receiveFileSize = socket.file_info.fileSize;
+            socket.fd = fs.openSync(receiveDirPath + socket.file_info.fileName, 'w+'); //文件标识ID
+            socket.write('set file info'); //反馈
+        } else {
+            socket.buf += data;
+            socket.hasSend = socket.hasSend + data.length;
+            ipcRenderer.send('asynchronous-message', socket.hasSend / receiveFileSize);
+            while (socket.buf.length >= 2048) { //开始重新拼接分块写入，十六进制下字符的大小为之前的二倍
+                var pack = socket.buf.slice(0, 2048);
+                socket.buf = socket.buf.slice(2048);
+                pack = Buffer.from(pack, 'hex');
+                fs.appendFileSync(socket.fd, pack);
+            }
+
+            // console.log(socket.hasSend,
+            //     parseInt(socket.hasSend / 2 / socket.file_info.fileSize * 100) + '%');
+            if (socket.hasSend >= socket.file_info.fileSize * 2) { //传输即将完毕，重置
+                var obj = new Object();
+                obj.data = "发来新文件：" + socket.file_info.fileName;
+                obj.remoteAddress = socket.remoteAddress;
+                obj.type = socket.file_info.type;
+                obj.path = receiveDirPath + socket.file_info.fileName;
+                var buf = Buffer.from(socket.buf, 'hex');
+                fs.appendFileSync(socket.fd, buf);
+                fs.closeSync(socket.fd);
+                socket.write('file transfer completed');
+                socket.file_info = null;
+
+                if (obj.type == 0) {
+                    ipcRenderer.send('receive_new_file', obj);
+                    var myNotification = new Notification('EasyTransfer', {
+                        body: '收到新文件,点击打开目录'
+                    })
+                    myNotification.onclick = () => {
+                        openDir()
+                    }
+                } else if (obj.type == 1) {
+                    var transferData = new Object();
+                    transferData.ip = socket.remoteAddress;
+                    transferData.data = obj.path;
+                    transferData.type = obj.type;
+                    ipcRenderer.send('receiveMessage', transferData);
+                }
+
+
+
+            } else {
+                socket.write(data.length + "");
+            }
+        }
+
+
+    }
+</script>
+
+</html>
