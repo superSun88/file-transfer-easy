@@ -12,6 +12,14 @@
     <script>
         window.$ = window.jQuery = require('jquery');
         window.toastr = require('./node_modules/toastr/toastr.js');
+        window.toastr.options = {  
+        closeButton: false,  
+        debug: false,  
+        progressBar: true,  
+        positionClass: "toast-bottom-right",  
+        onclick: null,  
+        showMethod: "fadeIn",  
+        hideMethod: "fadeOut"  }
     </script>
 
     <style>
@@ -328,6 +336,7 @@
 
         });
         client.on('error', function () {
+            toastr.error("发送失败，请确认客户端连接状态");
             client.end();
         });
 
