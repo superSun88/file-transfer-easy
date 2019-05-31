@@ -16,7 +16,7 @@
         @import '../node_modules/toastr/build/toastr.css';
     </style>
     <script>
-        window.toastr = require('../node_modules/toastr/toastr.js');
+        window.toastr = require('toastr');
         window.toastr.options = {
             closeButton: false,
             debug: false,
@@ -182,7 +182,7 @@
         sock.on('data', function (data) {
             if (data.toString() == "open chat") {
                 console.log("收到聊天请求");
-                ipcRenderer.send('openChatWindow', encodeURI("chat.html?ip=" + ip +
+                ipcRenderer.send('openChatWindow', encodeURI("storage/chat.html?ip=" + ip +
                     "&msg=" + data.toString()));
 
 
@@ -239,8 +239,7 @@
 
             client.connect(PORT, HOST, function () {
                 client.write("open chat");
-                // window.open("chat.html?ip=" + $("#ip").val());
-                ipcRenderer.send('openChatWindow', "chat.html?ip=" + HOST);
+                ipcRenderer.send('openChatWindow', "storage/chat.html?ip=" + HOST);
                 addChatIpHistory(nickName,HOST);
                 client.end();
             });

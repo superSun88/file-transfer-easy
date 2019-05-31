@@ -11,7 +11,7 @@
     -->
     <script>
         window.$ = window.jQuery = require('jquery');
-        window.toastr = require('./node_modules/toastr/toastr.js');
+        window.toastr = require('toastr');
         window.toastr.options = {  
         closeButton: false,  
         debug: false,  
@@ -21,14 +21,18 @@
         showMethod: "fadeIn",  
         hideMethod: "fadeOut"  }
     </script>
+    <script src="../js/bulma/clipboard.js"></script>
+
+    <script src="../js/bulma/cookie.js"></script>
+    <script src="../js/bulma/main.js"></script>
 
     <style>
-        @import 'node_modules/toastr/build/toastr.css';
+        @import '../node_modules/toastr/build/toastr.css';
         
-        @import 'node_modules/bulma/css/bulma.css';
-        @import 'node_modules/font-awesome/css/font-awesome.min.css';
+        @import '../node_modules/bulma/css/bulma.css';
+        @import '../node_modules/font-awesome/css/font-awesome.min.css';
 
-        @import 'css/chat.css';
+        @import '../css/chat.css';
         
     </style>
 
@@ -40,25 +44,52 @@
     <div class="field" id="chatHistory">
 
     </div>
-  
+
     <div class="field" style="">
         <textarea class="textarea is-primary" id="msg" type="text" placeholder="请输入文本信息"></textarea>
     </div>
-    <div class="field" style="text-align: right">
-        <a class="button is-focused" onclick="sendMsg()">
-            <i class="fa fa-paper-plane"> 发送信息</i>
-        </a>
-       
-        <button onclick="modal()" class="button is-info modal-button" data-target="modal" aria-haspopup="true">
-            <i class="fa fa-file-archive-o"> 发送文件</i></button>
-    </div>
+    <nav class="level">
+        <div class="level-left">
+            <div class="level-item">
+                <div class="field" style="text-align: right">
+                    <button class="button is-info modal-button" data-target="fileModal" aria-haspopup="true">
+                        <i class="fa fa-file-archive-o"> 发送文件</i></button>
+                    <a class="button" onclick="sendMsg()">
+                        <i class="fa fa-paper-plane" id="sendMsgBtn"> 点击发送信息</i>
+                    </a>
+                    <div class="dropdown">
+                        <div class="dropdown-trigger">
+                            <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                <span class="icon is-small">
+                    <i class="fa fa-angle-down" aria-hidden="true"></i>
+                </span>
+                            </button>
+                        </div>
+                        <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                            <div class="dropdown-content">
+                                <a href="#" class="dropdown-item is-active" data="0">
+                                    点击发送信息
+                                </a>
+                                <a class="dropdown-item" data="1">
+                                    回车发送信息
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </nav>
+
 
     <div class="modal" id="fileModal">
         <div class="modal-background"></div>
         <div class="modal-card">
             <header class="modal-card-head">
                 <p class="modal-card-title">发送文件</p>
-                <button class="delete" aria-label="close" onclick="closeModal()"></button>
+                <button class="delete" aria-label="close"></button>
             </header>
             <section class="modal-card-body">
                 <div class="field">
@@ -93,7 +124,7 @@
     <input id="ip" type="hidden" />
     <div id="mask" class="mask control-group" style="display: none">
         <div class="loading-box">
-            <img src="img/loading2.gif" />
+            <img src="../img/loading2.gif" />
             <h4>正在推图···</h4>
         </div>
 
@@ -103,6 +134,25 @@
 </body>
 
 <script>
+    $(function () {
+        $(".dropdown-item").bind("click",function(){
+            $(".dropdown-item").each(function(){
+                $(this).attr("class","dropdown-item")
+            });
+            $("#sendMsgBtn").text($(this).text());
+            $("#sendMsgBtn").attr("data",$(this).attr("data"));
+            $(this).attr("class","dropdown-item is-active");
+        });
+        $("#msg").keydown(function(event){
+
+            if(event.keyCode==13  && !event.shiftKey){
+                console.log($("#sendMsgBtn").attr("data"))
+                if($("#sendMsgBtn").attr("data") == 1){
+                    sendMsg()
+                }
+            }
+        });
+    });
     //兼容火狐、IE8
     //显示遮罩层
     function showMask() {
@@ -213,7 +263,10 @@
 
     function sendMsg() {
         var msg = $("#msg").val();
-        sendSocketMsg(msg);
+        if("" != msg){
+            sendSocketMsg(msg);
+
+        }
 
     }
 
@@ -294,19 +347,6 @@
 
     }
 
-    function modal() {
-        //Get element with Id= "modal"
-        var modal = document.getElementById("fileModal");
-        //Change style to display = "block"
-        modal.style.display = "block";
-    }
-
-    function closeModal() {
-        //Get element with Id= "modal"
-        var modal = document.getElementById("fileModal");
-        //Change style to display = "block"
-        modal.style.display = "none";
-    }
 
     function sendSocketMsg(msg) {
         var net = require('net');
