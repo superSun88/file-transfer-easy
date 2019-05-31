@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title id="title">ChatWindow</title>
+    <!--
+    Electron 中引入jQuery的正确方式：
+    记得要安装依赖
+    ' npm install jquery --save '
+    -->
+    <script>
+        window.$ = window.jQuery = require('jquery');
+        window.toastr = require('./node_modules/toastr/toastr.js');
+        window.toastr.options = {  
+        closeButton: false,  
+        debug: false,  
+        progressBar: true,  
+        positionClass: "toast-bottom-right",  
+        onclick: null,  
+        showMethod: "fadeIn",  
+        hideMethod: "fadeOut"  }
+    </script>
+
+    <style>
+        @import 'node_modules/toastr/build/toastr.css';
+        
+        @import 'node_modules/bulma/css/bulma.css';
+        @import 'node_modules/font-awesome/css/font-awesome.min.css';
+
+        @import 'css/chat.css';
+        
+    </style>
+
+
+</head>
+
+<body>
+
+    <div class="field" id="chatHistory">
+
+    </div>
+  
+    <div class="field" style="">
+        <textarea class="textarea is-primary" id="msg" type="text" placeholder="请输入文本信息"></textarea>
+    </div>
+    <div class="field" style="text-align: right">
+        <a class="button is-focused" onclick="sendMsg()">
+            <i class="fa fa-paper-plane"> 发送信息</i>
+        </a>
+       
+        <button onclick="modal()" class="button is-info modal-button" data-target="modal" aria-haspopup="true">
+            <i class="fa fa-file-archive-o"> 发送文件</i></button>
+    </div>
+
+    <div class="modal" id="fileModal">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+            <header class="modal-card-head">
+                <p class="modal-card-title">发送文件</p>
+                <button class="delete" aria-label="close" onclick="closeModal()"></button>
+            </header>
+            <section class="modal-card-body">
+                <div class="field">
+                    <div class="select is-primary">
+                        <select id="kb">
+                            <option value="724">发送大小（默认724KB）</option>
+                            <option value="1024">1024</option>
+                            <option value="2048">2048</option>
+                            <option value="4096">4096</option>
+                        </select>
+                    </div>
+               
+                </div>
+
+                <div style="text-align: center">
+                    <div id="holder" class="holder">
+                        请拖拽文件到这里...
+                    </div>
+
+                    <div> <span style="font-weight: bold">文件名:</span><span id="transferFile"></span></div>
+                    <div> <span style="font-weight: bold">文件大小:</span><span id="fileSize"></span>(kb)</div>
+                    <div> <span style="font-weight: bold">已发送:</span><span id="transferKb"></span>(kb)</div>
+                    <div class="progress">
+                        <span></span>
+
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </div>
+    <input id="ip" type="hidden" />
+    <div id="mask" class="mask control-group" style="display: none">
+        <div class="loading-box">
+            <img src="img/loading2.gif" />
+            <h4>正在推图···</h4>
+        </div>
+
+
+
+    </div>
+</body>
+
+<script>
+    //兼容火狐、IE8
+    //显示遮罩层
+    function showMask() {
+        $("#mask").css("height", "100%");
+        $("#mask").css("width", "100%");
+        $("#mask").show();
+    }
+
+    //隐藏遮罩层
+    function hideMask(success) {
+
+        if(!success){
+            toastr.error("推送失败，请确认客户端连接状态");
+           
+
+        }
+        $("#mask").hide();
+    }
+
+    function getLocalIP() {
+        var interfaces = require('os').networkInterfaces();
+        for (var devName in interfaces) {
+            var iface = interfaces[devName];
+            for (var i = 0; i < iface.length; i++) {
+                var alias = iface[i];
+                if (alias.family === 'IPv4' && alias.address !== '127.0.0.1' && !alias.internal) {
+                    return alias.address;
+                }
+            }
+        }
+
+    }
+    var myip = getLocalIP();
+
+    var port = 6001;
+    var fileport = 6000;
+    var os = require('os');
+    var path = require('path')
+    var receiveDirPath = __dirname + path.sep + "receive" + path.sep
+    if (os.type == 'Darwin') {
+        receiveDirPath = '/tmp/FileTransferEasy_receive/'
+
+    }
+    const {
+        ipcRenderer
+    } = require('electron')
+    var fs = require('fs'),
+        holder = document.getElementById("holder");
+
+    holder.ondragenter = holder.ondragover = function (event) {
+        event.preventDefault();
+        $("#holder").attr("class", "holder-ondrag");
+        holder.innerText = "松开鼠标";
+        document.querySelector('.progress span').style.width = '0%';
+    };
+
+    holder.ondragleave = function (event) {
+        event.preventDefault();
+        $("#holder").attr("class", "holder");
+        holder.innerText = "请拖拽文件到这里...";
+    };
+
+    holder.ondrop = function (event) {
+        // 调用 preventDefault() 来避免浏览器对数据的默认处理
+        //（drop 事件的默认行为是以链接形式打开）
+        event.preventDefault();
+        var packSize = 724;
+        var kb = $("#kb").find("option:selected").val();
+        if ("" != kb) {
+            packSize = parseInt(kb);
+        }
+
+        var files = event.dataTransfer.files;
+        for (var i in files) {
+            if (undefined != files[i].path) {
+                sendFile(files[i].path, files[i].name, 0, packSize);
+
+            }
+        }
+
+    }
+    var msg = document.getElementById("msg");
+    msg.ondrop = function (event) {
+        // 调用 preventDefault() 来避免浏览器对数据的默认处理
+        //（drop 事件的默认行为是以链接形式打开）
+        event.preventDefault();
+        var files = event.dataTransfer.files;
+
+        var type = files[0].type;
+        if (type == "image/jpeg" ||
+            type == "image/jpg" ||
+            type == "image/png" ||
+            type == "image/gif") { //发送图片 直接发送
+            showMask();
+            sendFile(files[0].path, files[0].name, 1, 4096);
+        }
+
+
+    }
+
+
+    ipcRenderer.on('receiveMessage', (event, data) => {
+        writeMsg(data, data.data);
+    });
+    ipcRenderer.on('receiveNewFile', (event, data) => {
+        writeFileMsg(data, data.data);
+    });
+
+    function sendMsg() {
+        var msg = $("#msg").val();
+        sendSocketMsg(msg);
+
+    }
+
+    function writeFileMsg(sock, data) {
+
+        var span =
+            '<div class="panel-block">' +
+            '<span class="ip_name"  style="color: cadetblue">' + sock.remoteAddress +
+            ':&nbsp</span> <div class="container"><figure ' +
+            'style="background-color: white!important;" class="highlight"><pre><code class="language-html">' +
+            '<div class="leftd">' +
+            '<div class="speech left" ng-class="speech left"><a class="fa fa-file-archive-o"> ' +
+            escapeHtml(data) + '</a></div></div></code></pre><button class="button is-small bd-copy" ' +
+            'onclick="openFile()" >Open</button></figure></div></div>';
+
+
+        $("#chatHistory").append(span);
+
+
+
+    }
+
+    function openFile() {
+        var exec = require('child_process').exec;
+        if (os.type == 'Darwin') {
+            exec("open " + receiveDirPath);
+
+        } else if (os.type == 'Windows_NT') {
+            exec("explorer.exe " + receiveDirPath);
+
+        }
+
+
+
+    }
+
+    function writeMsg(sock, data) {
+
+        var span = "";
+        if (sock.type == 0) {
+            span =
+                '<div class="panel-block">' +
+                '<span class="ip_name"  style="color: cadetblue">' + sock.remoteAddress +
+                ':&nbsp</span> <div class="container"><figure ' +
+                'style="background-color: white!important;" class="highlight"><pre><code class="language-html">' +
+                '<div class="leftd">' +
+                '<div class="speech left" ng-class="speech left">' +
+                escapeHtml(data) + '</div></div></code></pre><button class="button is-small bd-copy" ' +
+                'onclick="copyData(this)" >Copy</button></figure></div></div>';
+
+        } else if (sock.type == 1) {
+            span =
+                '<div class="panel-block">' +
+                '<span class="ip_name"  style="color: cadetblue">' + sock.remoteAddress +
+                ':&nbsp</span> <div class="container"><figure ' +
+                'style="background-color: white!important;" class="highlight"><pre><code class="language-html">' +
+                '<div class="leftd">' +
+                '<div class="speech left" ng-class="speech left"><img src="' + data +
+                '" alt=""></img></div></div></code></pre><button class="button is-small bd-copy" ' +
+                'onclick="openFile()" >Open</button></figure></div></div>';
+
+        }
+
+
+        $("#chatHistory").append(span);
+        if (os.type == 'Darwin') {
+            var myNotification = new Notification('EasyTransfer', {
+                body: '收到新消息'
+            });
+            myNotification.onclick = () => {
+                ipcRenderer.send('openWin', sock.remoteAddress);
+            }
+
+        } else {
+            ipcRenderer.send('flashWin', sock.remoteAddress);
+        }
+
+
+    }
+
+    function modal() {
+        //Get element with Id= "modal"
+        var modal = document.getElementById("fileModal");
+        //Change style to display = "block"
+        modal.style.display = "block";
+    }
+
+    function closeModal() {
+        //Get element with Id= "modal"
+        var modal = document.getElementById("fileModal");
+        //Change style to display = "block"
+        modal.style.display = "none";
+    }
+
+    function sendSocketMsg(msg) {
+        var net = require('net');
+        var HOST = $("#ip").val();
+        var client = net.createConnection(port, HOST);
+
+        client.on('connect', function () {
+            console.log('CONNECTED TO: ' + HOST + ':' + port);
+            client.write(msg);
+            client.end();
+
+            var span =
+                '<div class="panel-block">' +
+                '<div class="container"><figure ' +
+                'style="background-color: white!important;" class="highlight"><pre><code class="language-html">' +
+                '<div class="rightd">' +
+                '<div class="speech right" ng-class="speech right">' +
+                escapeHtml(msg) +
+                '</div></div></code></pre></figure></div><span class="ip_name"  style="color: #209cee">&nbsp:' +
+                myip + '</span></div>';
+
+
+            $("#chatHistory").append(span);
+            $("#msg").val("");
+            $("#msg").focus();
+
+
+        });
+        client.on('error', function () {
+            toastr.error("发送失败，请确认客户端连接状态");
+            client.end();
+        });
+
+    }
+
+    function sendFile(path, name, type, packSize) {
+        var net = require('net');
+        var HOST = $("#ip").val();
+        //        var client = new net.Socket();
+        var client = net.createConnection(fileport, HOST);
+        var fileInfo = fs.statSync(path);
+        var fileSize = fileInfo.size;
+        console.log("filesize:" + fileSize)
+        client.on('connect', function () {
+            console.log('CONNECTED TO: ' + HOST + ':' + fileport);
+            client.write(JSON.stringify({
+                'id': "client2",
+
+                'fileInfo': {
+                    'type': type,
+                    'fileSize': fileSize,
+                    fileName: name
+                }
+            }));
+
+        });
+        var sendSize = 0;
+
+        client.on('error', function () {
+            if (type == 1) {
+                hideMask(false);
+            }
+        });
+        var fd = fs.openSync(path, 'r');
+
+        var buf = new Buffer.alloc(packSize);
+        var percent = 0;
+        var sendNum = 0;
+        client.on('data', function (response) {
+            $("#transferFile").text(name);
+            $("#fileSize").text(fileSize);
+            response = response.toString();
+            var leftSize = fileSize - sendSize;
+            if (leftSize < packSize) {
+                packSize = leftSize;
+                buf = new Buffer.alloc(packSize);
+            }
+
+            percent = (sendSize / fileSize) * 100;
+            if (percent < 10) {
+                document.querySelector('.progress span').style.width = '10%';
+            } else if (percent < 20) {
+                document.querySelector('.progress span').style.width = '20%';
+            } else if (percent < 30) {
+                document.querySelector('.progress span').style.width = '30%';
+            } else if (percent < 40) {
+                document.querySelector('.progress span').style.width = '40%';
+            } else if (percent < 50) {
+
+                document.querySelector('.progress span').style.width = '50%';
+            } else if (percent < 60) {
+
+                document.querySelector('.progress span').style.width = '60%';
+            } else if (percent < 70) {
+
+                document.querySelector('.progress span').style.width = '70%';
+            } else if (percent < 80) {
+
+                document.querySelector('.progress span').style.width = '80%';
+            } else if (percent < 90) {
+
+                document.querySelector('.progress span').style.width = '90%';
+            } else if (percent < 100) {
+                document.querySelector('.progress span').style.width = '90%';
+            }
+            $("#transferKb").text(sendSize);
+            if (response.toString() == "set file info") {
+                holder.innerText = "文件发送中...";
+                //readSync参数:文件ID,buffer对象,写入buffer的起始位置,写入buffer的结束位置,读取文件的起始位置
+                fs.readSync(fd, buf, 0, buf.length, sendSize);
+                var data = buf.toString('hex'); //以十六进制传输
+                sendNum++;
+                client.write(data);
+                console.log('Transfering...num:' + sendNum);
+
+                sendSize += packSize;
+
+            } else if (response.toString() == "file transfer completed") {
+                console.log('Transfer Completed!');
+                document.querySelector('.progress span').style.width = '100%';
+                holder.innerText = "发送完毕";
+                $("#holder").attr("class", "holder");
+                var span = "";
+                if (type == 0) {
+                    span =
+                        '<div class="panel-block">' +
+                        '<div class="container"><figure ' +
+                        'style="background-color: white!important;" class="highlight"><pre><code class="language-html">' +
+                        '<div class="rightd">' +
+                        '<div class="speech right" ng-class="speech right"><a class="isay"><i class="fa fa-file-archive-o"> 发送新文件：' +
+                        name + '</i></a></div></div></code></pre></figure></div>' +
+                        '<span class="ip_name"  ' +
+                        'style="color: #209cee">&nbsp:' + myip + '</span></div>';
+                } else if (type == 1) {
+                    span =
+                        '<div class="panel-block">' +
+                        '<div class="container"><figure ' +
+                        'style="background-color: white!important;" class="highlight"><pre><code class="language-html">' +
+                        '<div class="rightd">' +
+                        '<div class="speech right" ng-class="speech right"><img class="isay" src="' + path +
+                        '"></img></div></div></code></pre></figure></div>' +
+                        '<span class="ip_name"  ' +
+                        'style="color: #209cee">&nbsp:' + myip + '</span></div>';
+                }
+
+
+
+                $("#chatHistory").append(span);
+                client.end()
+            } else { //有拆包
+
+                //readSync参数:文件ID,buffer对象,写入buffer的起始位置,写入buffer的结束位置,读取文件的起始位置
+                fs.readSync(fd, buf, 0, buf.length, sendSize);
+                var data = buf.toString('hex'); //以十六进制传输
+                client.write(data);
+                sendNum++;
+
+                console.log('response:' + response.toString());
+
+                sendSize += packSize;
+
+            }
+            if (sendSize == fileSize && holder.innerText == "文件发送中...") {
+                if (type == 1) {
+                    hideMask(true);
+                }
+                holder.innerText = "发送完毕";
+                $("#holder").attr("class", "holder");
+                document.querySelector('.progress span').style.width = '100%';
+            }
+        });
+
+
+
+    }
+
+    function GetQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg); //search,查询？后面的参数，并匹配正则
+        if (r != null) return decodeURIComponent(r[2]);
+        return null;
+    }
+    var ip = GetQueryString("ip");
+    if (undefined != ip && "" != ip) {
+        $("#ip").val(ip);
+        $("#title").text("ChatWindow(" + ip + ")");
+
+    }
+
+    var msg = GetQueryString("msg");
+    if (undefined != msg && "" != msg) {
+        var fromip = GetQueryString("ip");
+        $("#title").text("ChatWindow(" + ip + ")");
+
+        var type = GetQueryString("type");
+        var span = "";
+        if (type == "0") {
+            span =
+                '<div class="panel-block">' +
+                '<span class="ip_name"  style="color: cadetblue">' + fromip +
+                ':&nbsp</span> <div class="container"><figure ' +
+                'style="background-color: white!important;" class="highlight"><pre><code class="language-html">' +
+                '<div class="leftd">' +
+                '<div class="speech left" ng-class="speech left">' +
+                escapeHtml(msg) + '</div></div></code></pre><button class="button is-small bd-copy" ' +
+                'onclick="copyData(this)" >Copy</button></figure></div></div>';
+
+        } else if (type == "1") {
+            span =
+                '<div class="panel-block">' +
+                '<span class="ip_name"  style="color: cadetblue">' + fromip +
+                ':&nbsp</span> <div class="container"><figure ' +
+                'style="background-color: white!important;" class="highlight"><pre><code class="language-html">' +
+                '<div class="leftd">' +
+                '<div class="speech left" ng-class="speech left"><img src="' + msg +
+                '" alt=""></img></div></div></code></pre><button class="button is-small bd-copy" ' +
+                'onclick="openFile()" >Open</button></figure></div></div>';
+
+        }
+
+        $("#chatHistory").append(span);
+    }
+
+    var file = GetQueryString("file");
+    if (undefined != file && "" != file) {
+        var fromip = GetQueryString("ip");
+        $("#title").text("ChatWindow(" + ip + ")");
+        var span =
+            '<div class="panel-block">' +
+            '<span class="ip_name"  style="color: cadetblue">' + fromip +
+            ':&nbsp</span> <div class="container"><figure ' +
+            'style="background-color: white!important;" class="highlight"><pre><code class="language-html">' +
+            '<div class="leftd">' +
+            '<div class="speech left" ng-class="speech left"><a class="fa fa-file-archive-o"> ' +
+            escapeHtml(file) + '</a></div></div></code></pre><button class="button is-small bd-copy" ' +
+            'onclick="openFile()" >Open</button></figure></div></div>';
+
+
+        $("#chatHistory").append(span);
+    }
+    const {
+        clipboard
+    } = require('electron');
+
+    function copyData(obj) {
+
+        clipboard.writeText($($($(obj).parent()).find(".left")[0]).text());
+        toastr.success("已粘贴到剪贴板");
+
+       
+
+    }
+    // toastr.success("已粘贴到剪贴板");
+    // bulmabox.alert("sfdf")
+    
+    function escapeHtml(text) {
+
+        return (text.toString()).replace(/[<>"&]/g, function (match, pos, originalText) {
+            switch (match) {
+                case "<":
+                    return "&lt;";
+                case ">":
+                    return "&gt;";
+                case "&":
+                    return "&amp;";
+                case "\"":
+                    return "&quot;";
+
+            }
+        });
+    }
+</script>
+
+</html>

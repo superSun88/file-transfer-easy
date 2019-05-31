@@ -17,51 +17,91 @@
     </style>
     <script>
         window.toastr = require('../node_modules/toastr/toastr.js');
+        window.toastr.options = {
+            closeButton: false,
+            debug: false,
+            progressBar: true,
+            positionClass: "toast-bottom-right",
+            onclick: null,
+            showMethod: "fadeIn",
+            hideMethod: "fadeOut"
+        }
     </script>
     <script src="http.js"></script>
 
 </head>
 
 <body>
-    <div class="content">
-        <div class="field">
-            <label class="label"> 本机IP: <span id="localIP"></span></label>
-            <div class="field is-grouped">
-                <p class="control is-expanded">
-                    <input class="input" type="text" id="ip" placeholder="通讯端ip地址" />
+<div class="content">
+    <div class="field">
+        <label class="label"> 本机IP: <span id="localIP"></span></label>
+        <div class="field is-grouped">
+            <p class="control is-expanded">
+                <input class="input" type="text" id="ip" placeholder="通讯端ip地址"/>
 
-                </p>
-                <p class="control">
-                    <a class="button is-link is-outlined fa fa-tty" onclick="testConnect()"> 连接测试</a>
-                    <a class="button is-primary is-outlined  fa fa-whatsapp" onclick="openChatWindow()"> 开始通讯</a>
-                </p>
-            </div>
-
-        </div>
-        <div class="field">
-            <label class="label"><i class="fa fa-address-book"></i> 在线列表：</label>
-            <div id="onlineIpList">
-
-            </div>
+            </p>
+            <p class="control">
+                <a class="button is-link is-outlined fa fa-tty" onclick="testConnect()"> 连接测试</a>
+                <a class="button is-primary is-outlined  fa fa-whatsapp" onclick="openChatWindow()"> 开始通讯</a>
+            </p>
         </div>
 
-        <div class="field">
-            <label class="label"><i class="fa fa-address-book-o"></i> 连接历史：</label>
-            <div id="chatIpHistory">
+    </div>
+
+    <div class="field-body">
+        <div class="tabs is-toggle is-toggle-rounded">
+            <ul>
+                <li class="is-active" id="0" onclick="changeTab(this)">
+                    <a>
+                        <span class="icon is-small"><i class="fa fa-address-book"></i></span>
+                        <span>在线列表</span>
+                    </a>
+                </li>
+                <li id="1" onclick="changeTab(this)">
+                    <a>
+                        <span class="icon is-small"><i class="fa fa-address-book-o"></i></span>
+                        <span>连接历史</span>
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+        <div class="container" id="ipListDiv" style="width: 90%">
+            <div class="ip_div" id="onlineIpList" >
+
+            </div>
+            <div  class="ip_div" id="chatIpHistory" style="display: none">
 
             </div>
         </div>
-
 
     </div>
 
 
 
+
+</div>
+
+
 </body>
 
 <script>
+    function changeTab(obj){
+        $(".is-toggle").find("li").each(function(index,o){
+            $(o).attr("class","");
+        });
+        $(obj).attr("class","is-active");
+        var id = $(obj).attr("id");
+        $("#ipListDiv").find(".ip_div").each(function(index,o){
+            if(id == index){
+                $(o).show();
+            }else{
+                $(o).hide();
+            }
+        });
+    }
     // console.log(config_info.url)
-    function addChatIpHistory(ip) {
+    function addChatIpHistory(nickName,ip) {
         var had = false;
         $("#chatIpHistory").find("a").each(function () {
             if ($(this).attr("data") == ip) {
@@ -70,10 +110,10 @@
             }
         });
         if (!had) {
-            var a = '<a class="panel-block" title="双击" ondblclick="mixInput(this)" data="' + ip +
+            var a = '<a class="panel-block" title="双击" ondblclick="mixInput(this)" nick-name="'+nickName+'"data="' + ip +
                 '"><span class="panel-icon">' +
                 '<i class="fa fa-desktop"></i></span>' +
-                ip + '</a>';
+                nickName+" : "+ ip + '</a>';
             $("#chatIpHistory").append(a);
         }
 
@@ -81,7 +121,9 @@
 
     function mixInput(obj) {
         $("#ip").val($(obj).attr("data"));
+        $("#ip").attr("nick-name",$(obj).attr("nick-name"));
     }
+
     var timeout = 10000;
     var listenChatPort = 6001;
     var fileport = 6000;
@@ -186,6 +228,7 @@
 
     function openChatWindow() {
         var HOST = $("#ip").val();
+        var nickName = $("#ip").attr("nick-name");
         var PORT = listenChatPort;
 
         if (HOST == $("#localIP").text() || HOST == "") {
@@ -198,7 +241,7 @@
                 client.write("open chat");
                 // window.open("chat.html?ip=" + $("#ip").val());
                 ipcRenderer.send('openChatWindow', "chat.html?ip=" + HOST);
-                addChatIpHistory(HOST);
+                addChatIpHistory(nickName,HOST);
                 client.end();
             });
             client.on('error', function () {
@@ -233,10 +276,9 @@
         }
 
     }
+
     const ip = getLocalIP();
     $("#localIP").html(ip);
-    
-
 
 
     var receiveFileSize = 0;
@@ -291,7 +333,6 @@
                     transferData.type = obj.type;
                     ipcRenderer.send('receiveMessage', transferData);
                 }
-
 
 
             } else {

@@ -35,11 +35,12 @@ $(function () {
         success: function (data) {
             var ipList = data.data;
             for(var i in ipList){
+
                 if(ipList[i].ip !=  config_info.localhost){
-                    var a = '<span class="panel-block" title="双击" ondblclick="mixInput(this)" data="' + ipList[i].ip +
+                    var a = '<a class="panel-block" title="双击" ondblclick="mixInput(this)" nick-name="'+ipList[i].nickName+'"data="' + ipList[i].ip +
                         '"><span class="panel-icon">' +
-                        '<i class="fa fa-desktop"></i></span><a>' +
-                        ipList[i].nickName+" </a>:"+ipList[i].ip + '</span>';
+                        '<i class="fa fa-desktop"></i></span><span style="color: dodgerblue">' +
+                        ipList[i].nickName+" : "+ipList[i].ip + '</span></a>';
                     $("#onlineIpList").append(a);
                 }
             }

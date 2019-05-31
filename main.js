@@ -122,8 +122,6 @@ function createNewChatWin(args, ip) {
       nodeIntegration: true
     }
   })
-  // console.log(args)
-  // chatwin.loadFile("chat.html"); //新开窗口的渲染进程
   chatwin.loadURL(`file://${__dirname}/` + args); //新开窗口的渲染进程
   chatwin.webContents.openDevTools();
   chatwin.on('closed', () => {
@@ -186,7 +184,7 @@ ipcMain.on('receiveMessage', (event, data) => {
     console.log("create window " + ip)
     let chat_ip_win = new Object();
     chat_ip_win.ip = ip;
-    var args = encodeURI("chat.html?ip=" + ip);
+    var args = encodeURI("storage/chat.html?ip=" + ip);
     chat_ip_win.win = createNewChatWin(args, ip);
     setTimeout(function(){
         data.remoteAddress = ip;
@@ -219,7 +217,7 @@ if (nofind) {
     console.log("create window " + ip)
     let chat_ip_win = new Object();
     chat_ip_win.ip = ip;
-    var args = encodeURI("chat.html?ip=" + ip +
+    var args = encodeURI("storage/chat.html?ip=" + ip +
         "&file=" + data.data);
     chat_ip_win.win = createNewChatWin(args, ip);
     chat_ip.push(chat_ip_win);
