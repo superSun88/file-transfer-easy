@@ -21,7 +21,7 @@
             closeButton: false,
             debug: false,
             progressBar: true,
-            positionClass: "toast-bottom-right",
+            positionClass: "toast-bottom-center",
             onclick: null,
             showMethod: "fadeIn",
             hideMethod: "fadeOut"
@@ -33,7 +33,7 @@
 
 <body>
 <div class="content">
-    <div class="field">
+    <div class="container">
         <label class="label"> 本机IP: <span id="localIP"></span></label>
         <div class="field is-grouped">
             <p class="control is-expanded">
@@ -48,7 +48,7 @@
 
     </div>
 
-    <div class="field-body">
+    <div class="field">
         <div class="tabs is-toggle is-toggle-rounded">
             <ul>
                 <li class="is-active" id="0" onclick="changeTab(this)">
@@ -66,17 +66,17 @@
 
             </ul>
         </div>
-        <div class="container" id="ipListDiv" style="width: 90%">
-            <div class="ip_div" id="onlineIpList" >
 
-            </div>
-            <div  class="ip_div" id="chatIpHistory" style="display: none">
-
-            </div>
-        </div>
 
     </div>
+    <div class="container" id="ipListDiv" style="width: 90%">
+        <div class="ip_div" id="onlineIpList" >
 
+        </div>
+        <div  class="ip_div" id="chatIpHistory" style="display: none">
+
+        </div>
+    </div>
 
 
 
