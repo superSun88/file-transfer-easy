@@ -55,7 +55,7 @@
                     <button class="button is-info modal-button" data-target="fileModal" aria-haspopup="true">
                         <i class="fa fa-file-archive-o"> 发送文件</i></button>
                     <a class="button" onclick="sendMsg()">
-                        <i class="fa fa-paper-plane" id="sendMsgBtn"> 点击发送信息</i>
+                        <i class="fa fa-mouse-pointer" id="sendMsgBtn"> 点击发送信息</i>
                     </a>
                     <div class="dropdown">
                         <div class="dropdown-trigger">
@@ -71,7 +71,7 @@
                                     点击发送信息
                                 </a>
                                 <a class="dropdown-item" data="1">
-                                    回车发送信息
+                                    点击/回车发送信息
                                 </a>
                             </div>
                         </div>
@@ -138,9 +138,18 @@
         $(".dropdown-item").bind("click",function(){
             $(".dropdown-item").each(function(){
                 $(this).attr("class","dropdown-item")
+
             });
+
             $("#sendMsgBtn").text($(this).text());
             $("#sendMsgBtn").attr("data",$(this).attr("data"));
+
+            if(1==$("#sendMsgBtn").attr("data")){
+                $("#sendMsgBtn").attr("class","fa fa-keyboard-o");
+            }else{
+                $("#sendMsgBtn").attr("class","fa fa-mouse-pointer");
+
+            }
             $(this).attr("class","dropdown-item is-active");
         });
         $("#msg").keydown(function(event){
