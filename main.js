@@ -25,7 +25,7 @@ function createWindow() {
   mainWindow.loadFile('storage/ip_list.html')
 
   // Open the DevTools.
-  mainWindow.webContents.openDevTools();
+  mainWindow.webContents.openDevTools({mode:'bottom'});
     // mainWindow.http =  require('./storage/http.js');
 
   // Emitted when the window is closed.
@@ -123,7 +123,7 @@ function createNewChatWin(args, ip) {
     }
   })
   chatwin.loadURL(`file://${__dirname}/` + args); //新开窗口的渲染进程
-  chatwin.webContents.openDevTools();
+  chatwin.webContents.openDevTools({mode:'bottom'});
   chatwin.on('closed', () => {
     console.log("close");
     chatwin = null;
