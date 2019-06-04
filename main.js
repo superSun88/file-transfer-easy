@@ -240,9 +240,12 @@ var template = [ {
         // accelerator: 'CmdOrCtrl+C',
         role: 'forcereload'
     }, {
-        label: '复制',
-        role: 'copy'
-    }, {
+      label: '复制',
+      role: 'copy'
+  }, {
+    label: '粘贴',
+    role: 'paste'
+}, {
         label: '退出',
         role: 'quit'
     }]
