@@ -25,7 +25,7 @@ function createWindow() {
   mainWindow.loadFile('storage/ip_list.html')
 
   // Open the DevTools.
-  mainWindow.webContents.openDevTools({mode:'bottom'});
+  // mainWindow.webContents.openDevTools({mode:'bottom'});
     // mainWindow.http =  require('./storage/http.js');
 
   // Emitted when the window is closed.
@@ -123,7 +123,7 @@ function createNewChatWin(args, ip) {
     }
   })
   chatwin.loadURL(`file://${__dirname}/` + args); //新开窗口的渲染进程
-  chatwin.webContents.openDevTools({mode:'bottom'});
+  // chatwin.webContents.openDevTools({mode:'bottom'});
   chatwin.on('closed', () => {
     console.log("close");
     chatwin = null;
@@ -257,7 +257,11 @@ var template = [ {
         click: function () {
             electron.shell.openExternal('https://github.com/superSun88/file-transfer-easy/')
         }
-    }]
+    },
+    {
+      label: '开发者模式',
+      role: 'toggledevtools'
+  }]
 }];
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
