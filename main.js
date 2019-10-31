@@ -4,12 +4,17 @@ const {
   BrowserWindow,
   ipcMain
 } = require('electron')
+
+const { useCapture } = require('./capture/lib/capture-main')
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow
 const electron = require('electron');
 const Menu = electron.Menu;
 function createWindow() {
+
+   // 初始化截图
+   useCapture()
     const menu = Menu.buildFromTemplate(template)
     Menu.setApplicationMenu(menu)
   // Create the browser window.

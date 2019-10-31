@@ -54,9 +54,11 @@
                 <div class="field" style="text-align: right">
                     <button class="button is-info modal-button" data-target="fileModal" aria-haspopup="true">
                         <i class="fa fa-file-archive-o"> 发送文件</i></button>
+                       
                     <a class="button" onclick="sendMsg()">
                         <i class="fa fa-mouse-pointer" id="sendMsgBtn"> 点击发送信息</i>
                     </a>
+                   
                     <div class="dropdown">
                         <div class="dropdown-trigger">
                             <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
@@ -76,7 +78,8 @@
                             </div>
                         </div>
                     </div>
-
+                    <button class="button is-info" aria-haspopup="true" id="js-capture">
+                            <i class="fa fa-scissors"> 截图</i></button>
                 </div>
             </div>
         </div>
@@ -134,7 +137,27 @@
 </body>
 
 <script>
+    
     $(function () {
+        $('#msg').bind('paste', function(event)
+{
+    var e = event.originalEvent;
+    var items = e.clipboardData.items;
+    for(var i = 0; i < items.length; ++i)
+    {
+        // 如果剪贴板中的内容类型是图片文件
+        if (items[i].kind == 'file' && items[i].type.indexOf('image/') >= 0)
+        {
+            e.preventDefault();
+            var blob = items[i].getAsFile();
+            
+            appendCapture(event,blob)
+            // showMask();
+            // sendCapture(blob);
+
+        };
+    };
+});
         $(".dropdown-item").bind("click",function(){
             $(".dropdown-item").each(function(){
                 $(this).attr("class","dropdown-item")
@@ -274,7 +297,7 @@
         var msg = $("#msg").val();
         if("" != msg){
             sendSocketMsg(msg);
-
+            appendMsg(msg)
         }
 
     }
@@ -356,18 +379,8 @@
 
     }
 
-
-    function sendSocketMsg(msg) {
-        var net = require('net');
-        var HOST = $("#ip").val();
-        var client = net.createConnection(port, HOST);
-
-        client.on('connect', function () {
-            console.log('CONNECTED TO: ' + HOST + ':' + port);
-            client.write(msg);
-            client.end();
-
-            var span =
+function appendMsg(msg){
+    var span =
                 '<div class="panel-block">' +
                 '<div class="container"><figure ' +
                 'style="background-color: white!important;" class="highlight"><pre><code class="language-html">' +
@@ -379,6 +392,18 @@
 
 
             $("#chatHistory").append(span);
+}
+    function sendSocketMsg(msg) {
+        var net = require('net');
+        var HOST = $("#ip").val();
+        var client = net.createConnection(port, HOST);
+
+        client.on('connect', function () {
+            console.log('CONNECTED TO: ' + HOST + ':' + port);
+            client.write(msg);
+            client.end();
+
+         
             $("#msg").val("");
             $("#msg").focus();
 
@@ -626,6 +651,192 @@
 
             }
         });
+    }
+
+
+    document.getElementById('js-capture').addEventListener('click', ()=>{
+        ipcRenderer.send('capture-screen')
+    })
+
+    function appendCapture(e,blob){
+        if (blob.size === 0) {
+              return;
+          }
+          var imageSrc = "";
+          const reader = new FileReader();
+          const imgs = new Image(); 
+          imgs.file = blob;
+          reader.onload = (function(aImg) {
+              return function(e) {
+               
+                aImg.src = e.target.result;
+                imageSrc = e.target.result;
+
+
+                // var span =
+                //         '<div class="panel-block">' +
+                //         '<div class="container"><figure ' +
+                //         'style="background-color: white!important;" class="highlight"><pre><code class="language-html">' +
+                //         '<div class="rightd">' +
+                //         '<div class="speech right" ng-class="speech right"><img class="isay" src="' + imageSrc +
+                //         '"></img></div></div></code></pre></figure></div>' +
+                //         '<span class="ip_name"  ' +
+                //         'style="color: #209cee">&nbsp:' + myip + '</span></div>';
+                // $("#chatHistory").append(span);
+                sendSocketMsg(imageSrc)
+
+                var fs = require('fs');
+                fs.writeFile(receiveDirPath+"capture_"+blob.lastModified+".png", 
+                Buffer.from(imageSrc.replace('data:image/png;base64,', ''), 'base64'), () => {
+                  sendFile(receiveDirPath+"capture_"+blob.lastModified+".png",
+                  "capture_"+blob.lastModified+".png",1,4096
+                  )
+                })
+              };
+            })(imgs);
+          reader.readAsDataURL(blob);
+
+    }
+
+    function sendCapture(file) {
+        var packSize = 4096;
+        var net = require('net');
+        var fs = require("fs");
+        var data = fs.readFileSync(file.name);
+        var HOST = $("#ip").val();
+        var client = net.createConnection(fileport, HOST);
+        var fileSize = file.size;
+        console.log("filesize:" + fileSize)
+        client.on('connect', function () {
+            console.log('CONNECTED TO: ' + HOST + ':' + fileport);
+            client.write(JSON.stringify({
+                'id': "client2",
+                'fileInfo': {
+                    'type': 1,
+                    'fileSize': file.size,
+                    fileName: file.name
+                }
+            }));
+
+        });
+        var sendSize = 0;
+
+        client.on('error', function () {
+            if (type == 1) {
+                hideMask(false);
+            }
+        });
+        // var fd = fs.openSync(file, 'r');
+
+        var buf = new Buffer.alloc(packSize);
+        var percent = 0;
+        var sendNum = 0;
+        // client.on('data', function (response) {
+        //     $("#transferFile").text(name);
+        //     $("#fileSize").text(fileSize);
+        //     response = response.toString();
+        //     var leftSize = fileSize - sendSize;
+        //     if (leftSize < packSize) {
+        //         packSize = leftSize;
+        //         buf = new Buffer.alloc(packSize);
+        //     }
+
+        //     percent = (sendSize / fileSize) * 100;
+        //     if (percent < 10) {
+        //         document.querySelector('.progress span').style.width = '10%';
+        //     } else if (percent < 20) {
+        //         document.querySelector('.progress span').style.width = '20%';
+        //     } else if (percent < 30) {
+        //         document.querySelector('.progress span').style.width = '30%';
+        //     } else if (percent < 40) {
+        //         document.querySelector('.progress span').style.width = '40%';
+        //     } else if (percent < 50) {
+
+        //         document.querySelector('.progress span').style.width = '50%';
+        //     } else if (percent < 60) {
+
+        //         document.querySelector('.progress span').style.width = '60%';
+        //     } else if (percent < 70) {
+
+        //         document.querySelector('.progress span').style.width = '70%';
+        //     } else if (percent < 80) {
+
+        //         document.querySelector('.progress span').style.width = '80%';
+        //     } else if (percent < 90) {
+
+        //         document.querySelector('.progress span').style.width = '90%';
+        //     } else if (percent < 100) {
+        //         document.querySelector('.progress span').style.width = '90%';
+        //     }
+        //     $("#transferKb").text(sendSize);
+        //     if (response.toString() == "set file info") {
+        //         holder.innerText = "文件发送中...";
+        //         //readSync参数:文件ID,buffer对象,写入buffer的起始位置,写入buffer的结束位置,读取文件的起始位置
+        //         fs.readSync(file, buf, 0, buf.length, sendSize);
+        //         var data = buf.toString('hex'); //以十六进制传输
+        //         sendNum++;
+        //         client.write(data);
+        //         console.log('Transfering...num:' + sendNum);
+
+        //         sendSize += packSize;
+
+        //     } else if (response.toString() == "file transfer completed") {
+        //         console.log('Transfer Completed!');
+        //         document.querySelector('.progress span').style.width = '100%';
+        //         holder.innerText = "发送完毕";
+        //         $("#holder").attr("class", "holder");
+        //         var span = "";
+        //         if (type == 0) {
+        //             span =
+        //                 '<div class="panel-block">' +
+        //                 '<div class="container"><figure ' +
+        //                 'style="background-color: white!important;" class="highlight"><pre><code class="language-html">' +
+        //                 '<div class="rightd">' +
+        //                 '<div class="speech right" ng-class="speech right"><a class="isay"><i class="fa fa-file-archive-o"> 发送新文件：' +
+        //                 name + '</i></a></div></div></code></pre></figure></div>' +
+        //                 '<span class="ip_name"  ' +
+        //                 'style="color: #209cee">&nbsp:' + myip + '</span></div>';
+        //         } else if (type == 1) {
+        //             span =
+        //                 '<div class="panel-block">' +
+        //                 '<div class="container"><figure ' +
+        //                 'style="background-color: white!important;" class="highlight"><pre><code class="language-html">' +
+        //                 '<div class="rightd">' +
+        //                 '<div class="speech right" ng-class="speech right"><img class="isay" src="' + path +
+        //                 '"></img></div></div></code></pre></figure></div>' +
+        //                 '<span class="ip_name"  ' +
+        //                 'style="color: #209cee">&nbsp:' + myip + '</span></div>';
+        //         }
+
+
+
+        //         $("#chatHistory").append(span);
+        //         client.end()
+        //     } else { //有拆包
+
+        //         //readSync参数:文件ID,buffer对象,写入buffer的起始位置,写入buffer的结束位置,读取文件的起始位置
+        //         fs.readSync(file, buf, 0, buf.length, sendSize);
+        //         var data = buf.toString('hex'); //以十六进制传输
+        //         client.write(data);
+        //         sendNum++;
+
+        //         console.log('response:' + response.toString());
+
+        //         sendSize += packSize;
+
+        //     }
+        //     if (sendSize == fileSize && holder.innerText == "文件发送中...") {
+        //         if (type == 1) {
+        //             hideMask(true);
+        //         }
+        //         holder.innerText = "发送完毕";
+        //         $("#holder").attr("class", "holder");
+        //         document.querySelector('.progress span').style.width = '100%';
+        //     }
+        // });
+
+
+
     }
 </script>
 
