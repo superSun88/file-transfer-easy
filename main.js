@@ -2,9 +2,10 @@
 const {
   app,
   BrowserWindow,
-  ipcMain
+  ipcMain,
+  globalShortcut
 } = require('electron')
-
+const ShortcutCapture = require('shortcut-capture')
 const { useCapture } = require('./capture/lib/capture-main')
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -49,7 +50,15 @@ function createWindow() {
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
-app.on('ready', createWindow)
+app.on('ready', () => {
+  createWindow()
+  // 必须在ready之后初始化，否者会报错
+  const shortcutCapture = new ShortcutCapture()
+  globalShortcut.register('ctrl+alt+a', () => shortcutCapture.shortcutCapture())
+  // console.log(shortcutCapture)
+  // 拿取截图后返回信息
+  // shortcutCapture.on('capture', ({ dataURL, bounds }) => console.log(dataURL, bounds))
+} )
 
 // Quit when all windows are closed.
 app.on('window-all-closed', function () {

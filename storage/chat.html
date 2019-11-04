@@ -78,8 +78,8 @@
                             </div>
                         </div>
                     </div>
-                    <button class="button is-info" aria-haspopup="true" id="js-capture">
-                            <i class="fa fa-scissors"> 截图</i></button>
+                    <!-- <button class="button is-info" aria-haspopup="true" id="js-capture">
+                            <i class="fa fa-scissors"> 截图</i></button> -->
                 </div>
             </div>
         </div>
@@ -654,7 +654,11 @@ function appendMsg(msg){
     }
 
 
+    const ShortcutCapture = require('shortcut-capture')
+
     document.getElementById('js-capture').addEventListener('click', ()=>{
+        // const shortcutCapture = new ShortcutCapture()
+        // shortcutCapture.shortcutCapture()
         ipcRenderer.send('capture-screen')
     })
 
