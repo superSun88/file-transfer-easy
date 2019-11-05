@@ -67,7 +67,7 @@
 .box:not(:last-child),
 .breadcrumb:not(:last-child),
 .content:not(:last-child),
-.highlight:not(:last-child),
+.highlight_chat:not(:last-child),
 .level:not(:last-child),
 .list:not(:last-child),
 .message:not(:last-child),
@@ -4415,7 +4415,7 @@ a.tag:hover {
     font-weight: inherit
 }
 
-.title+.highlight {
+.title+.highlight_chat {
     margin-top: -.75rem
 }
 
@@ -4503,14 +4503,14 @@ a.tag:hover {
     text-transform: uppercase
 }
 
-.highlight {
+.highlight_chat {
     font-weight: 400;
     max-width: 100%;
     overflow: hidden;
     padding: 0
 }
 
-.highlight pre {
+.highlight_chat pre {
     overflow: auto;
     max-width: 100%
 }
@@ -12199,253 +12199,253 @@ print {
     }
 }
 
-.highlight {
+.highlight_chat {
     background-color: #f5f5f5;
     border-radius: 6px;
     color: #586e75;
 }
 
-.highlight pre {
+.highlight_chat pre {
     background-color: transparent;
     font-size: .875em;
     line-height: 1.375
 }
 
-.highlight .c {
+.highlight_chat .c {
     color: #93a1a1
 }
 
-.highlight .err,
-.highlight .g {
+.highlight_chat .err,
+.highlight_chat .g {
     color: #586e75
 }
 
-.highlight .k {
+.highlight_chat .k {
     color: #859900
 }
 
-.highlight .l,
-.highlight .n {
+.highlight_chat .l,
+.highlight_chat .n {
     color: #586e75
 }
 
-.highlight .o {
+.highlight_chat .o {
     color: #859900
 }
 
-.highlight .x {
+.highlight_chat .x {
     color: #cb4b16
 }
 
-.highlight .p {
+.highlight_chat .p {
     color: #586e75
 }
 
-.highlight .cm {
+.highlight_chat .cm {
     color: #93a1a1
 }
 
-.highlight .cp {
+.highlight_chat .cp {
     color: #859900
 }
 
-.highlight .c1 {
+.highlight_chat .c1 {
     color: #93a1a1
 }
 
-.highlight .cs {
+.highlight_chat .cs {
     color: #859900
 }
 
-.highlight .gd {
+.highlight_chat .gd {
     color: #2aa198
 }
 
-.highlight .ge {
+.highlight_chat .ge {
     color: #586e75;
     font-style: italic
 }
 
-.highlight .gr {
+.highlight_chat .gr {
     color: #dc322f
 }
 
-.highlight .gh {
+.highlight_chat .gh {
     color: #cb4b16
 }
 
-.highlight .gi {
+.highlight_chat .gi {
     color: #859900
 }
 
-.highlight .go,
-.highlight .gp {
+.highlight_chat .go,
+.highlight_chat .gp {
     color: #586e75
 }
 
-.highlight .gs {
+.highlight_chat .gs {
     color: #586e75;
     font-weight: 700
 }
 
-.highlight .gu {
+.highlight_chat .gu {
     color: #cb4b16
 }
 
-.highlight .gt {
+.highlight_chat .gt {
     color: #586e75
 }
 
-.highlight .kc {
+.highlight_chat .kc {
     color: #cb4b16
 }
 
-.highlight .kd {
+.highlight_chat .kd {
     color: #268bd2
 }
 
-.highlight .kn,
-.highlight .kp {
+.highlight_chat .kn,
+.highlight_chat .kp {
     color: #859900
 }
 
-.highlight .kr {
+.highlight_chat .kr {
     color: #268bd2
 }
 
-.highlight .kt {
+.highlight_chat .kt {
     color: #dc322f
 }
 
-.highlight .ld {
+.highlight_chat .ld {
     color: #586e75
 }
 
-.highlight .m,
-.highlight .s {
+.highlight_chat .m,
+.highlight_chat .s {
     color: #2aa198
 }
 
-.highlight .na {
+.highlight_chat .na {
     color: #b58900
 }
 
-.highlight .nb {
+.highlight_chat .nb {
     color: #586e75
 }
 
-.highlight .nc {
+.highlight_chat .nc {
     color: #268bd2
 }
 
-.highlight .no {
+.highlight_chat .no {
     color: #cb4b16
 }
 
-.highlight .nd {
+.highlight_chat .nd {
     color: #268bd2
 }
 
-.highlight .ne,
-.highlight .ni {
+.highlight_chat .ne,
+.highlight_chat .ni {
     color: #cb4b16
 }
 
-.highlight .nf {
+.highlight_chat .nf {
     color: #268bd2
 }
 
-.highlight .nl,
-.highlight .nn,
-.highlight .nx,
-.highlight .py {
+.highlight_chat .nl,
+.highlight_chat .nn,
+.highlight_chat .nx,
+.highlight_chat .py {
     color: #586e75
 }
 
-.highlight .nt,
-.highlight .nv {
+.highlight_chat .nt,
+.highlight_chat .nv {
     color: #268bd2
 }
 
-.highlight .ow {
+.highlight_chat .ow {
     color: #859900
 }
 
-.highlight .w {
+.highlight_chat .w {
     color: #586e75
 }
 
-.highlight .mf,
-.highlight .mh,
-.highlight .mi,
-.highlight .mo {
+.highlight_chat .mf,
+.highlight_chat .mh,
+.highlight_chat .mi,
+.highlight_chat .mo {
     color: #2aa198
 }
 
-.highlight .sb {
+.highlight_chat .sb {
     color: #93a1a1
 }
 
-.highlight .sc {
+.highlight_chat .sc {
     color: #2aa198
 }
 
-.highlight .sd {
+.highlight_chat .sd {
     color: #586e75
 }
 
-.highlight .s2 {
+.highlight_chat .s2 {
     color: #2aa198
 }
 
-.highlight .se {
+.highlight_chat .se {
     color: #cb4b16
 }
 
-.highlight .sh {
+.highlight_chat .sh {
     color: #586e75
 }
 
-.highlight .si,
-.highlight .sx {
+.highlight_chat .si,
+.highlight_chat .sx {
     color: #2aa198
 }
 
-.highlight .sr {
+.highlight_chat .sr {
     color: #dc322f
 }
 
-.highlight .s1,
-.highlight .ss {
+.highlight_chat .s1,
+.highlight_chat .ss {
     color: #2aa198
 }
 
-.highlight .bp,
-.highlight .vc,
-.highlight .vg,
-.highlight .vi {
+.highlight_chat .bp,
+.highlight_chat .vc,
+.highlight_chat .vg,
+.highlight_chat .vi {
     color: #268bd2
 }
 
-.highlight .il {
+.highlight_chat .il {
     color: #2aa198
 }
 
-.content .highlight {
+.content .highlight_chat {
     margin-left: 0;
     margin-right: 0;
     text-align: left
 }
 
-.content .highlight:not(:first-child) {
+.content .highlight_chat:not(:first-child) {
     margin-top: 1em
 }
 
-.content .highlight:not(:last-child) {
+.content .highlight_chat:not(:last-child) {
     margin-bottom: 1em
 }
 
-.content li .highlight {
+.content li .highlight_chat {
     margin-top: .5em
 }
 
@@ -12453,7 +12453,7 @@ print {
     margin-top: 1em
 }
 
-.content .highlighter-rouge:not(:last-child) {
+.content .highlight_chater-rouge:not(:last-child) {
     margin-bottom: 1.5rem
 }
 
@@ -12782,7 +12782,7 @@ print {
     width: 100%
 }
 
-#markup .highlight pre {
+#markup .highlight_chat pre {
     max-height: none
 }
 
@@ -14128,14 +14128,14 @@ print {
     border-top-right-radius: 6px
 }
 
-.bd-example+.highlight {
+.bd-example+.highlight_chat {
     border: 1px solid #ffdd57;
     border-radius: 0 0 4px 4px;
     border-top: none;
     margin-top: -1.5rem
 }
 
-.bd-example+.highlight:not(:last-child) {
+.bd-example+.highlight_chat:not(:last-child) {
     margin-bottom: 1.5rem
 }
 
@@ -14158,16 +14158,16 @@ print {
     padding: 1.5rem
 }
 
-.bd-snippet-code.bd-is-more.bd-is-more-clipped .highlight {
+.bd-snippet-code.bd-is-more.bd-is-more-clipped .highlight_chat {
     height: 2em;
     overflow: hidden
 }
 
-.bd-snippet-code.bd-is-more.bd-is-more-clipped .highlight pre {
+.bd-snippet-code.bd-is-more.bd-is-more-clipped .highlight_chat pre {
     overflow: hidden
 }
 
-.bd-snippet-code.bd-is-more.bd-is-more-clipped .highlight .bd-show {
+.bd-snippet-code.bd-is-more.bd-is-more-clipped .highlight_chat .bd-show {
     display: flex
 }
 
@@ -14176,12 +14176,12 @@ print {
     border-top-left-radius: 0
 }
 
-.bd-snippet.bd-is-horizontal .bd-snippet-code .highlight {
+.bd-snippet.bd-is-horizontal .bd-snippet-code .highlight_chat {
     border-top-left-radius: 0;
     border-top-right-radius: 0
 }
 
-.bd-snippet.bd-is-horizontal .bd-snippet-code.bd-is-more.bd-is-more-clipped .highlight pre {
+.bd-snippet.bd-is-horizontal .bd-snippet-code.bd-is-more.bd-is-more-clipped .highlight_chat pre {
     padding-top: .325rem
 }
 
@@ -14209,21 +14209,21 @@ print {
     }
 
     .bd-snippet.bd-is-vertical .bd-snippet-code,
-    .bd-snippet.bd-is-vertical .bd-snippet-code .highlight,
-    .bd-snippet.bd-is-vertical .bd-snippet-code .highlight pre {
+    .bd-snippet.bd-is-vertical .bd-snippet-code .highlight_chat,
+    .bd-snippet.bd-is-vertical .bd-snippet-code .highlight_chat pre {
         align-items: stretch;
         border-radius: 0 6px 6px 0;
         display: flex;
         flex-direction: column
     }
 
-    .bd-snippet.bd-is-vertical .bd-snippet-code .highlight,
-    .bd-snippet.bd-is-vertical .bd-snippet-code .highlight .language-html,
-    .bd-snippet.bd-is-vertical .bd-snippet-code .highlight pre {
+    .bd-snippet.bd-is-vertical .bd-snippet-code .highlight_chat,
+    .bd-snippet.bd-is-vertical .bd-snippet-code .highlight_chat .language-html,
+    .bd-snippet.bd-is-vertical .bd-snippet-code .highlight_chat pre {
         flex-grow: 1
     }
 
-    .bd-snippet.bd-is-vertical .bd-snippet-code .highlight pre {
+    .bd-snippet.bd-is-vertical .bd-snippet-code .highlight_chat pre {
         white-space: pre
     }
 
@@ -14258,23 +14258,23 @@ print {
     }
 }
 
-.highlight.bd-is-hovering {
+.highlight_chat.bd-is-hovering {
     border-radius: 2px;
     box-shadow: 0 0 0 2px #ffdd57
 }
 
-.highlight pre {
+.highlight_chat pre {
     max-height: 320px;
     margin-bottom: 0 !important
 }
 
 #navbarJsExample:not(:last-child),
-.highlight-full:not(:last-child) {
+.highlight_chat-full:not(:last-child) {
     margin-bottom: 1.5rem
 }
 
-#navbarJsExample .highlight pre,
-.highlight-full .highlight pre {
+#navbarJsExample .highlight_chat pre,
+.highlight_chat-full .highlight_chat pre {
     max-height: none
 }
 
@@ -14334,12 +14334,12 @@ print {
     padding: .5rem .75rem
 }
 
-.highlight {
+.highlight_chat {
     position: relative;
 }
 
-.highlight .bd-copy,
-.highlight .bd-expand {
+.highlight_chat .bd-copy,
+.highlight_chat .bd-expand {
     background: 0 0;
     border: none;
     color: #4a4a4a;
@@ -14353,24 +14353,24 @@ print {
     top: .25rem;
 }
 
-.highlight .bd-copy:hover,
-.highlight .bd-expand:hover {
+.highlight_chat .bd-copy:hover,
+.highlight_chat .bd-expand:hover {
     background-color: #ffdd57;
     color: rgba(0, 0, 0, .7)
 }
 
-.highlight .bd-copy:active,
-.highlight .bd-copy:focus,
-.highlight .bd-expand:active,
-.highlight .bd-expand:focus {
+.highlight_chat .bd-copy:active,
+.highlight_chat .bd-copy:focus,
+.highlight_chat .bd-expand:active,
+.highlight_chat .bd-expand:focus {
     box-shadow: none
 }
 
-.highlight .bd-expand {
+.highlight_chat .bd-expand {
     right: 45px
 }
 
-.highlight .bd-show {
+.highlight_chat .bd-show {
     bottom: 0;
     left: 0;
     position: absolute;
@@ -14387,19 +14387,19 @@ print {
     width: 100%
 }
 
-.highlight .bd-show strong {
+.highlight_chat .bd-show strong {
     color: currentColor;
     font-weight: 600
 }
 
-.highlight .bd-show:hover {
+.highlight_chat .bd-show:hover {
     background-color: rgba(255, 221, 87, .8);
     color: rgba(0, 0, 0, .7)
 }
 
 @media screen and (min-width: 769px),
 print {
-    .highlight pre {
+    .highlight_chat pre {
         white-space: pre-wrap
     }
 }
@@ -14411,7 +14411,7 @@ print {
         margin-right: 1.5rem
     }
 
-    .section:not(.is-fullwidth)>.bd-example:not(.is-fullwidth)+.highlight {
+    .section:not(.is-fullwidth)>.bd-example:not(.is-fullwidth)+.highlight_chat {
         margin-left: 1.5rem;
         margin-right: 1.5rem
     }
@@ -14434,7 +14434,7 @@ print {
     padding: 0
 }
 
-.section.is-fullwidth .bd-example+.highlight {
+.section.is-fullwidth .bd-example+.highlight_chat {
     border-left: none;
     border-radius: 0;
     border-right: none
@@ -14929,7 +14929,7 @@ print {
         width: calc(50% - 3rem)
     }
 
-    .bd-website.bd-is-highlighted {
+    .bd-website.bd-is-highlight_chated {
         width: 100%
     }
 
