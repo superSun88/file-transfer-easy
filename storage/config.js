@@ -1,4 +1,4 @@
-const url_prefix = 'http://10.13.14.45:8080/';
+const url_prefix = 'http://10.13.49.59:8080/';
 var config = { 
     'online_url':url_prefix+'onlineUser',
     'offline_url':url_prefix+'offlineUser',
