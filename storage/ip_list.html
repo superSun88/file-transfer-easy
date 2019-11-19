@@ -45,38 +45,41 @@
                 <a class="button is-primary is-outlined  fa fa-whatsapp" onclick="openChatWindow()"> 开始通讯</a>
             </p>
         </div>
+        <button name="getBluetoothDevice" onclick="getAllBluetoothDevices()">获取蓝牙设备</button>
 
+        <div class="field">
+                <div class="tabs is-toggle is-toggle-rounded">
+                    <ul>
+                        <li class="is-active" id="0" onclick="changeTab(this)">
+                            <a>
+                                <span class="icon is-small"><i class="fa fa-address-book"></i></span>
+                                <span>在线列表</span>
+                            </a>
+                        </li>
+                        <li id="1" onclick="changeTab(this)">
+                            <a>
+                                <span class="icon is-small"><i class="fa fa-address-book-o"></i></span>
+                                <span>连接历史</span>
+                            </a>
+                        </li>
+        
+                    </ul>
+                </div>
+        
+        
+            </div>
+            <div class="container" id="ipListDiv" style="width: 90%">
+                <div class="ip_div" id="onlineIpList" >
+        
+                </div>
+                <div  class="ip_div" id="chatIpHistory" style="display: none">
+        
+                </div>
+            </div>
     </div>
+  
 
-    <div class="field">
-        <div class="tabs is-toggle is-toggle-rounded">
-            <ul>
-                <li class="is-active" id="0" onclick="changeTab(this)">
-                    <a>
-                        <span class="icon is-small"><i class="fa fa-address-book"></i></span>
-                        <span>在线列表</span>
-                    </a>
-                </li>
-                <li id="1" onclick="changeTab(this)">
-                    <a>
-                        <span class="icon is-small"><i class="fa fa-address-book-o"></i></span>
-                        <span>连接历史</span>
-                    </a>
-                </li>
-
-            </ul>
-        </div>
-
-
-    </div>
-    <div class="container" id="ipListDiv" style="width: 90%">
-        <div class="ip_div" id="onlineIpList" >
-
-        </div>
-        <div  class="ip_div" id="chatIpHistory" style="display: none">
-
-        </div>
-    </div>
+    
 
 
 
@@ -86,6 +89,62 @@
 </body>
 
 <script>
+    function getHeartRate() {
+    console.log('Requesting Bluetooth Device to get heart rate data...');
+    navigator.bluetooth.requestDevice({
+            filters: [{
+                services: ['heart_rate']
+            }]
+        }).then(device => {
+            console.log('Got device: ', device.name);
+            console.log('id: ', device.id);
+            return device.gatt.connect();
+        })
+        .then(server => {
+            console.log('Getting Heart Rate Service…');
+            return server.getPrimaryService('heart_rate');
+        })
+        .then(service => {
+            console.log('Getting Heart Rate Control Point Characteristic…');
+            return service.getCharacteristic('heart_rate_control_point');
+        })
+        .then(characteristic => {
+            console.log('Reading Heart Rate Control Point…');
+            return characteristic.readValue();
+        })
+        .then(value => {
+            value = value.buffer ? value : new DataView(value);
+            console.log('Heart Rate Control Point: ', value.getUint16());
+        })
+        .catch(exception => {
+            console.log(exception);
+        });
+}
+
+    function getAllBluetoothDevices(){
+        let options = { 
+            filters: [
+                 {namePrefix: '庆超'},
+            ],
+            optionalServices: ['battery_service']
+        };
+        // options.acceptAllDevices = true;
+        console.log('Requesting Bluetooth Device...');
+        console.log('with ' + JSON.stringify(options));
+        navigator
+            .bluetooth
+            .requestDevice(options)
+            .then(device => {
+                console.log('> Name:             ' + device.name);
+                console.log('> Id:               ' + device.id);
+                console.log('> Initially, connected?        ' + device.gatt.connected);
+                return device.gatt.connect();
+                // console.log('> Now, connected?        ' + device.gatt.connected);
+            })
+            .catch(error => {
+                console.log('Argh! ' + error);
+            });
+    }
     function changeTab(obj){
         $(".is-toggle").find("li").each(function(index,o){
             $(o).attr("class","");
@@ -169,7 +228,24 @@
                 sock.remoteAddress + ' ' + sock.remotePort);
         });
     });
-
+    server.on('error', function(err) {
+        let options = {
+            closeButton: true,
+            debug: false,
+            timeOut: "3000",//3s后关闭消息框
+            positionClass: "toast-bottom-center",
+            onclick: function(){
+                ipcRenderer.send('closeBroswerWin', "fd");
+            },
+          
+        }
+        toastr.options = options
+        toastr.error("程序已经在运行");
+        setTimeout(function(){
+            ipcRenderer.send('closeBroswerWin', "fd");
+        },3000)
+    })
+    
     var chatServer = net.createServer();
     chatServer.listen(listenChatPort, "0.0.0.0");
     chatServer.on('connection', function (sock) {
@@ -201,7 +277,12 @@
                 sock.remoteAddress + ' ' + sock.remotePort);
         });
     });
-
+    chatServer.on('error', function(err) {
+        // toastr.warning("程序已经在运行",function(){
+        // ipcRenderer.send('closeBroswerWin', "fd");
+            
+        // });
+    })
     function testConnect() {
         var net = require('net');
         var HOST = $("#ip").val();

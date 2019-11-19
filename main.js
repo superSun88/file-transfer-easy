@@ -58,6 +58,15 @@ app.on('ready', () => {
   // console.log(shortcutCapture)
   // 拿取截图后返回信息
   // shortcutCapture.on('capture', ({ dataURL, bounds }) => console.log(dataURL, bounds))
+
+  mainWindow.webContents.on('select-bluetooth-device', (event, deviceList, callback) => {
+    let result = deviceList.find((device) => {
+      console.log(device)
+    })
+    if (!result) {
+    } else {
+    }
+  })
 } )
 
 // Quit when all windows are closed.
@@ -241,7 +250,10 @@ if (nofind) {
 
 
 })
+ipcMain.on('closeBroswerWin', (event) => {
+  app.exit(0)
 
+})
 
 var template = [ {
     label: '编辑',
