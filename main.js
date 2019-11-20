@@ -9,6 +9,10 @@ const ShortcutCapture = require('shortcut-capture')
 const { useCapture } = require('./capture/lib/capture-main')
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
+app
+  .commandLine
+  .appendSwitch('enable-web-bluetooth', true);
+app.commandLine.appendSwitch('enable-experimental-web-platform-features')
 let mainWindow
 const electron = require('electron');
 const Menu = electron.Menu;
