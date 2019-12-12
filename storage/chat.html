@@ -45,46 +45,42 @@
 
     </div>
 
-    <div class="field" style="">
-        <textarea class="textarea is-primary" id="msg" type="text" placeholder="请输入文本信息"></textarea>
-    </div>
-    <nav class="level">
-        <div class="level-left">
-            <div class="level-item">
-                <div class="field" style="text-align: right">
-                    <button class="button is-info modal-button" data-target="fileModal" aria-haspopup="true">
-                        <i class="fa fa-file-archive-o"> 发送文件</i></button>
-                       
-                    <a class="button" onclick="sendMsg()">
-                        <i class="fa fa-mouse-pointer" id="sendMsgBtn"> 点击发送信息</i>
-                    </a>
-                   
-                    <div class="dropdown">
-                        <div class="dropdown-trigger">
-                            <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
-                <span class="icon is-small">
-                    <i class="fa fa-angle-down" aria-hidden="true"></i>
-                </span>
-                            </button>
-                        </div>
-                        <div class="dropdown-menu" id="dropdown-menu" role="menu">
-                            <div class="dropdown-content">
-                                <a href="#" class="dropdown-item is-active" data="0">
-                                    点击发送信息
-                                </a>
-                                <a class="dropdown-item" data="1">
-                                    点击/回车发送信息
-                                </a>
-                            </div>
-                        </div>
+    <div >
+        <div class="field" style="">
+            <textarea class="textarea is-primary" id="msg" type="text" placeholder="请输入文本信息"></textarea>
+        </div>
+        <div class="field" style="text-align: center">
+            <button class="button is-info modal-button" data-target="fileModal" aria-haspopup="true">
+                <i class="fa fa-file-archive-o"> 发送文件</i></button>
+               
+            <a class="button" onclick="sendMsg()">
+                <i class="fa fa-mouse-pointer" id="sendMsgBtn"> 点击发送信息</i>
+            </a>
+           
+            <div class="dropdown">
+                <div class="dropdown-trigger">
+                    <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+        <span class="icon is-small">
+            <i class="fa fa-angle-down" aria-hidden="true"></i>
+        </span>
+                    </button>
+                </div>
+                <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                    <div class="dropdown-content">
+                        <a href="#" class="dropdown-item is-active" data="0">
+                            点击发送信息
+                        </a>
+                        <a class="dropdown-item" data="1">
+                            点击/回车发送信息
+                        </a>
                     </div>
-                    <!-- <button class="button is-info" aria-haspopup="true" id="js-capture">
-                            <i class="fa fa-scissors"> 截图</i></button> -->
                 </div>
             </div>
+            <!-- <button class="button is-info" aria-haspopup="true" id="js-capture">
+                    <i class="fa fa-scissors"> 截图</i></button> -->
         </div>
-
-    </nav>
+    </div>
+    
 
 
     <div class="modal" id="fileModal">
@@ -96,9 +92,9 @@
             </header>
             <section class="modal-card-body">
                 <div class="field">
-                    <div class="select is-primary">
+                    <div class="select is-primary" style="display: none;">
                         <select id="kb">
-                            <option value="724">发送大小（默认724KB）</option>
+                            <option value="4096">发送大小（默认724KB）</option>
                             <option value="1024">1024</option>
                             <option value="2048">2048</option>
                             <option value="4096">4096</option>
@@ -115,6 +111,8 @@
                     <div> <span style="font-weight: bold">文件名:</span><span id="transferFile"></span></div>
                     <div> <span style="font-weight: bold">文件大小:</span><span id="fileSize"></span>(kb)</div>
                     <div> <span style="font-weight: bold">已发送:</span><span id="transferKb"></span>(kb)</div>
+                    <!-- <div> <span style="font-weight: bold">用时:</span><span id="spendTime"></span></div> -->
+
                     <div class="progress">
                         <span></span>
 
@@ -297,7 +295,7 @@
         var msg = $("#msg").val();
         if("" != msg){
             sendSocketMsg(msg);
-            appendMsg(msg)
+            
         }
 
     }
@@ -393,28 +391,70 @@ function appendMsg(msg){
 
             $("#chatHistory").append(span);
 }
+    var connectClient = false;
+    var client = undefined;
     function sendSocketMsg(msg) {
         var net = require('net');
         var HOST = $("#ip").val();
-        var client = net.createConnection(port, HOST);
-
-        client.on('connect', function () {
+        if(!connectClient){
+            client = net.createConnection(port, HOST);
+            client.on('connect', function () {
             console.log('CONNECTED TO: ' + HOST + ':' + port);
             client.write(msg);
-            client.end();
+            // client.end();
 
-         
+            appendMsg(msg);
             $("#msg").val("");
             $("#msg").focus();
-
+            connectClient = true;
 
         });
         client.on('error', function () {
+            connectClient = false;
             toastr.error("发送失败，请确认客户端连接状态");
             client.end();
         });
+        
+        }else{
+            client.write(msg);
+            appendMsg(msg);
+            $("#msg").val("");
+            $("#msg").focus();
+        }
+       
+
+       
 
     }
+
+    var totalTime = 1;
+    function startTime(){
+        totalTime++;
+        if(totalTime>60){
+            let minute = parseInt( totalTime/60);
+            let second = totalTime%60;
+            if(minute >60){
+                let hour = minute/60;
+                if(hour>24){
+                    let days = hour/24
+                    $('#spendTime').text(days+"天"+hour+"小时"+minute+"分"+second+"秒");
+
+                }else{
+                    $('#spendTime').text(hour+"小时"+minute+"分"+second+"秒");
+
+                }
+            }else{
+                $('#spendTime').text(minute+"分"+second+"秒");
+
+            }
+
+        }else{
+            $('#spendTime').text(totalTime + "秒");
+
+        }
+        
+    }
+   
 
     function sendFile(path, name, type, packSize) {
         var net = require('net');
@@ -440,8 +480,15 @@ function appendMsg(msg){
         var sendSize = 0;
 
         client.on('error', function () {
+          
+
             if (type == 1) {
                 hideMask(false);
+            }else{
+                toastr.error("发送失败，请确认客户端连接状态");
+                $("#holder").attr("class", "holder");
+                $("#holder").text("请拖拽文件到这里...");
+
             }
         });
         var fd = fs.openSync(path, 'r');
@@ -449,6 +496,10 @@ function appendMsg(msg){
         var buf = new Buffer.alloc(packSize);
         var percent = 0;
         var sendNum = 0;
+        // var interval = setInterval(function(){
+        //     startTime()
+        // },1000)
+        // $('#spendTime').text("1秒");
         client.on('data', function (response) {
             $("#transferFile").text(name);
             $("#fileSize").text(fileSize);
@@ -499,6 +550,9 @@ function appendMsg(msg){
                 sendSize += packSize;
 
             } else if (response.toString() == "file transfer completed") {
+                // clearInterval(interval)
+                // totalTime = 1
+
                 console.log('Transfer Completed!');
                 document.querySelector('.progress span').style.width = '100%';
                 holder.innerText = "发送完毕";
@@ -537,6 +591,7 @@ function appendMsg(msg){
                 var data = buf.toString('hex'); //以十六进制传输
                 client.write(data);
                 sendNum++;
+                console.log('Transfering...num:' + sendNum);
 
                 console.log('response:' + response.toString());
 
@@ -547,6 +602,8 @@ function appendMsg(msg){
                 if (type == 1) {
                     hideMask(true);
                 }
+                // clearInterval(interval)
+                // totalTime = 1
                 holder.innerText = "发送完毕";
                 $("#holder").attr("class", "holder");
                 document.querySelector('.progress span').style.width = '100%';
@@ -669,19 +726,6 @@ function appendMsg(msg){
                
                 aImg.src = e.target.result;
                 imageSrc = e.target.result;
-
-
-                // var span =
-                //         '<div class="panel-block">' +
-                //         '<div class="container"><figure ' +
-                //         'style="background-color: white!important;" class="highlight_chat"><pre><code class="language-html">' +
-                //         '<div class="rightd">' +
-                //         '<div class="speech right" ng-class="speech right"><img class="isay" src="' + imageSrc +
-                //         '"></img></div></div></code></pre></figure></div>' +
-                //         '<span class="ip_name"  ' +
-                //         'style="color: #209cee">&nbsp:' + myip + '</span></div>';
-                // $("#chatHistory").append(span);
-                // sendSocketMsg(imageSrc)
 
                 var fs = require('fs');
                 fs.writeFile(receiveDirPath+"capture_"+blob.lastModified+".png", 

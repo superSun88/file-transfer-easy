@@ -17,15 +17,18 @@ let mainWindow
 const electron = require('electron');
 const Menu = electron.Menu;
 function createWindow() {
+  const {screen}   = require('electron');
 
    // 初始化截图
    useCapture()
     const menu = Menu.buildFromTemplate(template)
     Menu.setApplicationMenu(menu)
   // Create the browser window.
+  let display = screen.getPrimaryDisplay()
+
   mainWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width: display.bounds.width,
+    height:  display.bounds.width,
     webPreferences: {
       nodeIntegration: true
     }
@@ -47,7 +50,7 @@ function createWindow() {
 // Emitted when the window is closed.
     mainWindow.on('closed', function () {
         mainWindow = null
-
+        app.exit(0)
     })
 }
 
@@ -141,9 +144,12 @@ ipcMain.on('openChatWindow', (event, args) => {
 
 function createNewChatWin(args, ip) {
   let chatwin;
+  const {screen}   = require('electron');
+  let display = screen.getPrimaryDisplay()
+
   chatwin = new BrowserWindow({
-    width: 600,
-    height: 400,
+    width: display.bounds.width-300,
+    height:  display.bounds.width-300,
     frame: true,
     webPreferences: {
       nodeIntegration: true

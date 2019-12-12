@@ -25,9 +25,12 @@
     "bulma": "^0.7.5",
     "bulmabox": "^0.2.0",
     "electron-packager": "^13.1.1",
+    "electron-store": "^5.1.0",
     "font-awesome": "^4.7.0",
     "jquery": "^3.4.1",
     "shortcut-capture": "^1.2.2",
-    "toastr": "^2.1.4"
+    "toastr": "^2.1.4",
+    "trtc-electron-sdk": "^6.8.135",
+    "xcode": "^2.0.0"
   }
 }

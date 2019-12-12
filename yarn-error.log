@@ -1,0 +1,69 @@
+Arguments: 
+  /usr/local/bin/node /usr/local/bin/yarn add Xcode
+
+PATH: 
+  /Users/yongxiaoshu/dev_software/apache-maven-3.5.0/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/yongxiaoshu/lib/instantclient_18_1
+
+Yarn version: 
+  1.17.3
+
+Node version: 
+  10.16.0
+
+Platform: 
+  darwin x64
+
+Trace: 
+  Error: https://registry.yarnpkg.com/Xcode: Not found
+      at Request.params.callback [as _callback] (/usr/local/lib/node_modules/yarn/lib/cli.js:66830:18)
+      at Request.self.callback (/usr/local/lib/node_modules/yarn/lib/cli.js:140464:22)
+      at Request.emit (events.js:198:13)
+      at Request.<anonymous> (/usr/local/lib/node_modules/yarn/lib/cli.js:141436:10)
+      at Request.emit (events.js:198:13)
+      at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/yarn/lib/cli.js:141358:12)
+      at Object.onceWrapper (events.js:286:20)
+      at IncomingMessage.emit (events.js:203:15)
+      at endReadableNT (_stream_readable.js:1129:12)
+      at process._tickCallback (internal/process/next_tick.js:63:19)
+
+npm manifest: 
+  {
+    "name": "FileTransferEasy",
+    "version": "1.0.0",
+    "description": "A minimal Electron application",
+    "main": "main.js",
+    "scripts": {
+      "start": "electron .",
+      "package": "electron-packager . FileTransferEasyWin --win --out ../FileTransferEasyWin --arch=x64 --overwrite",
+      "packageMac": "electron-packager . FileTransferEasyMac --platform=darwin --arch=x64 --out ../FileTransferEasyMac  --overwrite --asar --app-version=2.0.1",
+      "packageLinux": "electron-packager . FileTransferEasyLinux --platform=linux --arch=x64 --out ../FileTransferEasyLinux  --overwrite"
+    },
+    "keywords": [
+      "Electron",
+      "quick",
+      "start",
+      "tutorial",
+      "demo"
+    ],
+    "author": "sunqingchao",
+    "license": "SUN-1.0.0",
+    "devDependencies": {
+      "electron": "^5.0.1"
+    },
+    "dependencies": {
+      "bulma": "^0.7.5",
+      "bulmabox": "^0.2.0",
+      "electron-packager": "^13.1.1",
+      "font-awesome": "^4.7.0",
+      "jquery": "^3.4.1",
+      "shortcut-capture": "^1.2.2",
+      "toastr": "^2.1.4",
+      "xcode": "^2.0.0"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
