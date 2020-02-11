@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SubStreamWindow</title>
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="./libs/thirdpart/elementui/index.css">
+    <link rel="stylesheet" href="./css/demo.css">
+    <!--
+    Electron 中引入jQuery的正确方式：
+    记得要安装依赖
+    ' npm install jquery --save '
+    -->
+    <style>
+        
+        @import './node_modules/bulma/css/bulma.css';
+        @import './node_modules/font-awesome/css/font-awesome.min.css';
+        @import './node_modules/toastr/build/toastr.css';
+    </style>
+
+    <script>
+        window.$ = window.jQuery = require('jquery');
+
+        window.toastr = require('toastr');
+        window.toastr.options = {
+            closeButton: false,
+            debug: false,
+            progressBar: true,
+            positionClass: "toast-bottom-center",
+            onclick: null,
+            showMethod: "fadeIn",
+            hideMethod: "fadeOut"
+        }
+    </script>
+</head>
+
+<body>
+
+
+    <div class="content">
+      
+        <div id="demo_app">
+            <el-container>
+                <el-main>
+                  <video></video>
+                    <!-- <div class="control" id="video_wrap_camera"></div> -->
+                    <div class="control" id="video_wrap_screen"></div>
+                </el-main>
+                        
+
+
+            </el-container>
+        </div>
+
+
+
+
+
+
+    </div>
+
+
+</body>
+
+<script>
+     function GetQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg); //search,查询？后面的参数，并匹配正则
+        if (r != null) return decodeURIComponent(r[2]);
+        return null;
+    }
+    var uid = GetQueryString("uid");
+
+    function launchIntoFullscreen(element) {
+        if (element.requestFullscreen) {
+            element.requestFullscreen();
+        } else if (element.mozRequestFullScreen) {
+            element.mozRequestFullScreen();
+        } else if (element.webkitRequestFullscreen) {
+            element.webkitRequestFullscreen();
+        } else if (element.msRequestFullscreen) {
+            element.msRequestFullscreen();
+        }
+    }
+    $(document).on("dblclick", ".video_view_screen", function (e) {
+        launchIntoFullscreen(e.currentTarget)
+      
+    });
+    function findVideoView(uid, streamtype) {
+      let key = uid + '_' + streamtype;
+      var userVideoEl = document.getElementById(key);
+      if (!userVideoEl) {
+        userVideoEl = document.createElement('div');
+        userVideoEl.id = key;
+        if(streamtype == 0){
+          userVideoEl.classList.add('video_view');
+          document.querySelector("#video_wrap_camera").appendChild(userVideoEl);
+
+        }else{
+          userVideoEl.classList.add('video_view_screen');
+          document.querySelector("#video_wrap_screen").appendChild(userVideoEl);
+
+        }
+        var voiceEl = document.getElementById(key + "_voice");
+        if (!voiceEl && (streamtype === TRTCVideoStreamType.TRTCVideoStreamTypeBig || streamtype === TRTCVideoStreamType.TRTCVideoStreamTypeSmall)) {
+          this.createProgressElement(key, userVideoEl);
+        }
+      }
+      this.setVisibleVoice(this.showVoice, uid, streamtype);
+      return userVideoEl;
+    }
+    // 设置 video_voice_progress 是否可见，打开音量提示时显示提示条
+function setVisibleVoice(visible, uid, streamtype) {
+      let key = uid + '_' + streamtype + "_voice";
+      var voiceEl = document.getElementById(key);
+      if (voiceEl) {
+        if (visible) {
+          voiceEl.style.visibility = "visible";
+        } else {
+          voiceEl.style.visibility = "hidden";
+        }
+      }
+    }
+    const TRTCCloud = require('trtc-electron-sdk');
+    const {
+  TRTCVideoStreamType,
+  TRTCVideoResolution,
+  TRTCVideoFillMode,
+  TRTCVideoQosPreference,
+  TRTCQosControlMode,
+  TRTCAppScene,
+  TRTCRoleType,
+  TRTCVideoResolutionMode,
+  TRTCBeautyStyle,
+  TRTCDeviceType,
+  TRTCDeviceState,
+  TRTCTranscodingConfigMode,
+  TRTCVideoPixelFormat,
+  TRTCVideoBufferType
+} = require('trtc-electron-sdk/liteav/trtc_define');
+const {
+  TRTCParams,
+  TRTCVideoEncParam,
+  TRTCNetworkQosParam,
+  TRTCTranscodingConfig, 
+  TRTCMixUser,
+  Rect,
+  TRTCVideoFrame
+} = require('trtc-electron-sdk/liteav/trtc_define');
+
+
+
+
+   
+</script>
+<script src="./libs/vue.js"></script>
+<script>
+    Vue.config.productionTip = false
+</script>
+<!-- 引入组件库 -->
+<script src="./libs/thirdpart/elementui/index.js"></script>
+<script src="./libs/lib-generate-test-usersig.min.js"></script>
+<!-- <script src="./js/demo.js"></script> -->
+<script src="./js/GenerateTestUserSig.js"></script>
+
+<script>
+    const {
+  ipcRenderer
+} = require('electron')
+     ipcRenderer.on('param', (event, obj) => {
+        console.log(obj)
+        generateSubStream(obj.uid)
+    });
+
+    
+ function generateSubStream(uid){
+const TRTCCloud = require('trtc-electron-sdk');
+       let rtcCloud = new TRTCCloud();
+        let view = findVideoView(uid, 2);
+          rtcCloud.startRemoteSubStreamView(uid, view);
+          // 填充模式需要在设置 view 后才生效
+          rtcCloud.setRemoteSubStreamViewFillMode(uid, 1);
+    }
+    if (undefined != uid && "" != uid) {
+        generateSubStream(uid)
+
+    }
+
+// 在渲染进程中.
+// var desktopCapturer = require('electron').desktopCapturer;
+
+// desktopCapturer.getSources({types: ['window', 'screen']}, function(error, sources) {
+//   if (error) throw error;
+//   for (var i = 0; i < sources.length; ++i) {
+//     if (sources[i].name == "UserList") {
+//       navigator.webkitGetUserMedia({
+//         audio: false,
+//         video: {
+//           mandatory: {
+//             chromeMediaSource: 'desktop',
+//             chromeMediaSourceId: sources[i].id,
+//             minWidth: 1280,
+//             maxWidth: 1280,
+//             minHeight: 720,
+//             maxHeight: 720
+//           }
+//         }
+//       }, gotStream, getUserMediaError);
+//       return;
+//     }
+//   }
+// });
+
+function gotStream(stream) {
+  // const video = document.querySelector('video')
+    // video.srcObject = stream
+  // document.querySelector('video').src = URL.createObjectURL(stream);
+}
+
+function getUserMediaError(e) {
+  console.log('getUserMediaError');
+}
+    </script>
+</html>

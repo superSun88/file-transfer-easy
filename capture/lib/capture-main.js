@@ -64,14 +64,14 @@ const captureScreen = (e, args) => {
 }
 
 const useCapture = () => {
-    // globalShortcut.register('Esc', () => {
-    //     if (captureWins) {
-    //         captureWins.forEach(win => win.close())
-    //         captureWins = []
-    //     }
-    // })
+    globalShortcut.register('Esc', () => {
+        if (captureWins) {
+            captureWins.forEach(win => win.close())
+            captureWins = []
+        }
+    })
 
-    // globalShortcut.register('CmdOrCtrl+Shift+C', captureScreen)
+    globalShortcut.register('CmdOrCtrl+Shift+C', captureScreen)
 
     ipcMain.on('capture-screen', (e, { type = 'start', screenId } = {}) => {
         if (type === 'start') {

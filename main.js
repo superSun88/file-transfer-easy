@@ -35,10 +35,12 @@ function createWindow() {
   })
 
   // and load the index.html of the app.
-  mainWindow.loadFile('storage/ip_list.html')
+  // mainWindow.loadFile('storage/ip_list.html')
+  mainWindow.loadFile('index_aliyun.html')
+  // mainWindow.loadFile('index_trtc.html')
 
   // Open the DevTools.
-  // mainWindow.webContents.openDevTools({mode:'bottom'});
+  mainWindow.webContents.openDevTools({mode:'bottom'});
     // mainWindow.http =  require('./storage/http.js');
 
   // Emitted when the window is closed.
@@ -263,6 +265,38 @@ if (nofind) {
 ipcMain.on('closeBroswerWin', (event) => {
   app.exit(0)
 
+})
+
+let subStreamWindow;
+
+ipcMain.on('openUserSubStreamWindow', (event, obj) => {
+  const {screen}   = require('electron');
+  
+  var args = encodeURI("sub_stream_window.html");
+  let display = screen.getPrimaryDisplay()
+
+  subStreamWindow = new BrowserWindow({
+    width: display.bounds.width,
+    height:  display.bounds.width,
+    frame: true,
+    webPreferences: {
+      nodeIntegration: true
+    }
+  })
+  subStreamWindow.loadURL(`file://${__dirname}/` + args); //新开窗口的渲染进程
+  subStreamWindow.webContents.openDevTools({mode:'bottom'});
+  setTimeout(function(){
+    subStreamWindow.webContents.send("param",obj);
+},3000);
+subStreamWindow.on('closed', () => {
+  subStreamWindow = null;
+  })
+})
+ipcMain.on('closeUserSubStreamWindow', (event, obj) => {
+  if(subStreamWindow != null){
+    subStreamWindow.close()
+
+  }
 })
 
 var template = [ {

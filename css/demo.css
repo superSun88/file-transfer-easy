@@ -24,8 +24,26 @@ body {
     margin-top: 4px;
     margin-left: 4px;
     margin-right: 4px;
+    float: left;
 }
-
+.video_view_screen {
+    overflow: hidden;
+    width: 100%;
+    height: 100%!important;
+    background-color: grey;
+    margin-top: 4px;
+    margin-left: 4px;
+    margin-right: 4px;
+}
+.video_view_screen > div {
+    /* position: absolute; */
+    display: block!important;
+}
+.video_view_screen > div > canvas {
+    zoom : 1!important;
+    width: 100%;
+    height: 100%;
+}
 .video_voice_progress {
     width: 320px;
     position: absolute;
@@ -58,8 +76,9 @@ body {
 
 .el-main {
     padding: 0 !important;
-    overflow: hidden !important;
+    overflow: auto !important;
     height: 100%;
+    width:600px;
 }
 
 .el-container {
@@ -91,5 +110,11 @@ body {
 }
 
 .control {
+    padding-top:5px;
     margin-top: 10px;
 }
+/* .video_view{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+} */

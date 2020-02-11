@@ -621,6 +621,7 @@ function appendMsg(msg){
         return null;
     }
     var ip = GetQueryString("ip");
+   
     if (undefined != ip && "" != ip) {
         $("#ip").val(ip);
         $("#title").text("ChatWindow(" + ip + ")");

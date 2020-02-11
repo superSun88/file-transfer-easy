@@ -16,6 +16,9 @@
     "tutorial",
     "demo"
   ],
+  "config": {
+    "registry": "https://registry.npm.taobao.org"
+  },
   "author": "sunqingchao",
   "license": "SUN-1.0.0",
   "devDependencies": {

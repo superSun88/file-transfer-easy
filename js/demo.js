@@ -1,5 +1,8 @@
 const TRTCCloud = require('trtc-electron-sdk');
 const {
+  ipcRenderer
+} = require('electron')
+const {
   TRTCVideoStreamType,
   TRTCVideoResolution,
   TRTCVideoFillMode,
@@ -44,6 +47,8 @@ let demoApp = new Vue({
   el: '#demo_app',
   data() {
     return {
+      collapseBtnClick: false,
+      isCollapse: true,
       rtcCloud: null,
       version: '',
 
@@ -79,6 +84,18 @@ let demoApp = new Vue({
       qosControlModeList: [],
       appScene: TRTCAppScene.TRTCAppSceneVideoCall,
       appSceneList: [],
+      screenLayList:[
+        {"id":TRTCVideoResolutionMode.TRTCVideoResolutionModeLandscape,"name":"横屏"},
+        {"id":TRTCVideoResolutionMode.TRTCVideoResolutionModePortrait,"name":"竖屏"}],
+      screenCaptureEncoderList:
+      [{"id":TRTCVideoResolution.TRTCVideoResolution_1920_1080,"name":"1920*1080"},
+      {"id":TRTCVideoResolution.TRTCVideoResolution_1280_720,"name":"1280*720"},
+      {"id":TRTCVideoResolution.TRTCVideoResolution_960_540,"name":"960*540"},
+      {"id": TRTCVideoResolution.TRTCVideoResolution_640_360,"name":"640*360"},
+      {"id": TRTCVideoResolution.TRTCVideoResolution_640_480,"name":"640*480"},
+      {"id": TRTCVideoResolution.TRTCVideoResolution_960_720,"name":"960*720"}],
+      screenLay: TRTCVideoResolutionMode.TRTCVideoResolutionModeLandscape,
+      screenCaptureEncoder: TRTCVideoResolution.TRTCVideoResolution_1920_1080,
       videoResolutionMode: TRTCVideoResolutionMode.TRTCVideoResolutionModeLandscape,
       videoResolutionModeList: [],
       playSmallVideo: false, // 观看低清
@@ -259,12 +276,18 @@ let demoApp = new Vue({
       rtcCloud.on('onUserSubStreamAvailable', (uid, available) => {
         console.info('trtc_demo: onUserSubStreamAvailable uid:' + uid + "|available:" + available);
         if (available) {
+          var obj = new Object();
+          // obj.rtcCloud = this.rtcCloud;
+          obj.uid = uid;
+          // ipcRenderer.send('openUserSubStreamWindow',obj)
           let view = this.findVideoView(uid, TRTCVideoStreamType.TRTCVideoStreamTypeSub);
           this.rtcCloud.startRemoteSubStreamView(uid, view);
           // 填充模式需要在设置 view 后才生效
           this.rtcCloud.setRemoteSubStreamViewFillMode(uid, this.videoFillMode);
         }
         else {
+          ipcRenderer.send('closeUserSubStreamWindow',obj)
+
           this.rtcCloud.stopRemoteSubStreamView(uid);
           this.destroyVideoView(uid, TRTCVideoStreamType.TRTCVideoStreamTypeSub);
           // 移除混流画面信息
@@ -499,6 +522,18 @@ let demoApp = new Vue({
     subscribeEvents(this.rtcCloud);
   },
   methods: {
+    collapseStatus() {
+      this.collapseBtnClick = this.isCollapse;
+      this.isCollapse = !this.isCollapse;
+  },
+collapseOpen() {
+      if (this.collapseBtnClick) return;
+      this.isCollapse = false;
+  },
+collapseClose() {
+      if (this.collapseBtnClick) return;
+      this.isCollapse = true;
+},
     // 填充模式
     onVideoFillMode() {
       for (var i = 0; i < this.users.length; i++) {
@@ -754,10 +789,10 @@ let demoApp = new Vue({
       if (this.screenCapture) {
         this.screenList = this.rtcCloud.getScreenCaptureSources(120, 70, 20, 20);
         let encparam = new TRTCVideoEncParam();
-        encparam.videoResolution = TRTCVideoResolution.TRTCVideoResolution_640_480;
-        encparam.resMode = TRTCVideoResolutionMode.TRTCVideoResolutionModeLandscape;
-        encparam.videoFps = 15;
-        encparam.videoBitrate = 600;
+        encparam.videoResolution = this.screenCaptureEncoder;
+        encparam.resMode = this.screenLay;
+        // encparam.videoFps = 24;
+        encparam.videoBitrate = 800;
         this.rtcCloud.setSubStreamEncoderParam(encparam);
       }
       else {
@@ -794,8 +829,8 @@ let demoApp = new Vue({
 
         this.rtcCloud.selectScreenCaptureTarget(source.type, source.sourceId, source.sourceName, rect, mouse, highlight);
         // windows 平台支持本地屏幕共享预览画面， mac 平台暂时不支持。
-        // let view = this.findVideoView("local_video", TRTCVideoStreamType.TRTCVideoStreamTypeSub);
-        this.rtcCloud.startScreenCapture();
+        let view = this.findVideoView("local_video", TRTCVideoStreamType.TRTCVideoStreamTypeSub);
+        this.rtcCloud.startScreenCapture(view);
       }
     },
 
@@ -872,7 +907,13 @@ let demoApp = new Vue({
       this.rtcCloud.startLocalAudio();
       this.rtcCloud.muteLocalAudio(false);
     },
-
+    generateSubStream(){
+      let uid='425753';
+      let view = this.findVideoView(uid, TRTCVideoStreamType.TRTCVideoStreamTypeSub);
+        this.rtcCloud.startRemoteSubStreamView(uid, view);
+        // 填充模式需要在设置 view 后才生效
+        this.rtcCloud.setRemoteSubStreamViewFillMode(uid, this.videoFillMode);
+    },
     // 退房
     exitRoom() {
       if (!this.inroom) return;
@@ -952,8 +993,15 @@ let demoApp = new Vue({
       if (!userVideoEl) {
         userVideoEl = document.createElement('div');
         userVideoEl.id = key;
-        userVideoEl.classList.add('video_view');
-        document.querySelector("#video_wrap").appendChild(userVideoEl);
+        if(streamtype == 0){
+          userVideoEl.classList.add('video_view');
+          document.querySelector("#video_wrap_camera").appendChild(userVideoEl);
+
+        }else{
+          userVideoEl.classList.add('video_view_screen');
+          document.querySelector("#video_wrap_screen").appendChild(userVideoEl);
+
+        }
         var voiceEl = document.getElementById(key + "_voice");
         if (!voiceEl && (streamtype === TRTCVideoStreamType.TRTCVideoStreamTypeBig || streamtype === TRTCVideoStreamType.TRTCVideoStreamTypeSmall)) {
           this.createProgressElement(key, userVideoEl);
@@ -1012,15 +1060,27 @@ let demoApp = new Vue({
       let key = uid + '_' + streamtype;
       var userVideoEl = document.getElementById(key);
       if (userVideoEl) {
-        document.querySelector("#video_wrap").removeChild(userVideoEl);
+        if(streamtype == 0){
+          document.querySelector("#video_wrap_camera").removeChild(userVideoEl);
+
+        }else{
+          document.querySelector("#video_wrap_screen").removeChild(userVideoEl);
+
+        }
       }
     },
 
     // 清掉所有的视频 Dom 结点，适用于退出房间时。
     destroyAllVideoView() {
-      var n = document.querySelector("#video_wrap").childNodes.length;
+      var n = document.querySelector("#video_wrap_camera").childNodes.length;
       for (var i = 0; i < n; i++) {
-        var dom = document.querySelector("#video_wrap");
+        var dom = document.querySelector("#video_wrap_camera");
+        dom.removeChild(dom.firstChild);
+      }
+
+      n = document.querySelector("#video_wrap_screen").childNodes.length;
+      for (var i = 0; i < n; i++) {
+        var dom = document.querySelector("#video_wrap_screen");
         dom.removeChild(dom.firstChild);
       }
     },
